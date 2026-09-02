@@ -1,0 +1,409 @@
+
+
+.membership-form-page {
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.membership-form-header {
+    background: #101828;
+    padding: 90px 0 80px;
+    color: #ffffff;
+}
+
+.form-header-content {
+    max-width: 760px;
+}
+
+.form-label {
+    display: inline-block;
+    margin-bottom: 14px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #63a4ff;
+}
+
+.form-header-content h1 {
+    margin: 0 0 18px;
+
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.form-header-content h1 span {
+    color: #63a4ff;
+}
+
+.form-header-content p {
+    max-width: 650px;
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================================
+   FORM SECTION
+========================================= */
+
+.membership-form-section {
+    padding: 70px 0 100px;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.form-card {
+    margin-bottom: 28px;
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #e7ebf0;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(16, 24, 40, 0.04);
+}
+
+.form-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+
+    margin-bottom: 32px;
+}
+
+.form-card-header > span {
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eaf2ff;
+    color: #0d6efd;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-card-header h2 {
+    margin: 0 0 5px;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #172033;
+}
+
+.form-card-header p {
+    margin: 0;
+
+    font-size: 14px;
+    color: #6c757d;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+.form-card label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #273142;
+}
+
+.form-card label span {
+    color: #dc3545;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-card .form-control,
+.form-card .form-select {
+    min-height: 50px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #dce1e7;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    font-size: 14px;
+
+    color: #172033;
+
+    box-shadow: none;
+
+    transition: all 0.2s ease;
+}
+
+.form-card textarea.form-control {
+    min-height: auto;
+    resize: vertical;
+}
+
+.form-card .form-control::placeholder {
+    color: #adb5bd;
+}
+
+.form-card .form-control:focus,
+.form-card .form-select:focus {
+    border-color: #0d6efd;
+
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.10);
+}
+
+
+/* =========================================
+   HELPER TEXT
+========================================= */
+
+.form-card small {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    color: #7a8491;
+}
+
+
+/* =========================================
+   RADIO / CHECKBOX OPTIONS
+========================================= */
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.choice-option {
+    display: flex !important;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0 !important;
+    padding: 13px 15px;
+
+    border: 1px solid #e3e7ec;
+    border-radius: 10px;
+
+    background: #fafbfc;
+
+    cursor: pointer;
+
+    font-size: 13px !important;
+    font-weight: 500 !important;
+
+    transition: all 0.2s ease;
+}
+
+.choice-option:hover {
+    border-color: #0d6efd;
+    background: #f5f9ff;
+}
+
+.choice-option input {
+    margin: 0;
+
+    width: 16px;
+    height: 16px;
+
+    accent-color: #0d6efd;
+
+    cursor: pointer;
+}
+
+.choice-option span {
+    color: #344054 !important;
+}
+
+
+/* =========================================
+   RADIO LIST
+========================================= */
+
+.radio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.radio-list.horizontal {
+    flex-direction: row;
+    gap: 25px;
+}
+
+.radio-list label {
+    display: flex !important;
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 0 !important;
+
+    font-size: 14px !important;
+    font-weight: 500 !important;
+
+    cursor: pointer;
+}
+
+.radio-list input {
+    width: 16px;
+    height: 16px;
+
+    accent-color: #0d6efd;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+.form-card input[type="file"] {
+    padding: 11px 13px;
+}
+
+.form-card input[type="file"]::file-selector-button {
+    margin-right: 12px;
+
+    padding: 7px 12px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #eaf2ff;
+    color: #0d6efd;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   SUBMIT AREA
+========================================= */
+
+.form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-top: 40px;
+    padding: 30px;
+
+    background: #101828;
+
+    border-radius: 20px;
+}
+
+.form-submit p {
+    max-width: 600px;
+
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.submit-btn {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 24px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 767px) {
+
+    .membership-form-header {
+        padding: 65px 0 55px;
+    }
+
+    .membership-form-section {
+        padding: 45px 0 70px;
+    }
+
+    .form-card {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    .form-card-header {
+        margin-bottom: 25px;
+    }
+
+    .option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-submit {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .submit-btn {
+        justify-content: center;
+    }
+
+}

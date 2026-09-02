@@ -1,0 +1,49 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 16px 0;
+
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.navbar .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 8px 18px;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 11px 22px;
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}

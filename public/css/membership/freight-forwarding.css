@@ -1,0 +1,485 @@
+/* =========================================
+   MEMBERSHIP FORM PAGE
+========================================= */
+
+.membership-form-page {
+    background: #f5f7fa;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.membership-form-header {
+    background: #0b1727;
+    color: #fff;
+    padding: 90px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.membership-form-header::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -200px;
+    top: -250px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.12);
+}
+
+.form-header-content {
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-header-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6ea8fe;
+    margin-bottom: 15px;
+}
+
+.form-header-content h1 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.form-header-content p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+
+/* =========================================
+   FORM SECTION
+========================================= */
+
+.membership-form-section {
+    padding: 70px 0 100px;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.form-card {
+    background: #fff;
+    border: 1px solid #e8edf3;
+    border-radius: 18px;
+    padding: 35px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 35px rgba(11, 23, 39, 0.04);
+}
+
+.form-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: 28px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.form-card-header > span {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-card-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0b1727;
+    margin: 0 0 5px;
+}
+
+.form-card-header p {
+    color: #7b8794;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #273444;
+    margin-bottom: 10px;
+}
+
+.form-label span {
+    color: #dc3545;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.membership-form-page .form-control,
+.membership-form-page .form-select {
+    min-height: 52px;
+    border: 1px solid #dfe5ec;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #273444;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.membership-form-page .form-control::placeholder {
+    color: #a0a9b4;
+}
+
+.membership-form-page .form-control:focus,
+.membership-form-page .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.08);
+}
+
+
+/* =========================================
+   HELPER TEXT
+========================================= */
+
+.form-helper {
+    color: #7b8794;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   OPTIONS
+========================================= */
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.choice-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 10px 13px;
+    border: 1px solid #e2e7ed;
+    border-radius: 9px;
+    background: #fafbfc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.choice-option:hover {
+    border-color: #0d6efd;
+    background: #f5f9ff;
+}
+
+.choice-option input {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    accent-color: #0d6efd;
+}
+
+.choice-option span {
+    color: #3b4654;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RADIO LIST
+========================================= */
+
+.radio-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 16px;
+    border: 1px solid #e2e7ed;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-option:hover {
+    border-color: #0d6efd;
+    background: #f5f9ff;
+}
+
+.radio-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: #0d6efd;
+}
+
+.radio-option span {
+    font-size: 14px;
+    color: #3b4654;
+}
+
+
+/* =========================================
+   CONDITIONAL FIELD
+========================================= */
+
+.conditional-field {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   VERIFICATION
+========================================= */
+
+.verification-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #f4f8ff;
+    color: #52606d;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.verification-note i {
+    color: #0d6efd;
+    margin-top: 2px;
+}
+
+
+/* =========================================
+   PAYMENT SUPPORT
+========================================= */
+
+.payment-support-box {
+    display: flex;
+    gap: 20px;
+    padding: 28px;
+    border-radius: 15px;
+    background: #f7f9fc;
+    border: 1px solid #e3e8ef;
+}
+
+.payment-support-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #0b1727;
+    color: #fff;
+    font-size: 19px;
+}
+
+.payment-support-content {
+    flex: 1;
+}
+
+.payment-support-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #0d6efd;
+    margin-bottom: 5px;
+}
+
+.payment-support-content h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0b1727;
+    margin-bottom: 7px;
+}
+
+.payment-support-content p {
+    color: #6c7785;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   TERMS BUTTON
+========================================= */
+
+.terms-button {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: #0d6efd;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.terms-button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   TERMS MODAL
+========================================= */
+
+.payment-terms-modal {
+    border: 0;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.payment-terms-modal .modal-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.payment-terms-modal .modal-body {
+    padding: 30px;
+}
+
+.payment-terms-modal h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0b1727;
+    margin-bottom: 10px;
+}
+
+.payment-terms-modal p {
+    color: #66717f;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.terms-note {
+    display: flex;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 9px;
+    background: #f4f8ff;
+}
+
+.terms-note i {
+    color: #0d6efd;
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   SUBMIT
+========================================= */
+
+.form-submit {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.form-submit .btn {
+    min-width: 220px;
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.form-submit .btn i {
+    margin-left: 8px;
+}
+
+.form-submit p {
+    margin-top: 15px;
+    color: #8a95a3;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 767px) {
+
+    .membership-form-header {
+        padding: 65px 0 55px;
+    }
+
+    .membership-form-section {
+        padding: 45px 0 70px;
+    }
+
+    .form-card {
+        padding: 22px;
+        border-radius: 14px;
+    }
+
+    .form-card-header {
+        gap: 13px;
+        padding-bottom: 22px;
+        margin-bottom: 24px;
+    }
+
+    .form-card-header h2 {
+        font-size: 19px;
+    }
+
+    .option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-support-box {
+        flex-direction: column;
+        padding: 22px;
+    }
+
+    .payment-terms-modal .modal-header,
+    .payment-terms-modal .modal-body {
+        padding: 22px;
+    }
+
+}

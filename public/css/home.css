@@ -1,0 +1,68 @@
+/* =========================
+   Global Traders Landing Page
+   ========================= */
+
+/* :root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --dark: #0f172a;
+    --text: #334155;
+    --muted: #64748b;
+    --light-bg: #f8fafc;
+    --border: #e2e8f0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    background: #ffffff;
+} */
+
+/* =========================
+   Registration Form
+   ========================= */
+
+section.container .card {
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid var(--border) !important;
+    border-radius: 18px !important;
+    padding: 35px !important;
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+section.container .card h3 {
+    color: var(--dark);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.form-control {
+    min-height: 50px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: var(--dark);
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+#submitBtn {
+    min-height: 52px;
+    margin-top: 5px;
+}
+
