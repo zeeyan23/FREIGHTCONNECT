@@ -115,16 +115,31 @@
 
                         <!-- Email & Phone -->
                         <div class="col-md-6">
-                            <label for="business_contact" class="form-label">
-                                Business Email & Phone / WhatsApp <span>*</span>
+                            <label for="business_email" class="form-label">
+                                Business Email <span>*</span>
                             </label>
 
                             <input
-                                type="text"
-                                id="business_contact"
-                                name="business_contact"
+                                type="email"
+                                id="business_email"
+                                name="business_email"
                                 class="form-control"
-                                placeholder="email@example.com / +971..."
+                                placeholder="email@example.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">
+                                Phone / WhatsApp <span>*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-control"
+                                placeholder="Enter phone number"
                                 required
                             >
                         </div>
@@ -883,12 +898,21 @@
 
 <!-- Association Toggle -->
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const yesRadio = document.getElementById('association_yes');
     const noRadio = document.getElementById('association_no');
     const detailsWrapper =
         document.getElementById('association_details_wrapper');
+
+    const phoneInput = document.querySelector("#phone");
+
+    const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "ae",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    });
 
     function toggleAssociation() {
 

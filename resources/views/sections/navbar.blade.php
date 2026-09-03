@@ -20,8 +20,9 @@
             </a>
 
             <!-- Supplier -->
-            <a href="#supplier" class="btn btn-light btn-sm">
-                Looking for a Supplier?
+            <a href="#supplier" class="btn btn-light btn-sm" data-bs-toggle="modal"
+                data-bs-target="#buyerSupplierModal">
+                Looking for a Supplier / Buyer?
             </a>
 
         </div>

@@ -1,0 +1,141 @@
+.selection-modal {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 22px;
+    background: rgba(20, 27, 38, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.selection-modal .modal-header {
+    padding: 28px 30px 18px;
+}
+
+.selection-modal .modal-title {
+    margin-top: 5px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.selection-modal .modal-header p {
+    margin-top: 7px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.selection-modal .btn-close {
+    filter: invert(1);
+    opacity: 0.7;
+}
+
+.selection-modal-label {
+    color: #5da9ff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.selection-modal .modal-body {
+    padding: 10px 30px 30px;
+}
+
+.selection-options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.selection-option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+
+    color: #fff;
+    text-decoration: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    transition: all 0.3s ease;
+}
+
+.selection-option:hover {
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-3px);
+
+    border-color: rgba(93, 169, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.selection-option-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: rgba(93, 169, 255, 0.12);
+    color: #5da9ff;
+
+    font-size: 1.15rem;
+}
+
+.selection-option-content {
+    flex: 1;
+}
+
+.selection-option-content h6 {
+    margin: 0 0 5px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.selection-option-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.selection-option-arrow {
+    color: rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.selection-option:hover .selection-option-arrow {
+    transform: translateX(5px);
+    color: #5da9ff;
+}
+
+@media (max-width: 576px) {
+
+    .selection-modal .modal-header {
+        padding: 24px 20px 15px;
+    }
+
+    .selection-modal .modal-body {
+        padding: 10px 20px 24px;
+    }
+
+    .selection-option {
+        padding: 15px;
+    }
+
+    .selection-option-icon {
+        width: 42px;
+        height: 42px;
+    }
+}

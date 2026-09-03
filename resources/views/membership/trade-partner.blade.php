@@ -632,7 +632,7 @@
                             <input
                                 type="tel"
                                 class="form-control"
-                                id="business_phone"
+                                id="phone"
                                 name="business_phone"
                                 placeholder="+971 XX XXX XXXX"
                                 required
@@ -709,12 +709,20 @@
 
 
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const yesRadio = document.getElementById('requirement_yes');
     const noRadio = document.getElementById('requirement_no');
     const descriptionWrapper = document.getElementById('requirement_description_wrapper');
 
+    const phoneInput = document.querySelector("#phone");
+
+    const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "ae",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    });
     function toggleRequirement() {
 
         if (yesRadio.checked) {

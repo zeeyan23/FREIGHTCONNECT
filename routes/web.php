@@ -27,3 +27,18 @@ Route::get('/request-membership/freight-forwarding', function () {
 
 })->name('membership.freight-forwarding');
 
+Route::get('/search/suppliers', function () {
+    $countries = include base_path(
+        'vendor/umpirsky/country-list/data/en/country.php'
+    );
+    return view('search.suppliers', compact('countries'));
+})->name('search.suppliers');
+
+
+Route::get('/search/buyers', function () {
+    $countries = include base_path(
+        'vendor/umpirsky/country-list/data/en/country.php'
+    );
+
+    return view('search.buyers', compact('countries'));
+})->name('search.buyers');

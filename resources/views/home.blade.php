@@ -11,7 +11,50 @@
     @include('sections.contact')
     @include('sections.footer')
 
-    @include('components.membership-type-modal')
+    {{-- Membership Selection --}}
+    @include('components.selection-modal', [
+        'id' => 'membershipTypeModal',
+        'label' => 'MEMBERSHIP',
+        'title' => 'Request an Invitation',
+        'description' => 'Choose your membership type to continue.',
+        'options' => [
+            [
+                'title' => 'Freight Forwarding Member',
+                'description' => 'For freight forwarding and logistics companies.',
+                'icon' => 'fa-solid fa-truck-fast',
+                'url' => route('membership.freight-forwarding'),
+            ],
+            [
+                'title' => 'Trade Partner / Trader',
+                'description' => 'For traders, importers, exporters and businesses.',
+                'icon' => 'fa-solid fa-globe',
+                'url' => route('membership.trade-partner'),
+            ],
+        ],
+    ])
+
+
+    {{-- Buyer / Supplier Selection --}}
+    @include('components.selection-modal', [
+        'id' => 'buyerSupplierModal',
+        'label' => 'FIND A CONNECTION',
+        'title' => 'What are you looking for?',
+        'description' => 'Choose an option to find the right trade connection.',
+        'options' => [
+            [
+                'title' => 'Find a Supplier',
+                'description' => 'Find suppliers, manufacturers and exporters for the products you need.',
+                'icon' => 'fa-solid fa-boxes-stacked',
+                'url' => route('search.suppliers'),
+            ],
+            [
+                'title' => 'Find a Buyer',
+                'description' => 'Find buyers, importers and trading companies looking for your products.',
+                'icon' => 'fa-solid fa-handshake',
+                'url' => route('search.buyers'),
+            ],
+        ],
+    ])
 @endsection
 
 <!-- Form -->

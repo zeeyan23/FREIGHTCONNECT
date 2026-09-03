@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="{{ asset('css/sections/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sections/why-join.css') }}">
     <link rel="stylesheet" href="{{ asset('css/floating-whatsapp.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/membership-type-modal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/membership/trade-partner.css') }}">
     <link rel="stylesheet" href="{{ asset('css/membership/freight-forwarding.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/components/selection-modal.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/search/suppliers.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search/buyers.css') }}">
 
 </head>
 
@@ -31,12 +32,16 @@
 
     @yield('content')
     {{-- Floating WhatsApp Button --}}
+    @if (!request()->routeIs('membership.trade-partner','membership.freight-forwarding'))
     <a href="https://wa.me/971XXXXXXXXX"
         class="whatsapp-float"
         target="_blank"
         aria-label="Chat with us on WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
     </a>
+    @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
 </body>
 
 </html>
