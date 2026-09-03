@@ -25,6 +25,11 @@
 
     <link rel="stylesheet" href="{{ asset('css/search/suppliers.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search/buyers.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/account/account.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('css/legal/legal.css') }}">
 
 </head>
 
@@ -32,7 +37,23 @@
 
     @yield('content')
     {{-- Floating WhatsApp Button --}}
-    @if (!request()->routeIs('membership.trade-partner','membership.freight-forwarding'))
+    @if (
+    !request()->routeIs(
+        'membership.trade-partner',
+        'membership.freight-forwarding',
+        'search.buyers',
+        'search.suppliers',
+        'register',
+        'legal.external-terms',
+        'legal.external-privacy',
+        'legal.payment-recovery',
+        'legal.membership-terms',
+        'legal.privacy-policy',
+        'login',
+        'forgot-password',
+        'reset-password',
+        'account'
+    ))
     <a href="https://wa.me/971XXXXXXXXX"
         class="whatsapp-float"
         target="_blank"
@@ -41,6 +62,7 @@
     </a>
     @endif
 
+    
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
 </body>
 

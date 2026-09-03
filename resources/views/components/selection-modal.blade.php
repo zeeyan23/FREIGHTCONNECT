@@ -53,6 +53,7 @@
                                     {{ $option['description'] }}
                                 </p>
 
+                                
                             </div>
 
                             <i class="fa-solid fa-arrow-right selection-option-arrow"></i>
@@ -62,6 +63,27 @@
                     @endforeach
 
                 </div>
+                @if(!empty($info))
+
+                    <div class="selection-modal-info">
+
+                        <div class="selection-modal-info-title">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                            <span>
+                                {{ $info['title'] }}
+                            </span>
+
+                        </div>
+
+                        <p>
+                            {{ $info['description'] }}
+                        </p>
+
+                    </div>
+
+                @endif
 
             </div>
 

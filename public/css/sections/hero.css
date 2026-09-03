@@ -133,6 +133,7 @@
 }
 
 .quick-link:nth-child(-n + 2) {
+    /* width: 110%; */
     clip-path: polygon(
         0 0,
         102% 0,

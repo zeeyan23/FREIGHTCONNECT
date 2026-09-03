@@ -120,6 +120,46 @@
     color: #5da9ff;
 }
 
+
+/* Information Box */
+.selection-modal-info {
+    margin-top: 20px;
+    padding: 16px 18px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+/* Icon + Title */
+.selection-modal-info-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* Info Icon */
+.selection-modal-info-title i {
+    font-size: 15px;
+    color: #2563eb;
+}
+
+/* Title */
+.selection-modal-info-title span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+/* Description */
+.selection-modal-info p {
+    margin: 0;
+    padding-left: 23px;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #64748b;
+}
+
 @media (max-width: 576px) {
 
     .selection-modal .modal-header {

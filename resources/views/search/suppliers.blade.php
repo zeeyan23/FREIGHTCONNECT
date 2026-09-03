@@ -508,6 +508,8 @@
                 <button
                     type="button"
                     class="send-inquiry-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#inquiryAccountModal"
                 >
                     Send Inquiry
                     <i class="fa-solid fa-paper-plane"></i>
@@ -577,5 +579,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
+    @include('components.selection-modal', [
+        'id' => 'inquiryAccountModal',
+        'label' => 'INQUIRY',
+        'title' => 'Continue with Inquiry',
+        'description' => 'Create a free account or log in to continue with your enquiry.',
+        'options' => [
+            [
+                'title' => 'Create Free Account',
+                'description' => 'Save your business details and send enquiries faster.',
+                'icon' => 'fa-solid fa-user-plus',
+                'url' => route('register'),
+            ],
+            [
+                'title' => 'Log In',
+                'description' => 'Already have a FreightConnect account?',
+                'icon' => 'fa-solid fa-right-to-bracket',
+                'url' => route('login'),
+            ],
+        ],
+        'info' => [
+            'title' => 'Why create an account?',
+            'description' => 'Your free account allows you to save your business details for future enquiries, submit enquiries to multiple companies without repeatedly entering your information, and receive relevant supplier/business opportunities from FreightConnect when available.',
+        ],
+    ])
+
 
 @endsection

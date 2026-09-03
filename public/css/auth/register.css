@@ -1,0 +1,426 @@
+/* =========================================================
+   Registration Page
+========================================================= */
+
+.registration-page {
+    padding: 80px 0 100px;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   Header
+========================================================= */
+
+.registration-header {
+    max-width: 760px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.registration-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #2563eb;
+}
+
+.registration-header h1 {
+    margin: 0 0 12px;
+    font-size: 42px;
+    font-weight: 750;
+    line-height: 1.2;
+    color: #0f172a;
+}
+
+.registration-header p {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   Main Card
+========================================================= */
+
+.registration-card {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 42px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================================
+   Sections
+========================================================= */
+
+.registration-section {
+    padding: 0 0 38px;
+    margin-bottom: 38px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.registration-section:last-of-type {
+    margin-bottom: 0;
+}
+
+
+/* Section heading */
+
+.registration-section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+.registration-section-heading > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.registration-section-heading h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.registration-section-heading p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   Form Fields
+========================================================= */
+
+.registration-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.registration-card label > span:first-of-type {
+    color: #2563eb;
+}
+
+.registration-card .form-control,
+.registration-card .form-select {
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid #dbe1e8;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 14px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.registration-card .form-control::placeholder {
+    color: #94a3b8;
+}
+
+.registration-card .form-control:focus,
+.registration-card .form-select:focus {
+    border-color: #93c5fd;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+
+/* =========================================================
+   Checkbox Grid
+========================================================= */
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.registration-checkbox {
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    gap: 11px;
+    min-height: 52px;
+    margin: 0 !important;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.registration-checkbox:hover {
+    background: #ffffff;
+    border-color: #bfdbfe;
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+.registration-checkbox input {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    margin: 0;
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+
+.registration-checkbox span {
+    margin: 0 !important;
+    font-size: 13px;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    color: #334155 !important;
+}
+
+.registration-checkbox i {
+    margin-left: auto;
+    color: #64748b;
+    font-size: 13px;
+    cursor: help;
+    transition: color 0.2s ease;
+}
+
+.registration-checkbox i:hover {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   Agreement
+========================================================= */
+
+.registration-agreement {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.agreement-checkbox {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 11px;
+    margin: 0 !important;
+    padding: 15px 16px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.agreement-checkbox input {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    margin-top: 2px;
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+
+.agreement-checkbox span {
+    margin: 0 !important;
+    font-size: 13px;
+    font-weight: 400 !important;
+    line-height: 1.6;
+    color: #64748b !important;
+}
+
+.agreement-checkbox a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.agreement-checkbox a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   Submit
+========================================================= */
+
+.registration-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.create-account-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 10px;
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.create-account-btn i {
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+.create-account-btn:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+}
+
+.create-account-btn:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   Tablet
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .registration-page {
+        padding: 65px 0 80px;
+    }
+
+    .registration-card {
+        padding: 32px;
+    }
+
+    .registration-header h1 {
+        font-size: 36px;
+    }
+
+}
+
+
+/* =========================================================
+   Mobile
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .registration-page {
+        padding: 50px 0 65px;
+    }
+
+    .registration-header {
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .registration-header h1 {
+        font-size: 30px;
+    }
+
+    .registration-header p {
+        font-size: 14px;
+    }
+
+    .registration-card {
+        padding: 24px 18px;
+        border-radius: 15px;
+    }
+
+    .registration-section {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+
+    .registration-section-heading {
+        gap: 11px;
+        margin-bottom: 20px;
+    }
+
+    .registration-section-heading h2 {
+        font-size: 16px;
+    }
+
+    .registration-section-heading p {
+        font-size: 12px;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .registration-checkbox {
+        min-height: 50px;
+    }
+
+    .registration-submit {
+        justify-content: stretch;
+    }
+
+    .create-account-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   Small Mobile
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .registration-page {
+        padding: 40px 0 55px;
+    }
+
+    .registration-header h1 {
+        font-size: 27px;
+    }
+
+    .registration-card {
+        padding: 20px 15px;
+    }
+
+    .registration-card .form-control,
+    .registration-card .form-select {
+        min-height: 48px;
+    }
+
+    .registration-section-heading > span {
+        width: 31px;
+        height: 31px;
+        flex-basis: 31px;
+        font-size: 10px;
+    }
+
+}
