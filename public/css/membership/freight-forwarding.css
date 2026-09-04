@@ -483,3 +483,150 @@
     }
 
 }
+
+/* =========================================================
+   TERMS & CONDITIONS AGREEMENT
+   ========================================================= */
+
+.membership-agreement {
+    margin-top: 28px;
+    margin-bottom: 22px;
+}
+
+.membership-agreement-label {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 16px 18px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+
+    transition: all .25s ease;
+}
+
+
+/* Hide native checkbox */
+
+.membership-agreement-label input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Custom checkbox */
+
+.membership-custom-check {
+    width: 19px;
+    height: 19px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    margin-top: 1px;
+
+    border: 1.5px solid #cbd5e1;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #ffffff;
+    font-size: 10px;
+
+    transition: all .2s ease;
+}
+
+
+/* Checked state */
+
+.membership-agreement-label input:checked + .membership-custom-check {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+
+/* Hover */
+
+.membership-agreement-label:hover {
+    border-color: #bfdbfe;
+    background: #f8fbff;
+}
+
+
+/* Text */
+
+.membership-agreement-text {
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.membership-agreement-text a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.membership-agreement-text a:hover {
+    text-decoration: underline;
+}
+
+.membership-agreement-text strong {
+    color: #dc2626;
+    margin-left: 2px;
+}
+
+.payment-support-content {
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.payment-support-content a{
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.payment-support-content a:hover {
+    text-decoration: underline;
+}
+
+/* Focus accessibility */
+
+.membership-agreement-label:has(input:focus-visible) {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .10);
+}
+
+
+/* Mobile */
+
+@media (max-width: 575px) {
+
+    .membership-agreement {
+        margin-top: 22px;
+    }
+
+    .membership-agreement-label {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .membership-agreement-text {
+        font-size: 11px;
+        line-height: 1.65;
+    }
+
+}

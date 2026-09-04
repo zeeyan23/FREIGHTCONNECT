@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use Umpirsky\Country\CountryRepository;
+use App\Http\Controllers\ForwardingMemberController;
 
 Route::get('/', function () {
     $countries = include base_path('vendor/umpirsky/country-list/data/en/country.php');
     return view('home', compact('countries'));
 });
-
 
 Route::get('/request-membership/trade-partner', function () {
 
@@ -88,3 +88,10 @@ Route::get('/reset-password', function () {
 Route::get('/account', function () {
     return view('account.index');
 })->name('account');
+
+// POST METHODS
+
+Route::post('/request-membership/freight-forwarding', [
+    ForwardingMemberController::class,
+    'store'
+])->name('membership.freight-forwarding.store');

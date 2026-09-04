@@ -20,11 +20,29 @@
 
 
     <!-- Application Form -->
+     @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Please fix these errors:</strong>
+
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <section class="membership-form-section">
         <div class="container">
 
-            <form action="#" method="POST" enctype="multipart/form-data">
-                @csrf
+            <form action="{{ route('membership.freight-forwarding.store') }}"
+                method="POST"
+                enctype="multipart/form-data" id="myForm">
+            @csrf
 
                 <!-- ============================= -->
                 <!-- 01 COMPANY INFORMATION -->
@@ -99,16 +117,31 @@
 
                         <!-- Contact Person -->
                         <div class="col-md-6">
-                            <label for="contact_person" class="form-label">
-                                Contact Person & Designation <span>*</span>
+                            <label for="contact_person_name" class="form-label">
+                                Contact Person Name <span>*</span>
                             </label>
 
                             <input
                                 type="text"
-                                id="contact_person"
-                                name="contact_person"
+                                id="contact_person_name"
+                                name="contact_person_name"
                                 class="form-control"
-                                placeholder="e.g. Ahmed Ali - Managing Director"
+                                placeholder="e.g. Ahmed Ali"
+                                required
+                            >
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="contact_person_designation" class="form-label">
+                                Contact Person's Designation <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contact_person_designation"
+                                name="contact_person_designation"
+                                class="form-control"
+                                placeholder="e.g. Managing Director"
                                 required
                             >
                         </div>
@@ -142,6 +175,8 @@
                                 placeholder="Enter phone number"
                                 required
                             >
+                            <input type="hidden" name="phone_full" id="phone_full">
+                            <input type="hidden" name="phone_dial_code" id="phone_dial_code">
                         </div>
 
                         <!-- Website -->
@@ -718,18 +753,18 @@
                                 </label>
 
                             </div>
+                            <span class="payment-agreement-text">
+                                View Member Payment Recovery
+                                <a
+                                    href="{{ route('legal.payment-recovery') }}"
+                                    target="_blank"
+                                >
+                                    Support details & Terms & Conditions
+                                </a>
+                                <strong>*</strong>
 
-                            <button
-                                type="button"
-                                class="terms-button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#paymentRecoveryModal"
-                            >
-                                <i class="fa-solid fa-file-contract"></i>
-                                View Member Payment Recovery Support
-                                details & Terms & Conditions
-                            </button>
-
+                            </span>
+                            
                         </div>
 
                     </div>
@@ -774,6 +809,41 @@
 
                 </div>
 
+                <div class="membership-agreement">
+
+                    <label class="membership-agreement-label">
+
+                        <input
+                            type="checkbox"
+                            name="membership_terms"
+                            value="1"
+                            required
+                        >
+
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <span class="membership-agreement-text">
+
+                            I have read, understood and agree to the
+
+                            <a
+                                href="{{ route('legal.membership-terms') }}"
+                                target="_blank"
+                            >
+                                FreightConnect Membership Terms & Conditions
+                            </a>
+
+                            and agree to comply with them throughout my membership.
+
+                            <strong>*</strong>
+
+                        </span>
+
+                    </label>
+
+                </div>
 
                 <!-- Submit -->
                 <div class="form-submit">
@@ -802,7 +872,7 @@
 <!-- PAYMENT RECOVERY TERMS MODAL -->
 <!-- ================================= -->
 
-<div
+<!-- <div
     class="modal fade"
     id="paymentRecoveryModal"
     tabindex="-1"
@@ -893,7 +963,7 @@
         </div>
 
     </div>
-</div>
+</div> -->
 
 
 <!-- Association Toggle -->
@@ -906,13 +976,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const detailsWrapper =
         document.getElementById('association_details_wrapper');
 
-    const phoneInput = document.querySelector("#phone");
+    // const phoneInput = document.querySelector("#phone");
 
-    const iti = window.intlTelInput(phoneInput, {
-        initialCountry: "ae",
-        separateDialCode: true,
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
-    });
+    // const iti = window.intlTelInput(phoneInput, {
+    //     initialCountry: "ae",
+    //     separateDialCode: true,
+    //     utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    // });
 
     function toggleAssociation() {
 
@@ -926,6 +996,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     yesRadio.addEventListener('change', toggleAssociation);
     noRadio.addEventListener('change', toggleAssociation);
+
+    const phoneInput = document.getElementById('phone');
+    const phoneFullInput = document.getElementById('phone_full');
+    const phoneDialCodeInput = document.getElementById('phone_dial_code');
+    const form = document.getElementById("myForm");
+
+    const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    });
+
+    function updatePhoneFields() {
+        const countryData = iti.getSelectedCountryData();
+
+        const localNumber = phoneInput.value.replace(/\D/g, "");
+
+        phoneDialCodeInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode
+            : "";
+
+        phoneFullInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode + localNumber
+            : "";
+    }
+
+    phoneInput.addEventListener('input', updatePhoneFields);
+    phoneInput.addEventListener('change', updatePhoneFields);
+    phoneInput.addEventListener('countrychange', updatePhoneFields);
+
+    document.getElementById("myForm").addEventListener("submit", function () {
+        updatePhoneFields();
+
+        console.log('Phone:', phoneInput.value);
+        console.log('Full phone:', phoneFullInput.value);
+        console.log('Dial code:', phoneDialCodeInput.value);
+    });        
 
 });
 </script>

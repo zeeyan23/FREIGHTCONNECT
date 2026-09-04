@@ -436,18 +436,8 @@ Terms & Conditions governing FreightConnect Member Payment Recovery Support for 
         determine the eligibility of each claim in accordance with
         these Terms & Conditions.
     </p>
-
-    <!-- <div class="legal-agreement-box">
-
-        <i class="fa-regular fa-square-check"></i>
-
-        <span>
-            I have read, understood and agree to the FreightConnect
-            Payment Recovery Support Terms & Conditions.
-        </span>
-
-    </div> -->
-    <div class="legal-agreement-wrapper">
+    
+    <!-- <div class="legal-agreement-wrapper">
 
         
         <form>
@@ -486,7 +476,7 @@ Terms & Conditions governing FreightConnect Member Payment Recovery Support for 
         </form>
         
 
-        </div>
+    </div> -->
 
     
 
