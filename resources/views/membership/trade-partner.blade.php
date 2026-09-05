@@ -25,11 +25,26 @@
 
 
     <!-- Registration Form -->
+      @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Please fix these errors:</strong>
+
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <section class="membership-form-section">
         <div class="container">
 
-            <form action="#" method="POST" enctype="multipart/form-data">
-
+            <form action="{{ route('trader.register.store') }}" method="POST" enctype="multipart/form-data" id="vzt0fk">
                 @csrf
 
                 <!-- Company Information -->
@@ -631,12 +646,15 @@
 
                             <input
                                 type="tel"
+                                id="trader_phone"
+                                name="phone"
                                 class="form-control"
-                                id="phone"
-                                name="business_phone"
-                                placeholder="+971 XX XXX XXXX"
+                                placeholder="Enter phone number"
                                 required
                             >
+
+                            <input type="hidden" name="phone_full" id="trader_phone_full">
+                            <input type="hidden" name="phone_dial_code" id="trader_phone_dial_code">
 
                         </div>
 
@@ -684,6 +702,41 @@
 
                 </div>
 
+                <div class="membership-agreement">
+
+                    <label class="membership-agreement-label">
+
+                        <input
+                            type="checkbox"
+                            name="membership_terms"
+                            value="1"
+                            required
+                        >
+
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <span class="membership-agreement-text">
+
+                            I have read, understood and agree to the
+
+                            <a
+                                href="{{ route('legal.membership-terms') }}"
+                                target="_blank"
+                            >
+                                FreightConnect Membership Terms & Conditions
+                            </a>
+
+                            and agree to comply with them throughout my membership.
+
+                            <strong>*</strong>
+
+                        </span>
+
+                    </label>
+
+                </div>
 
                 <!-- Submit -->
                 <div class="form-submit">
@@ -716,13 +769,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const noRadio = document.getElementById('requirement_no');
     const descriptionWrapper = document.getElementById('requirement_description_wrapper');
 
-    const phoneInput = document.querySelector("#phone");
-
-    const iti = window.intlTelInput(phoneInput, {
-        initialCountry: "ae",
-        separateDialCode: true,
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
-    });
     function toggleRequirement() {
 
         if (yesRadio.checked) {
@@ -737,6 +783,42 @@ document.addEventListener('DOMContentLoaded', function () {
     noRadio.addEventListener('change', toggleRequirement);
 
     descriptionWrapper.style.display = 'none';
+
+    const phoneInput = document.getElementById('trader_phone');
+    const phoneFullInput = document.getElementById('trader_phone_full');
+    const phoneDialCodeInput = document.getElementById('trader_phone_dial_code');
+
+    const traderForm = document.getElementById('vzt0fk');
+
+    const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    });
+
+    function updatePhoneFields() {
+
+        const countryData = iti.getSelectedCountryData();
+
+        const localNumber = phoneInput.value.replace(/\D/g, "");
+
+        phoneDialCodeInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode
+            : "";
+
+        phoneFullInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode + localNumber
+            : "";
+    }
+
+    phoneInput.addEventListener('input', updatePhoneFields);
+    phoneInput.addEventListener('change', updatePhoneFields);
+    phoneInput.addEventListener('countrychange', updatePhoneFields);
+
+    traderForm.addEventListener('submit', function () {
+        updatePhoneFields();
+    });
+
 
 });
 </script>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use Umpirsky\Country\CountryRepository;
 use App\Http\Controllers\ForwardingMemberController;
+use App\Http\Controllers\TraderController;
 
 Route::get('/', function () {
     $countries = include base_path('vendor/umpirsky/country-list/data/en/country.php');
@@ -95,3 +96,6 @@ Route::post('/request-membership/freight-forwarding', [
     ForwardingMemberController::class,
     'store'
 ])->name('membership.freight-forwarding.store');
+
+Route::post('/trader/register', [TraderController::class, 'store'])
+    ->name('trader.register.store');
