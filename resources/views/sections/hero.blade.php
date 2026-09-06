@@ -1,47 +1,64 @@
-<section class="hero">
+<section class="hero-section">
     <div class="container">
-        <div class="row">
-        
-            <div class="col-md-6  d-flex align-items-center">
-                <div class="quick-links w-100">
+            <div class="hero-content">
 
-                    <a href="#about" class="quick-link">
-                        <span>About</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                <!-- Left Content -->
+                <div class="hero-left">
 
-                    <a href="#benefits" class="quick-link">
-                        <span>Benefits</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                    <!-- Heading -->
+                    <h1>
+                        Stronger Connections.<br>
+                        Smarter Global Trade.
+                    </h1>
 
-                    <a href="#membership" class="quick-link">
-                        <span>Pricing</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
 
-                    <a href="#faq" class="quick-link">
-                        <span>FAQs</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                    <!-- Description -->
+                    <p class="hero-description">
+                        Connecting freight forwarders, traders and
+                        international buyers to build trusted partnerships
+                        and grow global opportunities.
+                    </p>
 
-                    <a href="#contact" class="quick-link">
-                        <span>Contact Us</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+
+                    <!-- Buttons -->
+                    <div class="hero-actions">
+
+                        <a href="#supplier"
+                           class="hero-btn hero-btn-primary"
+                           data-bs-toggle="modal"
+                           data-bs-target="#buyerSupplierModal">
+
+                            <i class="fa-solid fa-user-group"></i>
+
+                            <span>Looking for a Supplier?</span>
+
+                        </a>
+
+
+                        <a href="#membership"
+                           class="hero-btn hero-btn-outline"
+                           data-bs-toggle="modal"
+                           data-bs-target="#membershipTypeModal">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                            <span>Request an Invitation</span>
+
+                        </a>
+
+                    </div>
 
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="company-video">
-                    <video autoplay muted loop playsinline>
-                        <source src="{{ asset('videos/company_video.mp4') }}" type="video/mp4">
-                        Your browser does not support the video.
-                    </video>
+
+                <!-- Right Image Area -->
+                <!-- Image intentionally left blank for now -->
+                <div class="hero-right">
+
+                    <div class="hero-image-placeholder"></div>
+
                 </div>
-            </div>
 
-        </div>
+            </div>
     </div>
 </section>

@@ -1,7 +1,7 @@
 <section id="about" class="about-section py-5">
     <div class="container py-5">
 
-        <div class="row align-items-center g-5">
+        <div class="row g-5">
 
             <!-- Left -->
             <div class="col-lg-5">
@@ -29,8 +29,9 @@
                 <p class="about-text">
                     Our goal is to create an active business environment where freight forwarders can access new inquiries and partnerships, while traders can find the right logistics and commercial connections.
                 </p>
-                <a href="#membership" class="btn btn-primary btn-sm">
+                <a href="#membership" class="membership-btn">
                     Request an Invitation for Membership
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
 

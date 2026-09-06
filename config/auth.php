@@ -42,6 +42,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'freightconnect' => [
+            'driver' => 'session',
+            'provider' => 'freight_connect_accounts',
+        ],
     ],
 
     /*
@@ -67,10 +72,10 @@ return [
             'model' => env('AUTH_MODEL', User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'freight_connect_accounts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\FreightConnectAccount::class,
+        ],
     ],
 
     /*

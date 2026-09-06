@@ -1,177 +1,401 @@
-.hero {
-    position: relative;
-    padding: 160px 0 120px;
+/* =========================================================
+   FREIGHTCONNECT - HERO SECTION
+   ========================================================= */
+
+.hero-section {
+    /* width: 100%; */
+    padding: 30px 0 15px;
     background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(37, 99, 235, 0.12),
-            transparent 35%
-        ),
         linear-gradient(
             135deg,
-            #f8fafc 0%,
-            #ffffff 50%,
-            #eff6ff 100%
+            rgba(7, 22, 39, 0.98),
+            rgba(3, 12, 22, 0.98)
         );
-    overflow: hidden;
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: rgba(37, 99, 235, 0.08);
-    border-radius: 50%;
-    top: -120px;
-    right: -80px;
-}
-
-.hero h1 {
-    position: relative;
-    max-width: 800px;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1.1;
-    letter-spacing: -2px;
-    color: var(--dark);
-}
-
-.hero h1 .text-primary {
-    color: var(--primary) !important;
-}
-
-.hero .lead {
-    max-width: 650px;
-    color: var(--muted);
-    font-size: 1.2rem;
-    line-height: 1.7;
-}
-
-.hero .btn-lg {
-    padding: 14px 30px;
-    font-size: 1rem;
-}
-
-.hero p:last-child {
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-
-.hero {
+/* .hero-section .container{
     background:
         linear-gradient(
-            rgba(15, 23, 42, 0.75),
-            rgba(15, 23, 42, 0.75)
-        ),
-        url('/images/hero_bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-size: cover;
-    color: white;
-}
+            135deg,
+            rgba(7, 22, 39, 0.98),
+            rgba(3, 12, 22, 0.98)
+        );
+} */
+/* =========================================================
+   HERO CARD
+   ========================================================= */
 
-.quick-links {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.hero-card {
     position: relative;
-    z-index: 2;
-    width: 130% !important;
-}
+    width: 100%;
+    min-height: 420px;
 
-.quick-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 18px 22px;
-
-    text-decoration: none;
-    color: #334155;
-
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    border-radius: 14px;
-
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
-
-    transition: all 0.3s ease;
-}
-
-.quick-link span {
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.quick-link i {
-    font-size: 0.85rem;
-    color: #2563eb;
-
-    transition: transform 0.3s ease;
-}
-
-/* Hover */
-.quick-link:hover {
-    text-decoration: none;
-    color: #2563eb;
-
-    background: rgba(239, 246, 255, 0.75);
-
-    border-color: rgba(37, 99, 235, 0.25);
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 30px rgba(37, 99, 235, 0.12);
-}
-
-.quick-link:hover i {
-    transform: translateX(5px);
-}
-
-.quick-link:nth-child(-n + 2) {
-    /* width: 110%; */
-    clip-path: polygon(
-        0 0,
-        102% 0,
-        96% 0%,
-        90% 100%,
-        0 100%
-    );
-}
-
-.quick-link:nth-child(3){
-    clip-path: polygon(
-        0 0,
-        100% 0%,
-        96% 50%,
-        100% 100%,
-        0 100%
-    );
-}
-
-.quick-link:nth-child(n + 4) {
-    clip-path: polygon(
-        0 0,
-        90% 0,
-        96% 100%,
-        102% 100%,
-        0 100%
-    );
-}
-
-.company-video{
     overflow: hidden;
 
-    clip-path: polygon(
-        20% 0,
-        100% 0,
-        100% 100%,
-        20% 100%,
-        0 50%
-    );
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 22, 39, 0.98),
+            rgba(3, 12, 22, 0.98)
+        );
+
+    border: 1px solid rgba(72, 132, 210, 0.55);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 15px 45px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    min-height: 420px;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.hero-left {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* padding: 42px 20px 42px 30px; */
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+
+
+
+.hero-logo {
+    width: 52px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -2px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a8ff,
+            #0067e8
+        );
+
+    box-shadow:
+        0 5px 18px rgba(0, 140, 255, 0.25);
+}
+
+
+/* =========================================================
+   HERO HEADING
+   ========================================================= */
+
+.hero-left h1 {
+    margin: 0 0 16px;
+
+    color: #ffffff;
+
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+    max-width: 440px;
+
+    margin: 0 0 24px;
+
+    color: #c6d1df;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding: 9px 18px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.hero-btn i {
+    font-size: 13px;
+}
+
+
+.hero-btn:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+
+/* Primary */
+.hero-btn-primary {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #078fff,
+            #0969e8
+        );
+
+    border: 1px solid #168cff;
+
+    box-shadow:
+        0 7px 18px rgba(0, 111, 255, 0.25);
+}
+
+
+.hero-btn-primary:hover {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #129cff,
+            #0873f4
+        );
+
+    box-shadow:
+        0 10px 24px rgba(0, 111, 255, 0.38);
+}
+
+
+/* Outline */
+.hero-btn-outline {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.02);
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+
+.hero-btn-outline:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: #ffffff;
+}
+
+
+/* =========================================================
+   RIGHT IMAGE AREA
+   ========================================================= */
+
+.hero-right {
+    position: relative;
+
+    min-height: 420px;
+
+    overflow: hidden;
+}
+
+
+/*
+   Image is intentionally blank for now.
+
+   Later you can replace this with:
+
+   background-image: url('/images/hero-bg.jpg');
+
+   or put an <img> inside this container.
+*/
+
+.hero-image-placeholder {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(19, 104, 178, 0.16),
+            transparent 55%
+        );
+
+    opacity: 0.75;
+}
+
+
+/* Subtle separation between text and image */
+.hero-right::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(77, 145, 218, 0.35),
+            transparent
+        );
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    /* .hero-section {
+        padding: 20px 0 12px;
+    } */
+
+
+    .hero-content {
+        grid-template-columns: 50% 50%;
+    }
+
+
+    .hero-left {
+        padding: 35px 15px 35px 25px;
+    }
+
+
+    .hero-left h1 {
+        font-size: 2rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    /* .hero-section {
+        padding: 12px 0;
+    } */
+
+
+    .hero-card {
+        min-height: auto;
+
+        border-radius: 10px;
+    }
+
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+
+        min-height: auto;
+    }
+
+
+    .hero-left {
+        padding: 28px 22px 25px;
+    }
+
+
+
+    .hero-logo {
+        width: 46px;
+        height: 38px;
+
+        font-size: 19px;
+    }
+
+    .hero-left h1 {
+        font-size: 1.85rem;
+        line-height: 1.15;
+    }
+
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+
+    .hero-actions {
+        gap: 10px;
+    }
+
+
+    .hero-btn {
+        width: 100%;
+    }
+
+
+    .hero-right {
+        display: none;
+    }
 
 }

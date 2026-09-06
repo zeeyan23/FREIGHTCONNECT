@@ -23,6 +23,7 @@
 
         </div>
 
+        
 
         {{-- Compact Search Filters --}}
         <div class="supplier-filter-bar">
@@ -505,15 +506,31 @@
 
                 </div>
 
-                <button
-                    type="button"
-                    class="send-inquiry-btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#inquiryAccountModal"
-                >
-                    Send Inquiry
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                @if (auth('freightconnect')->check())
+
+                    <button
+                        type="button"
+                        class="send-inquiry-btn"
+                    >
+                        Send Inquiry
+
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                @else
+
+                    <button
+                        type="button"
+                        class="send-inquiry-btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#inquiryAccountModal"
+                    >
+                        Send Inquiry
+
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                @endif
 
             </div>
 
@@ -590,13 +607,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 'title' => 'Create Free Account',
                 'description' => 'Save your business details and send enquiries faster.',
                 'icon' => 'fa-solid fa-user-plus',
-                'url' => route('register'),
+                'url' => route('freightconnect.register', [
+                    'redirect' => url()->current(),
+                ]),
             ],
             [
                 'title' => 'Log In',
                 'description' => 'Already have a FreightConnect account?',
                 'icon' => 'fa-solid fa-right-to-bracket',
-                'url' => route('login'),
+                'url' => route('login', [
+                    'redirect' => url()->current(),
+                ]),
             ],
         ],
         'info' => [

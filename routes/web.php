@@ -5,6 +5,8 @@ use App\Http\Controllers\FormController;
 use Umpirsky\Country\CountryRepository;
 use App\Http\Controllers\ForwardingMemberController;
 use App\Http\Controllers\TraderController;
+use App\Http\Controllers\FreightConnectAccountController;
+use App\Http\Controllers\FreightConnectAuthController;
 
 Route::get('/', function () {
     $countries = include base_path('vendor/umpirsky/country-list/data/en/country.php');
@@ -44,15 +46,18 @@ Route::get('/search/buyers', function () {
     return view('search.buyers', compact('countries'));
 })->name('search.buyers');
 
-Route::get('/register', function () {
+Route::get('/create-account', function (Illuminate\Http\Request $request) {
 
     $countries = include base_path(
         'vendor/umpirsky/country-list/data/en/country.php'
     );
 
-    return view('auth.register', compact('countries'));
+    return view('auth.register', [
+        'countries' => $countries,
+        'redirect' => $request->query('redirect'),
+    ]);
 
-})->name('register');
+})->name('freightconnect.register');
 
 Route::get('/legal/external-terms', function () {
     return view('legal.external-terms');
@@ -74,8 +79,10 @@ Route::get('/legal/privacy-policy', function () {
     return view('legal.privacy-policy');
 })->name('legal.privacy-policy');
 
-Route::get('/login', function () {
-    return view('auth.login');
+Route::get('/login', function (Illuminate\Http\Request $request) {
+    return view('auth.login', [
+        'redirect' => $request->query('redirect'),
+    ]);
 })->name('login');
 
 Route::get('/forgot-password', function () {
@@ -99,3 +106,21 @@ Route::post('/request-membership/freight-forwarding', [
 
 Route::post('/trader/register', [TraderController::class, 'store'])
     ->name('trader.register.store');
+
+Route::post('/create-account', [FreightConnectAccountController::class, 'register'])
+    ->name('freightconnect.register.submit');
+
+Route::post('/login', [FreightConnectAuthController::class, 'login'])
+    ->name('freightconnect.login.submit');
+
+
+Route::middleware('auth:freightconnect')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('freightconnect.dashboard');
+
+    Route::post('/logout', [FreightConnectAuthController::class, 'logout'])
+        ->name('freightconnect.logout');
+
+});

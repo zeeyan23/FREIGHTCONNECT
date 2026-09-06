@@ -25,9 +25,27 @@
 
 
         <div class="registration-card">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-            <form action="#" method="POST">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
+            <form action="{{ route('freightconnect.register.submit') }}" method="POST" id="account_form">
+                @csrf
+                @if ($redirect)
+                    <input type="hidden" name="redirect" value="{{ $redirect }}">
+                @endif
                 {{-- 01 Account Information --}}
                 <div class="registration-section">
 
@@ -364,6 +382,8 @@
                                 required
                             >
 
+                            <input type="hidden" name="phone_full" id="phone_full">
+                            <input type="hidden" name="phone_dial_code" id="phone_dial_code">
                         </div>
 
                     </div>
@@ -530,5 +550,46 @@
     </div>
 
 </section>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const phoneInput = document.getElementById('phone');
+    const phoneFullInput = document.getElementById('phone_full');
+    const phoneDialCodeInput = document.getElementById('phone_dial_code');
+
+    const accountForm = document.getElementById('account_form');
+
+    const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    });
+
+    function updatePhoneFields() {
+
+        const countryData = iti.getSelectedCountryData();
+
+        const localNumber = phoneInput.value.replace(/\D/g, "");
+
+        phoneDialCodeInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode
+            : "";
+
+        phoneFullInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode + localNumber
+            : "";
+    }
+
+    phoneInput.addEventListener('input', updatePhoneFields);
+    phoneInput.addEventListener('change', updatePhoneFields);
+    phoneInput.addEventListener('countrychange', updatePhoneFields);
+
+    accountForm.addEventListener('submit', function () {
+        updatePhoneFields();
+    });
+})
+
+</script>
 
 @endsection

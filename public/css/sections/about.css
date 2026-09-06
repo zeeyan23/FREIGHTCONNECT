@@ -1,5 +1,10 @@
 .about-section {
-    background: #f5f7fa;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 22, 39, 0.98),
+            rgba(3, 12, 22, 0.98)
+        );
 }
 
 .about-label {
@@ -7,7 +12,7 @@
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: #0d6efd;
+    color: #626b7a;
     margin-bottom: 18px;
 }
 
@@ -15,19 +20,19 @@
     font-size: 46px;
     line-height: 1.15;
     font-weight: 700;
-    color: #172033;
+    color: white;
     margin: 0;
 }
 
 .about-title span {
     display: block;
-    color: #0d6efd;
+    color: white;
 }
 
 .about-text {
     font-size: 17px;
     line-height: 1.8;
-    color: #626b7a;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -54,6 +59,9 @@
     transform: translateX(6px);
 }
 
+.membership-btn{
+    width:auto !important;
+}
 @media (max-width: 991px) {
     .about-title {
         font-size: 38px;

@@ -83,11 +83,23 @@
 
                 </div>
 
+                @if ($errors->any())
+                    <div class="auth-alert auth-alert-error">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
 
-                <form action="#" method="POST">
+                @if (session('success'))
+                    <div class="auth-alert auth-alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <form action="{{ route('freightconnect.login.submit') }}" method="POST">
 
                     @csrf
-
+                    @if ($redirect)
+                        <input type="hidden" name="redirect" value="{{ $redirect }}">
+                    @endif
                     {{-- Email --}}
                     <div class="auth-form-group">
 
@@ -106,6 +118,7 @@
                                 name="email"
                                 placeholder="Enter your account email"
                                 autocomplete="email"
+                                value="{{ old('email') }}"
                                 required
                             >
 
@@ -158,7 +171,7 @@
 
 
                     {{-- Remember --}}
-                    <div class="auth-options">
+                    <!-- <div class="auth-options">
 
                         <label class="auth-checkbox">
 
@@ -172,7 +185,7 @@
 
                         </label>
 
-                    </div>
+                    </div> -->
 
 
                     {{-- Submit --}}
@@ -195,7 +208,7 @@
                         Don't have a FreightConnect account?
                     </span>
 
-                    <a href="{{ route('register') }}">
+                    <a href="{{ route('freightconnect.register') }}">
                         Create Free Account
                     </a>
 

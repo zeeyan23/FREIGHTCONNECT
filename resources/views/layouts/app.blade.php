@@ -43,7 +43,7 @@
         'membership.freight-forwarding',
         'search.buyers',
         'search.suppliers',
-        'register',
+        'freightconnect.register',
         'legal.external-terms',
         'legal.external-privacy',
         'legal.payment-recovery',

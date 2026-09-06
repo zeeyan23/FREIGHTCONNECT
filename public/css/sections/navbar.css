@@ -22,28 +22,16 @@
     letter-spacing: -0.5px;
 }
 
-.navbar .btn {
-    border-radius: 8px;
-    font-weight: 600;
-    padding: 8px 18px;
-}
-
-/* =========================
-   Buttons
-   ========================= */
-
-.btn-primary {
-    background: var(--primary);
-    border-color: var(--primary);
-    border-radius: 10px;
-    font-weight: 600;
-    padding: 11px 22px;
-    transition: all 0.25s ease;
-}
-
-.btn-primary:hover {
+.navbar .container .quick-link:hover {
     background: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.navbar .container .quick-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 8px 18px;
 }
