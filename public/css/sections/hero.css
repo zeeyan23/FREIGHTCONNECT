@@ -1,401 +1,230 @@
-/* =========================================================
-   FREIGHTCONNECT - HERO SECTION
-   ========================================================= */
+/* ========================================
+   HERO SECTION
+======================================== */
 
-.hero-section {
-    /* width: 100%; */
-    padding: 30px 0 15px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(7, 22, 39, 0.98),
-            rgba(3, 12, 22, 0.98)
-        );
-}
-
-/* .hero-section .container{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(7, 22, 39, 0.98),
-            rgba(3, 12, 22, 0.98)
-        );
-} */
-/* =========================================================
-   HERO CARD
-   ========================================================= */
-
-.hero-card {
+.hero {
     position: relative;
-    width: 100%;
-    min-height: 420px;
+    padding: 160px 0 120px;
 
+    background:hsl(217.24deg 67.44% 8.43%);
+
+    color: #fff;
     overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(7, 22, 39, 0.98),
-            rgba(3, 12, 22, 0.98)
-        );
-
-    border: 1px solid rgba(72, 132, 210, 0.55);
-    border-radius: 12px;
-
-    box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.02),
-        0 15px 45px rgba(0, 0, 0, 0.35);
 }
 
 
-/* =========================================================
+/* ========================================
    HERO CONTENT
-   ========================================================= */
+======================================== */
 
-.hero-content {
-    display: grid;
-    grid-template-columns: 45% 55%;
-    min-height: 420px;
-}
-
-
-/* =========================================================
-   LEFT CONTENT
-   ========================================================= */
-
-.hero-left {
+.hero h1 {
     position: relative;
-    z-index: 2;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-width: 800px;
 
-    /* padding: 42px 20px 42px 30px; */
-}
-
-
-/* =========================================================
-   BRAND
-   ========================================================= */
-
-
-
-
-.hero-logo {
-    width: 52px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #ffffff;
-
-    font-size: 22px;
-    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
     letter-spacing: -2px;
-
-    border-radius: 8px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00a8ff,
-            #0067e8
-        );
-
-    box-shadow:
-        0 5px 18px rgba(0, 140, 255, 0.25);
-}
-
-
-/* =========================================================
-   HERO HEADING
-   ========================================================= */
-
-.hero-left h1 {
-    margin: 0 0 16px;
-
-    color: #ffffff;
-
-    font-size: clamp(2rem, 3vw, 2.8rem);
     font-weight: 700;
 
-    line-height: 1.12;
-    letter-spacing: -0.8px;
+    color: #fff;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 .text-primary {
+    color: var(--primary) !important;
+}
+
+.hero .lead {
+    max-width: 650px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.7;
+
+    margin-bottom: 30px;
 }
 
 
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
+/* ========================================
+   HERO BUTTONS
+======================================== */
 
-.hero-description {
-    max-width: 440px;
-
-    margin: 0 0 24px;
-
-    color: #c6d1df;
-
-    font-size: 13px;
-    line-height: 1.55;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.hero-actions {
+.hero-buttons {
     display: flex;
     align-items: center;
-    gap: 18px;
-
+    gap: 15px;
     flex-wrap: wrap;
 }
 
+.hero .btn {
+    border-radius: 8px;
 
-.hero-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    min-height: 40px;
-
-    padding: 9px 18px;
-
-    border-radius: 5px;
-
-    text-decoration: none;
-
-    font-size: 12px;
     font-weight: 600;
+
+    padding: 11px 22px;
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+        background 0.25s ease;
 }
 
 
-.hero-btn i {
-    font-size: 13px;
+/* Primary Button */
+
+.hero .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
 }
 
+.hero .btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
 
-.hero-btn:hover {
-    text-decoration: none;
     transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
 }
 
+/* ========================================
+   COMPANY VIDEO
+======================================== */
 
-/* Primary */
-.hero-btn-primary {
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #078fff,
-            #0969e8
-        );
-
-    border: 1px solid #168cff;
-
-    box-shadow:
-        0 7px 18px rgba(0, 111, 255, 0.25);
-}
-
-
-.hero-btn-primary:hover {
-    color: #ffffff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #129cff,
-            #0873f4
-        );
-
-    box-shadow:
-        0 10px 24px rgba(0, 111, 255, 0.38);
-}
-
-
-/* Outline */
-.hero-btn-outline {
-    color: #ffffff;
-
-    background: rgba(255, 255, 255, 0.02);
-
-    border: 1px solid rgba(255, 255, 255, 0.65);
-}
-
-
-.hero-btn-outline:hover {
-    color: #ffffff;
-
-    background: rgba(255, 255, 255, 0.08);
-
-    border-color: #ffffff;
-}
-
-
-/* =========================================================
-   RIGHT IMAGE AREA
-   ========================================================= */
-
-.hero-right {
-    position: relative;
-
-    min-height: 420px;
+.company-video {
+    width: 100%;
 
     overflow: hidden;
+
+    clip-path: polygon(
+        20% 0,
+        100% 0,
+        100% 100%,
+        20% 100%,
+        0 50%
+    );
+}
+
+.company-video video {
+    display: block;
+
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
 }
 
 
-/*
-   Image is intentionally blank for now.
-
-   Later you can replace this with:
-
-   background-image: url('/images/hero-bg.jpg');
-
-   or put an <img> inside this container.
-*/
-
-.hero-image-placeholder {
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(19, 104, 178, 0.16),
-            transparent 55%
-        );
-
-    opacity: 0.75;
-}
-
-
-/* Subtle separation between text and image */
-.hero-right::before {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    top: 10%;
-    bottom: 10%;
-
-    width: 1px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            rgba(77, 145, 218, 0.35),
-            transparent
-        );
-
-    z-index: 2;
-}
-
-
-/* =========================================================
+/* ========================================
    TABLET
-   ========================================================= */
+======================================== */
 
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
 
-    /* .hero-section {
-        padding: 20px 0 12px;
-    } */
-
-
-    .hero-content {
-        grid-template-columns: 50% 50%;
+    .hero {
+        padding: 130px 0 80px;
     }
 
-
-    .hero-left {
-        padding: 35px 15px 35px 25px;
+    .hero h1 {
+        font-size: clamp(2.4rem, 6vw, 3.5rem);
     }
 
+    .hero .lead {
+        font-size: 1.05rem;
+    }
 
-    .hero-left h1 {
-        font-size: 2rem;
+    .company-video {
+        margin-top: 50px;
+    }
+
+    .company-video video {
+        height: 420px;
     }
 }
 
 
-/* =========================================================
+/* ========================================
    MOBILE
-   ========================================================= */
+======================================== */
 
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
 
-    /* .hero-section {
-        padding: 12px 0;
-    } */
+    .hero {
+        padding: 110px 0 60px;
+    }
 
+    .hero h1 {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+        letter-spacing: -1px;
 
-    .hero-card {
-        min-height: auto;
+        margin-bottom: 20px;
+    }
 
-        border-radius: 10px;
+    .hero .lead {
+        font-size: 1rem;
+        line-height: 1.6;
+
+        margin-bottom: 25px;
     }
 
 
-    .hero-content {
-        display: flex;
+    /* Stack buttons */
+
+    .hero-buttons {
         flex-direction: column;
+        align-items: stretch;
 
-        min-height: auto;
-    }
-
-
-    .hero-left {
-        padding: 28px 22px 25px;
-    }
-
-
-
-    .hero-logo {
-        width: 46px;
-        height: 38px;
-
-        font-size: 19px;
-    }
-
-    .hero-left h1 {
-        font-size: 1.85rem;
-        line-height: 1.15;
-    }
-
-
-    .hero-description {
-        font-size: 12px;
-    }
-
-
-    .hero-actions {
-        gap: 10px;
-    }
-
-
-    .hero-btn {
         width: 100%;
     }
 
-
-    .hero-right {
-        display: none;
+    .hero .btn {
+        width: 100%;
+        text-align: center;
     }
 
+
+    /* Video */
+
+    .company-video {
+        margin-top: 40px;
+
+        /* Remove angled shape on mobile */
+        clip-path: none;
+
+        border-radius: 12px;
+    }
+
+    .company-video video {
+        height: 300px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 575.98px) {
+
+    .hero {
+        padding: 100px 0 50px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .lead {
+        font-size: 0.95rem;
+    }
+
+    .company-video {
+        margin-top: 30px;
+    }
+
+    .company-video video {
+        height: 240px;
+    }
 }

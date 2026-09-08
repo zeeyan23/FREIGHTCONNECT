@@ -1,5 +1,5 @@
 .faq-section {
-    background: #ffffff;
+    background: hsl(217.24deg 67.44% 8.43%);;
 }
 
 .faq-label {
@@ -15,7 +15,7 @@
     font-size: 42px;
     line-height: 1.2;
     font-weight: 700;
-    color: #172033;
+    color: white;
     margin-bottom: 18px;
 }
 
@@ -36,7 +36,7 @@
     align-items: center;
     gap: 10px;
 
-    color: #172033;
+    color: white;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -82,7 +82,7 @@
 
     font-size: 16px;
     font-weight: 600;
-    color: #172033;
+    color: white;
 
     transition: 0.3s ease;
 }

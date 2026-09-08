@@ -9,13 +9,15 @@
                 <!-- Left Content -->
                 <div class="col-lg-8">
 
-                    <span class="membership-label">
-                        MEMBERSHIP
-                    </span>
+                    
 
                     <h2 class="membership-title">
                         Membership Pricing
                     </h2>
+
+                    <span class="membership-label">
+                        MEMBERSHIP
+                    </span>
 
                     <p class="membership-description">
                         Invitation-only membership for selected Trade Partners

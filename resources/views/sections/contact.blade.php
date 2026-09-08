@@ -4,26 +4,22 @@
 
         <div class="contact-card">
 
-            <div class="row align-items-center g-5">
+            <div class="row g-5">
 
                 <!-- Left Content -->
                 <div class="col-lg-6">
 
-                    <span class="contact-label">
-                        GET IN TOUCH
-                    </span>
+                    
 
                     <h2 class="contact-title">
                         Let’s <span>Connect</span>
                     </h2>
-
+                    <span class="contact-label">
+                        GET IN TOUCH
+                    </span>
                     <p class="contact-description">
                         Have a question about FreightConnect, membership
                         or becoming a Trade Partner?
-                    </p>
-
-                    <p class="contact-subtext">
-                        We’re happy to hear from you.
                     </p>
 
                 </div>

@@ -1,64 +1,58 @@
-<section class="hero-section">
+<section class="hero">
     <div class="container">
-            <div class="hero-content">
+        <div class="row align-items-center">
 
-                <!-- Left Content -->
-                <div class="hero-left">
+            <!-- LEFT -->
+            <div class="col-lg-6">
 
-                    <!-- Heading -->
+                <div class="hero-content">
+
                     <h1>
-                        Stronger Connections.<br>
-                        Smarter Global Trade.
+                        Connect. Trade. <span class="text-primary">Grow.</span>
                     </h1>
 
-
-                    <!-- Description -->
-                    <p class="hero-description">
-                        Connecting freight forwarders, traders and
-                        international buyers to build trusted partnerships
-                        and grow global opportunities.
+                    <p class="lead">
+                        FreightConnect connects freight forwarders, exporters,
+                        and importers to build trusted global business relationships.
                     </p>
 
-
-                    <!-- Buttons -->
-                    <div class="hero-actions">
-
-                        <a href="#supplier"
-                           class="hero-btn hero-btn-primary"
-                           data-bs-toggle="modal"
-                           data-bs-target="#buyerSupplierModal">
-
-                            <i class="fa-solid fa-user-group"></i>
-
-                            <span>Looking for a Supplier?</span>
-
-                        </a>
-
+                    <div class="hero-buttons">
 
                         <a href="#membership"
-                           class="hero-btn hero-btn-outline"
+                           class="btn btn-primary"
                            data-bs-toggle="modal"
                            data-bs-target="#membershipTypeModal">
+                            Request an Invitation for Membership
+                        </a>
 
-                            <i class="fa-solid fa-paper-plane"></i>
-
-                            <span>Request an Invitation</span>
-
+                        <a href="#supplier"
+                           class="btn btn-light"
+                           data-bs-toggle="modal"
+                           data-bs-target="#buyerSupplierModal">
+                            Looking for a Supplier / Buyer?
                         </a>
 
                     </div>
 
                 </div>
 
+            </div>
 
-                <!-- Right Image Area -->
-                <!-- Image intentionally left blank for now -->
-                <div class="hero-right">
 
-                    <div class="hero-image-placeholder"></div>
+            <!-- RIGHT -->
+            <div class="col-lg-6">
+
+                <div class="company-video">
+
+                    <video autoplay muted loop playsinline>
+                        <source src="{{ asset('videos/company_video.mp4') }}" type="video/mp4">
+                        Your browser does not support the video.
+                    </video>
 
                 </div>
 
             </div>
+
+        </div>
     </div>
 </section>

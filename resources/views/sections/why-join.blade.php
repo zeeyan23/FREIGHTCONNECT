@@ -1,21 +1,23 @@
 <section id="benefits" class="why-join-section py-5">
 
-    <div class="container py-5">
+    <div class="container">
 
         <!-- Section Heading -->
-        <div class="text-center mb-5">
-            <span class="section-label">WHY JOIN US</span>
+        <div class="mb-5">
+            
 
             <h2 class="section-title">
                 Built for Businesses That
                 <span>Move Global Trade</span>
             </h2>
 
-            <p class="section-subtitle">
+            <span class="section-label">WHY JOIN US</span>
+
+            <!-- <p class="section-subtitle">
                 Whether you are a freight forwarding company or a trader,
                 FreightConnect helps you build valuable connections and
                 discover new business opportunities.
-            </p>
+            </p> -->
         </div>
 
 
@@ -25,18 +27,9 @@
             <!-- Freight Forwarders -->
             <div class="col-lg-6">
 
-                <div class="benefit-card">
-
                     <div class="benefit-header">
-                        <div class="benefit-icon">
-                            <i class="fa-solid fa-truck-fast"></i>
-                        </div>
 
                         <div>
-                            <span class="benefit-tag">
-                                FOR LOGISTICS PROFESSIONALS
-                            </span>
-
                             <h3>
                                 Benefits for Freight
                                 Forwarding Companies
@@ -94,26 +87,15 @@
 
                     </div>
 
-                </div>
-
             </div>
 
 
             <!-- Traders -->
             <div class="col-lg-6">
 
-                <div class="benefit-card trader-card">
-
                     <div class="benefit-header">
-                        <div class="benefit-icon">
-                            <i class="fa-solid fa-globe"></i>
-                        </div>
 
                         <div>
-                            <span class="benefit-tag">
-                                FOR TRADERS
-                            </span>
-
                             <h3>
                                 Benefits for Traders
                             </h3>
@@ -168,8 +150,6 @@
                         </div>
 
                     </div>
-
-                </div>
 
             </div>
             <!-- <div class="text-center mb-5">

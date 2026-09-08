@@ -1,22 +1,16 @@
 <section id="about" class="about-section py-5">
-    <div class="container py-5">
+    <div class="container">
 
         <div class="row g-5">
 
             <!-- Left -->
-            <div class="col-lg-5">
-                <div class="about-label">
-                    ABOUT FREIGHTCONNECT
-                </div>
-
-                <h2 class="about-title">
-                    Connecting Businesses.
-                    <span>Moving Opportunities.</span>
-                </h2>
-            </div>
-
-            <!-- Right -->
             <div class="col-lg-7">
+                <div class="about-label">
+                    About Us
+                </div>
+                <div class="about-tag-text">
+                    Who we are
+                </div>
                 <p class="about-text">
                     FreightConnect Global Trade Alliance connects freight forwarders, exporters, importers, trading companies and international buyers across global markets. 
                 </p>
@@ -29,10 +23,11 @@
                 <p class="about-text">
                     Our goal is to create an active business environment where freight forwarders can access new inquiries and partnerships, while traders can find the right logistics and commercial connections.
                 </p>
-                <a href="#membership" class="membership-btn">
-                    Request an Invitation for Membership
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
+            </div>
+
+            <!-- Right -->
+            <div class="col-lg-7">
+                
             </div>
 
         </div>

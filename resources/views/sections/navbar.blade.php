@@ -1,43 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
 
         <a class="navbar-brand" href="#">
             FreightConnect
         </a>
 
-        <div class="d-flex align-items-center gap-2">
+        <!-- Mobile Toggle -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Membership -->
-            <!-- <a href="#membership" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                data-bs-target="#membershipTypeModal">
-                Request an Invitation for Membership
-            </a> -->
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
 
-            <!-- Supplier -->
-            <!-- <a href="#supplier" class="btn btn-light btn-sm" data-bs-toggle="modal"
-                data-bs-target="#buyerSupplierModal">
-                Looking for a Supplier / Buyer?
-            </a> -->
+            <div class="navbar-nav ms-auto align-items-lg-center">
 
-            <a href="#about" class="quick-link">
-                <span>About</span>
-            </a>
+                <a class="nav-link" href="#about">
+                    About
+                </a>
 
-            <a href="#benefits" class="quick-link">
-                <span>Benefits</span>
-            </a>
+                <a class="nav-link" href="#benefits">
+                    Benefits
+                </a>
 
-            <a href="#membership" class="quick-link">
-                <span>Pricing</span>
-            </a>
+                <a class="nav-link" href="#membership">
+                    Pricing
+                </a>
 
-            <a href="#faq" class="quick-link">
-                <span>FAQs</span>
-            </a>
+                <a class="nav-link" href="#faq">
+                    FAQs
+                </a>
 
-            <a href="#contact" class="quick-link">
-                <span>Contact Us</span>
-            </a>
+                <a class="nav-link" href="#contact">
+                    Contact Us
+                </a>
+
+            </div>
 
         </div>
 

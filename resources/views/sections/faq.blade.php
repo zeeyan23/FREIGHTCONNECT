@@ -7,14 +7,16 @@
             <!-- Left Content -->
             <div class="col-lg-4">
 
-                <span class="faq-label">
-                    FAQ
-                </span>
+                
 
                 <h2 class="faq-title">
                     Frequently Asked
                     <span>Questions</span>
                 </h2>
+
+                <span class="faq-label">
+                    FAQ
+                </span>
 
                 <p class="faq-description">
                     Have questions about FreightConnect, membership,
