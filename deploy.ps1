@@ -1,15 +1,19 @@
 # ============================================
+
 # FreightConnect - Laravel Deployment Script
+
 # ============================================
 
 $ErrorActionPreference = "Stop"
 
 # ---------- LOCAL ----------
+
 $ProjectPath = "D:\globaltrading"
 $DeployTemp = "$ProjectPath\deploy_temp"
 $ZipFile = "$ProjectPath\freightconnect_deploy.zip"
 
 # ---------- SERVER ----------
+
 $ServerUser = "u948060652"
 $ServerHost = "82.112.229.222"
 $ServerPort = "65002"
@@ -20,9 +24,9 @@ $ServerPublic = "/home/u948060652/domains/freightconnect.info/public_html"
 $ServerZip = "$ServerProject/freightconnect_deploy.zip"
 
 # ---------- PU TTY ----------
+
 $PSCP = "C:\Program Files\PuTTY\pscp.exe"
 $PLINK = "C:\Program Files\PuTTY\plink.exe"
-
 
 Write-Host ""
 Write-Host "============================================" -ForegroundColor Cyan
@@ -30,141 +34,162 @@ Write-Host "   FreightConnect Deployment Started" -ForegroundColor Cyan
 Write-Host "============================================" -ForegroundColor Cyan
 Write-Host ""
 
+# ============================================
+
 # Check required files
+
+# ============================================
+
 if (!(Test-Path $PSCP)) {
-    throw "PSCP not found: $PSCP"
+throw "PSCP not found: $PSCP"
 }
 
 if (!(Test-Path $PLINK)) {
-    throw "PLINK not found: $PLINK"
+throw "PLINK not found: $PLINK"
 }
 
 if (!(Test-Path $KeyFile)) {
-    throw "Private key not found: $KeyFile"
+throw "Private key not found: $KeyFile"
 }
 
 # ============================================
+
 # 1. Clean deployment folder
+
 # ============================================
 
 Write-Host "[1/7] Preparing deployment package..." -ForegroundColor Yellow
 
 if (Test-Path $DeployTemp) {
-    Remove-Item $DeployTemp -Recurse -Force
+Remove-Item $DeployTemp -Recurse -Force
 }
 
 New-Item -ItemType Directory -Path $DeployTemp | Out-Null
 
 # ============================================
+
 # 2. Copy project while excluding server-only files
+
 # ============================================
 
 Write-Host "[2/7] Copying project files..." -ForegroundColor Yellow
 
-robocopy $ProjectPath $DeployTemp /E `
-    /XD `
-        ".git" `
-        "node_modules" `
-        "vendor" `
-        "storage" `
-        "deploy_temp" `
-    /XF `
-        ".env" `
-        "freightconnect_deploy.zip" `
-        "deploy.ps1" `
-    /NFL /NDL /NJH /NJS /NP
+robocopy $ProjectPath $DeployTemp /E `    /XD`
+".git" `        "node_modules"`
+"vendor" `        "storage"`
+"deploy_temp" `    /XF`
+".env" `        "freightconnect_deploy.zip"`
+"deploy.ps1" `        "freightconnect.ppk"`
+"New Text Document.txt" `
+/NFL /NDL /NJH /NJS /NP
 
 # Robocopy returns codes 0-7 for success/non-fatal differences
+
 if ($LASTEXITCODE -gt 7) {
-    throw "Robocopy failed with exit code $LASTEXITCODE"
+throw "Robocopy failed with exit code $LASTEXITCODE"
 }
 
-# Verify required migration files were copied
+# ============================================
+
+# Verify required migration files
+
+# ============================================
+
 $MigrationPath = "$DeployTemp\database\migrations"
 
 if (!(Test-Path "$MigrationPath\2026_09_05_101439_add_trader_fields_to_trader_member_account_table.php")) {
-    throw "Migration file missing from deployment package: add_trader_fields_to_trader_member_account_table.php"
+throw "Migration file missing from deployment package: add_trader_fields_to_trader_member_account_table.php"
 }
 
 if (!(Test-Path "$MigrationPath\2026_09_05_102713_update_phone_fields_in_trader_member_account_table.php")) {
-    throw "Migration file missing from deployment package: update_phone_fields_in_trader_member_account_table.php"
+throw "Migration file missing from deployment package: update_phone_fields_in_trader_member_account_table.php"
 }
 
 Write-Host "Migration files verified successfully." -ForegroundColor Green
 
 # ============================================
+
 # 3. Create ZIP
+
 # ============================================
 
 Write-Host "[3/7] Creating deployment ZIP..." -ForegroundColor Yellow
 
 if (Test-Path $ZipFile) {
-    Remove-Item $ZipFile -Force
+Remove-Item $ZipFile -Force
 }
 
 # Create ZIP with Linux-compatible forward-slash paths
+
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $Zip = [System.IO.Compression.ZipFile]::Open(
-    $ZipFile,
-    [System.IO.Compression.ZipArchiveMode]::Create
+$ZipFile,
+[System.IO.Compression.ZipArchiveMode]::Create
 )
 
 try {
-    Get-ChildItem -Path $DeployTemp -Recurse -File | ForEach-Object {
+Get-ChildItem -Path $DeployTemp -Recurse -File | ForEach-Object {
 
-        $RelativePath = $_.FullName.Substring($DeployTemp.Length + 1)
-        $EntryName = $RelativePath -replace '\\', '/'
+```
+    $RelativePath = $_.FullName.Substring($DeployTemp.Length + 1)
+    $EntryName = $RelativePath -replace '\\', '/'
 
-        $Entry = $Zip.CreateEntry(
-            $EntryName,
-            [System.IO.Compression.CompressionLevel]::Optimal
-        )
+    $Entry = $Zip.CreateEntry(
+        $EntryName,
+        [System.IO.Compression.CompressionLevel]::Optimal
+    )
 
-        $EntryStream = $Entry.Open()
+    $EntryStream = $Entry.Open()
+
+    try {
+        $FileStream = [System.IO.File]::OpenRead($_.FullName)
 
         try {
-            $FileStream = [System.IO.File]::OpenRead($_.FullName)
-
-            try {
-                $FileStream.CopyTo($EntryStream)
-            }
-            finally {
-                $FileStream.Dispose()
-            }
+            $FileStream.CopyTo($EntryStream)
         }
         finally {
-            $EntryStream.Dispose()
+            $FileStream.Dispose()
         }
     }
+    finally {
+        $EntryStream.Dispose()
+    }
+}
+```
+
 }
 finally {
-    $Zip.Dispose()
+$Zip.Dispose()
 }
 
 # Clean temporary folder
+
 Remove-Item $DeployTemp -Recurse -Force
+
 Write-Host "Deployment ZIP created at: $ZipFile" -ForegroundColor Green
 
 # ============================================
+
 # 4. Upload ZIP
+
 # ============================================
 
 Write-Host "[4/7] Uploading files to server..." -ForegroundColor Yellow
 
-& $PSCP `
-    -P $ServerPort `
-    -i $KeyFile `
-    $ZipFile `
-    "${ServerUser}@${ServerHost}:${ServerZip}"
+& $PSCP `    -P $ServerPort`
+-i $KeyFile `    $ZipFile`
+"${ServerUser}@${ServerHost}:${ServerZip}"
 
 if ($LASTEXITCODE -ne 0) {
-    throw "File upload failed."
+throw "File upload failed."
 }
 
 # ============================================
+
 # 5. Extract and deploy on server
+
 # ============================================
 
 Write-Host "[5/7] Deploying files on server..." -ForegroundColor Yellow
@@ -173,53 +198,74 @@ $RemoteCommands = @"
 set -e
 
 echo "Extracting deployment package..."
-
 cd $ServerProject
 
 unzip -o freightconnect_deploy.zip
-
 rm -f freightconnect_deploy.zip
 
 echo "Running migrations..."
-
 /usr/bin/php artisan migrate --force
 
 echo "Clearing Laravel cache..."
-
 /usr/bin/php artisan optimize:clear
 
 echo "Caching Laravel configuration..."
-
 /usr/bin/php artisan config:cache
+
+echo "Protecting production index.php..."
+
+# Backup the working production index.php
+
+cp $ServerPublic/index.php $ServerPublic/index.php.production
 
 echo "Syncing public files..."
 
+# Copy all public files
+
 cp -a $ServerProject/public/. $ServerPublic/
 
+echo "Restoring production index.php..."
+
+# Restore the server-specific Laravel entry point
+
+cp $ServerPublic/index.php.production $ServerPublic/index.php
+
+# Remove temporary backup
+
+rm -f $ServerPublic/index.php.production
+
+echo "Production index.php preserved."
 echo "Deployment completed successfully."
 "@
 
-& $PLINK `
-    -P $ServerPort `
-    -i $KeyFile `
-    "${ServerUser}@${ServerHost}" `
-    $RemoteCommands
+# Convert Windows CRLF to Linux LF
+
+$RemoteCommands = $RemoteCommands -replace "`r`n", "`n"
+
+& $PLINK `    -P $ServerPort`
+-i $KeyFile `    "${ServerUser}@${ServerHost}"`
+$RemoteCommands
 
 if ($LASTEXITCODE -ne 0) {
-    throw "Server deployment failed."
+throw "Server deployment failed."
 }
 
 # ============================================
-# 6. Remove local ZIP
+
+# 6. Remove / keep local ZIP
+
 # ============================================
 
 Write-Host "[6/7] Cleaning local files..." -ForegroundColor Yellow
 
 # Keep ZIP for debugging
+
 Write-Host "ZIP kept for inspection: $ZipFile" -ForegroundColor Yellow
 
 # ============================================
+
 # 7. Finished
+
 # ============================================
 
 Write-Host ""

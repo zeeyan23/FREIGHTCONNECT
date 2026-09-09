@@ -609,6 +609,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 'icon' => 'fa-solid fa-user-plus',
                 'url' => route('freightconnect.register', [
                     'redirect' => url()->current(),
+                    'group_type_id' => 2,
                 ]),
             ],
             [

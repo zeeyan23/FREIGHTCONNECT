@@ -46,6 +46,9 @@
                 @if ($redirect)
                     <input type="hidden" name="redirect" value="{{ $redirect }}">
                 @endif
+                @if ($group_type_id)
+                    <input type="hidden" name="group_type_id" value="{{ $group_type_id }}">
+                @endif
                 {{-- 01 Account Information --}}
                 <div class="registration-section">
 

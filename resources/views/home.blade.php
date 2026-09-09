@@ -42,14 +42,14 @@
         'description' => 'Choose an option to find the right trade connection.',
         'options' => [
             [
-                'title' => 'Find a Supplier',
-                'description' => 'Find suppliers, manufacturers and exporters for the products you need.',
+                'title' => 'Commercial or logistics connections',
+                'description' => 'Looking to connect with businesses, buyers, sellers, suppliers, distributors or logistics partners',
                 'icon' => 'fa-solid fa-boxes-stacked',
                 'url' => route('search.suppliers'),
             ],
             [
-                'title' => 'Find a Buyer',
-                'description' => 'Find buyers, importers and trading companies looking for your products.',
+                'title' => 'Buy/source a specific product requirement',
+                'description' => 'Looking for a specific product or supplier for your business.',
                 'icon' => 'fa-solid fa-handshake',
                 'url' => route('search.buyers'),
             ],

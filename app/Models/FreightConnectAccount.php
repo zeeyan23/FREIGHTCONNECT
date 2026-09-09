@@ -21,6 +21,7 @@ class FreightConnectAccount extends Authenticatable
         'phone_full',
         'phone_dial_code',
         'product_categories',
+        'group_type_id',
         'terms_accepted_at',
     ];
 

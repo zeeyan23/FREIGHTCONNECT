@@ -35,7 +35,8 @@ class FreightConnectAccountController extends Controller
             'phone_dial_code' => $validated['phone_dial_code'],
 
             'product_categories' => $validated['product_categories'],
-
+            'group_type_id' => $validated['group_type_id'],
+            
             'terms_accepted_at' => now(),
         ]);
 

@@ -117,6 +117,13 @@ class FreightConnectAccountRegisterRequest extends FormRequest
                 'accepted',
             ],
 
+            'group_type_id' => [
+                'required',
+                'integer',
+                'exists:group_types,id',
+                'in:2,3',
+            ],
+
             'redirect' => [
                 'nullable',
                 'url',

@@ -55,6 +55,7 @@ Route::get('/create-account', function (Illuminate\Http\Request $request) {
     return view('auth.register', [
         'countries' => $countries,
         'redirect' => $request->query('redirect'),
+        'group_type_id' => $request->query('group_type_id'),
     ]);
 
 })->name('freightconnect.register');
