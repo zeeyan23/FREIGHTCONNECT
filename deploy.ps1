@@ -68,22 +68,14 @@ New-Item -ItemType Directory -Path $DeployTemp | Out-Null
 
 # ============================================
 
-# 2. Copy project while excluding server-only files
+# 2. Copy project files
 
 # ============================================
 
 Write-Host "[2/7] Copying project files..." -ForegroundColor Yellow
 
-robocopy $ProjectPath $DeployTemp /E `    /XD`
-".git" `        "node_modules"`
-"vendor" `        "storage"`
-"deploy_temp" `    /XF`
-".env" `        "freightconnect_deploy.zip"`
-"deploy.ps1" `        "freightconnect.ppk"`
-"New Text Document.txt" `
-/NFL /NDL /NJH /NJS /NP
-
-# Robocopy returns codes 0-7 for success/non-fatal differences
+robocopy $ProjectPath $DeployTemp /E /XD ".git" "node_modules" "vendor" "storage" "deploy_temp" /XF ".env" "freightconnect_deploy.zip" "deploy.ps1" "freightconnect.ppk" "New Text Document.txt" "bootstrap\cache\config.php" /NFL /NDL /NJH /NJS /NP
+Remove-Item "$DeployTemp\bootstrap\cache\config.php" -Force -ErrorAction SilentlyContinue
 
 if ($LASTEXITCODE -gt 7) {
 throw "Robocopy failed with exit code $LASTEXITCODE"
@@ -91,80 +83,61 @@ throw "Robocopy failed with exit code $LASTEXITCODE"
 
 # ============================================
 
-# Verify required migration files
+# Verify migration files
 
 # ============================================
 
 $MigrationPath = "$DeployTemp\database\migrations"
 
 if (!(Test-Path "$MigrationPath\2026_09_05_101439_add_trader_fields_to_trader_member_account_table.php")) {
-throw "Migration file missing from deployment package: add_trader_fields_to_trader_member_account_table.php"
+throw "Migration file missing from deployment package."
 }
 
 if (!(Test-Path "$MigrationPath\2026_09_05_102713_update_phone_fields_in_trader_member_account_table.php")) {
-throw "Migration file missing from deployment package: update_phone_fields_in_trader_member_account_table.php"
+throw "Migration file missing from deployment package."
 }
 
 Write-Host "Migration files verified successfully." -ForegroundColor Green
 
 # ============================================
-
 # 3. Create ZIP
-
 # ============================================
 
 Write-Host "[3/7] Creating deployment ZIP..." -ForegroundColor Yellow
 
 if (Test-Path $ZipFile) {
-Remove-Item $ZipFile -Force
+    Remove-Item $ZipFile -Force
 }
 
-# Create ZIP with Linux-compatible forward-slash paths
-
-Add-Type -AssemblyName System.IO.Compression
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-
-$Zip = [System.IO.Compression.ZipFile]::Open(
-$ZipFile,
-[System.IO.Compression.ZipArchiveMode]::Create
-)
+Push-Location $DeployTemp
 
 try {
-Get-ChildItem -Path $DeployTemp -Recurse -File | ForEach-Object {
-
-```
-    $RelativePath = $_.FullName.Substring($DeployTemp.Length + 1)
-    $EntryName = $RelativePath -replace '\\', '/'
-
-    $Entry = $Zip.CreateEntry(
-        $EntryName,
-        [System.IO.Compression.CompressionLevel]::Optimal
-    )
-
-    $EntryStream = $Entry.Open()
-
-    try {
-        $FileStream = [System.IO.File]::OpenRead($_.FullName)
-
-        try {
-            $FileStream.CopyTo($EntryStream)
-        }
-        finally {
-            $FileStream.Dispose()
-        }
-    }
-    finally {
-        $EntryStream.Dispose()
-    }
-}
-```
-
+    Compress-Archive -Path * -DestinationPath $ZipFile -CompressionLevel Optimal
 }
 finally {
-$Zip.Dispose()
+    Pop-Location
 }
 
-# Clean temporary folder
+if (!(Test-Path $ZipFile)) {
+    throw "Failed to create deployment ZIP."
+}
+
+# Verify ZIP contains artisan at root
+$ZipCheck = [System.IO.Compression.ZipFile]::OpenRead($ZipFile)
+
+try {
+    $ArtisanEntry = $ZipCheck.Entries |
+        Where-Object { $_.FullName -eq "artisan" }
+}
+finally {
+    $ZipCheck.Dispose()
+}
+
+if (!$ArtisanEntry) {
+    throw "Invalid ZIP structure: artisan is not at ZIP root."
+}
+
+Write-Host "ZIP structure verified successfully." -ForegroundColor Green
 
 Remove-Item $DeployTemp -Recurse -Force
 
@@ -178,87 +151,134 @@ Write-Host "Deployment ZIP created at: $ZipFile" -ForegroundColor Green
 
 Write-Host "[4/7] Uploading files to server..." -ForegroundColor Yellow
 
-& $PSCP `    -P $ServerPort`
--i $KeyFile `    $ZipFile`
-"${ServerUser}@${ServerHost}:${ServerZip}"
+& $PSCP -P $ServerPort -i $KeyFile $ZipFile "${ServerUser}@${ServerHost}:${ServerZip}"
 
 if ($LASTEXITCODE -ne 0) {
 throw "File upload failed."
 }
 
+Write-Host "Upload completed successfully." -ForegroundColor Green
+
 # ============================================
-
-# 5. Extract and deploy on server
-
+# 5. Deploy on server
 # ============================================
 
 Write-Host "[5/7] Deploying files on server..." -ForegroundColor Yellow
 
 $RemoteCommands = @"
-set -e
-
-echo "Extracting deployment package..."
 cd $ServerProject
 
+echo "Extracting deployment package..."
+
 unzip -o freightconnect_deploy.zip
+echo "ZIP extraction finished."
+
+echo "Removing deployment ZIP..."
 rm -f freightconnect_deploy.zip
+
+echo "Clearing old Laravel configuration cache..."
+rm -f bootstrap/cache/config.php
+
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to remove config cache."
+    exit 1
+fi
 
 echo "Running migrations..."
 /usr/bin/php artisan migrate --force
 
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Migration failed."
+    exit 1
+fi
+
 echo "Clearing Laravel cache..."
 /usr/bin/php artisan optimize:clear
+
+if [ `$? -ne 0 ]; then
+    echo "ERROR: optimize:clear failed."
+    exit 1
+fi
 
 echo "Caching Laravel configuration..."
 /usr/bin/php artisan config:cache
 
-echo "Protecting production index.php..."
-
-# Backup the working production index.php
-
-cp $ServerPublic/index.php $ServerPublic/index.php.production
+if [ `$? -ne 0 ]; then
+    echo "ERROR: config:cache failed."
+    exit 1
+fi
 
 echo "Syncing public files..."
 
-# Copy all public files
+cp -a $ServerProject/public/build $ServerPublic/
 
-cp -a $ServerProject/public/. $ServerPublic/
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to sync build."
+    exit 1
+fi
 
-echo "Restoring production index.php..."
+cp -a $ServerProject/public/css $ServerPublic/
 
-# Restore the server-specific Laravel entry point
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to sync CSS."
+    exit 1
+fi
 
-cp $ServerPublic/index.php.production $ServerPublic/index.php
+cp -a $ServerProject/public/images $ServerPublic/
 
-# Remove temporary backup
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to sync images."
+    exit 1
+fi
 
-rm -f $ServerPublic/index.php.production
+cp -a $ServerProject/public/videos $ServerPublic/
+
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to sync videos."
+    exit 1
+fi
+
+cp $ServerProject/public/.htaccess $ServerPublic/.htaccess
+
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to copy .htaccess."
+    exit 1
+fi
+
+cp $ServerProject/public/favicon.ico $ServerPublic/favicon.ico
+
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to copy favicon."
+    exit 1
+fi
+
+cp $ServerProject/public/robots.txt $ServerPublic/robots.txt
+
+if [ `$? -ne 0 ]; then
+    echo "ERROR: Failed to copy robots.txt."
+    exit 1
+fi
 
 echo "Production index.php preserved."
+
 echo "Deployment completed successfully."
 "@
 
-# Convert Windows CRLF to Linux LF
-
 $RemoteCommands = $RemoteCommands -replace "`r`n", "`n"
 
-& $PLINK `    -P $ServerPort`
--i $KeyFile `    "${ServerUser}@${ServerHost}"`
-$RemoteCommands
+& $PLINK -P $ServerPort -i $KeyFile "${ServerUser}@${ServerHost}" $RemoteCommands
 
 if ($LASTEXITCODE -ne 0) {
-throw "Server deployment failed."
+    throw "Server deployment failed."
 }
 
 # ============================================
 
-# 6. Remove / keep local ZIP
+# 6. Local cleanup
 
 # ============================================
 
 Write-Host "[6/7] Cleaning local files..." -ForegroundColor Yellow
-
-# Keep ZIP for debugging
 
 Write-Host "ZIP kept for inspection: $ZipFile" -ForegroundColor Yellow
 

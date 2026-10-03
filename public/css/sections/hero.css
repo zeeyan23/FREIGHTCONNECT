@@ -1,230 +1,347 @@
-/* ========================================
-   HERO SECTION
-======================================== */
+.huge-title{
+    font-family: "Anton", "Anton Placeholder", sans-serif;
+}
 
-.hero {
+.hero-section {
     position: relative;
-    padding: 160px 0 120px;
-
-    background:hsl(217.24deg 67.44% 8.43%);
-
-    color: #fff;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
     overflow: hidden;
-}
 
-
-/* ========================================
-   HERO CONTENT
-======================================== */
-
-.hero h1 {
-    position: relative;
-
-    max-width: 800px;
-
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1.1;
-    letter-spacing: -2px;
-    font-weight: 700;
-
-    color: #fff;
-
-    margin-bottom: 25px;
-}
-
-.hero h1 .text-primary {
-    color: var(--primary) !important;
-}
-
-.hero .lead {
-    max-width: 650px;
-
-    color: rgba(255, 255, 255, 0.8);
-
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    line-height: 1.7;
-
-    margin-bottom: 30px;
-}
-
-
-/* ========================================
-   HERO BUTTONS
-======================================== */
-
-.hero-buttons {
     display: flex;
     align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    justify-content: center;
+
+    background-color: #ffffff;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.06) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.06) 1px,
+            transparent 1px
+        );
+
+    background-size: 20px 20px;
 }
 
-.hero .btn {
-    border-radius: 8px;
 
-    font-weight: 600;
+/* =========================================
+   HERO COMPOSITION
+========================================= */
 
-    padding: 11px 22px;
+.hero-composition {
+    width: 100%;
+    height: 100%;
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-/* Primary Button */
+/* =========================================
+   MAIN TITLE
+========================================= */
 
-.hero .btn-primary {
-    background: var(--primary);
-    border-color: var(--primary);
-}
+.huge-title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
 
-.hero .btn-primary:hover {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
+    transform: translate(-50%, -50%) scaleY(1.4);
 
-    transform: translateY(-2px);
-
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
-}
-
-/* ========================================
-   COMPANY VIDEO
-======================================== */
-
-.company-video {
     width: 100%;
 
-    overflow: hidden;
+    margin: 0;
 
-    clip-path: polygon(
-        20% 0,
-        100% 0,
-        100% 100%,
-        20% 100%,
-        0 50%
-    );
+    font-size: clamp(3rem, 12vw, 8.5rem);
+    font-weight: 900;
+
+    line-height: 0.85;
+
+    text-transform: uppercase;
+    text-align: center;
+
+    white-space: nowrap;
+    user-select: none;
+    opacity: 0; 
+    animation: titleFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.company-video video {
+
+/* Normal text */
+
+.huge-title-solid {
+    z-index: 5;
+
+    color: #111111;
+    
+    opacity: 0;
+
+    -webkit-text-stroke: 3px #111;
+    animation:
+        titleFadeUp
+        1.2s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        forwards;
+
+}
+
+.huge-title-hollow,
+.huge-title-cutout {
+    /* masks everything out until JS sets the real image */
+    --mask-img: linear-gradient(#0000, #0000);
+
+    pointer-events: none;
+
+    -webkit-mask-image: var(--mask-img);
+    mask-image: var(--mask-img);
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: var(--mask-width, 900px) var(--mask-height, 507px);
+    mask-size: var(--mask-width, 900px) var(--mask-height, 507px);
+
+    -webkit-mask-position: var(--mask-x, 50%) var(--mask-y, 0px);
+    mask-position: var(--mask-x, 50%) var(--mask-y, 0px);
+}
+
+.huge-title-cutout {
+    z-index: 25;
+    color: #fff;
+}
+
+.huge-title-hollow {
+    z-index: 30;
+    color: transparent;
+    -webkit-text-stroke: 3px #111;
+}
+
+@keyframes titleFadeUp {
+
+    from {
+        opacity: 0;
+        margin-top: 80px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+
+
+/* =========================================
+   CRANE / CONTAINER
+========================================= */
+.crane-image-container {
+    position: absolute;
+
+    /*
+       Image starts exactly from the top
+       of the hero.
+    */
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    /*
+       BIGGER IMAGE
+    */
+    width: 900px;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    /*
+       Start above the hero and drop into
+       its hanging position.
+    */
+    animation:
+        craneDrop
+        2s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        forwards;
+}
+
+
+
+.crane-img {
     display: block;
 
     width: 100%;
-    height: 500px;
+    height: auto;
 
-    object-fit: cover;
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 12px 18px rgba(0, 0, 0, 0.25)
+        );
 }
 
 
-/* ========================================
+@keyframes craneDrop {
+
+    0% {
+        top: -507px;
+    }
+
+    100% {
+        top: 0;
+    }
+
+}
+
+.hero-details {
+    position: absolute;
+
+    top: calc(50% + clamp(90px, 11vh, 140px));
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 0 20px;
+
+    text-align: left;
+
+    z-index: 10;
+}
+
+.hero-details .lead {
+    color: rgb(136, 136, 136);
+
+    font-size:
+        clamp(1rem, 1.5vw, 1.1rem);
+
+    font-weight: 500;
+
+    line-height: 1.6;
+
+    max-width: 750px;
+
+    margin: 0 0 30px 0;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons {
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: clamp(15px, 2vw, 30px);
+
+    flex-wrap: wrap;
+
+    width: 100%;
+}
+
+
+.hero-buttons .btn {
+    padding: 12px 24px;
+    background-color: #084aa8;
+    white-space: nowrap;
+}
+
+
+
+/* =========================================
    TABLET
-======================================== */
+========================================= */
 
-@media (max-width: 991.98px) {
+@media (max-width: 991px) {
 
-    .hero {
-        padding: 130px 0 80px;
+    .hero-section {
+        height: calc(100vh - 70px);
+        margin-top: 70px;
     }
 
-    .hero h1 {
-        font-size: clamp(2.4rem, 6vw, 3.5rem);
+    .huge-title {
+        font-size:
+            clamp(3rem, 12vw, 7rem);
+
+        white-space: normal;
     }
 
-    .hero .lead {
-        font-size: 1.05rem;
+    .hero-details {
+        width: 90%;
+
+        top: calc(50% + 90px);
     }
 
-    .company-video {
-        margin-top: 50px;
+
+    .crane-image-container {
+        width: 700px;
     }
 
-    .company-video video {
-        height: 420px;
-    }
 }
 
 
-/* ========================================
+/* =========================================
    MOBILE
-======================================== */
+========================================= */
 
-@media (max-width: 767.98px) {
+@media (max-width: 576px) {
 
-    .hero {
-        padding: 110px 0 60px;
+    .hero-section {
+        height: calc(100vh - 65px);
+        margin-top: 65px;
     }
 
-    .hero h1 {
-        font-size: clamp(2.2rem, 10vw, 3rem);
-        letter-spacing: -1px;
+    .huge-title {
+        font-size:
+            clamp(2.8rem, 16vw, 5rem);
 
-        margin-bottom: 20px;
+        line-height: 0.9;
+
+        letter-spacing: -2px;
+
+        padding: 0 10px;
     }
 
-    .hero .lead {
-        font-size: 1rem;
-        line-height: 1.6;
+    .hero-details {
+        top: calc(50% + 85px);
 
-        margin-bottom: 25px;
+        width: calc(100% - 30px);
     }
 
+    .hero-details .lead {
+        font-size: 0.95rem;
 
-    /* Stack buttons */
+        line-height: 1.5;
+    }
 
     .hero-buttons {
         flex-direction: column;
+
+        gap: 12px;
+
         align-items: stretch;
+    }
 
+    .hero-buttons .btn {
         width: 100%;
+
+        max-width: 350px;
     }
 
-    .hero .btn {
-        width: 100%;
-        text-align: center;
-    }
-
-
-    /* Video */
-
-    .company-video {
-        margin-top: 40px;
-
-        /* Remove angled shape on mobile */
-        clip-path: none;
-
-        border-radius: 12px;
-    }
-
-    .company-video video {
-        height: 300px;
-    }
-}
-
-
-/* ========================================
-   SMALL MOBILE
-======================================== */
-
-@media (max-width: 575.98px) {
-
-    .hero {
-        padding: 100px 0 50px;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero .lead {
-        font-size: 0.95rem;
-    }
-
-    .company-video {
-        margin-top: 30px;
-    }
-
-    .company-video video {
-        height: 240px;
+    .crane-image-container {
+        width: 550px;
     }
 }
