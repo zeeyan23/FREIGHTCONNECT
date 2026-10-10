@@ -10,9 +10,8 @@
 
             <!-- Heading -->
             <h1 class="mb-0">
-                BUILT TO CONNECT
+                BUILT <span class="hero-to">TO</span> CONNECT
             </h1>
-
             <!-- Description -->
             <p class="hero-description">
                 CONNECTING TRADE, <br class="d-none d-md-block">
