@@ -1,0 +1,87 @@
+.how-it-works-section {
+            position: relative;
+            z-index: 30;
+            padding: 130px 0 100px;
+            background: #212529;
+            color: #ffffff;
+
+            overflow: visible;
+        }
+
+        .how-it-works-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #3b82f6;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: clamp(2.25rem, 4vw, 3.25rem);
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 0;
+        }
+
+        .step-col {
+            position: relative;
+            padding: 1.5rem 1rem;
+        }
+
+        @media (min-width: 992px) {
+            .step-col:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 15%;
+                height: 70%;
+                width: 1px;
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        .step-number {
+            font-size: clamp(2.5rem, 3.5vw, 3.75rem);
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.04em;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .image-banner-col {
+            min-height: 380px;
+            background: linear-gradient(90deg, rgba(17, 24, 39, 0.9) 0%, rgba(17, 24, 39, 0.2) 100%), 
+                        url('../../images/howitworks/howitworks.jpeg') center/cover no-repeat;
+            border-radius: 0;
+            position: relative;
+        }
+
+        @media (max-width: 991.98px) {
+            .image-banner-col {
+                min-height: 280px;
+                margin-top: 2rem;
+            }
+        }

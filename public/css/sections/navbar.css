@@ -1,103 +1,162 @@
-.navbar {
+.modern-navbar {
+    background: #f9fafc;
+    padding: 18px 0;
+    border-bottom: 1px solid #e9edf3;
+
+    /* Fixed */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
 
-    background: #f9fafc !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    padding: 16px 0;
-
-    transition: all 0.3s ease;
+    z-index: 1050;
 }
 
-.navbar-brand {
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #000 !important;
+.navbar-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
-/* Navigation links */
-.navbar .nav-link {
+.modern-navbar .navbar-nav {
+    gap: 8px;
+}
+
+.modern-navbar .nav-link {
+    position: relative;
+    color: #172033;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 13px !important;
+    transition: color 0.25s ease;
+}
+
+.modern-navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 13px;
+    right: 13px;
+    bottom: 3px;
+    height: 2px;
+    background: #0056da;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+/* Hover + Active */
+
+.modern-navbar .nav-link:hover,
+.modern-navbar .nav-link.active {
+    color: #0056da;
+}
+
+.modern-navbar .nav-link:hover::after,
+.modern-navbar .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.modern-navbar .navbar-toggler {
+    border: 1px solid #d9e0ea;
+    padding: 8px 10px;
     border-radius: 8px;
-    font-weight: 600;
-    padding: 8px 18px !important;
-    color: #000 !important;
-    text-decoration: none;
-    transition: all 0.25s ease;
+    background: #ffffff;
 }
 
-/* Hover */
-.navbar .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #0056da !important;
-    text-decoration: underline;
-    text-underline-offset: 8px;
+.modern-navbar .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(0, 86, 218, 0.12);
 }
 
-/* Hamburger */
-.navbar-toggler {
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    padding: 6px 9px;
-    border-radius: 8px;
+.modern-navbar .navbar-toggler-icon {
+    background-image: none;
+    width: 22px;
+    height: 16px;
+    position: relative;
+    display: block;
+
+    border-top: 2px solid #172033;
+    border-bottom: 2px solid #172033;
 }
 
-.navbar-toggler:focus {
-    box-shadow: none;
+.modern-navbar .navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 22px;
+    height: 2px;
+    background: #172033;
 }
 
-/* Mobile / Tablet */
+body {
+    padding-top: 85px;
+}
+
+
 @media (max-width: 991.98px) {
 
-    .navbar {
+    .modern-navbar {
+        padding: 14px 0;
+    }
+
+    .navbar-logo {
+        height: 44px;
+    }
+
+    .modern-navbar .navbar-collapse {
+        margin-top: 15px;
+        padding: 12px 0 8px;
+        border-top: 1px solid #e9edf3;
+    }
+
+    .modern-navbar .navbar-nav {
+        gap: 2px;
+    }
+
+    .modern-navbar .nav-link {
+        padding: 11px 8px !important;
+    }
+
+    .modern-navbar .nav-link::after {
+        left: 8px;
+        right: auto;
+        width: 35px;
+        bottom: 5px;
+    }
+
+    body {
+        padding-top: 72px;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .modern-navbar {
         padding: 12px 0;
     }
 
-    .navbar-collapse {
+    .navbar-logo {
+        height: 40px;
+        max-width: 180px;
+    }
+
+    .modern-navbar .navbar-collapse {
         margin-top: 12px;
-        padding: 10px;
-        background: rgba(15, 23, 42, 0.95);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .navbar-nav {
-        align-items: stretch !important;
+    .modern-navbar .nav-link {
+        font-size: 14px;
+        padding: 10px 5px !important;
     }
 
-    .navbar .nav-link {
-        padding: 12px 14px !important;
-        width: 100%;
+    .modern-navbar .nav-link::after {
+        left: 5px;
+        width: 30px;
     }
 
-    .navbar .nav-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
-}
-
-/* Very small phones */
-@media (max-width: 575.98px) {
-
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
-
-    .container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .navbar-collapse {
-        margin-top: 10px;
+    body {
+        padding-top: 64px;
     }
 }

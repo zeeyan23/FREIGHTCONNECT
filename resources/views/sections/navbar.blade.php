@@ -1,11 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg modern-navbar">
     <div class="container">
-
         <a class="navbar-brand" href="#">
-            FreightConnect
+            <img
+                src="{{ asset('images/logos/1.svg') }}"
+                alt="FreightConnect"
+                class="navbar-logo"
+            >
         </a>
-
-        <!-- Mobile Toggle -->
         <button
             class="navbar-toggler"
             type="button"
@@ -17,14 +18,16 @@
         >
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbarContent">
 
             <div class="navbar-nav ms-auto align-items-lg-center">
 
+                <a class="nav-link active" href="#">
+                    Home
+                </a>
+
                 <a class="nav-link" href="#about">
-                    About
+                    About Us
                 </a>
 
                 <a class="nav-link" href="#benefits">
@@ -32,20 +35,22 @@
                 </a>
 
                 <a class="nav-link" href="#membership">
-                    Pricing
+                    Membership
+                </a>
+
+                <a class="nav-link" href="#insights">
+                    Insights & Updates
                 </a>
 
                 <a class="nav-link" href="#faq">
-                    FAQs
+                    FAQ
                 </a>
 
                 <a class="nav-link" href="#contact">
-                    Contact Us
+                    Contact
                 </a>
 
             </div>
-
         </div>
-
     </div>
 </nav>

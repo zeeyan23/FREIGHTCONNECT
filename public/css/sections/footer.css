@@ -1,34 +1,60 @@
+
 /* =========================================
    FOOTER
 ========================================= */
 
 .site-footer {
+    position: relative;
     background: hsl(217.24deg 68.36% 6.37%);
     color: #ffffff;
     padding: 70px 0 25px;
+    z-index: 30;
+    overflow-wrap: anywhere;
 }
 
-
 /* =========================================
-   MAIN FOOTER
+   FOOTER ROW & COLUMNS
 ========================================= */
 
 .footer-main {
     align-items: flex-start;
 }
 
+.footer-column {
+    min-width: 0;
+}
+
+.footer-column h5 {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-column a {
+    color: #b8c7d6;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.7;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
 
 /* =========================================
-   BRAND
+   BRAND & LOGO
 ========================================= */
 
 .footer-logo {
-    display: inline-block;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 48px;
+    object-fit: contain;
+    object-position: left center;
+    margin-bottom: 20px;
 }
 
 .footer-tagline {
@@ -45,33 +71,6 @@
     line-height: 1.7;
 }
 
-
-/* =========================================
-   FOOTER COLUMNS
-========================================= */
-
-.footer-column h5 {
-    margin: 0 0 20px;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.footer-column a {
-    display: block;
-    color: #b8c7d6;
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-    transition: color 0.2s ease;
-}
-
-.footer-column a:hover {
-    color: #ffffff;
-}
-
-
 /* =========================================
    SOCIAL ICONS
 ========================================= */
@@ -79,28 +78,23 @@
 .footer-socials {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
 .footer-socials a {
     width: 40px;
     height: 40px;
-
+    flex: 0 0 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin: 0;
-
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 50%;
-
     color: #ffffff;
     background: rgba(255, 255, 255, 0.06);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .footer-socials a:hover {
@@ -108,11 +102,103 @@
     transform: translateY(-2px);
 }
 
-
 /* =========================================
-   LEGAL
+   LEGAL LINKS
 ========================================= */
 
 .legal-column a {
-    max-width: 250px;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   CONTACT DETAILS
+========================================= */
+
+.footer-column .d-flex {
+    min-width: 0;
+}
+
+.footer-column .d-flex span,
+.footer-column .d-flex a {
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+    row-gap: 12px;
+}
+
+.footer-truck-section {
+    position: relative;
+    overflow: visible;
+}
+
+.footer-truck-section img {
+    position: relative;
+    z-index: 1;
+    max-width:100%;
+    margin-top: 80px;
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 991.98px) {
+    .site-footer {
+        padding: 55px 0 25px;
+    }
+
+    .footer-column h5 {
+        margin-bottom: 16px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 575.98px) {
+    .site-footer {
+        padding: 40px 0 20px;
+    }
+
+    .footer-logo {
+        height: 42px;
+        margin-bottom: 16px;
+    }
+
+    .footer-column h5 {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .footer-column a {
+        font-size: 14px;
+    }
+
+    .footer-socials {
+        gap: 8px;
+    }
+
+    .footer-socials a {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+    }
+
+    .footer-bottom {
+        margin-top: 24px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .footer-bottom .text-secondary {
+        line-height: 1.7;
+    }
 }

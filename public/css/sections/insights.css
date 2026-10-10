@@ -1,0 +1,323 @@
+.intro {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.intro-content {
+    max-width: 700px;
+}
+
+.intro span {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.intro h1 {
+    font-size: 60px;
+    line-height: 1;
+    margin: 20px 0;
+}
+
+.intro p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.news-section {
+
+    position: relative;
+    height: 400vh;
+
+}
+
+.news-sticky {
+
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+.card-stack {
+
+    position: relative;
+
+    width: 430px;
+
+    height: 570px;
+
+}
+
+
+.news-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: white;
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+
+    will-change: transform, opacity;
+}
+
+
+.card-1 {
+
+    z-index: 1;
+
+    transform:
+        translateY(0)
+        rotate(0deg);
+
+    opacity: 1;
+}
+
+
+.card-2 {
+
+    z-index: 2;
+
+    transform:
+        translateY(100vh)
+        rotate(8deg);
+
+    opacity: 0;
+}
+
+
+.card-3 {
+
+    z-index: 3;
+
+    transform:
+        translateY(100vh)
+        rotate(-7deg);
+
+    opacity: 0;
+}
+
+
+.card-image {
+    width: 100%;
+    height: 220px;
+
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 30px;
+
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #bbb transparent;
+}
+
+.card-category {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #777;
+
+    margin-bottom: 14px;
+}
+
+.card-content h2 {
+
+    font-size: 30px;
+
+    line-height: 1.15;
+
+    margin-bottom: 15px;
+}
+
+.card-content p {
+
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.read-more {
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    border-bottom: 1px solid #111;
+
+    padding-bottom: 4px;
+}
+
+
+/* =====================================
+   VIEW ALL NEWS
+
+   This is BELOW the sticky animation.
+===================================== */
+
+.all-news {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 100px;
+
+    display: flex;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+
+    z-index: 20;
+}
+
+
+.all-news.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.all-news a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 15px 30px;
+
+    border: 1px solid #111;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+
+.all-news a:hover {
+
+    background: #111;
+
+    color: white;
+
+    transform: translateY(-3px);
+}
+
+.after-section {
+
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 35px;
+
+}
+
+@media (max-width: 600px) {
+    .card-stack {
+        width: 88vw;
+        height: 530px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+
+    .card-content {
+        padding: 22px;
+    }
+
+    .card-content h2 {
+        font-size: 25px;
+    }
+
+    .intro h1 {
+        font-size: 42px;
+    }
+}

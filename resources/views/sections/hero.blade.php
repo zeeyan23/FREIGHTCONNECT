@@ -1,83 +1,69 @@
-<section class="container hero-section">
-    <div class="crane-image-container">
-        <img src="../images/container_img.png"
-             alt="Industrial Crane"
-             class="crane-img">
-    </div>
+<section class="hero-section">
 
-    <div class="hero-composition">
+    <div class="container">
+        <div class="crane-image-container">
+            <img src="../images/hero/container_img.png"
+                alt="Industrial Crane"
+                class="crane-img">
+        </div>
+        <div class="hero-content">
 
-        <h1 class="huge-title huge-title-solid">
-            BUILD TO CARRY
-        </h1>
+            <!-- Heading -->
+            <h1 class="mb-0">
+                BUILT TO CONNECT
+            </h1>
 
-        <!-- <h1 class="huge-title huge-title-cutout">
-            BUILD TO CARRY
-        </h1>
-
-        <h1 class="huge-title huge-title-hollow">
-            BUILD TO CARRY
-        </h1> -->
-
-        <div class="hero-details">
-            <p class="lead">
-                FreightConnect connects freight forwarders, <br>exporters,
-                and importers to build trusted <br>global business relationships.
+            <!-- Description -->
+            <p class="hero-description">
+                CONNECTING TRADE, <br class="d-none d-md-block">
+                LOGISTICS AND BUSINESS <br class="d-none d-md-block">
+                OPPORTUNITIES
             </p>
 
-            <div class="d-flex justify-content-between hero-buttons">
-                <a href="#supplier"
-                   class="btn btn-primary"
-                   data-bs-toggle="modal"
-                   data-bs-target="#buyerSupplierModal">
-                    Looking for a Supplier / Buyer?
-                </a>
+            <!-- Actions -->
+            <div class="hero-actions
+                        d-flex
+                        flex-column flex-md-row
+                        align-items-stretch align-items-md-center
+                        justify-content-between
+                        gap-3">
 
-                <a href="#membership"
-                   class="btn btn-primary"
-                   data-bs-toggle="modal"
-                   data-bs-target="#membershipTypeModal">
-                    Request an Invitation for Membership
-                </a>
+                <!-- Left Buttons -->
+                <div class="hero-actions-left
+                            d-flex
+                            flex-column flex-sm-row
+                            gap-2">
+
+                    <a href="#about"
+                       class="hero-btn primary-btn">
+                        Explore Network
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a href="#benefits"
+                       class="hero-btn primary-btn">
+                        View Benefits
+                        <span class="arrow">→</span>
+                    </a>
+
+                </div>
+
+                <!-- Right Button -->
+                <div class="hero-actions-right">
+
+                    <a href="#membership"
+                       class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#membershipTypeModal">
+                        Become a Member
+                        <span class="arrow">→</span>
+                    </a>
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const craneImg    = document.querySelector(".crane-img");
-    const hollowTitle = document.querySelector(".huge-title-hollow");
-    const cutoutTitle = document.querySelector(".huge-title-cutout");
-
-    if (!craneImg || !hollowTitle || !cutoutTitle) return;
-
-    const layers = [hollowTitle, cutoutTitle];
-
-    function setMaskImage() {
-        const src = craneImg.currentSrc || craneImg.src; // absolute, already resolved
-        layers.forEach(el => el.style.setProperty("--mask-img", `url("${src}")`));
-    }
-
-    function updateMask() {
-        const img = craneImg.getBoundingClientRect();
-
-        layers.forEach(el => {
-            const t = el.getBoundingClientRect();
-            el.style.setProperty("--mask-x", `${Math.round(img.left - t.left)}px`);
-            el.style.setProperty("--mask-y", `${Math.round(img.top - t.top)}px`);
-            el.style.setProperty("--mask-width", `${Math.round(img.width)}px`);
-            el.style.setProperty("--mask-height", `${Math.round(img.height)}px`);
-        });
-
-        requestAnimationFrame(updateMask);
-    }
-
-    function start() {
-        setMaskImage();
-        updateMask();
-    }
-
-    craneImg.complete ? start() : craneImg.addEventListener("load", start);
-});
-</script>

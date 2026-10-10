@@ -6,9 +6,11 @@
     @include('sections.hero')
     @include('sections.about')
     @include('sections.why-join')
+    @include('sections.opportunities')
+    @include('sections.how-it-works')
     @include('sections.membership')
+    @include('sections.insights')
     @include('sections.faq')
-    @include('sections.contact')
     @include('sections.footer')
 
     {{-- Membership Selection --}}

@@ -1,61 +1,79 @@
-<section id="membership" class="membership-section py-5">
+<section id="membership" class="membership-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section-eyebrow">Membership</div>
 
-    <div class="container py-5">
+                <h2 class="section-title">
+                    Find your place<br>in the Alliance
+                </h2>
+            </div>
+            <div class="col-lg-6">
 
-        <div class="membership-card">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="benefit-panel">
+                            <div class="benefit-image">
+                                <img src="../images/membership/container.jpeg"
+                                    alt="containers image">
 
-            <div class="row align-items-center">
+                                <div class="benefit-image-label">
+                                    Freight Forwarder Member
+                                </div>
+                            </div>
+                            <div class="benefit-panel-content">
+                                <div class="benefit-heading-row mb-3">
 
-                <!-- Left Content -->
-                <div class="col-lg-8">
-
-                    
-
-                    <h2 class="membership-title">
-                        Membership Pricing
-                    </h2>
-
-                    <span class="membership-label">
-                        MEMBERSHIP
-                    </span>
-
-                    <p class="membership-description">
-                        Invitation-only membership for selected Trade Partners
-                        and Freight-Forwarding Members.
-                    </p>
-
-                    <div class="membership-features">
-
-                        <div>
-                            <i class="fa-solid fa-circle-check"></i>
-                            Selected Trade Partners
+                                    <div>
+                                        <p>
+                                            For established full-service freight
+                                            forwarders seeking exclusive market
+                                            representation, freight leads, partner
+                                            connections, and wider business
+                                            access
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="#"
+                                    class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#membershipTypeModal">
+                                    Join as Freight Forwarder Member
+                                    <span class="arrow">→</span>
+                                </a>
+                            </div>
                         </div>
-
-                        <div>
-                            <i class="fa-solid fa-circle-check"></i>
-                            Freight-Forwarding Members
-                        </div>
-
                     </div>
 
-                </div>
+                    <!-- STEP 02 -->
+                    <div class="col-md-6">
+                        <div class="benefit-panel">
+                            <div class="benefit-image">
+                                <img src="../images/membership/IMG_3861.jpeg"
+                                    alt="trader member">
 
+                                <div class="benefit-image-label">
+                                    Trader Member
+                                </div>
+                            </div>
+                            <div class="benefit-panel-content">
+                                <div class="benefit-heading-row mb-3">
 
-                <!-- Right CTA -->
-                <div class="col-lg-4">
-
-                    <div class="membership-cta">
-
-                        <span>
-                            Interested in membership?
-                        </span>
-
-                        <a href="#invitation" class="membership-btn" data-bs-toggle="modal"
-                            data-bs-target="#membershipTypeModal">
-                            Request an Invitation
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
+                                    <div>
+                                        <p>
+                                            For manufacturers, importers,
+                                            exporters, buyers, sellers, suppliers,
+                                            and trading companies looking to
+                                            discover partners, enquiries, and
+                                            new markets.
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="#"
+                                    class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#membershipTypeModal">
+                                    Join as Trader
+                                    <span class="arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -63,6 +81,12 @@
             </div>
 
         </div>
-
     </div>
 </section>
+
+
+<!-- <a href="#invitation" class="membership-btn" data-bs-toggle="modal"
+    data-bs-target="#membershipTypeModal">
+        Request an Invitation
+        <i class="fa-solid fa-arrow-right"></i>
+</a> -->
