@@ -259,6 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const faq = document.querySelector('.faq-section');
             const insights = document.querySelector('.news-section');
 
+            container.style.zIndex = '20';
+
             if (faq) {
                 const faqTop = faq.getBoundingClientRect().top;
 
