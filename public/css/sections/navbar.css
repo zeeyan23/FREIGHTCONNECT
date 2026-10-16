@@ -160,3 +160,69 @@ body {
         padding-top: 64px;
     }
 }
+
+
+/* Smooth navbar resizing */
+.modern-navbar {
+    transition:
+        padding 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.modern-navbar .navbar-logo {
+    transition: height 0.3s ease;
+}
+
+.modern-navbar .navbar-nav {
+    transition: gap 0.3s ease;
+}
+
+.modern-navbar .nav-link {
+    transition:
+        color 0.25s ease,
+        padding 0.3s ease,
+        font-size 0.3s ease;
+}
+
+/* Compact navbar after scrolling */
+.modern-navbar.scrolled {
+    padding: 9px 0;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+    background: rgba(249, 250, 252, 0.97);
+}
+
+.modern-navbar.scrolled .navbar-logo {
+    height: 38px;
+}
+
+.modern-navbar.scrolled .nav-link {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    font-size: 14px;
+}
+
+.modern-navbar.scrolled .navbar-nav {
+    gap: 5px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 991.98px) {
+    .modern-navbar.scrolled {
+        padding: 8px 0;
+    }
+
+    .modern-navbar.scrolled .navbar-logo {
+        height: 36px;
+    }
+
+    .modern-navbar.scrolled .navbar-collapse {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .modern-navbar.scrolled .navbar-logo {
+        height: 34px;
+    }
+}

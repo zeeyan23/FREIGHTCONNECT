@@ -6,7 +6,7 @@
             <div class="col footer-column footer-brand">
                 <a href="#" class="footer-logo text-decoration-none fw-bold fs-4">
                     <img
-                        src="{{ asset('images/logos/2.svg') }}"
+                        src="{{ asset('images/logos/2.png') }}"
                         alt="FreightConnect"
                         class="footer-logo"
                     >

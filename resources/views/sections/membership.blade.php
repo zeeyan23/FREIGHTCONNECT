@@ -1,20 +1,19 @@
 <section id="membership" class="membership-section">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
+        <div class="col">
+            <div class="col">
                 <div class="section-eyebrow">Membership</div>
 
                 <h2 class="section-title">
-                    Find your place<br>in the Alliance
+                    Find your place in the Alliance
                 </h2>
             </div>
-            <div class="col-lg-6">
-
+            <div class="col">
                 <div class="row g-4">
                     <div class="col-md-6">
                         <div class="benefit-panel">
                             <div class="benefit-image">
-                                <img src="../images/membership/container.jpeg"
+                                <img src="../images/membership/IMG_3861.jpeg"
                                     alt="containers image">
 
                                 <div class="benefit-image-label">
@@ -26,8 +25,7 @@
 
                                     <div>
                                         <p>
-                                            For established full-service freight
-                                            forwarders seeking exclusive market
+                                            For freight forwarders seeking exclusive market
                                             representation, freight leads, partner
                                             connections, and wider business
                                             access
@@ -47,11 +45,11 @@
                     <div class="col-md-6">
                         <div class="benefit-panel">
                             <div class="benefit-image">
-                                <img src="../images/membership/IMG_3861.jpeg"
+                                <img src="../images/membership/container.jpeg"
                                     alt="trader member">
 
                                 <div class="benefit-image-label">
-                                    Trader Member
+                                    Trader Partner Member
                                 </div>
                             </div>
                             <div class="benefit-panel-content">
@@ -59,17 +57,15 @@
 
                                     <div>
                                         <p>
-                                            For manufacturers, importers,
-                                            exporters, buyers, sellers, suppliers,
-                                            and trading companies looking to
-                                            discover partners, enquiries, and
-                                            new markets.
+                                            For trade partners like buyers, sellers, exporters, importers, 
+                                            manufacturers, distributors, trading companies etc., 
+                                            looking to discover partners, enquiries, and new markets
                                         </p>
                                     </div>
                                 </div>
                                 <a href="#"
                                     class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#membershipTypeModal">
-                                    Join as Trader
+                                    Join as Trade Partner Member
                                     <span class="arrow">→</span>
                                 </a>
                             </div>

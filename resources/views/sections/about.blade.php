@@ -1,11 +1,7 @@
 <section id="about" class="about-section">
 
     <div class="container">
-
-        <!-- Top content -->
         <div class="about-top">
-
-            <!-- Left -->
             <div class="about-title-column">
 
                 <div class="about-eyebrow">
@@ -30,15 +26,8 @@
                 </div>
 
             </div>
-
-
-            <!-- Right -->
+            
             <div class="about-content-column">
-
-                <div class="about-number">
-                    01
-                </div>
-
                 <div class="text-mask-container">
 
                     <p class="about-description mask-base">
@@ -55,7 +44,6 @@
 
                 </div>
 
-
                 <div class="text-mask-container">
 
                     <p class="about-description about-description-muted mask-base">
@@ -76,7 +64,6 @@
 
                 </div>
 
-
                 <div class="text-mask-container">
 
                     <p class="about-description about-description-muted mask-base">
@@ -90,22 +77,13 @@
                         expertise, FreightConnect creates a practical platform
                         for international business growth.
                     </p>
-
                 </div>
-
             </div>
-
         </div>
-
-
-        <!-- Bottom line -->
         <div class="about-divider"></div>
-
-
-        <!-- Bottom highlights -->
         <div class="about-highlights bg-white">
 
-            <div class="about-highlight px-3">
+            <div class="about-highlight">
                 <span class="highlight-number">01</span>
                 <div>
                     <strong>Global Network</strong>
@@ -136,9 +114,6 @@
                     <small>Move business forward</small>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </section>

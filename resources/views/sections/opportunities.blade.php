@@ -8,22 +8,20 @@
                 </div>
                 <div class="col-lg-5">
                     <p class="section-description ms-lg-auto">
-                        Live opportunities across trade and logistics, shared by our global community of members. Sample listings for design preview.
+                        Explore trade enquiries and freight requirements shared by FreightConnect members. 
+                        Sample listings shown for preview.
                     </p>
                 </div>
             </div>
 
-            <!-- Content Columns Row -->
             <div class="row g-4">
                 
                 <div class="col-lg-6 py-3" style="background-color: #f3f7fb">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                         <h3 class="column-title mb-0">Trade DealBoard</h3>
-                        <!-- <a href="#" class="view-all-link">VIEW ALL &rarr;</a> -->
                     </div>
                     <p class="column-desc">Product opportunities from businesses and trade partners.</p>
 
-                    <!-- Card 1 -->
                     <div class="opportunity-card">
                         <div class="row g-3 align-items-center">
                             <div class="col-sm-5">
@@ -67,11 +65,9 @@
                 <div class="col-lg-6 py-3" style="background-color: #f3f7fb">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                         <h3 class="column-title mb-0">Freight RFQs</h3>
-                        <!-- <a href="#" class="view-all-link">VIEW ALL &rarr;</a> -->
                     </div>
                     <p class="column-desc">Logistics requirements from shippers and businesses.</p>
 
-                    <!-- Card 1 -->
                     <div class="opportunity-card">
                         <div class="row g-3 align-items-center">
                             <div class="col-sm-5">
@@ -91,7 +87,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="opportunity-card">
                         <div class="row g-3 align-items-center">
                             <div class="col-sm-5">

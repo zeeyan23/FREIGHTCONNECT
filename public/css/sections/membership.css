@@ -1,293 +1,131 @@
-
-
-/* .membership-card::before {
-    content: "";
-    position: absolute;
-
-    width: 280px;
-    height: 280px;
-
-    border-radius: 50%;
-
-    background: rgba(13, 110, 253, 0.15);
-
-    top: -140px;
-    right: 10%;
-}
-
-.membership-card::after {
-    content: "";
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.04);
-
-    bottom: -90px;
-    left: 35%;
-} */
-
 .membership-section {
     position: relative;
-    z-index: 10;
-    padding: 0px 0 100px;
+    padding: 0 0 100px;
+
     background: #212529;
     color: #ffffff;
-    overflow: visible;
+    z-index: 30;
+    overflow: hidden;
 }
 
-.membership-section-eyebrow {
+.membership-section .section-eyebrow {
     font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #3b82f6;
+    letter-spacing: 0.12em;
+    color: #60a5fa;
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    margin-bottom: 16px;
 }
 
-.membership-section-title {
+.membership-section .section-title {
     font-weight: 800;
     font-size: clamp(2.25rem, 4vw, 3.25rem);
     letter-spacing: -0.03em;
+    line-height: 1.15;
     color: #ffffff;
-    line-height: 1.1;
-    margin-bottom: 0;
+    margin: 0 0 48px;
+    max-width: 750px;
 }
 
-.-membership-step-col {
-    position: relative;
-    padding: 1.5rem 1rem;
-        }
-
+.membership-section .row.g-4 {
+    --bs-gutter-x: 28px;
+    --bs-gutter-y: 28px;
+}
 
 .benefit-panel {
-    position: relative;
-
-    background: #292d32;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    overflow: hidden;
-
-    transition:
-        transform 0.4s ease,
-        border-color 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
 }
-
-.benefit-panel:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(0, 86, 218, 0.5);
-}
-
-
-/* =========================================
-   IMAGE
-========================================= */
 
 .benefit-image {
-    position: relative;
-
-    height: 300px;
-
-    overflow: hidden;
+    height: 280px;
+    flex-shrink: 0;
 }
-
-.benefit-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    transition: transform 0.7s ease;
-}
-
-.benefit-panel:hover .benefit-image img {
-    transform: scale(1.06);
-}
-
-
-/* Image dark overlay */
-
-.benefit-image::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.65),
-            transparent 60%
-        );
-}
-
-
-/* Image label */
-
-.benefit-image-label {
-    position: absolute;
-
-    left: 25px;
-    bottom: 22px;
-
-    z-index: 2;
-
-    padding: 7px 12px;
-
-    border: 1px solid rgba(255, 255, 255, 0.3);
-
-    background: rgba(0, 0, 0, 0.35);
-
-    backdrop-filter: blur(8px);
-
-    color: #ffffff;
-
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-}
-
-
-/* =========================================
-   PANEL CONTENT
-========================================= */
 
 .benefit-panel-content {
-    position: relative;
-
-    padding: 35px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
-
-
-/* Large background number */
-
-.benefit-number {
-    position: absolute;
-
-    top: 15px;
-    right: 25px;
-
-    font-size: 90px;
-    font-weight: 800;
-
-    line-height: 1;
-
-    color: rgba(255, 255, 255, 0.035);
-
-    pointer-events: none;
-}
-
-
-/* Heading */
 
 .benefit-heading-row {
-    position: relative;
-
-    z-index: 2;
-
-    padding-right: 50px;
-}
-
-.benefit-heading-row h3 {
-    margin: 0 0 12px;
-
-    font-size: 27px;
-    line-height: 1.2;
-
-    font-weight: 600;
+    padding-right: 0;
+    margin-bottom: 28px !important;
 }
 
 .benefit-heading-row p {
     margin: 0;
-
-    color: rgba(255, 255, 255, 0.55);
-
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.hero-btn {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    min-height: 50px;
-
-    padding: 0 24px;
-
-    border-radius: 7px;
-
     font-size: 15px;
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition:
-        transform 0.25s ease,
-        background-color 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-
-.primary-btn {
-    background: #0056da;
-    color: #ffffff;
-
-    border: 1px solid #0056da;
+.benefit-panel-content .hero-btn {
+    align-self: flex-start;
+    margin-top: auto;
 }
 
-.primary-btn:hover {
-    background: #0047b5;
-    color: #ffffff;
-
-    transform: translateY(-2px);
+.benefit-panel-content .primary-btn {
+    min-height: 50px;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-@media (min-width: 992px) {
-    .membership-step-col:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 15%;
-        height: 70%;
-        width: 1px;
-        background-color: rgba(255, 255, 255, 0.15);
+/* Tablet */
+@media (max-width: 991px) {
+    .membership-section {
+        padding: 65px 0 80px;
+    }
+
+    .membership-section .section-title {
+        margin-bottom: 36px;
+    }
+
+    .benefit-image {
+        height: 250px;
+    }
+
+    .benefit-panel-content {
+        padding: 26px;
     }
 }
 
-    .membership-step-number {
-        font-size: clamp(2.5rem, 3.5vw, 3.75rem);
-        font-weight: 800;
-        color: #ffffff;
-        line-height: 1;
-        margin-bottom: 0.75rem;
-        letter-spacing: -0.04em;
+/* Mobile */
+@media (max-width: 575px) {
+    .membership-section {
+        padding: 50px 0 60px;
     }
 
-    .membership-step-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 0.35rem;
+    .membership-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 28px;
     }
 
-    .membership-step-desc {
-        font-size: 0.9rem;
-        color: #94a3b8;
-        line-height: 1.5;
-        margin-bottom: 0;
+    .membership-section .row.g-4 {
+        --bs-gutter-x: 16px;
+        --bs-gutter-y: 22px;
     }
 
-       
+    .benefit-image {
+        height: 220px;
+    }
+
+    .benefit-panel-content {
+        padding: 22px;
+    }
+
+    .benefit-heading-row {
+        margin-bottom: 24px !important;
+    }
+
+    .benefit-panel-content .hero-btn {
+        width: 100%;
+        padding: 12px 14px;
+        text-align: center;
+        font-size: 13px;
+    }
+}

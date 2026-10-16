@@ -6,17 +6,15 @@
         <div class="benefit-header">
 
             <div class="benefit-eyebrow">
-                WHY FREIGHTCONNECT
+                Benefits
             </div>
 
             <h2 class="benefit-main-title">
-                Built for <span>Global Connections.</span>
+                What's in it <span>for you</span>
             </h2>
 
             <p class="benefit-intro">
-                Whether you're moving freight or building international
-                business relationships, FreightConnect helps you connect
-                with the right people and opportunities.
+                See how FreightConnect membership benefits your business and supports your goal.
             </p>
 
         </div>
@@ -26,7 +24,7 @@
         <div class="benefit-grid">
 
 
-            <!-- Freight & Logistics -->
+            <!--Trade Partners  -->
             <div class="benefit-panel">
 
                 <div class="benefit-image">
@@ -34,7 +32,7 @@
                          alt="Freight and logistics container">
 
                     <div class="benefit-image-label">
-                        FREIGHT & LOGISTICS
+                        TRADE & BUSINESS
                     </div>
                 </div>
 
@@ -49,7 +47,7 @@
 
                         <div>
                             <h3>
-                                Freight & Logistics Members
+                                Trade Partners Members
                             </h3>
 
                             <p>
@@ -85,7 +83,7 @@
 
                             <div class="modern-benefit-description">
 
-                                Connect with relevant buyers and suppliers
+                                Connect with relevant buyers, suppliers and traders
                                 across international markets based on your
                                 products, requirements and target markets.
 
@@ -258,7 +256,7 @@
             </div>
 
 
-            <!-- Trade Partners -->
+            <!-- FREIGHT & LOGISTICS-->
             <div class="benefit-panel">
 
                 <div class="benefit-image">
@@ -267,7 +265,7 @@
                          alt="Multimodal port logistics hub">
 
                     <div class="benefit-image-label">
-                        TRADE & BUSINESS
+                        FREIGHT & LOGISTICS
                     </div>
 
                 </div>
@@ -284,12 +282,12 @@
                         <div>
 
                             <h3>
-                                Trade Partners & Businesses
+                                Freight Forwarder Members
                             </h3>
 
                             <p>
-                                Find logistics solutions, source products and
-                                build international partnerships.
+                                Freight forwarder member Connect with global trade partners, 
+                                discover freight opportunities, and grow your business.
                             </p>
 
                         </div>

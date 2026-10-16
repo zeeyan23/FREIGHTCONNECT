@@ -73,6 +73,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
 
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -80,50 +82,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!container) return;
 
-    let currentY = -100;
-    let targetY = -100;
+    const faq = document.querySelector('.faq-section');
+    const insights = document.querySelector('.news-section');
+    const truckSection = document.querySelector('.footer-truck-section');
 
+    const maskBases = document.querySelectorAll('.mask-base');
+
+    // Smooth scrolling state
+    let currentY = 0;
+    let targetY = 0;
+
+    // Intro animation state
+    let introOffsetY = -100;
     let startTime = null;
 
-    function loadAnimation(timestamp) {
+    const introDuration = 1200;
 
-        if (!startTime) {
-            startTime = timestamp;
+    // Cache mask overlays
+    const masks = [];
+
+    maskBases.forEach(function (base) {
+        const overlay = base.parentElement.querySelector('.mask-overlay');
+
+        if (overlay) {
+            masks.push({ base, overlay });
         }
+    });
 
-        const elapsed = timestamp - startTime;
-        const duration = 1200;
-
-        let progress = Math.min(elapsed / duration, 1);
-
-        // Ease out
-        progress = 1 - Math.pow(1 - progress, 3);
-
-        currentY = -100 + (100 * progress);
-
-        container.style.opacity = progress;
-
-        if (progress < 1) {
-            requestAnimationFrame(loadAnimation);
-        }
-    }
-
-    requestAnimationFrame(loadAnimation);
-
+    // Calculate the crane's target position on scroll.
     function updateContainerOnScroll() {
 
-        const scrollY = window.scrollY;
-        const scrollStart = 100;
-        const documentHeight =
-            document.documentElement.scrollHeight;
-        const scrollDistance =
-            documentHeight - window.innerHeight - scrollStart;
-        let progress =
-            (scrollY - scrollStart) / scrollDistance;
-        progress =
-            Math.max(0, Math.min(1, progress));
-        targetY =
-            progress * scrollDistance;
+        const scrollStart = 50;
+
+        const maxScroll = Math.max(
+            1,
+            document.documentElement.scrollHeight -
+            window.innerHeight -
+            scrollStart
+        );
+
+        const scrollProgress = Math.max(
+            0,
+            Math.min(
+                1,
+                (window.scrollY - scrollStart) / maxScroll
+            )
+        );
+
+        targetY = scrollProgress * maxScroll;
     }
 
     window.addEventListener(
@@ -132,262 +138,149 @@ document.addEventListener('DOMContentLoaded', function () {
         { passive: true }
     );
 
-    let truckLanding = null;
-    let truckLandingProgress = 0;
+    window.addEventListener(
+        'resize',
+        updateContainerOnScroll,
+        { passive: true }
+    );
 
-    function smoothMovement() {
+    // Update text masking without creating separate animation loops.
+    function updateMasks() {
 
-        currentY +=
-            (targetY - currentY) * 0.08;
+        const imageRect = container.getBoundingClientRect();
 
-        const membership =
-            document.querySelector('.membership-section');
+        masks.forEach(function ({ base, overlay }) {
 
-        let scale = 1;
-        let xOffset = 0;
+            const textRect = base.getBoundingClientRect();
 
-        if (membership) {
+            const left = Math.max(textRect.left, imageRect.left);
+            const right = Math.min(textRect.right, imageRect.right);
+            const top = Math.max(textRect.top, imageRect.top);
+            const bottom = Math.min(textRect.bottom, imageRect.bottom);
 
-            const membershipTop =
-                membership.getBoundingClientRect().top;
-
-            const membershipHeight =
-                membership.offsetHeight;
-
-            /*
-            * Membership enters the viewport
-            */
-            const enterStart = 400;
-            const enterEnd = 0;
-
-            /*
-            * Membership leaves the viewport
-            */
-            const exitStart = -membershipHeight;
-            const exitEnd = -membershipHeight - 100;
-
-            /*
-            * =========================
-            * ENTER MEMBERSHIP
-            * =========================
-            */
-
-            let enterProgress =
-                (enterStart - membershipTop) /
-                (enterStart - enterEnd);
-
-            enterProgress =
-                Math.max(0, Math.min(1, enterProgress));
-
-
-            /*
-            * =========================
-            * EXIT MEMBERSHIP
-            * =========================
-            */
-
-            let exitProgress =
-                (exitStart - membershipTop) /
-                (exitStart - exitEnd);
-
-            exitProgress =
-                Math.max(0, Math.min(1, exitProgress));
-
-
-            /*
-            * =========================
-            * SCALE
-            * =========================
-            */
-
-            const normalScale = 1;
-            const membershipScale = 0.40;
-
-            if (enterProgress > 0 && exitProgress === 0) {
-
-                // Shrink while entering Membership
-                scale =
-                    normalScale -
-                    (
-                        (normalScale - membershipScale)
-                        * enterProgress
-                    );
-
-            } else if (exitProgress > 0) {
-
-                // Grow back after Membership
-                scale =
-                    membershipScale +
-                    (
-                        (normalScale - membershipScale)
-                        * exitProgress
-                    );
-
-            } else {
-
-                scale = normalScale;
+            if (left >= right || top >= bottom) {
+                overlay.style.clipPath = 'inset(0 0 100% 0)';
+                return;
             }
 
+            const clipTop = top - textRect.top;
+            const clipRight = textRect.right - right;
+            const clipBottom = textRect.bottom - bottom;
+            const clipLeft = left - textRect.left;
 
-            /*
-            * =========================
-            * HORIZONTAL POSITION
-            * =========================
-            */
+            overlay.style.clipPath =
+                `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px)`;
+        });
+    }
 
-            const membershipOffset = -150;
+    // Main animation loop
+    let previousTime = 0;
 
-            if (enterProgress > 0 && exitProgress === 0) {
+    function animate(timestamp) {
 
-                // Move left while entering
-                xOffset =
-                    membershipOffset * enterProgress;
+        const deltaTime = previousTime
+            ? Math.min(timestamp - previousTime, 50)
+            : 16.67;
 
-            } else if (exitProgress > 0) {
+        previousTime = timestamp;
 
-                // Return to center while leaving
-                xOffset =
-                    membershipOffset *
-                    (1 - exitProgress);
+        // Intro animation
+        if (startTime === null) {
+            startTime = timestamp;
+        }
 
-            } else {
+        const elapsed = timestamp - startTime;
 
-                xOffset = 0;
+        let introProgress = Math.min(
+            elapsed / introDuration,
+            1
+        );
+
+        // Ease-out cubic
+        introProgress = 1 - Math.pow(1 - introProgress, 3);
+
+        introOffsetY = -100 * (1 - introProgress);
+
+        container.style.opacity = introProgress;
+
+        // Frame-rate-independent smooth scrolling.
+        // Higher 0.12 = faster response; lower 0.06 = smoother/slower.
+        const smoothing = 1 - Math.pow(
+            1 - 0.12,
+            deltaTime / 16.67
+        );
+
+        currentY += (targetY - currentY) * smoothing;
+
+        // Avoid tiny residual movement when nearly at the target.
+        if (Math.abs(targetY - currentY) < 0.05) {
+            currentY = targetY;
+        }
+
+        // Default styling
+        let xOffset = 0;
+        let extraY = 0;
+        let footerScale = 1;
+
+        container.style.zIndex = '20';
+
+        // FAQ layering
+        if (faq) {
+            const faqTop = faq.getBoundingClientRect().top;
+
+            if (
+                faqTop <= window.innerHeight &&
+                faqTop > -faq.offsetHeight
+            ) {
+                container.style.zIndex = 'auto';
             }
         }
 
-            const faq = document.querySelector('.faq-section');
-            const insights = document.querySelector('.news-section');
+        // News layering
+        if (insights) {
+            const insightsTop = insights.getBoundingClientRect().top;
 
-            container.style.zIndex = '20';
-
-            if (faq) {
-                const faqTop = faq.getBoundingClientRect().top;
-
-                if (faqTop <= window.innerHeight && faqTop > -faq.offsetHeight) {
-                    container.style.zIndex = 'auto';
-                }
+            if (insightsTop <= 400) {
+                container.style.zIndex = 'auto';
             }
+        }
 
-            if (insights) {
-                const insightsTop = insights.getBoundingClientRect().top;
+        // Footer truck animation
+        if (truckSection) {
 
-                if (insightsTop <= 400) {
-                    container.style.zIndex = 'auto';
-                }
+            const truckImage = truckSection.querySelector('img');
+
+            if (truckImage) {
+
+                const truckTop =
+                    truckImage.getBoundingClientRect().top;
+
+                const progress = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (window.innerHeight - truckTop) / 300
+                    )
+                );
+
+                extraY = 160 * progress;
+                xOffset = -80 * progress;
+                footerScale = 1 - (0.20 * progress);
             }
-            
-            const truckSection = document.querySelector('.footer-truck-section');
+        }
 
-            let footerOffsetX = 0;
-            let extraY = 0;
-            let footerScale = 100;
+        // Apply the transform once per frame.
+        container.style.transform =
+            `translate3d(calc(-50% + ${xOffset}px), ${currentY + introOffsetY + extraY}px, 0) scale(${footerScale})`;
 
-            if (truckSection) {
-                const truckImage = truckSection.querySelector('img');
+        // Keep masks synchronized with the crane.
+        updateMasks();
 
-                if (truckImage) {
-                    const truckTop = truckImage.getBoundingClientRect().top;
-
-                    const progress = Math.max(
-                        0,
-                        Math.min(1, (window.innerHeight - truckTop) / 300)
-                    );
-
-                    extraY = 160 * progress;
-                    footerOffsetX = -80 * progress;
-
-                    // Shrink the container only as the footer truck appears
-                    footerScale = 1 - (0.20 * progress);
-                }
-            }
-
-            container.style.transform =
-                `translate(calc(-50% + ${xOffset + footerOffsetX}px), ${currentY + extraY}px) scale(${scale * footerScale})`;
-
-            requestAnimationFrame(smoothMovement);
-
+        requestAnimationFrame(animate);
     }
 
     updateContainerOnScroll();
-    smoothMovement();
-
-const maskBases = document.querySelectorAll('.mask-base');
-
-maskBases.forEach(function (base) {
-
-    const overlay = base
-        .parentElement
-        .querySelector('.mask-overlay');
-
-    if (!overlay) return;
-
-
-    function updateMask() {
-
-        const textRect = base.getBoundingClientRect();
-        const imageRect = container.getBoundingClientRect();
-
-        const left = Math.max(
-            textRect.left,
-            imageRect.left
-        );
-
-        const right = Math.min(
-            textRect.right,
-            imageRect.right
-        );
-
-        const top = Math.max(
-            textRect.top,
-            imageRect.top
-        );
-
-        const bottom = Math.min(
-            textRect.bottom,
-            imageRect.bottom
-        );
-
-        if (left >= right || top >= bottom) {
-
-            overlay.style.clipPath =
-                'inset(0 0 100% 0)';
-
-            return;
-        }
-
-        const clipTop =
-            top - textRect.top;
-
-        const clipRight =
-            textRect.right - right;
-
-        const clipBottom =
-            textRect.bottom - bottom;
-
-        const clipLeft =
-            left - textRect.left;
-
-        overlay.style.clipPath =
-            `inset(
-                ${clipTop}px
-                ${clipRight}px
-                ${clipBottom}px
-                ${clipLeft}px
-            )`;
-    }
-
-
-    function animateMask() {
-
-        updateMask();
-
-        requestAnimationFrame(animateMask);
-    }
-
-    animateMask();
-
-});
+    requestAnimationFrame(animate);
 
 });
 </script>

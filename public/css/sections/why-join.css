@@ -1,12 +1,8 @@
-/* =========================================
-   BENEFITS SECTION
-========================================= */
-
 .benefit-section {
     position: relative;
     z-index: 30;
 
-    padding: 120px 0;
+    padding: 0 0 70px;
 
     background: #212529;
     color: #ffffff;
@@ -14,13 +10,8 @@
     overflow: hidden;
 }
 
-
-/* =========================================
-   HEADER
-========================================= */
-
 .benefit-header {
-    max-width: 760px;
+    /* max-width: 760px; */
     margin-bottom: 70px;
 }
 
@@ -61,7 +52,7 @@
 }
 
 .benefit-intro {
-    max-width: 620px;
+    /* max-width: 620px; */
 
     margin: 25px 0 0;
 
@@ -71,11 +62,6 @@
     line-height: 1.7;
 }
 
-
-/* =========================================
-   BENEFIT GRID
-========================================= */
-
 .benefit-grid {
     display: grid;
 
@@ -83,11 +69,6 @@
 
     gap: 30px;
 }
-
-
-/* =========================================
-   PANEL
-========================================= */
 
 .benefit-panel {
     position: relative;
@@ -108,11 +89,6 @@
 
     border-color: rgba(0, 86, 218, 0.5);
 }
-
-
-/* =========================================
-   IMAGE
-========================================= */
 
 .benefit-image {
     position: relative;
@@ -137,9 +113,6 @@
     transform: scale(1.06);
 }
 
-
-/* Image dark overlay */
-
 .benefit-image::after {
     content: "";
 
@@ -154,9 +127,6 @@
             transparent 60%
         );
 }
-
-
-/* Image label */
 
 .benefit-image-label {
     position: absolute;
@@ -181,19 +151,11 @@
     letter-spacing: 1.5px;
 }
 
-
-/* =========================================
-   PANEL CONTENT
-========================================= */
-
 .benefit-panel-content {
     position: relative;
 
     padding: 35px;
 }
-
-
-/* Large background number */
 
 .benefit-number {
     position: absolute;
@@ -210,9 +172,6 @@
 
     pointer-events: none;
 }
-
-
-/* Heading */
 
 .benefit-heading-row {
     position: relative;
@@ -239,11 +198,6 @@
     font-size: 14px;
     line-height: 1.7;
 }
-
-
-/* =========================================
-   MODERN BENEFIT LIST
-========================================= */
 
 .modern-benefit {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -314,12 +268,6 @@
     opacity: 0.7;
 }
 
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
 @media (max-width: 991.98px) {
 
     .benefit-section {
@@ -365,7 +313,6 @@
     }
 
 }
-
 
 @media (max-width: 575.98px) {
 

@@ -1,7 +1,3 @@
-/* =========================================
-   ABOUT SECTION
-========================================= */
-
 .about-section {
     position: relative;
     padding: 130px 0 100px;
@@ -42,10 +38,6 @@
     clip-path: inset(0 0 100% 0);
 }
 
-/* =========================================
-   MAIN CONTENT
-========================================= */
-
 .about-top {
     display: grid;
 
@@ -55,11 +47,6 @@
 
     align-items: start;
 }
-
-
-/* =========================================
-   EYEBROW
-========================================= */
 
 .about-eyebrow {
     display: flex;
@@ -85,11 +72,6 @@
     display: inline-block;
 }
 
-
-/* =========================================
-   TITLE
-========================================= */
-
 .about-title {
     max-width: 700px;
 
@@ -107,10 +89,6 @@
 .about-title span {
     color: #5d9cff;
 }
-
-/* =========================================
-   RIGHT CONTENT
-========================================= */
 
 .about-content-column {
     position: relative;
@@ -135,7 +113,6 @@
     pointer-events: none;
 }
 
-
 .about-description {
     position: relative;
 
@@ -146,18 +123,13 @@
     color: rgba(255, 255, 255, 0.82);
 
     font-size: 16px;
-
+    font-weight: 500;
     line-height: 1.8;
 }
 
 .about-description-muted {
     color: rgba(255, 255, 255, 0.52);
 }
-
-
-/* =========================================
-   DIVIDER
-========================================= */
 
 .about-divider {
     width: 100%;
@@ -169,19 +141,12 @@
     background: rgba(255, 255, 255, 0.12);
 }
 
-
-/* =========================================
-   HIGHLIGHTS
-========================================= */
-
 .about-highlights {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
 
     margin-top: 0;
 }
-
 
 .about-highlight {
     display: flex;
@@ -192,13 +157,15 @@
 
     min-height: 110px;
 
-    padding: 30px 25px 0;
+    padding: 30px 30px 25px 0;
 
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 
     transition:
         background-color 0.3s ease,
         padding-left 0.3s ease;
+
+    justify-content: center;
 }
 
 .about-highlight:first-child {
@@ -210,9 +177,6 @@
     border-right: none;
 }
 
-
-/* Number */
-
 .highlight-number {
     color: #5d9cff;
 
@@ -222,9 +186,6 @@
 
     letter-spacing: 1px;
 }
-
-
-/* Text */
 
 .about-highlight strong {
     display: block;
@@ -246,18 +207,14 @@
     font-size: 12px;
 }
 
-
-/* Hover */
-
 .about-highlight:hover {
-    background: rgba(255, 255, 255, 0.025);
-
+    background: #f5f9ff;
     padding-left: 30px;
 }
 
-.about-highlight:first-child:hover {
+/* .about-highlight:first-child:hover {
     padding-left: 5px;
-}
+} */
 
 
 .text-mask-container {
@@ -283,10 +240,6 @@
 
     clip-path: inset(0 0 100% 0);
 }
-
-/* =========================================
-   TABLET
-========================================= */
 
 @media (max-width: 991.98px) {
 
@@ -326,11 +279,6 @@
     }
 
 }
-
-
-/* =========================================
-   MOBILE
-========================================= */
 
 @media (max-width: 575.98px) {
 

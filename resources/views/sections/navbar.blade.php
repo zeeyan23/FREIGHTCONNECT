@@ -54,3 +54,22 @@
         </div>
     </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.querySelector('.modern-navbar');
+
+    if (!navbar) return;
+
+    function handleNavbarScroll() {
+        navbar.classList.toggle('scrolled', window.scrollY > 30);
+    }
+
+    handleNavbarScroll();
+
+    window.addEventListener('scroll', handleNavbarScroll, {
+        passive: true
+    });
+});
+
+</script>
