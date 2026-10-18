@@ -119,7 +119,7 @@
     </div>
 </footer>
 
-<div class="footer-truck-section container text-center my-4">
+<div class="footer-truck-section container text-center d-none d-lg-block">
     <img 
         src="{{ asset('images/footer/truck.png') }}" 
         alt="FreightConnect Fleet" 

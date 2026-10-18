@@ -3,13 +3,11 @@
         <div class="row align-items-start g-4 g-lg-5">
             <!-- Header Column -->
             <div class="col-lg-4">
-                <span class="text-primary fw-bold text-uppercase small tracking-wide">FAQ</span>
+                <span class="text-primary fw-bold text-uppercase small tracking-wide">FAQs</span>
                 <h2 class="display-5 fw-black text-dark mt-2 mb-0" style="font-weight: 800; letter-spacing: -1px;">
                     Frequently asked questions.
                 </h2>
             </div>
-
-            <!-- FAQ Accordion Items Column (Split into two columns on desktop matching image) -->
             <div class="col-lg-8">
                 <div class="row g-0">
                     <!-- Column 1 of Questions -->
@@ -95,7 +93,7 @@
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordionRight">
                                     <div class="accordion-body px-0 text-muted small">
-                                        During the initial launch phase, FreightConnect will operate through dedicated WhatsApp groups for Traders and Freight Forwarders, supported by the website. Trade enquiries,
+                                        During the initial launch phase, FreightConnect will operate through dedicated WhatsApp groups for Trader partners and Freight Forwarders, supported by the website. Trade enquiries,
                                         freight requirements, member updates, and important alliance announcements will be shared through the relevant WhatsApp groups and on the FreightConnect website.
                                     </div>
                                 </div>

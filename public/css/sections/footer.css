@@ -141,11 +141,10 @@
 
 .footer-truck-section img {
     position: relative;
-    z-index: 40;
-    max-width:100%;
-    margin-top: 80px;
+    /* z-index: 40; */
+    max-width: 100%;
+    margin-top: clamp(100px, 20vw, 350px);
 }
-
 /* =========================================
    TABLETS
 ========================================= */

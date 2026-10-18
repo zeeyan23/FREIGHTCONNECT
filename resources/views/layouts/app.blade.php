@@ -263,8 +263,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     )
                 );
 
-                extraY = 160 * progress;
-                xOffset = -80 * progress;
+                extraY = 320 * progress;
+                xOffset = -140 * progress;
                 footerScale = 1 - (0.20 * progress);
             }
         }

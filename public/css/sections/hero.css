@@ -17,8 +17,12 @@
 
     display: flex;
     align-items: center;
-
+    z-index: 2;
     overflow: visible;
+}
+
+.hero-section > .container {
+    position: static;
 }
 
 .crane-image-container {
