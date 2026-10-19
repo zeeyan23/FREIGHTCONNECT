@@ -22,7 +22,21 @@
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordionLeft">
                                     <div class="accordion-body px-0 text-muted small">
-                                        FreightConnect is a platform designed to connect trade and logistics opportunities 
+                                        FreightConnect is a secure global alliance built specifically for two distinct groups:
+
+                                        <ul class="mt-2 mb-0">
+                                            <li>
+                                                <strong>Trade Partners:</strong> Any business actively engaged in
+                                                international B2B commerce—including buyers, suppliers,
+                                                manufacturers, exporters, importers, wholesalers, regional
+                                                distributors, and trading companies.
+                                            </li>
+                                            <li>
+                                                <strong>Freight Forwarders:</strong> Fully vetted Freight-Forwarding
+                                                Members specializing in international logistics, shipping,
+                                                and cargo transportation.
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -93,8 +107,10 @@
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordionRight">
                                     <div class="accordion-body px-0 text-muted small">
-                                        During the initial launch phase, FreightConnect will operate through dedicated WhatsApp groups for Trader partners and Freight Forwarders, supported by the website. Trade enquiries,
-                                        freight requirements, member updates, and important alliance announcements will be shared through the relevant WhatsApp groups and on the FreightConnect website.
+                                        During the initial launch phase, FreightConnect will operate through dedicated 
+                                        WhatsApp groups for Trader partners and Freight Forwarders, supported by the website. 
+                                        Trade enquiries, freight requirements, member updates, and important alliance announcements will be shared 
+                                        through the relevant WhatsApp groups and on the FreightConnect website.
                                     </div>
                                 </div>
                             </div>

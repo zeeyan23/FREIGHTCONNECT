@@ -13,20 +13,9 @@
                 Stay informed with the latest developments in global
                 trade, logistics, shipping and the FreightConnect network.
             </p>
-
-            <!-- <div class="news-intro-line"></div>
-
-            <span class="news-caption">
-                INDUSTRY UPDATES &amp; ALLIANCE NEWS
-            </span> -->
         </div>
-
-        <!-- RIGHT SIDE: ANIMATED CARDS -->
         <div class="news-right">
-
             <div class="card-stack">
-
-                <!-- Keep your existing card-1 HTML here -->
                 <article class="news-card card-1">
                     <div class="card-image">
                         <img
@@ -54,8 +43,6 @@
                         </a>
                     </div>
                 </article>
-
-                <!-- Keep your existing card-2 HTML here -->
                 <article class="news-card card-2">
                    <div class="card-image">
                         <img
@@ -84,8 +71,6 @@
                         </a>
                     </div>
                 </article>
-
-                <!-- Keep your existing card-3 HTML here -->
                 <article class="news-card card-3">
                     <div class="card-image">
                         <img
@@ -111,17 +96,12 @@
                         </a>
                     </div>
                 </article>
-
             </div>
-
             <div class="all-news" id="allNews">
                 <a href="news.html">View All News <span>→</span></a>
             </div>
-
         </div>
-
     </div>
-
 </section>
 <script>
 

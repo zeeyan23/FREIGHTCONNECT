@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Calculate the crane's target position on scroll.
+    
     function updateContainerOnScroll() {
 
         const scrollStart = 50;
@@ -131,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         targetY = scrollProgress * maxScroll;
     }
+
 
     window.addEventListener(
         'scroll',
@@ -210,7 +212,41 @@ document.addEventListener('DOMContentLoaded', function () {
             deltaTime / 16.67
         );
 
-        currentY += (targetY - currentY) * smoothing;
+        
+        
+        const newsRect = insights
+            ? insights.getBoundingClientRect()
+            : null;
+
+        const isNewsActive = newsRect &&
+            newsRect.top <= 0 &&
+            newsRect.bottom > 0;
+
+        if (isNewsActive) {
+            // Keep the crane stationary in the viewport
+            container.style.position = 'fixed';
+            container.style.top = '5%';
+            container.style.left = '50%';
+            container.style.marginTop = '0';
+            container.style.zIndex = '4';
+
+        } else {
+            // Restore the original hero positioning
+            container.style.position = 'absolute';
+            container.style.top = '-40px';
+            container.style.left = '50%';
+            container.style.marginTop = '0';
+        }
+
+        if (!isNewsActive) {
+            currentY += (targetY - currentY) * smoothing;
+
+            if (Math.abs(targetY - currentY) < 0.05) {
+                currentY = targetY;
+            }
+        }
+
+
 
         // Avoid tiny residual movement when nearly at the target.
         if (Math.abs(targetY - currentY) < 0.05) {
@@ -270,8 +306,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Apply the transform once per frame.
+        
+        const finalY = isNewsActive
+            ? -50
+            : currentY + introOffsetY + extraY;
+
         container.style.transform =
-            `translate3d(calc(-50% + ${xOffset}px), ${currentY + introOffsetY + extraY}px, 0) scale(${footerScale})`;
+            `translate3d(calc(-50% + ${isNewsActive ? 0 : xOffset}px), ${finalY}px, 0) scale(${isNewsActive ? 1 : footerScale})`;
+
 
         // Keep masks synchronized with the crane.
         updateMasks();
