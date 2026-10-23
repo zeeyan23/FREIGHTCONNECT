@@ -86,18 +86,26 @@ throw "Robocopy failed with exit code $LASTEXITCODE"
 # Verify migration files
 
 # ============================================
-
 $MigrationPath = "$DeployTemp\database\migrations"
 
-if (!(Test-Path "$MigrationPath\2026_09_05_101439_add_trader_fields_to_trader_member_account_table.php")) {
-throw "Migration file missing from deployment package."
+$CreateMigration = "$MigrationPath\2026_10_20_094416_create_trader_member_account_table.php"
+
+if (!(Test-Path $CreateMigration)) {
+    throw "Consolidated trader migration missing from deployment package."
 }
 
-if (!(Test-Path "$MigrationPath\2026_09_05_102713_update_phone_fields_in_trader_member_account_table.php")) {
-throw "Migration file missing from deployment package."
+$ObsoleteMigrations = @(
+    "2026_09_05_101439_add_trader_fields_to_trader_member_account_table.php",
+    "2026_09_05_102713_update_phone_fields_in_trader_member_account_table.php"
+)
+
+foreach ($Migration in $ObsoleteMigrations) {
+    if (Test-Path "$MigrationPath\$Migration") {
+        throw "Obsolete trader migration still exists: $Migration"
+    }
 }
 
-Write-Host "Migration files verified successfully." -ForegroundColor Green
+Write-Host "Consolidated trader migration verified successfully." -ForegroundColor Green
 
 # ============================================
 # 3. Create ZIP
@@ -184,13 +192,15 @@ if [ `$? -ne 0 ]; then
     exit 1
 fi
 
+
 echo "Running migrations..."
 /usr/bin/php artisan migrate --force
 
-if [ `$? -ne 0 ]; then
+if [ $? -ne 0 ]; then
     echo "ERROR: Migration failed."
     exit 1
 fi
+
 
 echo "Clearing Laravel cache..."
 /usr/bin/php artisan optimize:clear

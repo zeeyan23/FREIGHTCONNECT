@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('trader_member_account', function (Blueprint $table) {
+            $table->string('application_status')
+                ->default('pending');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('trader_member_account', function (Blueprint $table) {
+            $table->dropColumn('application_status');
+        });
+    }
+};

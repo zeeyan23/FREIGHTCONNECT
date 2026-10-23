@@ -5,6 +5,49 @@
     min-height: 100vh;
 }
 
+.membership-agreement {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.membership-agreement-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    line-height: 1.7;
+}
+
+.membership-agreement-text {
+    flex: 1;
+}
+
+.membership-custom-check {
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+/* Hide the input by default */
+.business-interest-other .other-specify-input {
+    display: none;
+}
+
+/* Show the input when Other is checked */
+.business-interest-other:has(#interest_other:checked) .other-specify-input {
+    display: block;
+}
+
+/* Hide the input by default */
+.business-type-other .other-specify-input {
+    display: none;
+}
+
+/* Show the input when Other is checked */
+.business-type-other:has(#business_other:checked) .other-specify-input {
+    display: block;
+}
+
 
 /* =========================================
    PAGE HEADER

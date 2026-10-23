@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\FormController;
 use Umpirsky\Country\CountryRepository;
 use App\Http\Controllers\ForwardingMemberController;
@@ -125,3 +126,13 @@ Route::middleware('auth:freightconnect')->group(function () {
         ->name('freightconnect.logout');
 
 });
+
+Route::get('/private-files/{path}', function (string $path) {
+    abort_unless(auth()->check(), 403);
+
+    abort_if(str_contains($path, '..'), 404);
+
+    abort_unless(Storage::disk('local')->exists($path), 404);
+
+    return Storage::disk('local')->download($path);
+})->where('path', '.*')->middleware('auth')->name('private-files.download');
