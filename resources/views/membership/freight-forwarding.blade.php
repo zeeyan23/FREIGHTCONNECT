@@ -76,6 +76,22 @@
                             >
                         </div>
 
+                        
+                        <!-- Registered Business Address -->
+                        <div class="col-md-6">
+                            <label for="registered_business_address" class="form-label">
+                                Registered Business Address <span>*</span>
+                            </label>
+                            <textarea
+                                id="registered_business_address"
+                                name="registered_business_address"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Enter your registered business address"
+                                required
+                            ></textarea>
+                        </div>
+
                         <!-- Country & City -->
                         <div class="col-md-6">
                             <label for="country" class="form-label">
@@ -146,6 +162,23 @@
                             >
                         </div>
 
+                        
+                        <!-- Contact Person Email -->
+                        <div class="col-md-6">
+                            <label for="contact_person_email" class="form-label">
+                                Contact Person Email <span>*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="contact_person_email"
+                                name="contact_person_email"
+                                class="form-control"
+                                placeholder="contact@example.com"
+                                required
+                            >
+                        </div>
+
+
                         <!-- Email & Phone -->
                         <div class="col-md-6">
                             <label for="business_email" class="form-label">
@@ -178,6 +211,25 @@
                             <input type="hidden" name="phone_full" id="phone_full">
                             <input type="hidden" name="phone_dial_code" id="phone_dial_code">
                         </div>
+                        
+                        <!-- WhatsApp Availability -->
+                        <div class="col-md-6">
+                            <label for="whatsapp_available">
+                                Is this number available on WhatsApp? <span>*</span>
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="whatsapp_available"
+                                name="whatsapp_available"
+                            >
+                                <option value="" selected disabled>
+                                    Select an option
+                                </option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
 
                         <!-- Website -->
                         <div class="col-md-6">
@@ -193,6 +245,24 @@
                                 placeholder="https://www.example.com"
                                 required
                             >
+                        </div>
+
+                                                
+                        <!-- Company Logo -->
+                        <div class="col-md-6">
+                            <label for="company_logo" class="form-label">
+                                Company Logo
+                            </label>
+                            <input
+                                type="file"
+                                id="company_logo"
+                                name="company_logo"
+                                class="form-control"
+                                accept=".jpg,.jpeg,.png,.webp"
+                            >
+                            <p class="form-helper">
+                                Optional. Accepted formats: JPG, PNG, and WebP.
+                            </p>
                         </div>
 
                         <!-- Years in Business -->
@@ -626,6 +696,27 @@
                             </span>
                         </div>
 
+                        
+                        <!-- Business Activity Evidence -->
+                        <div class="mt-4">
+                            <label for="business_activity_document" class="form-label">
+                                Business Activity Evidence
+                            </label>
+
+                            <input
+                                type="file"
+                                id="business_activity_document"
+                                name="business_activity_document"
+                                class="form-control"
+                                accept=".pdf,.jpg,.jpeg,.png"
+                            >
+
+                            <p class="form-helper">
+                                Optional. Upload a document showing your company's business activity.
+                                Accepted formats: PDF, JPG, JPEG and PNG.
+                            </p>
+                        </div>
+
                     </div>
 
                 </div>
@@ -661,23 +752,12 @@
                         <div class="radio-list">
 
                             <label class="radio-option">
-                                <input
-                                    type="radio"
-                                    name="association_member"
-                                    value="yes"
-                                    id="association_yes"
-                                    required
-                                >
+                                <input type="radio" name="association_member" value="1" id="association_yes" required>
                                 <span>Yes</span>
                             </label>
 
                             <label class="radio-option">
-                                <input
-                                    type="radio"
-                                    name="association_member"
-                                    value="no"
-                                    id="association_no"
-                                >
+                                <input type="radio" name="association_member" value="0" id="association_no">
                                 <span>No</span>
                             </label>
 
@@ -733,8 +813,8 @@
                                     <input
                                         type="radio"
                                         name="payment_recovery_support"
-                                        value="yes"
-                                        required
+                                        value="1"
+                                        
                                     >
                                     <span>
                                         Yes, I would like to opt in
@@ -745,7 +825,7 @@
                                     <input
                                         type="radio"
                                         name="payment_recovery_support"
-                                        value="no"
+                                        value="0"
                                     >
                                     <span>
                                         No, I do not require it
@@ -769,6 +849,156 @@
 
                     </div>
 
+                </div>
+
+                
+                <!-- ============================= -->
+                <!-- 06 BUSINESS REFERENCE -->
+                <!-- ============================= -->
+
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <span>06</span>
+                        <div>
+                            <h2>Business Reference</h2>
+                            <p>Provide details of a company that can verify your business relationship.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="reference_company_name" class="form-label">
+                                Reference Company Name <span>*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="reference_company_name"
+                                placeholder="Enter company name"
+                                name="reference_company_name" class="form-control" 
+                                maxlength="255" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_country" class="form-label">
+                                Country <span>*</span>
+                            </label>
+                            <select
+                                class="form-control"
+                                placeholder="Enter country"
+                                name="reference_country"
+                                id="reference_country"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Select Country
+                                </option>
+
+                                @foreach($countries as $code => $country)
+                                    <option value="{{ $code }}">
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_company_website" class="form-label">
+                                Reference Company Website
+                            </label>
+                            <input type="url" id="reference_company_website"
+                                name="reference_company_website" class="form-control"
+                                placeholder="https://example.com">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_contact_person" class="form-label">
+                                Reference Contact Person <span>*</span>
+                            </label>
+                            <input type="text" id="reference_contact_person"
+                                name="reference_contact_person" 
+                                class="form-control"
+                                placeholder="Enter contact person's full name"
+                                maxlength="255" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label 
+                                for="reference_designation" class="form-label">
+                                Reference Contact Designation <span>*</span>
+                            </label>
+                            <input type="text" id="reference_designation"
+                                name="reference_designation" class="form-control" placeholder="Enter contact person's designation"
+                                maxlength="255" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_business_email" class="form-label">
+                                Reference Business Email <span>*</span>
+                            </label>
+                            <input type="email" id="reference_business_email"
+                                name="reference_business_email" class="form-control" placeholder="Enter business email address"
+                                maxlength="255" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_phone" class="form-label">
+                                Reference Phone Number <span>*</span>
+                            </label>
+                            <input type="tel" id="reference_phone"
+                                name="reference_phone" class="form-control" placeholder="e.g. +971 50 123 4567"
+                                maxlength="30" required>
+                            <input type="hidden" name="reference_phone_full" id="reference_phone_full">
+                            <input type="hidden" name="reference_dial_code" id="reference_dial_code">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_relationship" class="form-label">
+                                Business Relationship <span>*</span>
+                            </label>
+                            <select
+                                class="form-select"
+                                id="reference_relationship"
+                                name="reference_relationship"
+                                required
+                            >
+                                <option value="">Select relationship</option>
+                                <option value="Customer">Customer</option>
+                                <option value="Supplier">Supplier</option>
+                                <option value="Business Partner">Business Partner</option>
+                                <option value="Manufacturer">Manufacturer</option>
+                                <option value="Distributor">Distributor</option>
+                                <option value="Trading Partner">Trading Partner</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_relationship_duration" class="form-label">
+                                Relationship Duration <span>*</span>
+                            </label>
+                            <select
+                                class="form-select"
+                                id="reference_relationship_duration"
+                                name="reference_relationship_duration"
+                                required
+                            >
+                                <option value="">Select duration</option>
+                                <option value="Less than 6 months">Less than 6 months</option>
+                                <option value="6 months to 1 year">6 months to 1 year</option>
+                                <option value="1–3 years">1–3 years</option>
+                                <option value="3–5 years">3–5 years</option>
+                                <option value="More than 5 years">More than 5 years</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="reference_last_transaction_date" class="form-label">
+                                Date of Last Transaction
+                            </label>
+                            <input type="date" id="reference_last_transaction_date"
+                                name="reference_last_transaction_date" class="form-control" placeholder="Last date of transaction">
+                        </div>
+                    </div>
                 </div>
 
 
@@ -815,7 +1045,7 @@
 
                         <input
                             type="checkbox"
-                            name="membership_terms"
+                            name="membership_terms_accepted"
                             value="1"
                             required
                         >
@@ -842,6 +1072,48 @@
                         </span>
 
                     </label>
+
+                                        
+                    <!-- Information Accuracy Declaration -->
+                    <label class="membership-agreement-label">
+                        <input
+                            type="checkbox"
+                            id="information_accuracy_confirmed"
+                            name="information_accuracy_confirmed"
+                            value="1"
+                            required
+                        >
+
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="membership-agreement-text">
+                            I confirm that the information provided is accurate and that I am
+                            authorized to submit this application on behalf of my company.
+                            <strong>*</strong>
+                        </span>
+                    </label>
+
+                    <!-- Verification Authorization -->
+                    <label class="membership-agreement-label">
+                        <input
+                            type="checkbox"
+                            id="verification_authorization_confirmed"
+                            name="verification_authorization_confirmed"
+                            value="1"
+                            required
+                        >
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="membership-agreement-text">
+                            I authorize FreightConnect to verify the information provided,
+                            contact the listed business reference, and conduct reasonable
+                            business verification checks.
+                            <strong>*</strong>
+                        </span>
+                    </label>
+
 
                 </div>
 
@@ -997,42 +1269,72 @@ document.addEventListener('DOMContentLoaded', function () {
     yesRadio.addEventListener('change', toggleAssociation);
     noRadio.addEventListener('change', toggleAssociation);
 
+    const freightForm = document.getElementById("myForm");
     const phoneInput = document.getElementById('phone');
     const phoneFullInput = document.getElementById('phone_full');
     const phoneDialCodeInput = document.getElementById('phone_dial_code');
-    const form = document.getElementById("myForm");
 
-    const iti = window.intlTelInput(phoneInput, {
+    const referencePhoneInput = document.getElementById('reference_phone');
+    const referencePhoneFullInput = document.getElementById('reference_phone_full');
+    const referencePhoneDialCodeInput = document.getElementById('reference_dial_code');
+
+    
+
+    const itiOptions = {
         initialCountry: "in",
         separateDialCode: true,
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
-    });
+    };
 
-    function updatePhoneFields() {
-        const countryData = iti.getSelectedCountryData();
+    const iti = window.intlTelInput(phoneInput, itiOptions);
+    const referenceIti = window.intlTelInput(referencePhoneInput, itiOptions);
 
+    function updatePhoneFields(phoneIti, phoneInput, fullInput, dialCodeInput) {
+        const countryData = phoneIti.getSelectedCountryData();
         const localNumber = phoneInput.value.replace(/\D/g, "");
 
-        phoneDialCodeInput.value = countryData.dialCode
+        dialCodeInput.value = countryData.dialCode
             ? "+" + countryData.dialCode
             : "";
 
-        phoneFullInput.value = countryData.dialCode
+        fullInput.value = countryData.dialCode && localNumber
             ? "+" + countryData.dialCode + localNumber
             : "";
     }
 
-    phoneInput.addEventListener('input', updatePhoneFields);
-    phoneInput.addEventListener('change', updatePhoneFields);
-    phoneInput.addEventListener('countrychange', updatePhoneFields);
+    // Trader phone
+    function updateTraderPhoneFields() {
+        updatePhoneFields(
+            iti,
+            phoneInput,
+            phoneFullInput,
+            phoneDialCodeInput
+        );
+    }
 
-    document.getElementById("myForm").addEventListener("submit", function () {
-        updatePhoneFields();
+    phoneInput.addEventListener('input', updateTraderPhoneFields);
+    phoneInput.addEventListener('change', updateTraderPhoneFields);
+    phoneInput.addEventListener('countrychange', updateTraderPhoneFields);
 
-        console.log('Phone:', phoneInput.value);
-        console.log('Full phone:', phoneFullInput.value);
-        console.log('Dial code:', phoneDialCodeInput.value);
-    });        
+    // Reference phone
+    function updateReferencePhoneFields() {
+        updatePhoneFields(
+            referenceIti,
+            referencePhoneInput,
+            referencePhoneFullInput,
+            referencePhoneDialCodeInput
+        );
+    }
+
+    referencePhoneInput.addEventListener('input', updateReferencePhoneFields);
+    referencePhoneInput.addEventListener('change', updateReferencePhoneFields);
+    referencePhoneInput.addEventListener('countrychange', updateReferencePhoneFields);
+
+    // Update both phone fields before submitting the form
+    freightForm.addEventListener('submit', function () {
+        updateTraderPhoneFields();
+        updateReferencePhoneFields();
+    });       
 
 });
 </script>

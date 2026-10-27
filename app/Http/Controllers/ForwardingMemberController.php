@@ -1,76 +1,230 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\StoreForwardingMemberRequest;
 use App\Models\ForwardingMemberAccount;
-use Illuminate\Http\Request;
+use Google\Client;
+use Google\Service\Sheets;
+use Google\Service\Sheets\ValueRange;
+use Illuminate\Support\Facades\Log;
+use Throwable;
+use App\Mail\ForwardingApplicationSubmitted;
+use Illuminate\Support\Facades\Mail;
 
 class ForwardingMemberController extends Controller
 {
     public function store(StoreForwardingMemberRequest $request)
     {
-        
         $validated = $request->validated();
 
-        $documentPaths = [];
+        $validated['verification_documents'] = [];
 
-        if ($request->hasFile('verification_documents')) {
-            foreach ($request->file('verification_documents') as $document) {
-                $documentPaths[] = $document->store(
-                    'forwarding-members/verification-documents',
-                    'public'
-                );
-            }
+        foreach ($request->file('verification_documents', []) as $document) {
+            $validated['verification_documents'][] = $document->store(
+                'forwarding-members/verification-documents',
+                'local'
+            );
         }
 
-        $marketsToDevelop = array_values(
-            array_filter(
-                array_map('trim', explode(',', $validated['markets_to_develop']))
-            )
-        );
+        if ($request->hasFile('company_logo')) {
+            $validated['company_logo'] = $request
+                ->file('company_logo')
+                ->store('forwarding-logos', 'local');
+        }
 
-        ForwardingMemberAccount::create([
-            'company_name' => $validated['company_name'],
-            'country' => $validated['country'],
-            'city' => $validated['city'],
+        $validated['business_activity_document'] = $request
+            ->file('business_activity_document')
+            ->store('forwarding-documents/business-activity', 'local');
 
-            'contact_person_name' => $validated['contact_person_name'],
-            'contact_person_designation' => $validated['contact_person_designation'],
+        // Save the application first.
+        $application = ForwardingMemberAccount::create($validated);
 
-            'business_email' => $validated['business_email'],
+        // Send confirmation email using Laravel Mail.
+        try {
+            Mail::to($application->business_email)->send(
+                new ForwardingApplicationSubmitted($application)
+            );
+        } catch (Throwable $e) {
+            Log::error('Forwarding application email failed.', [
+                'application_id' => $application->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
 
-            'phone' => $validated['phone'],
-            'phone_full' => $validated['phone_full'],
-            'phone_dial_code' => $validated['phone_dial_code'],
+        // Sync to the separate Google Sheets worksheet.
+        try {
+            $client = new Client();
 
-            'company_website' => $validated['company_website'],
-            'years_in_business' => $validated['years_in_business'],
+            $client->setApplicationName(
+                'FreightConnect Forwarding Members'
+            );
 
-            'services' => $validated['services'],
-            'trade_lanes' => $validated['trade_lanes'],
-            'cargo_capabilities' => $validated['cargo_capabilities'],
+            $client->setScopes([
+                Sheets::SPREADSHEETS,
+            ]);
 
-            'markets_to_develop' => $marketsToDevelop,
+            $client->setAuthConfig(
+                storage_path('app/google-credentials-client.json')
+            );
 
-            'verification_type' => $validated['verification_type'],
-            'verification_documents' => $documentPaths,
+            $service = new Sheets($client);
 
-            'association_member' => $validated['association_member'] === 'yes',
-            'association_details' => $validated['association_details'] ?? null,
+            $spreadsheetId =
+                '1Z_lYLckrfh7MMokMOFqq_NYaCluMsjg8aiukM1Yhl7k';
 
-            'payment_recovery_support' =>
-                $validated['payment_recovery_support'] === 'yes',
+            $tab = "'Forwarding Members'";
 
-            'referral' => $validated['referral'] ?? null,
+            $range = $tab . '!A:AL';
 
-            'membership_status' => 'pending',
+            // Convert array fields into readable spreadsheet values.
+            $formatValue = static function ($value): string {
+                if (is_array($value)) {
+                    return implode(', ', array_map(
+                        static fn ($item) => is_scalar($item)
+                            ? (string) $item
+                            : ($item === null
+                                ? ''
+                                : (json_encode($item, JSON_UNESCAPED_UNICODE) ?: '')),
+                        $value
+                    ));
+                }
 
-            'membership_terms_accepted' => true,
-            'membership_terms_accepted_at' => now(),
-            'membership_terms_version' => '1.0',
-        ]);
+                if ($value === null) {
+                    return '';
+                }
+
+                if (is_bool($value)) {
+                    return $value ? 'Yes' : 'No';
+                }
+
+                return (string) $value;
+            };
+
+            $headers = [[
+                'Created At',
+                'Company Name',
+                'Business Email',
+                'Phone',
+                'Phone Full',
+                'Phone Dial Code',
+                'Country',
+                'City',
+                'Registered Business Address',
+                'Company Website',
+                'Years in Business',
+                'Company Logo',
+                'Contact Person Name',
+                'Contact Person Designation',
+                'Contact Person Email',
+                'WhatsApp Available',
+                'Services',
+                'Trade Lanes',
+                'Cargo Capabilities',
+                'Markets to Develop',
+                'Verification Type',
+                'Verification Documents',
+                'Business Activity Document',
+                'Association Member',
+                'Association Details',
+                'Payment Recovery Support',
+                'Referral',
+                'Reference Company Name',
+                'Reference Country',
+                'Reference Company Website',
+                'Reference Contact Person',
+                'Reference Designation',
+                'Reference Business Email',
+                'Reference Phone',
+                'Reference Relationship',
+                'Reference Relationship Duration',
+                'Reference Last Transaction Date',
+                'Application Status',
+            ]];
+
+            // Ensure headers exist before appending new applications.
+            $service->spreadsheets_values->update(
+                $spreadsheetId,
+                $tab . '!A1:AL1',
+                new ValueRange([
+                    'values' => $headers,
+                ]),
+                [
+                    'valueInputOption' => 'RAW',
+                ]
+            );
+
+            $values = [[
+                $formatValue($application->created_at?->format('Y-m-d H:i:s')),
+                $formatValue($application->company_name),
+                $formatValue($application->business_email),
+                $formatValue($application->phone),
+                $formatValue($application->phone_full),
+                $formatValue($application->phone_dial_code),
+                $formatValue($application->country),
+                $formatValue($application->city),
+                $formatValue($application->registered_business_address),
+                $formatValue($application->company_website),
+                $formatValue($application->years_in_business),
+                $formatValue($application->company_logo),
+                $formatValue($application->contact_person_name),
+                $formatValue($application->contact_person_designation),
+                $formatValue($application->contact_person_email),
+                $formatValue($application->whatsapp_available),
+                $formatValue($application->services),
+                $formatValue($application->trade_lanes),
+                $formatValue($application->cargo_capabilities),
+                $formatValue($application->markets_to_develop),
+                $formatValue($application->verification_type),
+                $formatValue($application->verification_documents),
+                $formatValue($application->business_activity_document),
+                $formatValue($application->association_member),
+                $formatValue($application->association_details),
+                $formatValue($application->payment_recovery_support),
+                $formatValue($application->referral),
+                $formatValue($application->reference_company_name),
+                $formatValue($application->reference_country),
+                $formatValue($application->reference_company_website),
+                $formatValue($application->reference_contact_person),
+                $formatValue($application->reference_designation),
+                $formatValue($application->reference_business_email),
+                $formatValue($application->reference_phone),
+                $formatValue($application->reference_relationship),
+                $formatValue($application->reference_relationship_duration),
+                $formatValue(
+                    $application->reference_last_transaction_date?->format('Y-m-d')
+                ),
+
+                // Application Status.
+                'pending',
+            ]];
+
+            $body = new ValueRange([
+                'values' => $values,
+            ]);
+
+            $service->spreadsheets_values->append(
+                $spreadsheetId,
+                $range,
+                $body,
+                [
+                    'valueInputOption' => 'RAW',
+                    'insertDataOption' => 'INSERT_ROWS',
+                ]
+            );
+
+        } catch (Throwable $e) {
+            // Keep the saved MySQL application even if Sheets fails.
+            Log::error('Forwarding member Google Sheets sync failed.', [
+                'application_id' => $application->id,
+                'exception' => $e->getMessage(),
+            ]);
+        }
 
         return redirect('/')
-            ->with('success', 'Your membership application has been submitted successfully.');
+            ->with(
+                'success',
+                'Your membership application has been submitted successfully.'
+            );
     }
 }

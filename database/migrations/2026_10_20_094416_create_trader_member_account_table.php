@@ -75,7 +75,8 @@ return new class extends Migration
             $table->boolean('membership_terms')->default(false);
             $table->boolean('information_accuracy')->default(false);
             $table->boolean('verification_authorization')->default(false);
-
+            $table->string('application_status')->default('pending');
+            
             $table->timestamps();
         });
     }
