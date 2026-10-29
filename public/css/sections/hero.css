@@ -25,6 +25,58 @@
     position: static;
 }
 
+
+/* Keep the crane image as the positioning reference */
+.crane-stage {
+    position: relative;
+    width: 100%;
+}
+
+.crane-stage .crane-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Flashlight layer: positioned over the blue container face */
+
+.container-flashlight {
+    position: absolute;
+    left: 20.5%;
+    top: 46%;
+    width: 56.3%;
+    height: 47.7%;
+
+    background-image: url("../../images/hero/container_base_img.jpeg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    pointer-events: auto;
+    cursor: crosshair;
+
+    --flash-x: 50%;
+    --flash-y: 50%;
+    /* --flash-size: 110px; */
+
+    -webkit-mask: radial-gradient(
+        circle var(--flash-size) at var(--flash-x) var(--flash-y),
+        black 0%,
+        transparent 100%
+    );
+
+    mask: radial-gradient(
+        circle 110px at var(--flash-x) var(--flash-y),
+        black 0%,
+        transparent 100%
+    );
+}
+
+.container-flashlight.is-active {
+    opacity: 1;
+}
+
 .crane-image-container {
     position: absolute;
     top: -40px;

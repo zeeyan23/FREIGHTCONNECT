@@ -324,11 +324,34 @@ document.addEventListener('DOMContentLoaded', function () {
     updateContainerOnScroll();
     requestAnimationFrame(animate);
 
+    
+    
+    document.querySelectorAll(".container-flashlight").forEach((flashlight) => {
+        flashlight.addEventListener("mouseenter", () => {
+            flashlight.classList.add("is-active");
+        });
+
+        flashlight.addEventListener("mousemove", (event) => {
+            const rect = flashlight.getBoundingClientRect();
+
+            flashlight.style.setProperty(
+                "--flash-x",
+                `${event.clientX - rect.left}px`
+            );
+
+            flashlight.style.setProperty(
+                "--flash-y",
+                `${event.clientY - rect.top}px`
+            );
+        });
+
+        flashlight.addEventListener("mouseleave", () => {
+            flashlight.classList.remove("is-active");
+        });
+    });
+
+
 });
 </script>
-
 </body>
-
-
-
 </html>

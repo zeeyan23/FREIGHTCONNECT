@@ -1,9 +1,16 @@
 <section class="hero-section">
     <div class="container">
         <div class="crane-image-container">
-            <img src="../images/hero/container_img.png"
-                alt="Industrial Crane"
-                class="crane-img">
+            <div class="crane-stage">
+                <img
+                    src="../images/hero/container_img.png"
+                    alt="Industrial Crane"
+                    class="crane-img">
+                <div
+                    class="container-flashlight"
+                    aria-label="Reveal the container interior"
+                ></div>
+            </div>
         </div>
         <div class="hero-content">
             <h1 class="mb-0">
