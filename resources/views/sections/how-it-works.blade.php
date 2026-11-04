@@ -4,8 +4,11 @@
                 <div class="col">
                     <div class="row align-items-center mb-5">
                         <div class="col">
-                            <div class="section-eyebrow">How It Works</div>
-                            <h2 class="section-title">Simple process.<br>Global possibilities.</h2>
+                            <div class="section-eyebrow">
+                                <span></span>
+                                How It Works
+                            </div>
+                            <h2 class="section-title">Simple process.<br><span>Global</span> possibilities.</h2>
                         </div>
                     </div>
                     <div class="row g-4">

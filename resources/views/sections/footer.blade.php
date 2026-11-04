@@ -1,5 +1,5 @@
 
-<footer class="site-footer text-light">
+<footer class="site-footer text-light" id="contact">
    <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 footer-main">
@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="col footer-column">
+            <div class="col pt-2 footer-column">
                 <h5 class="fs-6 fw-bold text-uppercase mb-3">Quick Links</h5>
                 <div class="d-flex flex-column gap-2">
                     <a href="#about" class="text-secondary text-decoration-none">
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="col footer-column legal-column">
+            <div class="col pt-2 footer-column legal-column">
                 <h5 class="fs-6 fw-bold text-uppercase mb-3">Legal</h5>
                 <div class="d-flex flex-column gap-2">
                     <a href="{{ route('legal.privacy-policy') }}" class="text-secondary text-decoration-none">
@@ -70,13 +70,13 @@
                 </div>
             </div>
 
-            <div class="col footer-column">
+            <div class="col pt-2 footer-column">
                 <h5 class="fs-6 fw-bold text-uppercase mb-3">Contact Us</h5>
 
                 <div class="d-flex flex-column gap-3">
 
                     <!-- Address -->
-                    <div class="d-flex align-items-start gap-2">
+                    <div class="d-flex align-items-start">
                         <i class="bi bi-geo-alt text-secondary mt-1"></i>
                         <span class="text-secondary">
                             Your Business Address,<br>
@@ -85,7 +85,7 @@
                     </div>
 
                     <!-- Email -->
-                    <div class="d-flex align-items-start gap-2">
+                    <div class="d-flex align-items-start">
                         <i class="bi bi-envelope text-secondary mt-1"></i>
                         <a href="mailto:info@yourdomain.com"
                         class="text-secondary text-decoration-none">
@@ -94,7 +94,7 @@
                     </div>
 
                     <!-- Phone -->
-                    <div class="d-flex align-items-start gap-2">
+                    <div class="d-flex align-items-start">
                         <i class="bi bi-telephone text-secondary mt-1"></i>
                         <a href="tel:+971500000000"
                         class="text-secondary text-decoration-none">

@@ -12,22 +12,13 @@
     z-index: 2;
 }
 
-.section-eyebrow {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #3b82f6;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-}
+.section-eyebrow span {
+    width: 30px;
+    height: 2px;
 
-.section-title {
-    font-weight: 800;
-    font-size: clamp(2.25rem, 4vw, 3.25rem);
-    letter-spacing: -0.03em;
-    color: #ffffff;
-    line-height: 1.1;
-    margin-bottom: 0;
+    background: #0056da;
+
+    display: inline-block;
 }
 
 .step-col {

@@ -2,8 +2,10 @@
     <div class="container">
         <div class="col">
             <div class="col">
-                <div class="section-eyebrow">Membership</div>
-
+                <div class="section-eyebrow">
+                    <span></span>
+                    Membership
+                </div>
                 <h2 class="section-title">
                     Find your place in the Alliance
                 </h2>

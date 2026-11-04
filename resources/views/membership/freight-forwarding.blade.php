@@ -404,15 +404,26 @@
                                 <span>Multimodal Transport</span>
                             </label>
 
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="other"
-                                >
-                                <span>Other</span>
-                            </label>
+                            <div class="services-offered-other">
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        id="services_other"
+                                        value="Other"
+                                    >
+                                    <span>Other</span>
+                                </label>
 
+                                <input
+                                    type="text"
+                                    class="form-control other-specify-input"
+                                    name="other_logistics_service[]"
+                                    id="services_offered_other"
+                                    placeholder="Please specify"
+                                    maxlength="255"
+                                >
+                            </div>
                         </div>
 
                     </div>
@@ -563,15 +574,26 @@
                                 <span>Project / Oversized Cargo</span>
                             </label>
 
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="other"
-                                >
-                                <span>Other</span>
-                            </label>
+                            <div class="capabilities-offered-other">
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        id="capabilities_other"
+                                        value="Other"
+                                    >
+                                    <span>Other</span>
+                                </label>
 
+                                <input
+                                    type="text"
+                                    class="form-control other-specify-input"
+                                    name="other_cargo_service[]"
+                                    id="capabilities_offered_other"
+                                    placeholder="Please specify"
+                                    maxlength="255"
+                                >
+                            </div>
                         </div>
 
                     </div>

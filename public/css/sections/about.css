@@ -47,21 +47,19 @@
 
     align-items: start;
 }
-
+/* 
 .about-eyebrow {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
     color: #0d6efd;
 
-    font-size: 14px;
+    font-size: 0.93rem;
     font-weight: 700;
-
-    letter-spacing: 2px;
-}
+} */
 
 .about-eyebrow span {
     width: 30px;
@@ -70,24 +68,6 @@
     background: #0056da;
 
     display: inline-block;
-}
-
-.about-title {
-    max-width: 700px;
-
-    margin: 0;
-
-    font-size: clamp(48px, 6vw, 70px);
-
-    line-height: 0.98;
-
-    font-weight: 700;
-
-    letter-spacing: -3px;
-}
-
-.about-title span {
-    color: #5d9cff;
 }
 
 .about-content-column {
@@ -125,7 +105,33 @@
     font-size: 17px;
     font-weight: 500;
     line-height: 1.8;
+
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+    word-spacing: normal;
+    letter-spacing: normal;
+    hyphens: auto;
 }
+
+/* First and third paragraphs */
+.text-mask-container:first-child .about-description,
+.text-mask-container:last-child .about-description {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+}
+
+.text-mask-container:last-child .about-description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    text-align: justify;
+    text-align-last: left;
+}
+/* Keep middle paragraph unchanged */
 
 .about-description-muted {
     color: rgba(255, 255, 255, 0.52);
@@ -180,7 +186,7 @@
 .highlight-number {
     color: #5d9cff;
 
-    font-size: 11px;
+    font-size: 16px;
 
     font-weight: 700;
 
@@ -194,7 +200,7 @@
 
     color: #000000;
 
-    font-size: 14px;
+    font-size: 16px;
 
     font-weight: 600;
 }
@@ -204,7 +210,7 @@
 
     color: #000;
 
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .about-highlight:hover {
@@ -253,10 +259,6 @@
         gap: 50px;
     }
 
-    .about-title {
-        max-width: 800px;
-    }
-
     .about-content-column {
         max-width: 700px;
     }
@@ -284,12 +286,6 @@
 
     .about-section {
         padding: 75px 0 60px;
-    }
-
-    .about-title {
-        font-size: clamp(40px, 12vw, 55px);
-
-        letter-spacing: -1.5px;
     }
 
     .about-description {

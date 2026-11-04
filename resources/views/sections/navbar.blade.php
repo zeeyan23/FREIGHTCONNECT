@@ -38,7 +38,7 @@
                     Membership
                 </a>
 
-                <a class="nav-link" href="#insights">
+                <a class="nav-link" href="#newsSection">
                     Insights & Updates
                 </a>
 

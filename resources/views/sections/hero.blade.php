@@ -35,13 +35,13 @@
                     <a href="#"
                        class="hero-btn primary-btn">
                         Find a supplier
-                        <span class="arrow">→</span>
+                        <!-- <span class="arrow">→</span> -->
                     </a>
 
                     <a href="#"
                        class="hero-btn primary-btn">
                         Request freight qoutes
-                        <span class="arrow">→</span>
+                        <!-- <span class="arrow">→</span> -->
                     </a>
                 </div>
                 <div class="hero-actions-right">
@@ -49,7 +49,7 @@
                     <a href="#membership"
                        class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#membershipTypeModal">
                         Apply for membership
-                        <span class="arrow">→</span>
+                        <!-- <span class="arrow">→</span> -->
                     </a>
                 </div>
             </div>

@@ -238,12 +238,27 @@
                                     <span>Manufacturer & Exporter/Importer</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Other">
-                                    <span>Other</span>
-                                </label>
+                                <div class="business-type-other">
+                                    <label class="choice-option">
+                                        <input
+                                            type="radio"
+                                            name="business_type"
+                                            value="Other"
+                                            id="business_type_other"
+                                        >
+                                        <span>Other</span>
+                                    </label>
+
+                                    <div class="other-specify-input">
+                                        <input
+                                            type="text"
+                                            name="other_business_type"
+                                            class="form-control"
+                                            placeholder="Please specify your business type"
+                                            required
+                                        >
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -955,12 +970,33 @@
                                     <span>Multimodal Transportation</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox"
-                                           name="logistics_services[]"
-                                           value="Other">
-                                    <span>Other</span>
-                                </label>
+                                
+                                
+                                <div class="option-grid">
+                                    <!-- Keep your existing service checkboxes here -->
+
+                                    <label class="choice-option">
+                                        <input
+                                            type="checkbox"
+                                            name="logistics_services[]"
+                                            value="Other"
+                                            id="logistics_service_other"
+                                        >
+                                        <span>Other</span>
+                                    </label>
+                                </div>
+
+                                <div class="other-specify-input logistics-service-other">
+                                    <input
+                                        type="text"
+                                        name="other_logistics_service"
+                                        class="form-control"
+                                        placeholder="Please specify other logistics services"
+                                        disabled
+                                    >
+                                </div>
+
+
 
                             </div>
 

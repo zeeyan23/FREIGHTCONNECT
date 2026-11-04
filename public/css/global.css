@@ -1,0 +1,40 @@
+/* ========================================
+   GLOBAL SECTION STYLES
+======================================== */
+
+.section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #0d6efd;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.section-title {
+    width: 100%;
+    margin: 0;
+    font-size: clamp(48px, 6vw, 70px);
+    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -3px;
+    margin-bottom: 1rem;
+}
+
+.section-title span{
+    color: #5d9cff;
+}
+
+@media (max-width: 991.98px) {
+    .section-title {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .about-title {
+        font-size: clamp(40px, 12vw, 55px);
+        letter-spacing: -1.5px;
+    }
+}

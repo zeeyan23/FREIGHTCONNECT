@@ -28,6 +28,32 @@
     margin-top: 4px;
 }
 
+.business-type-other .other-specify-input {
+    display: none;
+}
+
+.logistics-service-other {
+    display: none;
+    margin-top: 12px;
+}
+
+.option-grid:has(#logistics_service_other:checked)
+~ .logistics-service-other {
+    display: block;
+}
+
+/* Show input when Other is selected */
+.business-type-other:has(#business_type_other:checked) .other-specify-input {
+
+    display: block;
+    margin-top: 1%;
+}
+
+/* Enable interaction with the input only when visible */
+.business-type-other:has(#business_type_other:checked) .other-specify-input input {
+    pointer-events: auto;
+}
+
 /* Hide the input by default */
 .business-interest-other .other-specify-input {
     display: none;

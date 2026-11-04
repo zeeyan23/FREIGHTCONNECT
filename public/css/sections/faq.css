@@ -6,6 +6,15 @@
     overflow: hidden;
 }
 
+.faq-eyebrow span {
+    width: 30px;
+    height: 2px;
+
+    background: #0056da;
+
+    display: inline-block;
+}
+
 .faq-section .accordion-button::after {
     background-image: none;
     content: "+";

@@ -184,6 +184,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    align-items: start;
 }
 
 .choice-option {
@@ -438,7 +439,30 @@
     font-size: 12px;
 }
 
+.services-offered-other, .capabilities-offered-other {
+    width: 100%;
+    min-width: 0;
+    align-self: start;
+}
 
+.services-offered-other .choice-option, .capabilities-offered-other .choice-option{
+    width: auto;
+    align-self: start;
+}
+
+.services-offered-other .other-specify-input, .capabilities-offered-other .other-specify-input{
+    display: none;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.services-offered-other:has(#services_other:checked) .other-specify-input {
+    display: block;
+}
+
+.capabilities-offered-other:has(#capabilities_other:checked) .other-specify-input {
+    display: block;
+}
 /* =========================================
    RESPONSIVE
 ========================================= */

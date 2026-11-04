@@ -12,6 +12,8 @@
 <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/css/intlTelInput.css"/>
 
+<link rel="stylesheet" href="{{ asset('css/global.css') }}?v={{ filemtime(public_path('css/global.css')) }}">
+
 <link rel="stylesheet" href="{{ asset('css/sections/about.css') }}?v={{ filemtime(public_path('css/sections/about.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/sections/contact.css') }}?v={{ filemtime(public_path('css/sections/contact.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/sections/faq.css') }}?v={{ filemtime(public_path('css/sections/faq.css')) }}">
@@ -282,6 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Footer truck animation
+        // Footer truck animation
         if (truckSection) {
 
             const truckImage = truckSection.querySelector('img');
@@ -299,9 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     )
                 );
 
-                extraY = 320 * progress;
-                xOffset = -140 * progress;
-                footerScale = 1 - (0.20 * progress);
+                extraY = 220 * progress;
             }
         }
 
@@ -311,8 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ? -50
             : currentY + introOffsetY + extraY;
 
-        container.style.transform =
-            `translate3d(calc(-50% + ${isNewsActive ? 0 : xOffset}px), ${finalY}px, 0) scale(${isNewsActive ? 1 : footerScale})`;
+        container.style.transform = `translate3d(-50%, ${finalY}px, 0)`;
 
 
         // Keep masks synchronized with the crane.

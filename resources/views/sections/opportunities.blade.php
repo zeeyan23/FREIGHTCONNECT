@@ -3,8 +3,11 @@
             <!-- Header Row -->
             <div class="row align-items-end mb-5">
                 <div class="col-lg-7 mb-4 mb-lg-0">
-                    <div class="section-eyebrow">Illustrative Opportunities</div>
-                    <h2 class="opportunities-section-title">Two engines. One connected alliance.</h2>
+                    <div class="section-eyebrow">
+                        <span></span>
+                        Illustrative Opportunities
+                    </div>
+                    <h2 class="section-title">Two engines. One connected alliance.</h2>
                 </div>
                 <div class="col-lg-5">
                     <p class="section-description ms-lg-auto">

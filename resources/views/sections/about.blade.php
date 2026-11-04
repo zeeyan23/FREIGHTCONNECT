@@ -4,20 +4,20 @@
         <div class="about-top">
             <div class="about-title-column">
 
-                <div class="about-eyebrow">
+                <div class="section-eyebrow">
                     <span></span>
-                    ABOUT US
+                    About us
                 </div>
 
                 <div class="about-heading-mask">
 
-                    <h2 class="about-title mask-base">
+                    <h2 class="section-title mask-base">
                         One alliance for <br>
                         <span>trade, freight</span>
                         and global business.
                     </h2>
 
-                    <h2 class="about-title mask-overlay">
+                    <h2 class="section-title mask-overlay">
                         One alliance for <br>
                         <span>trade, freight</span>
                         and global business.
@@ -67,15 +67,15 @@
                 <div class="text-mask-container">
 
                     <p class="about-description about-description-muted mask-base">
-                        By linking commercial activity with trusted freight
-                        expertise, FreightConnect creates a practical platform
-                        for international business growth.
+                        By linking commercial activity with trusted freight expertise,
+                        FreightConnect creates a practical platform for international
+                        business growth.
                     </p>
 
                     <p class="about-description about-description-muted mask-overlay">
-                        By linking commercial activity with trusted freight
-                        expertise, FreightConnect creates a practical platform
-                        for international business growth.
+                        By linking commercial activity with trusted freight expertise,
+                        FreightConnect creates a practical platform for international
+                        business growth.
                     </p>
                 </div>
             </div>

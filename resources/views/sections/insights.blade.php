@@ -2,11 +2,14 @@
 <section class="news-section" id="newsSection">
     <div class="news-sticky">
         <div class="news-intro">
-            <span class="news-eyebrow">FREIGHTCONNECT INSIGHTS</span>
-
-            <h2>
+            <div class="section-eyebrow">
+                    <span></span>
+                    Insights and Announcement
+            </div>
+            
+            <h2 class="section-title">
                 Insights That<br>
-                Move <span>Trade.</span>
+                Move <span>Trade</span>
             </h2>
 
             <p>
@@ -24,12 +27,13 @@
                         >
                     </div>
                     <div class="card-content">
-                        <span class="card-category">
-                            Logistics
-                        </span>
+                        
                         <h2>
-                            Black Sea disruption cancels 20,000 tonnes of India-bound sunflower oil 7 October 2026
+                            Black Sea disruption cancels 20,000 tonnes of India-bound sunflower oil
                         </h2>
+                        <span class="card-category">
+                            7 October 2026
+                        </span>
                         <p>
                             Black Sea port damage cancelled a 20,000-tonne Russian sunflower-oil shipment to India, Reuters reported, 
                             citing an industry official. Trade sources said another 60,000 tonnes were delayed. Sellers are exploring St Petersburg 
@@ -51,12 +55,13 @@
                         >
                     </div>
                     <div class="card-content">
-                        <span class="card-category">
-                            Global Trade
-                        </span>
+                        
                         <h2>
-                            UK proposes duties of up to 63.66% on Chinese titanium dioxide 7 October 2026
+                            UK proposes duties of up to 63.66% on Chinese titanium dioxide
                         </h2>
+                        <span class="card-category">
+                            7 October 2026
+                        </span>
                         <p>
                             Trade Remedies Authority. The UK Trade Remedies Authority proposed five-year anti-dumping duties on Chinese rutile 
                             titanium dioxide, used in coatings, plastics and paper. Cooperating exporters would face 48.29%, with a minimum of 
@@ -79,9 +84,7 @@
                         >
                     </div>
                     <div class="card-content">
-                        <span class="card-category">
-                            Business
-                        </span>
+                        
                         <h2>
                             FreightConnect Soft Launch Coming Soon Alliance Update
                         </h2>

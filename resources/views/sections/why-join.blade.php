@@ -4,12 +4,12 @@
 
         <!-- Section Header -->
         <div class="benefit-header">
-
-            <div class="benefit-eyebrow">
-                Benefits
+            <div class="section-eyebrow">
+                    <span></span>
+                    Benefits
             </div>
 
-            <h2 class="benefit-main-title">
+            <h2 class="section-title">
                 What's in it <span>for you</span>
             </h2>
 
@@ -300,8 +300,7 @@
                         <!-- 01 -->
                         <div class="modern-benefit">
 
-                            <button type="button"
-                                    class="modern-benefit-toggle">
+                            <button type="button" class="modern-benefit-toggle pt-0">
 
                                 <span class="benefit-number-small">
                                     01

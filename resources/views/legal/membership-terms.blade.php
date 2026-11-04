@@ -6,261 +6,472 @@
 
 @section('legal-description')
     Applicable to Trade Partners and Freight-Forwarding Members.
-    By submitting an application or accepting membership, the applicant
-    acknowledges, understands and agrees to these Terms & Conditions.
+    By submitting a membership application, the applicant confirms that
+    they have read and agreed to these Terms & Conditions.
 @endsection
 
-@section('updated-date', 'September 3, 2026')
+@section('updated-date', '[Date]')
 
 @section('legal-navigation')
 
-    <a href="#accurate-information">1. Accurate Information</a>
-    <a href="#membership-eligibility">2. Membership Eligibility & Approval</a>
-    <a href="#professional-conduct">3. Professional & Ethical Conduct</a>
-    <a href="#confidentiality">4. Confidentiality</a>
-    <a href="#member-directory">5. Member Directory & Information Use</a>
-    <a href="#business-enquiries">6. Business Enquiries & Shipping Referrals</a>
-    <a href="#commercial-responsibility">7. Commercial Responsibility</a>
-    <a href="#transactions-disputes">8. Member-to-Member Transactions & Disputes</a>
-    <a href="#legal-compliance">9. Legal & Regulatory Compliance</a>
-    <a href="#payment-recovery">10. Member Payment Recovery Support</a>
-    <a href="#fees-payments">11. Fees & Payments</a>
-    <a href="#proper-use">12. Proper Use & Membership Integrity</a>
-    <a href="#modifications">13. Modifications</a>
+    <a href="#membership-application">1. Membership Application</a>
+    <a href="#verification-approval">2. Verification & Approval</a>
+    <a href="#membership-participation">3. Membership & Alliance Participation</a>
+    <a href="#member-directory">4. Member Directory & Company Information</a>
+    <a href="#business-opportunities">5. Business Opportunities & Introductions</a>
+    <a href="#member-transactions">6. Member-to-Member Transactions</a>
+    <a href="#professional-conduct">7. Professional Conduct</a>
+    <a href="#confidentiality-non-circumvention">8. Confidentiality & Non-Circumvention</a>
+    <a href="#fees-payments">9. Fees & Membership Payments</a>
+    <a href="#freight-forwarder-members">10. Freight-Forwarder Members</a>
+    <a href="#suspension-termination">11. Suspension & Termination</a>
+    <a href="#intellectual-property">12. Intellectual Property</a>
+    <a href="#limitation-responsibility">13. Limitation of Responsibility</a>
+    <a href="#changes-to-terms">14. Changes to These Terms</a>
+    <a href="#disputes">15. Disputes Between FreightConnect and Members</a>
     <a href="#member-confirmation">Member Confirmation</a>
 
 @endsection
 
 @section('legal-content')
 
-    <section class="legal-section" id="accurate-information">
-        <h2>1. Accurate Information</h2>
+    <section class="legal-section" id="membership-introduction">
+
+        <div class="legal-policy-meta">
+            <div>
+                <strong>Effective Date:</strong>
+                [Date]
+            </div>
+
+            <div>
+                <strong>Last Updated:</strong>
+                [Date]
+            </div>
+        </div>
 
         <p>
-            Members must provide accurate, complete and current company,
-            contact and business information and promptly update any material
+            These Membership Terms & Conditions (“Terms”) govern membership
+            in FreightConnect – Global Trade Alliance (“FreightConnect”,
+            “we”, “us” or “our”).
+        </p>
+
+        <p>
+            By submitting a membership application, the applicant
+            (“Member”, “you” or “your”) confirms that they have read and
+            agreed to these Terms.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="membership-application">
+        <h2>1. Membership Application</h2>
+
+        <p>
+            <strong>1.1</strong> Membership is open to eligible businesses,
+            including Trade Partners and Freight-Forwarding Members, subject
+            to FreightConnect’s application and verification process.
+        </p>
+
+        <p>
+            <strong>1.2</strong> All information provided in the membership
+            application must be accurate, complete and current.
+        </p>
+
+        <p>
+            <strong>1.3</strong> The applicant confirms that the person
+            submitting the application is authorised to represent the company.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="verification-approval">
+        <h2>2. Verification & Approval</h2>
+
+        <p>
+            <strong>2.1</strong> FreightConnect follows a strict verification
+            and KYC process to maintain the quality, credibility and integrity
+            of the Alliance.
+        </p>
+
+        <p>
+            <strong>2.2</strong> FreightConnect may review company registration
+            information, licences, business documents, business activity
+            evidence, references and other information reasonably required to
+            verify the applicant.
+        </p>
+
+        <p>
+            <strong>2.3</strong> Submission of an application does not
+            guarantee membership.
+        </p>
+
+        <p>
+            <strong>2.4</strong> FreightConnect may approve, request additional
+            information from, defer or decline an application at its discretion
+            based on its membership and verification criteria.
+        </p>
+
+        <p>
+            <strong>2.5</strong> Members must notify FreightConnect if
+            material information provided during the application process
             changes.
         </p>
     </section>
 
 
-    <section class="legal-section" id="membership-eligibility">
-        <h2>2. Membership Eligibility & Approval</h2>
+    <section class="legal-section" id="membership-participation">
+        <h2>3. Membership & Alliance Participation</h2>
 
         <p>
-            Membership is subject to FreightConnect’s review and approval.
-            FreightConnect operates on a one-member-per-country exclusivity
-            model, subject to availability and approval.
+            <strong>3.1</strong> Approved Members may receive access to
+            relevant FreightConnect platforms, directories, business
+            opportunities, referrals, member-to-member connections and other
+            benefits applicable to their membership.
         </p>
 
         <p>
-            Submission of an application does not guarantee membership.
-            FreightConnect may approve, decline, suspend or terminate
-            membership in accordance with these Terms & Conditions.
-        </p>
-    </section>
-
-
-    <section class="legal-section" id="professional-conduct">
-        <h2>3. Professional & Ethical Conduct</h2>
-
-        <p>
-            Members must conduct all interactions and business dealings
-            professionally, respectfully and ethically.
+            <strong>3.2</strong> Membership benefits may differ according to
+            the Member’s category, membership plan and services available at
+            the time.
         </p>
 
         <p>
-            Members must not provide false, misleading or intentionally
-            incomplete information or engage in fraudulent, deceptive or
-            unlawful activities.
+            <strong>3.3</strong> FreightConnect may introduce, modify, suspend
+            or discontinue features or benefits where reasonably necessary.
         </p>
-    </section>
-
-
-    <section class="legal-section" id="confidentiality">
-        <h2>4. Confidentiality</h2>
 
         <p>
-            Members must respect and protect confidential business, pricing,
-            customer, shipment and commercial information obtained through
-            FreightConnect and must not misuse or disclose such information
-            without appropriate authorisation.
+            <strong>3.4</strong> Membership does not create a partnership,
+            joint venture, agency, employment or legal representation
+            relationship between FreightConnect and any Member.
         </p>
     </section>
 
 
     <section class="legal-section" id="member-directory">
-        <h2>5. Member Directory & Information Use</h2>
+        <h2>4. Member Directory & Company Information</h2>
 
         <p>
-            Information obtained through the FreightConnect member directory
-            may only be used for legitimate business purposes connected with
-            active membership.
+            <strong>4.1</strong> Approved Members may have certain company
+            information displayed within FreightConnect’s member directory or
+            other member-facing areas.
         </p>
 
         <p>
-            Members must not copy, reproduce, systematically extract,
-            distribute, sell, transfer or otherwise misuse directory
-            information, or use it to create or contribute to another
-            database, directory, competing service or to circumvent the
-            purpose of FreightConnect.
+            <strong>4.2</strong> Verification documents, business references
+            and other information submitted solely for verification will not
+            be displayed in the Member Directory or public company profile.
         </p>
 
         <p>
-            Upon expiry or termination of membership, members must cease using
-            information obtained through the directory and, where reasonably
-            practicable, delete or return such information, except where
-            retention is required by law.
-        </p>
-    </section>
-
-
-    <section class="legal-section" id="business-enquiries">
-        <h2>6. Business Enquiries & Shipping Referrals</h2>
-
-        <p>
-            Members are expected to respond professionally to genuine business
-            enquiries received through FreightConnect.
-        </p>
-
-        <h3>Trade Partners</h3>
-
-        <p>
-            Where a business lead or enquiry generated through FreightConnect
-            results in a requirement for shipping services, the Trade Partner
-            agrees to route the resulting shipment opportunity through
-            FreightConnect’s participating freight-forwarding members.
+            <strong>4.3</strong> Members are responsible for ensuring that
+            information they provide for publication is accurate and
+            appropriate for sharing.
         </p>
 
         <p>
-            Business obtained independently of FreightConnect remains at the
-            Trade Partner’s discretion.
+            <strong>4.4</strong> Member information may be used to facilitate
+            legitimate business connections and opportunities within the
+            FreightConnect community.
+        </p>
+
+        <p>
+            <strong>4.5</strong> Members must not copy, download, scrape,
+            reproduce, sell, distribute, retain or use the FreightConnect
+            member directory or member information to create or support a
+            competing database, network, directory or commercial service.
+        </p>
+
+        <p>
+            <strong>4.6</strong> Members must not use FreightConnect or Member
+            information to send spam, unsolicited bulk messages or repeated
+            unwanted sales or promotional communications to other Members.
         </p>
     </section>
 
 
-    <section class="legal-section" id="commercial-responsibility">
-        <h2>7. Commercial Responsibility</h2>
+    <section class="legal-section" id="business-opportunities">
+        <h2>5. Business Opportunities & Introductions</h2>
 
         <p>
-            Members are responsible for establishing their own commercial
-            terms, pricing, payment conditions, documentation and contractual
-            arrangements with other parties.
+            <strong>5.1</strong> FreightConnect may facilitate introductions,
+            referrals, trade opportunities, freight requirements and other
+            business connections between Members and, where applicable,
+            non-member users.
         </p>
 
         <p>
-            FreightConnect does not automatically become a party to, or assume
-            responsibility for, any commercial transaction between members.
-        </p>
-    </section>
-
-
-    <section class="legal-section" id="transactions-disputes">
-        <h2>8. Member-to-Member Transactions & Disputes</h2>
-
-        <p>
-            All commercial transactions between members are entered into at
-            the parties’ own responsibility.
+            FreightConnect may also use relevant Member and business enquiry
+            information to identify suitable business opportunities, potential
+            counterparties and prospective Members.
         </p>
 
         <p>
-            Any dispute, disagreement, non-payment, service issue, contractual
-            matter or other commercial claim remains primarily the
-            responsibility of the parties involved.
+            <strong>5.2</strong> Members are responsible for evaluating the
+            suitability, credibility and commercial terms of any company or
+            opportunity before proceeding.
         </p>
 
         <p>
-            FreightConnect does not guarantee payment, performance, service
-            quality, delivery, pricing or any other commercial outcome.
-            FreightConnect may, at its discretion, assist with communication
-            or recovery efforts where appropriate, but such assistance does
-            not make FreightConnect responsible for the underlying transaction
-            or dispute.
+            <strong>5.3</strong> FreightConnect does not guarantee that an
+            introduction, lead, quotation, shipment, purchase, sale or other
+            business opportunity will result in a transaction.
         </p>
     </section>
 
 
-    <section class="legal-section" id="legal-compliance">
-        <h2>9. Legal & Regulatory Compliance</h2>
+    <section class="legal-section" id="member-transactions">
+        <h2>6. Member-to-Member Transactions</h2>
 
         <p>
-            Members are responsible for complying with all applicable laws,
-            customs requirements, trade regulations, licensing requirements
-            and other regulatory obligations relevant to their business and
-            transactions.
+            <strong>6.1</strong> Members remain solely responsible for their
+            own commercial dealings with other Members and with any third-party
+            companies or service providers they engage.
+        </p>
+
+        <p>
+            <strong>6.2</strong> FreightConnect is not a party to contracts,
+            quotations, purchase orders, shipments, payments or other
+            commercial agreements entered into between Members.
+        </p>
+
+        <p>
+            <strong>6.3</strong> Members are responsible for their own pricing,
+            contracts, payment terms, documentation, licences, insurance,
+            customs compliance, shipment arrangements and other commercial
+            obligations.
+        </p>
+
+        <p>
+            <strong>6.4</strong> Any dispute concerning a commercial
+            transaction between Members must be resolved directly between the
+            parties involved. FreightConnect may, where appropriate, intervene
+            to facilitate communication and attempt to resolve the dispute,
+            including issuing warnings or taking appropriate membership action
+            where necessary. However, FreightConnect does not provide
+            compensation or assume financial responsibility for unpaid
+            invoices, losses or commercial disputes.
         </p>
     </section>
 
 
-    <section class="legal-section" id="payment-recovery">
-        <h2>10. Member Payment Recovery Support</h2>
+    <section class="legal-section" id="professional-conduct">
+        <h2>7. Professional Conduct</h2>
 
-        <div class="legal-notice-box">
-            <i class="fa-solid fa-circle-info"></i>
+        <p>Members must:</p>
 
-            <div>
-                <strong>This clause applies only to Freight-Forwarding Members.</strong>
+        <ul>
+            <li>Conduct themselves professionally and honestly.</li>
+            <li>Provide accurate business information.</li>
+            <li>Comply with applicable laws and regulations.</li>
+            <li>Respect the confidentiality of information received through FreightConnect.</li>
+            <li>Avoid misleading, fraudulent or deceptive activities.</li>
+            <li>Not misuse FreightConnect or its member community.</li>
+        </ul>
 
-                <p>
-                    Where a Freight-Forwarding Member opts into FreightConnect
-                    Member Payment Recovery Support, participation is subject
-                    to the separate Member Payment Recovery Support Terms &
-                    Conditions.
-                </p>
-            </div>
-        </div>
+        <p>
+            Members must not use FreightConnect to facilitate illegal
+            activities, fraud, sanctions violations, money laundering,
+            harassment, spam or other unlawful conduct.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="confidentiality-non-circumvention">
+        <h2>8. Confidentiality & Non-Circumvention</h2>
+
+        <p>
+            <strong>8.1</strong> Members may receive confidential or
+            commercially sensitive information through introductions,
+            opportunities or communications within FreightConnect.
+        </p>
+
+        <p>
+            <strong>8.2</strong> Members must not disclose or misuse such
+            information without appropriate authorisation.
+        </p>
+
+        <p>
+            <strong>8.3</strong> Members must not use information obtained
+            through FreightConnect to deliberately circumvent FreightConnect’s
+            legitimate role in facilitating an introduction, opportunity or
+            commercial connection where such conduct is intended to deprive
+            FreightConnect of an applicable agreed fee or benefit.
+        </p>
+
+        <p>
+            <strong>8.4</strong> This clause does not prevent Members from
+            conducting legitimate business with companies they already knew
+            independently of FreightConnect.
+        </p>
     </section>
 
 
     <section class="legal-section" id="fees-payments">
-        <h2>11. Fees & Payments</h2>
+        <h2>9. Fees & Membership Payments</h2>
 
         <p>
-            Membership fees and applicable additional service fees are payable
-            in advance and are non-refundable, unless otherwise stated by
-            FreightConnect in writing.
+            <strong>9.1</strong> Applicable membership fees must be paid
+            according to the membership plan and invoice issued by
+            FreightConnect.
         </p>
 
         <p>
-            FreightConnect reserves the right to revise membership fees or
-            service fees with prior notice.
-        </p>
-    </section>
-
-
-    <section class="legal-section" id="proper-use">
-        <h2>12. Proper Use & Membership Integrity</h2>
-
-        <p>
-            Members must not use FreightConnect for spam, fraudulent activity,
-            misleading offers, unauthorised solicitation, unlawful activity,
-            misuse of information, circumvention or any activity that could
-            negatively affect FreightConnect, its members or the integrity of
-            the Alliance.
+            <strong>9.2</strong> Membership fees are separate from any
+            commercial transaction, freight charge, commission or payment
+            between Members unless expressly stated otherwise.
         </p>
 
         <p>
-            FreightConnect reserves the right to suspend or terminate
-            membership where a member materially breaches these Terms &
-            Conditions or engages in conduct that could materially harm
-            FreightConnect or its members.
+            <strong>9.3</strong> Membership fees and applicable payment terms
+            may vary according to the membership plan or promotional terms
+            offered at the time of application.
+        </p>
+
+        <p>
+            <strong>9.4</strong> Unless otherwise stated in writing,
+            membership fees are non-refundable once membership has been
+            activated.
         </p>
     </section>
 
 
-    <section class="legal-section" id="modifications">
-        <h2>13. Modifications</h2>
+    <section class="legal-section" id="freight-forwarder-members">
+        <h2>10. Freight-Forwarder Members</h2>
 
         <p>
-            FreightConnect reserves the right to modify these Terms &
-            Conditions from time to time.
+            <strong>10.1</strong> Freight-Forwarder Members must maintain the
+            licences, registrations, authorisations and other requirements
+            applicable to the services they provide.
         </p>
 
         <p>
-            Updated Terms & Conditions will be published on the FreightConnect
-            website, and continued membership or use of the Platform after the
-            effective date of the updated terms will constitute acceptance of
-            the revised Terms & Conditions.
+            <strong>10.2</strong> FreightConnect may verify the services and
+            capabilities declared by a Freight-Forwarder Member.
+        </p>
+
+        <p>
+            <strong>10.3</strong> Where a Freight-Forwarder Member provides
+            services through established contracted partners, the Member
+            remains responsible for accurately representing its ability to
+            arrange or provide those services.
+        </p>
+
+        <p>
+            <strong>10.4</strong> Member Payment Recovery Support is available
+            only to eligible Freight-Forwarding Members who have separately
+            opted in to the service. This service is subject to separate
+            Payment Recovery Support Terms & Conditions, including applicable
+            eligibility requirements, scope, limitations, exclusions and
+            procedures.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="suspension-termination">
+        <h2>11. Suspension & Termination</h2>
+
+        <p>FreightConnect may suspend or terminate membership where a Member:</p>
+
+        <ul>
+            <li>Provides materially false or misleading information.</li>
+            <li>Fails required verification.</li>
+            <li>Engages in fraud or unlawful conduct.</li>
+            <li>Seriously breaches these Terms.</li>
+            <li>Misuses member information or the FreightConnect platform.</li>
+            <li>Engages in conduct that materially harms the credibility, security or integrity of the Alliance.</li>
+            <li>Fails to meet applicable membership requirements.</li>
+        </ul>
+
+        <p>
+            FreightConnect may also decline renewal or discontinue a
+            membership in accordance with its applicable membership terms.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="intellectual-property">
+        <h2>12. Intellectual Property</h2>
+
+        <p>
+            All FreightConnect trademarks, branding, website content, platform
+            materials, databases, designs and other intellectual property
+            belonging to FreightConnect remain the property of FreightConnect
+            or their respective owners.
+        </p>
+
+        <p>
+            Members may not reproduce, modify, distribute or commercially
+            exploit FreightConnect intellectual property without prior written
+            permission.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="limitation-responsibility">
+        <h2>13. Limitation of Responsibility</h2>
+
+        <p>
+            FreightConnect provides a platform for business networking,
+            introductions, opportunities and logistics/trade connections.
+        </p>
+
+        <p>
+            FreightConnect conducts strict due diligence before approving any
+            Member, including verification of the company’s legal/business
+            information and evidence of genuine business activity. Membership
+            is granted only after the applicant has successfully completed
+            FreightConnect’s verification and approval process. While this
+            process is designed to maintain a trusted and credible Alliance,
+            Members remain independently responsible for their own business
+            activities and transactions.
+        </p>
+
+        <p>FreightConnect does not guarantee:</p>
+
+        <ul>
+            <li>The accuracy of every statement made by a Member.</li>
+            <li>The financial standing or performance of a Member.</li>
+            <li>Successful completion of a transaction.</li>
+            <li>Payment by a buyer or seller.</li>
+            <li>Shipment performance.</li>
+            <li>Cargo condition.</li>
+            <li>Customs clearance.</li>
+            <li>Delivery times.</li>
+            <li>Any particular commercial result.</li>
+        </ul>
+
+        <p>
+            Members should conduct appropriate due diligence before entering
+            into transactions.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="changes-to-terms">
+        <h2>14. Changes to These Terms</h2>
+
+        <p>
+            FreightConnect may update these Terms from time to time. Updated
+            Terms will be made available through the FreightConnect website or
+            member platform.
+        </p>
+
+        <p>
+            Continued membership after the effective date of updated Terms
+            constitutes acceptance of the revised Terms, subject to applicable
+            law.
+        </p>
+    </section>
+
+
+    <section class="legal-section" id="disputes">
+        <h2>15. Disputes Between FreightConnect and Members</h2>
+
+        <p>
+            Any dispute between FreightConnect and a Member will first be
+            addressed directly between the parties through good-faith
+            communication and reasonable efforts to resolve the matter.
         </p>
     </section>
 
@@ -271,7 +482,7 @@
 
         <div class="legal-agreement-wrapper">
 
-            <form>
+            <form action="#" method="POST">
 
                 @csrf
 
@@ -295,7 +506,7 @@
                 </label>
 
                 <button
-                    
+                    type="submit"
                     class="legal-agreement-submit"
                 >
                     I Agree & Continue
@@ -309,4 +520,3 @@
     </section>
 
 @endsection
-

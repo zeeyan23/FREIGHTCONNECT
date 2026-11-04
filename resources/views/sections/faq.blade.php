@@ -3,12 +3,15 @@
         <div class="row align-items-start g-4 g-lg-5">
             <!-- Header Column -->
             <div class="col-lg-4">
-                <span class="text-primary fw-bold text-uppercase small tracking-wide">FAQs</span>
-                <h2 class="display-5 fw-black text-dark mt-2 mb-0" style="font-weight: 800; letter-spacing: -1px;">
+                <div class="section-eyebrow">
+                    <span></span>
+                    FAQs
+                </div>
+                <h2 class="section-title">
                     Frequently asked questions.
                 </h2>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8 align-self-end">
                 <div class="row g-0">
                     <!-- Column 1 of Questions -->
                     <div class="col-md-6 pe-md-3">
