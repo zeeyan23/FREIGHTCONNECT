@@ -18,7 +18,7 @@ class TraderApplicationSubmitted extends Mailable
     public function build()
     {
         return $this->subject(
-            'Your FreightConnect Application Has Been Submitted'
+            ' FreightConnect | Membership Application Received'
         )->view('emails.trader-application-submitted');
     }
 }

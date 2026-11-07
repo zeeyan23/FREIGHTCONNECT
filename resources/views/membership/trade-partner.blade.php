@@ -133,7 +133,7 @@
                         <div class="col-md-6">
 
                             <label for="business_email">
-                                Business Email <span>*</span>
+                                Email ID<span>*</span>
                             </label>
 
                             <input
@@ -147,20 +147,6 @@
 
                         </div>
 
-                        <!-- Company Website -->
-                        <div class="col-md-6">
-                            <label for="company_website">
-                                Company Website
-                            </label>
-
-                            <input
-                                type="url"
-                                class="form-control"
-                                id="company_website"
-                                name="company_website"
-                                placeholder="https://example.com"
-                            >
-                        </div>
                         <div class="col-md-6">
                             <label for="company_logo">
                                 Company Logo
@@ -178,116 +164,21 @@
                                 Upload JPG, PNG or WEBP. Maximum size: 2 MB.
                             </small>
                         </div>
-                        
-
-                        
-                        
-
-                        
-                        
-
-
-                        <!-- Business Type -->
-                        <div class="col-12">
-                            <label>
-                                Business Type <span>*</span>
+                        <!-- Company Website -->
+                        <div class="col-md-6">
+                            <label for="company_website">
+                                Company Website
                             </label>
 
-                            <div class="option-grid">
-
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Exporter"
-                                           required>
-                                    <span>Exporter</span>
-                                </label>
-
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Importer">
-                                    <span>Importer</span>
-                                </label>
-
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Exporter & Importer">
-                                    <span>Exporter & Importer</span>
-                                </label>
-
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Trading Company">
-                                    <span>Trading Company</span>
-                                </label>
-
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Manufacturer">
-                                    <span>Manufacturer</span>
-                                </label>
-
-                                <label class="choice-option">
-                                    <input type="radio"
-                                           name="business_type"
-                                           value="Manufacturer & Exporter/Importer">
-                                    <span>Manufacturer & Exporter/Importer</span>
-                                </label>
-
-                                <div class="business-type-other">
-                                    <label class="choice-option">
-                                        <input
-                                            type="radio"
-                                            name="business_type"
-                                            value="Other"
-                                            id="business_type_other"
-                                        >
-                                        <span>Other</span>
-                                    </label>
-
-                                    <div class="other-specify-input">
-                                        <input
-                                            type="text"
-                                            name="other_business_type"
-                                            class="form-control"
-                                            placeholder="Please specify your business type"
-                                            required
-                                        >
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <!-- Products -->
-                        <div class="col-12">
-                            <label for="products">
-                                Products Traded / Manufactured <span>*</span>
-                            </label>
-
-                            <textarea
+                            <input
+                                type="url"
                                 class="form-control"
-                                id="products"
-                                name="products"
-                                rows="3"
-                                placeholder="Example: Industrial pumps, compressors, electrical equipment"
-                                required
-                            ></textarea>
-
-                            <small>
-                                List the main products your company trades or manufactures,
-                                along with keywords potential buyers or suppliers may use
-                                to find your company through FreightConnect.
-                            </small>
+                                id="company_website"
+                                name="company_website"
+                                placeholder="https://example.com"
+                            >
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- 2. Contact Person Information -->
@@ -297,7 +188,7 @@
                         <span>02</span>
 
                         <div>
-                            <h2>Contact Information</h2>
+                            <h2>Authorised contact person</h2>
                             <p>Provide the person we should contact.</p>
                         </div>
                     </div>
@@ -305,10 +196,10 @@
 
                     <div class="row g-4">
 
-                        <div class="col-md-6">
+                         <div class="col-md-6">
 
                             <label for="contact_person">
-                                Contact Person <span>*</span>
+                                Full Name <span>*</span>
                             </label>
 
                             <input
@@ -324,12 +215,8 @@
 
                         <div class="col-md-6">
 
-                        </div>
-
-                        <div class="col-md-6">
-
                             <label for="designation">
-                                Designation <span>*</span>
+                                Job Title/Position <span>*</span>
                             </label>
 
                             <input
@@ -340,26 +227,27 @@
                                 placeholder="Example: Managing Director"
                                 required
                             >
-
                         </div>
 
-                        <label for="contact_person_email">
-                                Business Email <span>*</span>
-                        </label>
+                        <div class="col-md-6">
+                            <label for="contact_person_email">
+                                Email Address<span>*</span>
+                            </label>
 
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="contact_person_email"
-                            name="contact_person_email"
-                            placeholder="Email address"
-                            required
-                        >
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="contact_person_email"
+                                name="contact_person_email"
+                                placeholder="Email address"
+                                required
+                            >
+                        </div>
 
                         <div class="col-md-6">
 
                             <label for="business_phone">
-                                WhatsApp / Business Phone <span>*</span>
+                                Phone Number <span>*</span>
                             </label>
 
                             <input
@@ -373,7 +261,6 @@
 
                             <input type="hidden" name="phone_full" id="trader_phone_full">
                             <input type="hidden" name="phone_dial_code" id="trader_phone_dial_code">
-
                         </div>
                         
                         <div class="col-md-6">
@@ -396,213 +283,20 @@
                     </div>
                 </div>
 
-                <!-- 03. Business Interests -->
+                <!-- 03. Business Role -->
                 <div class="form-card">
 
                     <div class="form-card-header">
                         <span>03</span>
                         <div>
-                            <h2>Business Interests</h2>
-                            <p>Tell us what you want to achieve through FreightConnect.</p>
+                            <h2>Business Role</h2>
+                            <p>Select the role that best describes your business activities</p>
                         </div>
                     </div>
 
                     <div class="row g-4">
-
-                        <!-- Business Interests -->
-                        <div class="col-12">
-                            <label class="form-label">
-                                What would you like to find through FreightConnect?
-                                <span>*</span>
-                            </label>
-
-                            <p class="text-muted small">Select all that apply.</p>
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_buyers"
-                                            value="Buyers">
-                                        <label class="form-check-label" for="interest_buyers">Buyers</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_suppliers"
-                                            value="Suppliers / Sellers">
-                                        <label class="form-check-label" for="interest_suppliers">Suppliers / Sellers</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_manufacturers"
-                                            value="Manufacturers">
-                                        <label class="form-check-label" for="interest_manufacturers">Manufacturers</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_importers"
-                                            value="Importers">
-                                        <label class="form-check-label" for="interest_importers">Importers</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_exporters"
-                                            value="Exporters">
-                                        <label class="form-check-label" for="interest_exporters">Exporters</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_distributors"
-                                            value="Distributors">
-                                        <label class="form-check-label" for="interest_distributors">Distributors</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_wholesalers"
-                                            value="Wholesalers">
-                                        <label class="form-check-label" for="interest_wholesalers">Wholesalers</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_traders"
-                                            value="Traders / Trading Companies">
-                                        <label class="form-check-label" for="interest_traders">Traders / Trading Companies</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_sourcing"
-                                            value="Sourcing Opportunities">
-                                        <label class="form-check-label" for="interest_sourcing">Sourcing Opportunities</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_markets"
-                                            value="New Markets / Business Opportunities">
-                                        <label class="form-check-label" for="interest_markets">New Markets / Business Opportunities</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            name="business_interests[]" id="interest_logistics"
-                                            value="Freight Forwarders / Logistics Services">
-                                        <label class="form-check-label" for="interest_logistics">Freight Forwarders / Logistics Services</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 business-interest-other">
-                                    <div class="form-check">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            name="business_interests[]"
-                                            id="interest_other"
-                                            value="Other"
-                                        >
-                                        <label class="form-check-label" for="interest_other">
-                                            Other
-                                        </label>
-                                    </div>
-
-                                    <input
-                                        type="text"
-                                        class="form-control mt-2 other-specify-input"
-                                        name="business_interest_other"
-                                        id="business_interest_other"
-                                        placeholder="Please specify"
-                                        maxlength="255"
-                                    >
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Specific Requirement -->
-                        <div class="col-12">
-                            <label class="form-label d-block">
-                                Do you have a specific requirement at present?
-                                <span>*</span>
-                            </label>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"
-                                    name="has_specific_requirement" id="requirement_yes"
-                                    value="1" required>
-                                <label class="form-check-label" for="requirement_yes">Yes</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"
-                                    name="has_specific_requirement" id="requirement_no"
-                                    value="0" required>
-                                <label class="form-check-label" for="requirement_no">No</label>
-                            </div>
-
-                            <div id="requirement_description_wrapper" class="mt-3" hidden>
-                                <label for="requirement_description" class="form-label">
-                                    If yes, briefly describe the requirement.
-                                </label>
-
-                                <textarea class="form-control"
-                                    name="requirement_description"
-                                    id="requirement_description"
-                                    rows="3"
-                                    maxlength="5000"
-                                    placeholder="Describe your current requirement"></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Freight / Logistics Support -->
-                        <div class="col-12">
-                            <label class="form-label d-block">
-                                Do you currently need freight or logistics support?
-                                <span>*</span>
-                            </label>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"
-                                    name="needs_logistics_support" id="logistics_yes"
-                                    value="1" required>
-                                <label class="form-check-label" for="logistics_yes">Yes</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"
-                                    name="needs_logistics_support" id="logistics_no"
-                                    value="0" required>
-                                <label class="form-check-label" for="logistics_no">No</label>
-                            </div>
-                        </div>
-
                         <!-- Business Type -->
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <label class="form-label">
                                 What best describes your business? <span>*</span>
                             </label>
@@ -754,7 +448,7 @@
                         </div>
 
                         <!-- Products / Product Categories -->
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <label for="products_dealt">
                                 What products does your company currently deal in?
                                 <span>*</span>
@@ -775,7 +469,7 @@
                         </div>
 
                         <!-- Current Trading Countries -->
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <label for="current_trade_countries">
                                 Which countries do you currently trade with?
                             </label>
@@ -794,7 +488,7 @@
                         </div>
 
                         <!-- Target Countries / Markets -->
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <label for="target_trade_markets">
                                 Which countries or markets are you interested in developing?
                             </label>
@@ -811,24 +505,320 @@
                                 placeholder="e.g. Europe, North America, Southeast Asia"
                             ></textarea>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- 04. Trade & Market Information -->
+                <!-- 04. Business Interests -->
                 <div class="form-card">
 
                     <div class="form-card-header">
                         <span>04</span>
 
                         <div>
-                            <h2>Trade & Market Information</h2>
-                            <p>Tell us about your current and target markets.</p>
+                            <h2>Business Interests</h2>
+                            <p>Tell us about your business interests and the opportunities you're looking to explore through FreightConnect</p>
                         </div>
                     </div>
 
 
                     <div class="row g-4">
+
+                        <!-- Business Interests -->
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                What would you like to find through FreightConnect?
+                                <span>*</span>
+                            </label>
+
+                            <p class="text-muted small">Select all that apply.</p>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_buyers"
+                                            value="Buyers">
+                                        <label class="form-check-label" for="interest_buyers">Buyers</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_suppliers"
+                                            value="Suppliers / Sellers">
+                                        <label class="form-check-label" for="interest_suppliers">Suppliers / Sellers</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_manufacturers"
+                                            value="Manufacturers">
+                                        <label class="form-check-label" for="interest_manufacturers">Manufacturers</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_importers"
+                                            value="Importers">
+                                        <label class="form-check-label" for="interest_importers">Importers</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_exporters"
+                                            value="Exporters">
+                                        <label class="form-check-label" for="interest_exporters">Exporters</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_distributors"
+                                            value="Distributors">
+                                        <label class="form-check-label" for="interest_distributors">Distributors</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_wholesalers"
+                                            value="Wholesalers">
+                                        <label class="form-check-label" for="interest_wholesalers">Wholesalers</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_traders"
+                                            value="Traders / Trading Companies">
+                                        <label class="form-check-label" for="interest_traders">Traders / Trading Companies</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_sourcing"
+                                            value="Sourcing Opportunities">
+                                        <label class="form-check-label" for="interest_sourcing">Sourcing Opportunities</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_markets"
+                                            value="New Markets / Business Opportunities">
+                                        <label class="form-check-label" for="interest_markets">New Markets / Business Opportunities</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="business_interests[]" id="interest_logistics"
+                                            value="Freight Forwarders / Logistics Services">
+                                        <label class="form-check-label" for="interest_logistics">Freight Forwarders / Logistics Services</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 business-interest-other">
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            name="business_interests[]"
+                                            id="interest_other"
+                                            value="Other"
+                                        >
+                                        <label class="form-check-label" for="interest_other">
+                                            Other
+                                        </label>
+                                    </div>
+
+                                    <input
+                                        type="text"
+                                        class="form-control mt-2 other-specify-input"
+                                        name="business_interest_other"
+                                        id="business_interest_other"
+                                        placeholder="Please specify"
+                                        maxlength="255"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Freight / Logistics Support -->
+                        <div class="col-md-6">
+                            <label class="form-label d-block">
+                                Do you currently need freight or logistics support?
+                                <span>*</span>
+                            </label>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="needs_logistics_support" id="logistics_yes"
+                                    value="1" required>
+                                <label class="form-check-label" for="logistics_yes">Yes</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="needs_logistics_support" id="logistics_no"
+                                    value="0" required>
+                                <label class="form-check-label" for="logistics_no">No</label>
+                            </div>
+                        </div>
+
+                        <!-- Business Type -->
+                        <div class="col-md-6">
+                            <label>
+                                Business Type <span>*</span>
+                            </label>
+
+                            <div class="option-grid">
+
+                                <label class="choice-option">
+                                    <input type="radio"
+                                           name="business_type"
+                                           value="Exporter"
+                                           required>
+                                    <span>Exporter</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="radio"
+                                           name="business_type"
+                                           value="Importer">
+                                    <span>Importer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="radio"
+                                           name="business_type"
+                                           value="Exporter & Importer">
+                                    <span>Exporter & Importer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="radio"
+                                           name="business_type"
+                                           value="Trading Company">
+                                    <span>Trading Company</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="radio"
+                                           name="business_type"
+                                           value="Manufacturer">
+                                    <span>Manufacturer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="radio"
+                                           name="business_type"
+                                           value="Manufacturer & Exporter/Importer">
+                                    <span>Manufacturer & Exporter/Importer</span>
+                                </label>
+
+                                <div class="business-type-other">
+                                    <label class="choice-option">
+                                        <input
+                                            type="radio"
+                                            name="business_type"
+                                            value="Other"
+                                            id="business_type_other"
+                                        >
+                                        <span>Other</span>
+                                    </label>
+
+                                    <div class="other-specify-input">
+                                        <input
+                                            type="text"
+                                            name="other_business_type"
+                                            class="form-control"
+                                            placeholder="Please specify your business type"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Specific Requirement -->
+                        <div class="col-md-6">
+                            <label class="form-label d-block">
+                                Do you have a specific requirement at present?
+                                <span>*</span>
+                            </label>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="has_specific_requirement" id="requirement_yes"
+                                    value="1" required>
+                                <label class="form-check-label" for="requirement_yes">Yes</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"
+                                    name="has_specific_requirement" id="requirement_no"
+                                    value="0" required>
+                                <label class="form-check-label" for="requirement_no">No</label>
+                            </div>
+
+                            <div id="requirement_description_wrapper" class="mt-3" hidden>
+                                <label for="requirement_description" class="form-label">
+                                    If yes, briefly describe the requirement.
+                                </label>
+
+                                <textarea class="form-control"
+                                    name="requirement_description"
+                                    id="requirement_description"
+                                    rows="3"
+                                    maxlength="5000"
+                                    placeholder="Describe your current requirement"></textarea>
+                            </div>
+                        </div>
+
+                        
+
+                        
+
+
+                        <!-- Products -->
+                        <div class="col-md-6">
+                            <label for="products">
+                                Products Traded / Manufactured <span>*</span>
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="products"
+                                name="products"
+                                rows="3"
+                                placeholder="Example: Industrial pumps, compressors, electrical equipment"
+                                required
+                            ></textarea>
+
+                            <small>
+                                List the main products your company trades or manufactures,
+                                along with keywords potential buyers or suppliers may use
+                                to find your company through FreightConnect.
+                            </small>
+                        </div>
+
+                        
 
                         <div class="col-md-6">
                             <label for="exporting_to">
@@ -877,43 +867,8 @@
                             >
                         </div>
 
-
-                        <div class="col-md-6">
-                            <label for="suppliers_in">
-                                Looking for Suppliers In <span>*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="suppliers_in"
-                                name="suppliers_in"
-                                placeholder="Example: China, India, Turkey"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- 05. Logistics Requirements -->
-                <div class="form-card">
-
-                    <div class="form-card-header">
-                        <span>05</span>
-
-                        <div>
-                            <h2>Logistics Requirements</h2>
-                            <p>Tell us about your logistics needs.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="row g-4">
-
                         <!-- Logistics Services -->
-                        <div class="col-12">
+                        <div class="col-md-6">
 
                             <label>
                                 Logistics Services Required <span>*</span>
@@ -1002,7 +957,6 @@
 
                         </div>
 
-
                         <!-- Shipment Frequency -->
                         <div class="col-md-6">
 
@@ -1046,31 +1000,23 @@
                                            value="As Required">
                                     As Required
                                 </label>
-
                             </div>
-
                         </div>
+                        <div class="col-md-6">
+                            <label for="suppliers_in">
+                                Looking for Suppliers In <span>*</span>
+                            </label>
 
-                    </div>
-
-                </div>
-
-                <!-- 06. Current Requirement -->
-                <div class="form-card">
-
-                    <div class="form-card-header">
-                        <span>06</span>
-
-                        <div>
-                            <h2>Current Trade Requirement</h2>
-                            <p>Tell us if you currently have a requirement.</p>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="suppliers_in"
+                                name="suppliers_in"
+                                placeholder="Example: China, India, Turkey"
+                                required
+                            >
                         </div>
-                    </div>
-
-
-                    <div class="row g-4">
-
-                        <div class="col-12">
+                        <div class="col-md-6">
 
                             <label>
                                 Do you currently have a trade or shipment requirement?
@@ -1094,13 +1040,9 @@
                                            id="requirement_no">
                                     No
                                 </label>
-
                             </div>
-
                         </div>
-
-
-                        <div class="col-12" id="requirement_description_wrapper">
+                        <div class="col-md-6" id="requirement_description_wrapper">
 
                             <label for="requirement_description">
                                 Briefly describe your requirement.
@@ -1113,31 +1055,22 @@
                                 rows="4"
                                 placeholder="Example: Looking for a freight forwarder for machinery shipments from India to UAE."
                             ></textarea>
-
                         </div>
-
                     </div>
-
                 </div>
 
-                <!-- 07. Verification -->
+                <!-- 05. Logistics Requirements -->
                 <div class="form-card">
 
                     <div class="form-card-header">
-                        <span>07</span>
+                        <span>05</span>
 
                         <div>
-                            <h2>Company Verification</h2>
-                            <p>
-                                Please upload the following documents to verify your
-                                company's registration and business activity.
-                            </p>
+                            <h2>Company Verificatiom</h2>
+                            <p>Provide your company details and supporting documents to verify your business identity.</p>
                         </div>
                     </div>
-
                     <div class="row g-4">
-
-                        <!-- Company Registration Document -->
                         <div class="col-md-6">
 
                             <label for="company_registration_document">
@@ -1194,9 +1127,7 @@
                                 </small>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- 08. Business Reference -->
@@ -1276,7 +1207,7 @@
                         <!-- Email -->
                         <div class="col-md-6">
                             <label for="reference_email">
-                                Email Address <span>*</span>
+                                Email<span>*</span>
                             </label>
                             <input
                                 type="email"
@@ -1434,8 +1365,6 @@
                     </label>
 
                 </div>
-
-
                 <!-- Submit -->
                 <div class="form-submit">
                     
@@ -1448,14 +1377,10 @@
                         Submit Application
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
-
                 </div>
-
             </form>
-
         </div>
     </section>
-
 </div>
 
 

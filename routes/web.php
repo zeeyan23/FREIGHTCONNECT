@@ -8,10 +8,18 @@ use App\Http\Controllers\ForwardingMemberController;
 use App\Http\Controllers\TraderController;
 use App\Http\Controllers\FreightConnectAccountController;
 use App\Http\Controllers\FreightConnectAuthController;
+use App\Http\Controllers\NewsController;
+use App\Models\News;
 
 Route::get('/', function () {
     $countries = include base_path('vendor/umpirsky/country-list/data/en/country.php');
-    return view('home', compact('countries'));
+
+    $news = News::published()
+        ->latest('published_at')
+        ->take(3)
+        ->get();
+
+    return view('home', compact('countries', 'news'));
 });
 
 Route::get('/request-membership/trade-partner', function () {
@@ -98,6 +106,12 @@ Route::get('/reset-password', function () {
 Route::get('/account', function () {
     return view('account.index');
 })->name('account');
+
+Route::get('/news', [NewsController::class, 'index'])
+    ->name('news.index');
+
+Route::get('/news/{slug}', [NewsController::class, 'show'])
+    ->name('news.show');
 
 // POST METHODS
 

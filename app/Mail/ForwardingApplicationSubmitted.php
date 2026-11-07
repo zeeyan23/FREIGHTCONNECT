@@ -18,7 +18,7 @@ class ForwardingApplicationSubmitted extends Mailable
     public function build()
     {
         return $this->subject(
-            'Your FreightConnect Forwarding Application Has Been Submitted'
+            ' FreightConnect | Membership Application Received'
         )->view('emails.forwarding-application-submitted');
     }
 }

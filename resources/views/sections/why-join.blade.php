@@ -209,9 +209,7 @@
 
                             <div class="modern-benefit-description">
 
-                                Build business relationships with verified
-                                companies and professionals across the
-                                FreightConnect Alliance.
+                                Build business connections with verified companies that meet FreightConnect’s verification criteria.
 
                             </div>
 
@@ -244,6 +242,35 @@
                                 capabilities to relevant buyers, suppliers
                                 and potential trade partners within the
                                 FreightConnect Alliance.
+
+                            </div>
+
+                        </div>
+
+                        <!-- 07 -->
+                        <div class="modern-benefit">
+
+                            <button type="button"
+                                    class="modern-benefit-toggle">
+
+                                <span class="benefit-number-small">
+                                    07
+                                </span>
+
+                                <span class="benefit-title">
+                                    Refer Reward
+                                </span>
+
+                                <span class="benefit-icon">
+                                    +
+                                </span>
+
+                            </button>
+
+                            <div class="modern-benefit-description">
+
+                                Receive a membership discount when an eligible company you refer 
+                                successfully joins the FreightConnect Alliance.
 
                             </div>
 
@@ -445,9 +472,8 @@
 
                             <div class="modern-benefit-description">
 
-                                Build trusted business relationships with
-                                verified Trade Partners and Freight-
-                                Forwarding Members.
+                                Build business connections with verified companies that meet 
+                                FreightConnect’s verification criteria.
 
                             </div>
 
@@ -479,6 +505,122 @@
                                 Access structured support for recovering
                                 eligible unpaid invoices from qualifying
                                 business transactions.
+
+                            </div>
+
+                        </div>
+
+                        <!-- 07 -->
+                        <div class="modern-benefit">
+
+                            <button type="button"
+                                    class="modern-benefit-toggle">
+
+                                <span class="benefit-number-small">
+                                    07
+                                </span>
+
+                                <span class="benefit-title">
+                                    Business Exchange Report
+                                </span>
+
+                                <span class="benefit-icon">
+                                    +
+                                </span>
+
+                            </button>
+
+                            <div class="modern-benefit-description">
+
+                                Receive a monthly overview of business activity, member updates, trade requirements, 
+                                freight opportunities and key developments within the FreightConnect Alliance.
+
+                            </div>
+
+                        </div>
+
+                        <!-- 08 -->
+                        <div class="modern-benefit">
+
+                            <button type="button"
+                                    class="modern-benefit-toggle">
+
+                                <span class="benefit-number-small">
+                                    08
+                                </span>
+
+                                <span class="benefit-title">
+                                    FreightConnect Briefs
+                                </span>
+
+                                <span class="benefit-icon">
+                                    +
+                                </span>
+
+                            </button>
+
+                            <div class="modern-benefit-description">
+
+                                Stay informed about global trade, freight, logistics, supply chains, 
+                                regulations and market trends relevant to international business.
+
+                            </div>
+
+                        </div>
+
+                        <!-- 09 -->
+                        <div class="modern-benefit">
+
+                            <button type="button"
+                                    class="modern-benefit-toggle">
+
+                                <span class="benefit-number-small">
+                                    09
+                                </span>
+
+                                <span class="benefit-title">
+                                    Member of the Year
+                                </span>
+
+                                <span class="benefit-icon">
+                                    +
+                                </span>
+
+                            </button>
+
+                            <div class="modern-benefit-description">
+
+                                The year’s best-performing freight forwarder member receives an award, 
+                                promotional exposure and a discounted renewal rate, recognizing business activity, engagement, responsiveness and contribution to the alliance.
+
+                            </div>
+
+                        </div>
+
+                        <!-- 10 -->
+                        <div class="modern-benefit">
+
+                            <button type="button"
+                                    class="modern-benefit-toggle">
+
+                                <span class="benefit-number-small">
+                                    10
+                                </span>
+
+                                <span class="benefit-title">
+                                    Refer & Reward
+                                </span>
+
+                                <span class="benefit-icon">
+                                    +
+                                </span>
+
+                            </button>
+
+                            <div class="modern-benefit-description">
+
+                                Refer eligible freight forwarding companies and receive a membership discount 
+                                when your referral completes the membership process and joins the alliance.
 
                             </div>
 

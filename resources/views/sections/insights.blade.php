@@ -18,7 +18,7 @@
             </p>
         </div>
         <div class="news-right">
-            <div class="card-stack">
+            <!-- <div class="card-stack">
                 <article class="news-card card-1">
                     <div class="card-image">
                         <img
@@ -99,9 +99,59 @@
                         </a>
                     </div>
                 </article>
+            </div> -->
+            <div class="card-stack">
+
+                @foreach($news as $index => $article)
+
+                    <article class="news-card card-{{ $index + 1 }}">
+
+                        <div class="card-image">
+                            <img
+                                src="{{ asset($article->image) }}"
+                                alt="{{ $article->title }}"
+                            >
+                        </div>
+
+                        <div class="card-content">
+
+                            <h2>
+                                {{ $article->title }}
+                            </h2>
+
+                            @if($article->published_at)
+                                <span class="card-category">
+                                    {{ $article->published_at->format('d F Y') }}
+                                </span>
+                            @endif
+
+                            <p>
+                                {{ $article->excerpt }}
+                            </p>
+
+                            @if($article->source_name)
+                                <div class="news-source">
+                                    <span>Source:</span>
+                                    <span class="h6">{{ $article->source_name }}</span>
+                                </div>
+                            @endif
+
+                            <!-- <a href="{{ route('news.show', $article->slug) }}"
+                            class="read-more">
+                                Read More →
+                            </a> -->
+
+                        </div>
+
+                    </article>
+
+                @endforeach
+
             </div>
             <div class="all-news" id="allNews">
-                <a href="news.html">View All News <span>→</span></a>
+                <a href="{{ route('news.index') }}">
+                    View All News <span>→</span>
+                </a>
             </div>
         </div>
     </div>

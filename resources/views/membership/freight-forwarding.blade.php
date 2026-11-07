@@ -53,7 +53,7 @@
                     <div class="form-card-header">
                         <span>01</span>
                         <div>
-                            <h2>Company Information</h2>
+                            <h2>Company Details</h2>
                             <p>Tell us about your freight-forwarding business.</p>
                         </div>
                     </div>
@@ -74,22 +74,6 @@
                                 placeholder="Enter your company name"
                                 required
                             >
-                        </div>
-
-                        
-                        <!-- Registered Business Address -->
-                        <div class="col-md-6">
-                            <label for="registered_business_address" class="form-label">
-                                Registered Business Address <span>*</span>
-                            </label>
-                            <textarea
-                                id="registered_business_address"
-                                name="registered_business_address"
-                                class="form-control"
-                                rows="3"
-                                placeholder="Enter your registered business address"
-                                required
-                            ></textarea>
                         </div>
 
                         <!-- Country & City -->
@@ -131,10 +115,90 @@
                             >
                         </div>
 
+                        <!-- Registered Business Address -->
+                        <div class="col-md-6">
+                            <label for="registered_business_address" class="form-label">
+                                Registered Business Address <span>*</span>
+                            </label>
+                            <textarea
+                                id="registered_business_address"
+                                name="registered_business_address"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Enter your registered business address"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <!-- Email & Phone -->
+                        <div class="col-md-6">
+                            <label for="business_email" class="form-label">
+                                Company Email <span>*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                id="business_email"
+                                name="business_email"
+                                class="form-control"
+                                placeholder="email@example.com"
+                                required
+                            >
+                        </div>
+
+                        <!-- Website -->
+                        <div class="col-md-6">
+                            <label for="company_website" class="form-label">
+                                Company Website <span>*</span>
+                            </label>
+
+                            <input
+                                type="url"
+                                id="company_website"
+                                name="company_website"
+                                class="form-control"
+                                placeholder="https://www.example.com"
+                                required
+                            >
+                        </div>                 
+                        <!-- Company Logo -->
+                        <div class="col-md-6">
+                            <label for="company_logo" class="form-label">
+                                Company Logo
+                            </label>
+                            <input
+                                type="file"
+                                id="company_logo"
+                                name="company_logo"
+                                class="form-control"
+                                accept=".jpg,.jpeg,.png,.webp"
+                            >
+                            <p class="form-helper">
+                                Optional. Accepted formats: JPG, PNG, and WebP.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- 02 SERVICES & CAPABILITIES -->
+                <!-- ============================= -->
+
+                <div class="form-card">
+
+                    <div class="form-card-header">
+                        <span>02</span>
+                        <div>
+                            <h2>Authorised Contact Person</h2>
+                            <p>Provide the details of the person authorised to represent your company and manage its FreightConnect membership.</p>
+                        </div>
+                    </div>
+                    <div class="row g-4">
                         <!-- Contact Person -->
                         <div class="col-md-6">
                             <label for="contact_person_name" class="form-label">
-                                Contact Person Name <span>*</span>
+                                Full Name <span>*</span>
                             </label>
 
                             <input
@@ -149,7 +213,7 @@
 
                         <div class="col-md-6">
                             <label for="contact_person_designation" class="form-label">
-                                Contact Person's Designation <span>*</span>
+                                Job Title/Position <span>*</span>
                             </label>
 
                             <input
@@ -161,12 +225,10 @@
                                 required
                             >
                         </div>
-
-                        
                         <!-- Contact Person Email -->
                         <div class="col-md-6">
                             <label for="contact_person_email" class="form-label">
-                                Contact Person Email <span>*</span>
+                                Business Email <span>*</span>
                             </label>
                             <input
                                 type="email"
@@ -177,27 +239,9 @@
                                 required
                             >
                         </div>
-
-
-                        <!-- Email & Phone -->
-                        <div class="col-md-6">
-                            <label for="business_email" class="form-label">
-                                Business Email <span>*</span>
-                            </label>
-
-                            <input
-                                type="email"
-                                id="business_email"
-                                name="business_email"
-                                class="form-control"
-                                placeholder="email@example.com"
-                                required
-                            >
-                        </div>
-
                         <div class="col-md-6">
                             <label for="phone" class="form-label">
-                                Phone / WhatsApp <span>*</span>
+                                Phone Number <span>*</span>
                             </label>
 
                             <input
@@ -230,41 +274,19 @@
                                 <option value="0">No</option>
                             </select>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Website -->
-                        <div class="col-md-6">
-                            <label for="company_website" class="form-label">
-                                Company Website <span>*</span>
-                            </label>
+                <div class="form-card">
 
-                            <input
-                                type="url"
-                                id="company_website"
-                                name="company_website"
-                                class="form-control"
-                                placeholder="https://www.example.com"
-                                required
-                            >
+                    <div class="form-card-header">
+                        <span>03</span>
+                        <div>
+                            <h2>Business Profile</h2>
+                            <p>Share an overview of your company, its services, and key business activities.</p>
                         </div>
-
-                                                
-                        <!-- Company Logo -->
-                        <div class="col-md-6">
-                            <label for="company_logo" class="form-label">
-                                Company Logo
-                            </label>
-                            <input
-                                type="file"
-                                id="company_logo"
-                                name="company_logo"
-                                class="form-control"
-                                accept=".jpg,.jpeg,.png,.webp"
-                            >
-                            <p class="form-helper">
-                                Optional. Accepted formats: JPG, PNG, and WebP.
-                            </p>
-                        </div>
-
+                    </div>
+                    <div class="row g-4">
                         <!-- Years in Business -->
                         <div class="col-md-6">
                             <label class="form-label">
@@ -312,415 +334,369 @@
 
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <label for="trade_lanes" class="form-label">
+                                Countries / Trade Lanes Served <span>*</span>
+                            </label>
 
-                    </div>
+                            <p class="form-helper">
+                                Please list the key countries or routes where you
+                                regularly handle shipments.
+                            </p>
 
-                </div>
-
-
-                <!-- ============================= -->
-                <!-- 02 SERVICES & CAPABILITIES -->
-                <!-- ============================= -->
-
-                <div class="form-card">
-
-                    <div class="form-card-header">
-                        <span>02</span>
-                        <div>
-                            <h2>Services & Capabilities</h2>
-                            <p>Tell us about your logistics services and expertise.</p>
+                            <input
+                                type="text"
+                                id="trade_lanes"
+                                name="trade_lanes"
+                                class="form-control"
+                                placeholder="e.g. UAE–India, UAE–China, Saudi Arabia–Europe"
+                                required
+                            >
                         </div>
-                    </div>
-
-                    <!-- Services Offered -->
-                    <div class="mb-4">
-
-                        <label class="form-label">
-                            Services Offered <span>*</span>
-                        </label>
-
-                        <div class="option-grid">
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="ocean_freight"
-                                >
-                                <span>Ocean Freight</span>
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                Which services does your company offer <span>*</span>
                             </label>
+                            <p class="form-helper">Please select the services you can provide either directly or through your established contracted partners.</p>
+                            <div class="option-grid">
 
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="air_freight"
-                                >
-                                <span>Air Freight</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="road_land_transport"
-                                >
-                                <span>Road / Land Transport</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="customs_clearance"
-                                >
-                                <span>Customs Clearance</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="warehousing"
-                                >
-                                <span>Warehousing</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="project_breakbulk"
-                                >
-                                <span>Project / Breakbulk Cargo</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="services[]"
-                                    value="multimodal_transport"
-                                >
-                                <span>Multimodal Transport</span>
-                            </label>
-
-                            <div class="services-offered-other">
                                 <label class="choice-option">
                                     <input
                                         type="checkbox"
                                         name="services[]"
-                                        id="services_other"
-                                        value="Other"
+                                        value="ocean_freight"
                                     >
-                                    <span>Other</span>
+                                    <span>Ocean Freight</span>
                                 </label>
 
-                                <input
-                                    type="text"
-                                    class="form-control other-specify-input"
-                                    name="other_logistics_service[]"
-                                    id="services_offered_other"
-                                    placeholder="Please specify"
-                                    maxlength="255"
-                                >
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="air_freight"
+                                    >
+                                    <span>Air Freight</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="road_land_transport"
+                                    >
+                                    <span>Road / Land Transport</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="customs_clearance"
+                                    >
+                                    <span>Customs Clearance</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="warehousing"
+                                    >
+                                    <span>Warehousing</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="project_breakbulk"
+                                    >
+                                    <span>Project / Breakbulk Cargo</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="services[]"
+                                        value="multimodal_transport"
+                                    >
+                                    <span>Door-to-Door/Multimodal Transport</span>
+                                </label>
+
+                                <div class="services-offered-other">
+                                    <label class="choice-option">
+                                        <input
+                                            type="checkbox"
+                                            name="services[]"
+                                            id="services_other"
+                                            value="Other"
+                                        >
+                                        <span>Other</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control other-specify-input"
+                                        name="other_logistics_service[]"
+                                        id="services_offered_other"
+                                        placeholder="Please specify"
+                                        maxlength="255"
+                                    >
+                                </div>
                             </div>
                         </div>
-
-                    </div>
-
-
-                    <!-- Countries / Trade Lanes -->
-                    <div class="mb-4">
-
-                        <label for="trade_lanes" class="form-label">
-                            Countries / Trade Lanes Served <span>*</span>
-                        </label>
-
-                        <p class="form-helper">
-                            Please list the key countries or routes where you
-                            regularly handle shipments.
-                        </p>
-
-                        <input
-                            type="text"
-                            id="trade_lanes"
-                            name="trade_lanes"
-                            class="form-control"
-                            placeholder="e.g. UAE–India, UAE–China, Saudi Arabia–Europe"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- Cargo Capabilities -->
-                    <div>
-
-                        <label class="form-label">
-                            Cargo & Special Handling Capabilities <span>*</span>
-                        </label>
-
-                        <p class="form-helper">
-                            Which types of cargo do you regularly handle?
-                        </p>
-
-                        <div class="option-grid">
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="general_cargo"
-                                >
-                                <span>General Cargo</span>
+                        <div class="col-md-6">
+                            <label class="form-label">
+                                Cargo & Special Handling Capabilities <span>*</span>
                             </label>
 
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="machinery_heavy_equipment"
-                                >
-                                <span>Machinery & Heavy Equipment</span>
-                            </label>
+                            <p class="form-helper">
+                                Which types of cargo do you regularly handle?
+                            </p>
 
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="electronics"
-                                >
-                                <span>Electronics & Electrical Goods</span>
-                            </label>
+                            <div class="option-grid">
 
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="textiles"
-                                >
-                                <span>Textiles & Garments</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="food_agriculture"
-                                >
-                                <span>Food & Agricultural Products</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="chemicals"
-                                >
-                                <span>Chemicals</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="pharmaceuticals"
-                                >
-                                <span>Pharmaceuticals</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="automotive"
-                                >
-                                <span>Automotive</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="dangerous_goods"
-                                >
-                                <span>Dangerous Goods / Hazardous Cargo</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="perishable_goods"
-                                >
-                                <span>Perishable Goods</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="live_animals"
-                                >
-                                <span>Live Animals / Pets</span>
-                            </label>
-
-                            <label class="choice-option">
-                                <input
-                                    type="checkbox"
-                                    name="cargo_capabilities[]"
-                                    value="project_oversized"
-                                >
-                                <span>Project / Oversized Cargo</span>
-                            </label>
-
-                            <div class="capabilities-offered-other">
                                 <label class="choice-option">
                                     <input
                                         type="checkbox"
                                         name="cargo_capabilities[]"
-                                        id="capabilities_other"
-                                        value="Other"
+                                        value="general_cargo"
                                     >
-                                    <span>Other</span>
+                                    <span>General Cargo</span>
                                 </label>
 
-                                <input
-                                    type="text"
-                                    class="form-control other-specify-input"
-                                    name="other_cargo_service[]"
-                                    id="capabilities_offered_other"
-                                    placeholder="Please specify"
-                                    maxlength="255"
-                                >
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="machinery_heavy_equipment"
+                                    >
+                                    <span>Machinery & Heavy Equipment</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="electronics"
+                                    >
+                                    <span>Electronics & Electrical Goods</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="textiles"
+                                    >
+                                    <span>Textiles & Garments</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="food_agriculture"
+                                    >
+                                    <span>Food & Agricultural Products</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="chemicals"
+                                    >
+                                    <span>Chemicals</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="pharmaceuticals"
+                                    >
+                                    <span>Pharmaceuticals</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="automotive"
+                                    >
+                                    <span>Automotive</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="dangerous_goods"
+                                    >
+                                    <span>Dangerous Goods / Hazardous Cargo</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="perishable_goods"
+                                    >
+                                    <span>Perishable Goods</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="live_animals"
+                                    >
+                                    <span>Live Animals / Pets</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="cargo_capabilities[]"
+                                        value="project_oversized"
+                                    >
+                                    <span>Oversized / Heavy-Lift Cargo</span>
+                                </label>
+
+                                <div class="capabilities-offered-other">
+                                    <label class="choice-option">
+                                        <input
+                                            type="checkbox"
+                                            name="cargo_capabilities[]"
+                                            id="capabilities_other"
+                                            value="Other"
+                                        >
+                                        <span>Other</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control other-specify-input"
+                                        name="other_cargo_service[]"
+                                        id="capabilities_offered_other"
+                                        placeholder="Please specify"
+                                        maxlength="255"
+                                    >
+                                </div>
                             </div>
                         </div>
-
+                        
                     </div>
-
                 </div>
-
-
-                <!-- ============================= -->
-                <!-- 03 BUSINESS DEVELOPMENT -->
-                <!-- ============================= -->
-
-                <div class="form-card">
-
-                    <div class="form-card-header">
-                        <span>03</span>
-                        <div>
-                            <h2>Business Development</h2>
-                            <p>Tell us where you want to grow your business.</p>
-                        </div>
-                    </div>
-
-                    <div>
-
-                        <label for="markets_to_develop" class="form-label">
-                            Markets You Want to Develop <span>*</span>
-                        </label>
-
-                        <p class="form-helper">
-                            Which countries would you like to develop more
-                            business in?
-                        </p>
-
-                        <input
-                            type="text"
-                            id="markets_to_develop"
-                            name="markets_to_develop"
-                            class="form-control"
-                            placeholder="e.g. UAE, Saudi Arabia, India, East Africa"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <!-- ============================= -->
-                <!-- 04 COMPANY VERIFICATION -->
-                <!-- ============================= -->
 
                 <div class="form-card">
 
                     <div class="form-card-header">
                         <span>04</span>
                         <div>
+                            <h2>Markets you want to Develop</h2>
+                            <p>Tell us about the countries and regions where you plan to expand your business and explore new opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col">
+                            <label for="markets_to_develop" class="form-label">
+                                Which countries would you like to develop more
+                                business in? <span>*</span>
+                            </label>
+
+                            <p class="form-helper">
+                                Please list your target countries, markets or trade lanes.
+                            </p>
+
+                            <input
+                                type="text"
+                                id="markets_to_develop"
+                                name="markets_to_develop"
+                                class="form-control"
+                                placeholder="e.g. UAE, Saudi Arabia, India, East Africa"
+                                required
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-card">
+
+                    <div class="form-card-header">
+                        <span>05</span>
+                        <div>
                             <h2>Company Verification</h2>
                             <p>Provide documents confirming your business status.</p>
                         </div>
                     </div>
 
-                    <div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="verification_type" class="form-label">
+                                Verification Document Type <span>*</span>
+                            </label>
 
-                        <label for="verification_type" class="form-label">
-                            Verification Document Type <span>*</span>
-                        </label>
+                            <select
+                                id="verification_type"
+                                name="verification_type"
+                                class="form-select"
+                                required
+                            >
+                                <option value="" selected disabled>
+                                    Select document type
+                                </option>
 
-                        <select
-                            id="verification_type"
-                            name="verification_type"
-                            class="form-select"
-                            required
-                        >
-                            <option value="" selected disabled>
-                                Select document type
-                            </option>
+                                <option value="business_registration">
+                                    Business Registration / Incorporation Certificate
+                                </option>
 
-                            <option value="business_registration">
-                                Business Registration / Incorporation Certificate
-                            </option>
+                                <option value="freight_forwarding_license">
+                                    Freight-Forwarding / Logistics License
+                                </option>
 
-                            <option value="freight_forwarding_license">
-                                Freight-Forwarding / Logistics License
-                            </option>
+                                <option value="tax_registration">
+                                    Tax / VAT / GST Registration
+                                </option>
 
-                            <option value="tax_registration">
-                                Tax / VAT / GST Registration
-                            </option>
+                                <option value="industry_certification">
+                                    Industry Certification / Membership
+                                </option>
 
-                            <option value="industry_certification">
-                                Industry Certification / Membership
-                            </option>
+                                <option value="other">
+                                    Other official business document
+                                </option>
+                            </select>
 
-                            <option value="other">
-                                Other official business document
-                            </option>
-                        </select>
+                            <p class="form-helper">
+                                Upload at least one official document confirming
+                                your company's legal/business status.
+                            </p>
 
-                        <p class="form-helper">
-                            Upload at least one official document confirming
-                            your company's legal/business status.
-                        </p>
+                            <input
+                                type="file"
+                                name="verification_documents[]"
+                                class="form-control mt-3"
+                                accept=".pdf,.jpg,.jpeg,.png"
+                                multiple
+                                required
+                            >
 
-                        <input
-                            type="file"
-                            name="verification_documents[]"
-                            class="form-control mt-3"
-                            accept=".pdf,.jpg,.jpeg,.png"
-                            multiple
-                            required
-                        >
+                            <p class="form-helper">
+                                You may upload multiple documents. Accepted formats:
+                                PDF, JPG, JPEG and PNG.
+                            </p>
 
-                        <p class="form-helper">
-                            You may upload multiple documents. Accepted formats:
-                            PDF, JPG, JPEG and PNG.
-                        </p>
-
-                        <div class="verification-note">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span>
-                                Documents are used for internal verification
-                                and will not be displayed publicly.
-                            </span>
+                            <div class="verification-note">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>
+                                    Documents are used for internal verification
+                                    and will not be displayed publicly.
+                                </span>
+                            </div>
                         </div>
-
-                        
-                        <!-- Business Activity Evidence -->
-                        <div class="mt-4">
+                        <div class="col-md-6">
                             <label for="business_activity_document" class="form-label">
                                 Business Activity Evidence
                             </label>
@@ -738,156 +714,19 @@
                                 Accepted formats: PDF, JPG, JPEG and PNG.
                             </p>
                         </div>
-
                     </div>
-
                 </div>
-
-
-                <!-- ============================= -->
-                <!-- 05 ASSOCIATIONS & PAYMENT -->
-                <!-- ============================= -->
-
-                <div class="form-card">
-
-                    <div class="form-card-header">
-                        <span>05</span>
-                        <div>
-                            <h2>Associations & Payment Support</h2>
-                            <p>Tell us about your network memberships and support preferences.</p>
-                        </div>
-                    </div>
-
-
-                    <!-- Associations -->
-                    <div class="mb-5">
-
-                        <label class="form-label">
-                            Associations & Networks <span>*</span>
-                        </label>
-
-                        <p class="form-helper">
-                            Are you currently a member of any freight-forwarding
-                            associations or logistics networks?
-                        </p>
-
-                        <div class="radio-list">
-
-                            <label class="radio-option">
-                                <input type="radio" name="association_member" value="1" id="association_yes" required>
-                                <span>Yes</span>
-                            </label>
-
-                            <label class="radio-option">
-                                <input type="radio" name="association_member" value="0" id="association_no">
-                                <span>No</span>
-                            </label>
-
-                        </div>
-
-
-                        <div
-                            id="association_details_wrapper"
-                            class="conditional-field"
-                            style="display: none;"
-                        >
-                            <label for="association_details" class="form-label">
-                                Name of Associations / Networks
-                            </label>
-
-                            <input
-                                type="text"
-                                id="association_details"
-                                name="association_details"
-                                class="form-control"
-                                placeholder="Enter association or network names"
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <!-- Payment Recovery Support -->
-                    <div class="payment-support-box">
-
-                        <div class="payment-support-icon">
-                            <i class="fa-solid fa-hand-holding-dollar"></i>
-                        </div>
-
-                        <div class="payment-support-content">
-
-                            <span class="payment-support-label">
-                                OPTIONAL MEMBER SERVICE
-                            </span>
-
-                            <h3>
-                                Member Payment Recovery Support
-                            </h3>
-
-                            <p>
-                                Would you like to opt for FreightConnect's
-                                Member Payment Recovery Support?
-                            </p>
-
-                            <div class="radio-list">
-
-                                <label class="radio-option">
-                                    <input
-                                        type="radio"
-                                        name="payment_recovery_support"
-                                        value="1"
-                                        
-                                    >
-                                    <span>
-                                        Yes, I would like to opt in
-                                    </span>
-                                </label>
-
-                                <label class="radio-option">
-                                    <input
-                                        type="radio"
-                                        name="payment_recovery_support"
-                                        value="0"
-                                    >
-                                    <span>
-                                        No, I do not require it
-                                    </span>
-                                </label>
-
-                            </div>
-                            <span class="payment-agreement-text">
-                                View Member Payment Recovery
-                                <a
-                                    href="{{ route('legal.payment-recovery') }}"
-                                    target="_blank"
-                                >
-                                    Support details & Terms & Conditions
-                                </a>
-                                <strong>*</strong>
-
-                            </span>
-                            
-                        </div>
-
-                    </div>
-
-                </div>
-
-                
-                <!-- ============================= -->
-                <!-- 06 BUSINESS REFERENCE -->
-                <!-- ============================= -->
 
                 <div class="form-card">
                     <div class="form-card-header">
                         <span>06</span>
                         <div>
                             <h2>Business Reference</h2>
-                            <p>Provide details of a company that can verify your business relationship.</p>
+                            <p>Please provide details of one company you have previously conducted business with.</p>
                         </div>
                     </div>
 
-                    <div class="row g-3">
+                    <div class="row g-4">
                         <div class="col-md-6">
                             <label for="reference_company_name" class="form-label">
                                 Reference Company Name <span>*</span>
@@ -925,7 +764,7 @@
 
                         <div class="col-md-6">
                             <label for="reference_company_website" class="form-label">
-                                Reference Company Website
+                                Company Website
                             </label>
                             <input type="url" id="reference_company_website"
                                 name="reference_company_website" class="form-control"
@@ -934,7 +773,7 @@
 
                         <div class="col-md-6">
                             <label for="reference_contact_person" class="form-label">
-                                Reference Contact Person <span>*</span>
+                                Contact Person <span>*</span>
                             </label>
                             <input type="text" id="reference_contact_person"
                                 name="reference_contact_person" 
@@ -946,7 +785,7 @@
                         <div class="col-md-6">
                             <label 
                                 for="reference_designation" class="form-label">
-                                Reference Contact Designation <span>*</span>
+                                Designation/Position <span>*</span>
                             </label>
                             <input type="text" id="reference_designation"
                                 name="reference_designation" class="form-control" placeholder="Enter contact person's designation"
@@ -955,7 +794,7 @@
 
                         <div class="col-md-6">
                             <label for="reference_business_email" class="form-label">
-                                Reference Business Email <span>*</span>
+                                Business Email <span>*</span>
                             </label>
                             <input type="email" id="reference_business_email"
                                 name="reference_business_email" class="form-control" placeholder="Enter business email address"
@@ -964,7 +803,7 @@
 
                         <div class="col-md-6">
                             <label for="reference_phone" class="form-label">
-                                Reference Phone Number <span>*</span>
+                                Phone Number <span>*</span>
                             </label>
                             <input type="tel" id="reference_phone"
                                 name="reference_phone" class="form-control" placeholder="e.g. +971 50 123 4567"
@@ -975,7 +814,7 @@
 
                         <div class="col-md-6">
                             <label for="reference_relationship" class="form-label">
-                                Business Relationship <span>*</span>
+                                Nature of Relationship <span>*</span>
                             </label>
                             <select
                                 class="form-select"
@@ -985,7 +824,7 @@
                             >
                                 <option value="">Select relationship</option>
                                 <option value="Customer">Customer</option>
-                                <option value="Supplier">Supplier</option>
+                                <option value="Supplier">Overseas Forwarding Partner</option>
                                 <option value="Business Partner">Business Partner</option>
                                 <option value="Manufacturer">Manufacturer</option>
                                 <option value="Distributor">Distributor</option>
@@ -994,9 +833,9 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col">
                             <label for="reference_relationship_duration" class="form-label">
-                                Relationship Duration <span>*</span>
+                                How long have you worked together? <span>*</span>
                             </label>
                             <select
                                 class="form-select"
@@ -1013,9 +852,9 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col">
                             <label for="reference_last_transaction_date" class="form-label">
-                                Date of Last Transaction
+                                When was your most recent business transaction or shipment with this company?
                             </label>
                             <input type="date" id="reference_last_transaction_date"
                                 name="reference_last_transaction_date" class="form-control" placeholder="Last date of transaction">
@@ -1023,44 +862,149 @@
                     </div>
                 </div>
 
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <span>07</span>
+                        <div>
+                            <h2>Associations & Industry Memberships</h2>
+                            <p>Tell us about any industry associations, trade organisations, or professional networks your company is affiliated with.</p>
+                        </div>
+                    </div>
 
-                <!-- ============================= -->
-                <!-- 06 REFERRAL -->
-                <!-- ============================= -->
+                    <div class="row g-4">
+                        <div class="col">
+                            <label class="form-label">
+                                Is your company currently a member of any freight-forwarding associations, logistics networks or industry organizations?
+                            </label>
+
+                            <div class="radio-list">
+
+                                <label class="radio-option">
+                                    <input type="radio" name="association_member" value="1" id="association_yes" required>
+                                    <span>Yes</span>
+                                </label>
+
+                                <label class="radio-option">
+                                    <input type="radio" name="association_member" value="0" id="association_no">
+                                    <span>No</span>
+                                </label>
+
+                            </div>
+                            <div
+                                id="association_details_wrapper"
+                                class="conditional-field"
+                                style="display: none;"
+                            >
+                                <label for="association_details" class="form-label">
+                                    Name of Associations / Networks
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="association_details"
+                                    name="association_details"
+                                    class="form-control"
+                                    placeholder="Enter association or network names"
+                                >
+                            </div>
+                        </div>
+                        <!-- Payment Recovery Support -->
+                        <div class="payment-support-box">
+
+                            <div class="payment-support-icon">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </div>
+
+                            <div class="payment-support-content">
+
+                                <span class="payment-support-label">
+                                    OPTIONAL MEMBER SERVICE
+                                </span>
+
+                                <h3>
+                                    Member Payment Recovery Support
+                                </h3>
+
+                                <p>
+                                    Would you like to opt for FreightConnect's
+                                    Member Payment Recovery Support?
+                                </p>
+
+                                <div class="radio-list">
+
+                                    <label class="radio-option">
+                                        <input
+                                            type="radio"
+                                            name="payment_recovery_support"
+                                            value="1"
+                                            
+                                        >
+                                        <span>
+                                            Yes, I would like to opt in
+                                        </span>
+                                    </label>
+
+                                    <label class="radio-option">
+                                        <input
+                                            type="radio"
+                                            name="payment_recovery_support"
+                                            value="0"
+                                        >
+                                        <span>
+                                            No, I do not require it
+                                        </span>
+                                    </label>
+
+                                </div>
+                                <span class="payment-agreement-text">
+                                    View Member Payment Recovery
+                                    <a
+                                        href="{{ route('legal.payment-recovery') }}"
+                                        target="_blank"
+                                    >
+                                        Support details & Terms & Conditions
+                                    </a>
+                                    <strong>*</strong>
+
+                                </span>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-card">
 
                     <div class="form-card-header">
-                        <span>06</span>
+                        <span>09</span>
                         <div>
                             <h2>Referral</h2>
-                            <p>Let us know if an existing member referred you.</p>
+                            <p class="form-helper">Were you referred by an existing FreightConnect member?</p>
                         </div>
                     </div>
 
-                    <div>
+                    <div class="row g-4">
+                        <div class="col-md-6"> 
+                            <label for="referral" class="form-label">
+                                Referral ID / Member Code
+                            </label>
 
-                        <label for="referral" class="form-label">
-                            Referral ID / Member Code
-                        </label>
+                            <input
+                                type="text"
+                                id="referral"
+                                name="referral"
+                                class="form-control"
+                                placeholder="Enter Referral ID / Member Code"
+                            >
 
-                        <input
-                            type="text"
-                            id="referral"
-                            name="referral"
-                            class="form-control"
-                            placeholder="Enter Referral ID / Member Code"
-                        >
-
-                        <p class="form-helper">
-                            Leave blank if you were not referred by an existing
-                            FreightConnect member.
-                        </p>
-
+                            <p class="form-helper">
+                                Leave blank if you were not referred by an existing
+                                FreightConnect member.
+                            </p>
+                        </div>
                     </div>
-
                 </div>
-
                 <div class="membership-agreement">
 
                     <label class="membership-agreement-label">
@@ -1153,9 +1097,7 @@
                     </p>
 
                 </div>
-
             </form>
-
         </div>
     </section>
 

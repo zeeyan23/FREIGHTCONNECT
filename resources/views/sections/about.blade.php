@@ -32,13 +32,13 @@
 
                     <p class="about-description mask-base">
                         FreightConnect is a global B2B trade alliance bringing
-                        together freight forwarding professionals, traders, and
+                        together freight forwarding professionals, trade partners, and
                         businesses within one connected ecosystem.
                     </p>
 
                     <p class="about-description mask-overlay">
                         FreightConnect is a global B2B trade alliance bringing
-                        together freight forwarding professionals, traders, and
+                        together freight forwarding professionals, trade partners, and
                         businesses within one connected ecosystem.
                     </p>
 
