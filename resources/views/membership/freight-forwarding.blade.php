@@ -8,12 +8,12 @@
     <section class="membership-form-header">
         <div class="container">
             <div class="form-header-content">
-                <span class="form-header-label">FREIGHTCONNECT MEMBERSHIP</span>
+                <span class="form-header-label">Membership Application</span>
                 <h1>Freight-Forwarding Member Application</h1>
-                <p>
+                <!-- <p>
                     Apply to join FreightConnect as a verified freight-forwarding
                     and logistics member.
-                </p>
+                </p> -->
             </div>
         </div>
     </section>
@@ -164,7 +164,7 @@
                         <!-- Company Logo -->
                         <div class="col-md-6">
                             <label for="company_logo" class="form-label">
-                                Company Logo
+                                Company Logo <span>*</span>
                             </label>
                             <input
                                 type="file"
@@ -172,6 +172,7 @@
                                 name="company_logo"
                                 class="form-control"
                                 accept=".jpg,.jpeg,.png,.webp"
+                                required
                             >
                             <p class="form-helper">
                                 Optional. Accepted formats: JPG, PNG, and WebP.
@@ -336,7 +337,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="trade_lanes" class="form-label">
-                                Countries / Trade Lanes Served <span>*</span>
+                                Strongest Trade Lanes Served <span>*</span>
                             </label>
 
                             <p class="form-helper">
@@ -595,7 +596,7 @@
                     <div class="form-card-header">
                         <span>04</span>
                         <div>
-                            <h2>Markets you want to Develop</h2>
+                            <h2>Target Markets & Expansion</h2>
                             <p>Tell us about the countries and regions where you plan to expand your business and explore new opportunities.</p>
                         </div>
                     </div>
@@ -656,13 +657,13 @@
                                     Freight-Forwarding / Logistics License
                                 </option>
 
-                                <option value="tax_registration">
+                                <!-- <option value="tax_registration">
                                     Tax / VAT / GST Registration
-                                </option>
+                                </option> -->
 
-                                <option value="industry_certification">
+                                <!-- <option value="industry_certification">
                                     Industry Certification / Membership
-                                </option>
+                                </option> -->
 
                                 <option value="other">
                                     Other official business document
@@ -691,8 +692,8 @@
                             <div class="verification-note">
                                 <i class="fa-solid fa-shield-halved"></i>
                                 <span>
-                                    Documents are used for internal verification
-                                    and will not be displayed publicly.
+                                    Where possible, you may provide a document relating to a company you have listed as your Business Reference below. 
+                                    This can help us verify your business relationship.- mention this under business activity evidence and make it mandatory field
                                 </span>
                             </div>
                         </div>
@@ -710,8 +711,8 @@
                             >
 
                             <p class="form-helper">
-                                Optional. Upload a document showing your company's business activity.
-                                Accepted formats: PDF, JPG, JPEG and PNG.
+                                Please provide a recent document demonstrating your freight/logistics activity, such as a shipping document, 
+                                transport document or other relevant business document. Sensitive information may be redacted.
                             </p>
                         </div>
                     </div>
@@ -764,11 +765,11 @@
 
                         <div class="col-md-6">
                             <label for="reference_company_website" class="form-label">
-                                Company Website
+                                Company Website <span>*</span>
                             </label>
                             <input type="url" id="reference_company_website"
                                 name="reference_company_website" class="form-control"
-                                placeholder="https://example.com">
+                                placeholder="https://example.com" required>
                         </div>
 
                         <div class="col-md-6">
@@ -1084,18 +1085,16 @@
                 </div>
 
                 <!-- Submit -->
-                <div class="form-submit">
+                <div class="form-submit d-flex flex-column align-items-center gap-2">
 
-                    <button type="submit" class="btn btn-primary">
+                    <p class="text-center text-black fw-bold mb-0">
+                        By submitting the application you confirm that the information provided is accurate
+                    </p>
+
+                    <button type="submit" class="btn w-100 submit-btn">
                         Submit Application
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
-
-                    <p>
-                        By submitting this application, you confirm that the
-                        information provided is accurate.
-                    </p>
-
                 </div>
             </form>
         </div>

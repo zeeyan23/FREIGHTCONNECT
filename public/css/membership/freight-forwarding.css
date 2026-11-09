@@ -13,7 +13,7 @@
 ========================================= */
 
 .membership-form-header {
-    background: #0b1727;
+    background: #0056da;
     color: #fff;
     padding: 90px 0 80px;
     position: relative;
@@ -28,7 +28,7 @@
     right: -200px;
     top: -250px;
     border-radius: 50%;
-    background: rgba(13, 110, 253, 0.12);
+    background: rgb(13 110 253 / 45%);
 }
 
 .form-header-content {
@@ -42,7 +42,7 @@
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #6ea8fe;
+    color: white;
     margin-bottom: 15px;
 }
 
@@ -173,6 +173,31 @@
     line-height: 1.6;
     margin-top: 8px;
     margin-bottom: 0;
+}
+
+
+
+.submit-btn {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: white;
+    padding: 13px 24px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    background-color: #f1f1f1;
 }
 
 
@@ -504,6 +529,10 @@
     .payment-terms-modal .modal-header,
     .payment-terms-modal .modal-body {
         padding: 22px;
+    }
+
+    .submit-btn {
+        justify-content: center;
     }
 
 }

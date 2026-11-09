@@ -16,19 +16,19 @@
     {{-- Membership Selection --}}
     @include('components.selection-modal', [
         'id' => 'membershipTypeModal',
-        'label' => 'MEMBERSHIP',
-        'title' => 'Request an Invitation',
+        'label' => 'MEMBERSHIP APPLICATION',
+        'title' => 'Apply for Membership',
         'description' => 'Choose your membership type to continue.',
         'options' => [
             [
                 'title' => 'Freight Forwarding Member',
-                'description' => 'For freight forwarding and logistics companies.',
+                'description' => 'For Freight Forwarders',
                 'icon' => 'fa-solid fa-truck-fast',
                 'url' => route('membership.freight-forwarding'),
             ],
             [
                 'title' => 'Trade Partner / Trader',
-                'description' => 'For traders, importers, exporters and businesses.',
+                'description' => 'For Trade Partners',
                 'icon' => 'fa-solid fa-globe',
                 'url' => route('membership.trade-partner'),
             ],

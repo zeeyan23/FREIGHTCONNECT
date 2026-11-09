@@ -5,6 +5,16 @@
 <head>
     <title>FreightConnect- Global Trade Alliance</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta property="og:site_name" content="FreightConnect - Global Trade Alliance">
+   <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => 'FreightConnect - Global Trade Alliance',
+        'alternateName' => 'FreightConnect',
+        'url' => 'https://freightconnect.info/'
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,6 +51,12 @@
 
 <link rel="stylesheet" href="{{ asset('css/legal/legal.css') }}?v={{ filemtime(public_path('css/legal/legal.css')) }}">
 
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NTH7KV2K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 
 </head>
 
@@ -50,8 +66,7 @@
 @yield('content')
 
 {{-- Floating WhatsApp Button --}}
-@if (
-!request()->routeIs(
+@if (!request()->routeIs(
     'membership.trade-partner',
     'membership.freight-forwarding',
     'search.buyers',
@@ -69,12 +84,12 @@
     'news.index',
     'news.show'
 ))
-<a href="https://wa.me/971XXXXXXXXX"
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat with us on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-</a>
+    <a href="https://wa.me/971XXXXXXXXX"
+        class="whatsapp-float"
+        target="_blank"
+        aria-label="Chat with us on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+    </a>
 @endif
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>

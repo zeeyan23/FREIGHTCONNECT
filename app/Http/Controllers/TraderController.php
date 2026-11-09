@@ -112,7 +112,7 @@ class TraderController extends Controller
                 $formatValue($trader->business_address),
                 $formatValue($trader->business_email),
                 $formatValue($trader->company_website),
-                $formatValue($trader->business_type),
+                // $formatValue($trader->business_type),
                 $formatValue($trader->contact_person),
                 $formatValue($trader->designation),
                 $formatValue($trader->contact_person_email),
@@ -124,7 +124,7 @@ class TraderController extends Controller
                 $formatValue($trader->current_trade_countries),
                 $formatValue($trader->target_trade_markets),
                 $formatValue($trader->needs_logistics_support),
-                $formatValue($trader->logistics_services),
+                // $formatValue($trader->logistics_services),
 
                 // New field: Application Status (column U).
                 'pending',
@@ -152,7 +152,7 @@ class TraderController extends Controller
                 'Business Address',
                 'Business Email',
                 'Company Website',
-                'Business Type',
+                // 'Business Type',
                 'Contact Person',
                 'Designation',
                 'Contact Email',
@@ -164,7 +164,7 @@ class TraderController extends Controller
                 'Current Trade Countries',
                 'Target Trade Markets',
                 'Logistics Support Needed',
-                'Logistics Services',
+                // 'Logistics Services',
                 'Application Status',
             ]];
 

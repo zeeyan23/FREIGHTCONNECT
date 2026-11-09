@@ -8,17 +8,17 @@
     <section class="membership-form-header">
         <div class="container">
             <div class="form-header-content">
-                <span class="form-label">MEMBERSHIP APPLICATION</span>
+                <span class="form-header-label">Membership Application</span>
 
                 <h1>
                     Trade Partner
-                    <span>Registration</span>
+                    Registration
                 </h1>
 
-                <p>
+                <!-- <p>
                     Please provide your business information below to request
                     a FreightConnect Trade Partner membership invitation.
-                </p>
+                </p> -->
             </div>
         </div>
     </section>
@@ -523,7 +523,6 @@
 
                     <div class="row g-4">
 
-                        <!-- Business Interests -->
                         <div class="col-md-6">
                             <label class="form-label">
                                 What would you like to find through FreightConnect?
@@ -658,7 +657,6 @@
                             </div>
                         </div>
 
-                        <!-- Freight / Logistics Support -->
                         <div class="col-md-6">
                             <label class="form-label d-block">
                                 Do you currently need freight or logistics support?
@@ -680,8 +678,7 @@
                             </div>
                         </div>
 
-                        <!-- Business Type -->
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <label>
                                 Business Type <span>*</span>
                             </label>
@@ -754,9 +751,8 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
 
-                        <!-- Specific Requirement -->
                         <div class="col-md-6">
                             <label class="form-label d-block">
                                 Do you have a specific requirement at present?
@@ -791,13 +787,7 @@
                             </div>
                         </div>
 
-                        
-
-                        
-
-
-                        <!-- Products -->
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <label for="products">
                                 Products Traded / Manufactured <span>*</span>
                             </label>
@@ -816,11 +806,8 @@
                                 along with keywords potential buyers or suppliers may use
                                 to find your company through FreightConnect.
                             </small>
-                        </div>
-
-                        
-
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <label for="exporting_to">
                                 Currently Exporting To <span>*</span>
                             </label>
@@ -833,10 +820,8 @@
                                 placeholder="Example: UAE, Saudi Arabia, Germany"
                                 required
                             >
-                        </div>
-
-
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <label for="importing_from">
                                 Currently Importing From <span>*</span>
                             </label>
@@ -849,10 +834,8 @@
                                 placeholder="Example: China, India, Germany"
                                 required
                             >
-                        </div>
-
-
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <label for="buyers_in">
                                 Looking for Buyers In <span>*</span>
                             </label>
@@ -865,10 +848,8 @@
                                 placeholder="Example: UAE, Saudi Arabia, East Africa"
                                 required
                             >
-                        </div>
-
-                        <!-- Logistics Services -->
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
 
                             <label>
                                 Logistics Services Required <span>*</span>
@@ -928,7 +909,7 @@
                                 
                                 
                                 <div class="option-grid">
-                                    <!-- Keep your existing service checkboxes here -->
+                                    
 
                                     <label class="choice-option">
                                         <input
@@ -955,10 +936,8 @@
 
                             </div>
 
-                        </div>
-
-                        <!-- Shipment Frequency -->
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
 
                             <label>
                                 International Shipment Frequency
@@ -1001,8 +980,8 @@
                                     As Required
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <label for="suppliers_in">
                                 Looking for Suppliers In <span>*</span>
                             </label>
@@ -1015,8 +994,8 @@
                                 placeholder="Example: China, India, Turkey"
                                 required
                             >
-                        </div>
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
 
                             <label>
                                 Do you currently have a trade or shipment requirement?
@@ -1041,8 +1020,8 @@
                                     No
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-md-6" id="requirement_description_wrapper">
+                        </div> -->
+                        <!-- <div class="col-md-6" id="requirement_description_wrapper">
 
                             <label for="requirement_description">
                                 Briefly describe your requirement.
@@ -1055,7 +1034,7 @@
                                 rows="4"
                                 placeholder="Example: Looking for a freight forwarder for machinery shipments from India to UAE."
                             ></textarea>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -1097,7 +1076,7 @@
                         <div class="col-md-6">
 
                             <label for="business_activity_document">
-                                Evidence of Business Activity <span>*</span>
+                                Proof of Recent Business Activity <span>*</span>
                             </label>
 
                             <p class="text-muted small">
@@ -1117,7 +1096,7 @@
                         </div>
 
                         <!-- Privacy Notice -->
-                        <div class="col-12">
+                        <div class="col-md-6 ms-auto">
                             <div class="alert alert-light border mb-0">
                                 <small>
                                     <i class="bi bi-shield-lock me-1"></i>
@@ -1281,6 +1260,38 @@
                     </div>
                 </div>
                 
+                <div class="form-card">
+
+                    <div class="form-card-header">
+                        <span>09</span>
+                        <div>
+                            <h2>Referral</h2>
+                            <p class="form-helper">Were you referred by an existing FreightConnect member?</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6"> 
+                            <label for="referral" class="form-label">
+                                Referral ID / Member Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="referral"
+                                name="referral"
+                                class="form-control"
+                                placeholder="Enter Referral ID / Member Code"
+                            >
+
+                            <p class="form-helper">
+                                Leave blank if you were not referred by an existing
+                                FreightConnect member.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="membership-agreement">
 
                     <!-- Membership Terms & Privacy Policy -->
@@ -1366,14 +1377,13 @@
 
                 </div>
                 <!-- Submit -->
-                <div class="form-submit">
+                <div class="form-submit d-flex flex-column align-items-center gap-2">
                     
-                    <p>
-                        By submitting this application, you confirm that
-                        the information provided is accurate.
+                    <p class="text-center text-black fw-bold mb-0">
+                        By submitting the application you confirm that the information provided is accurate
                     </p>
 
-                    <button type="submit" class="btn btn-primary submit-btn">
+                    <button type="submit" class="btn submit-btn w-100">
                         Submit Application
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>

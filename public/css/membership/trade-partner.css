@@ -80,14 +80,26 @@
 ========================================= */
 
 .membership-form-header {
-    background: #101828;
+    background: #0056da;
     padding: 90px 0 80px;
     color: #ffffff;
+}
+
+.membership-form-header::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -200px;
+    top: -250px;
+    border-radius: 50%;
+    background: rgb(13 110 253 / 45%);
 }
 
 .form-header-content {
     max-width: 760px;
 }
+
 
 .form-label {
     display: inline-block;
@@ -208,7 +220,11 @@
 }
 
 .form-card label span {
-    color: #dc3545;
+    color: red;
+}
+
+.form-card .radio-list .radio-option span {
+    color: black;
 }
 
 
@@ -401,7 +417,7 @@
     margin-top: 40px;
     padding: 30px;
 
-    background: #101828;
+    background: #0056da;
 
     border-radius: 20px;
 }
@@ -422,8 +438,9 @@
 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-
+    background-color: white;
     padding: 13px 24px;
 
     border-radius: 10px;
@@ -436,6 +453,7 @@
 
 .submit-btn:hover {
     transform: translateY(-2px);
+    background-color: #f1f1f1;
 }
 
 

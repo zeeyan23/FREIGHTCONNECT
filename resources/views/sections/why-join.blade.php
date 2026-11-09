@@ -313,7 +313,7 @@
                             </h3>
 
                             <p>
-                                Freight forwarder member Connect with global trade partners, 
+                                Connect with global trade partners, 
                                 discover freight opportunities, and grow your business.
                             </p>
 

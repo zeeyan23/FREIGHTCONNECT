@@ -54,18 +54,18 @@ class TraderMemberAccountRequest extends FormRequest
                 'max:2048',
             ],
 
-            'business_type' => [
-                'required',
-                Rule::in([
-                    'Exporter',
-                    'Importer',
-                    'Exporter & Importer',
-                    'Trading Company',
-                    'Manufacturer',
-                    'Manufacturer & Exporter/Importer',
-                    'Other',
-                ]),
-            ],
+            // 'business_type' => [
+            //     'required',
+            //     Rule::in([
+            //         'Exporter',
+            //         'Importer',
+            //         'Exporter & Importer',
+            //         'Trading Company',
+            //         'Manufacturer',
+            //         'Manufacturer & Exporter/Importer',
+            //         'Other',
+            //     ]),
+            // ],
 
             'business_type_other' => [
                 'nullable',
@@ -73,11 +73,11 @@ class TraderMemberAccountRequest extends FormRequest
                 'max:255',
             ],
 
-            'products' => [
-                'required',
-                'string',
-                'max:5000',
-            ],
+            // 'products' => [
+            //     'required',
+            //     'string',
+            //     'max:5000',
+            // ],
 
             // Contact Information
             'contact_person' => [
@@ -191,12 +191,12 @@ class TraderMemberAccountRequest extends FormRequest
                 'boolean',
             ],
 
-            'requirement_description' => [
-                'nullable',
-                'required_if:has_specific_requirement,1',
-                'string',
-                'max:5000',
-            ],
+            // 'requirement_description' => [
+            //     'nullable',
+            //     'required_if:has_specific_requirement,1',
+            //     'string',
+            //     'max:5000',
+            // ],
 
             'needs_logistics_support' => [
                 'required',
@@ -222,68 +222,68 @@ class TraderMemberAccountRequest extends FormRequest
             ],
 
             // Trade & Market Information
-            'exporting_to' => [
-                'required',
-                'string',
-                'max:2000',
-            ],
+            // 'exporting_to' => [
+            //     'required',
+            //     'string',
+            //     'max:2000',
+            // ],
 
-            'importing_from' => [
-                'required',
-                'string',
-                'max:2000',
-            ],
+            // 'importing_from' => [
+            //     'required',
+            //     'string',
+            //     'max:2000',
+            // ],
 
-            'buyers_in' => [
-                'required',
-                'string',
-                'max:2000',
-            ],
+            // 'buyers_in' => [
+            //     'required',
+            //     'string',
+            //     'max:2000',
+            // ],
 
-            'suppliers_in' => [
-                'required',
-                'string',
-                'max:2000',
-            ],
+            // 'suppliers_in' => [
+            //     'required',
+            //     'string',
+            //     'max:2000',
+            // ],
 
             // Logistics Requirements
-            'logistics_services' => [
-                'required',
-                'array',
-                'min:1',
-            ],
+            // 'logistics_services' => [
+            //     'required',
+            //     'array',
+            //     'min:1',
+            // ],
 
-            'logistics_services.*' => [
-                'required',
-                'string',
-                Rule::in([
-                    'Ocean Freight',
-                    'Air Freight',
-                    'Road Freight',
-                    'Customs Clearance',
-                    'Warehousing',
-                    'Door-to-Door',
-                    'Multimodal Transportation',
-                    'Other',
-                ]),
-            ],
+            // 'logistics_services.*' => [
+            //     'required',
+            //     'string',
+            //     Rule::in([
+            //         'Ocean Freight',
+            //         'Air Freight',
+            //         'Road Freight',
+            //         'Customs Clearance',
+            //         'Warehousing',
+            //         'Door-to-Door',
+            //         'Multimodal Transportation',
+            //         'Other',
+            //     ]),
+            // ],
 
-            'shipment_frequency' => [
-                'nullable',
-                Rule::in([
-                    'Weekly',
-                    'Monthly',
-                    'Quarterly',
-                    'Occasionally',
-                    'As Required',
-                ]),
-            ],
+            // 'shipment_frequency' => [
+            //     'nullable',
+            //     Rule::in([
+            //         'Weekly',
+            //         'Monthly',
+            //         'Quarterly',
+            //         'Occasionally',
+            //         'As Required',
+            //     ]),
+            // ],
 
             // Current Trade Requirement
-            'has_requirement' => [
-                'required',
-                Rule::in(['Yes', 'No']),
-            ],
+            // 'has_requirement' => [
+            //     'required',
+            //     Rule::in(['Yes', 'No']),
+            // ],
 
             // Business Verification Documents
             'company_registration_document' => [
@@ -390,6 +390,7 @@ class TraderMemberAccountRequest extends FormRequest
                     'More than 5 years',
                 ]),
             ],
+            'referral' => ['nullable', 'string', 'max:100'],
         ];
     }
 
