@@ -80,7 +80,7 @@ class TraderController extends Controller
                 '1Z_lYLckrfh7MMokMOFqq_NYaCluMsjg8aiukM1Yhl7k';
 
             // Updated range to include the new column U.
-            $range = 'Sheet1!A:U';
+            $range = 'Trade partner members!A:U';
 
             // Convert array fields into readable spreadsheet values.
             $formatValue = static function ($value): string {
@@ -170,7 +170,7 @@ class TraderController extends Controller
 
             $service->spreadsheets_values->update(
                 $spreadsheetId,
-                'Sheet1!A1:U1',
+                'Trade partner members!A1:U1',
                 new ValueRange(['values' => $headers]),
                 ['valueInputOption' => 'RAW']
             );

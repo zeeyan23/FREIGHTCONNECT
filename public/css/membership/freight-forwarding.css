@@ -1,6 +1,9 @@
 /* =========================================
    MEMBERSHIP FORM PAGE
 ========================================= */
+body.freight-forwarding-page {
+    padding-top: 0 !important;
+}
 
 .membership-form-page {
     background: #f5f7fa;
@@ -13,14 +16,12 @@
 ========================================= */
 
 .membership-form-header {
-    background: #0056da;
-    color: #fff;
-    padding: 90px 0 80px;
+    padding: 50px 0 50px;
     position: relative;
     overflow: hidden;
 }
 
-.membership-form-header::after {
+/* .membership-form-header::after {
     content: "";
     position: absolute;
     width: 500px;
@@ -29,44 +30,31 @@
     top: -250px;
     border-radius: 50%;
     background: rgb(13 110 253 / 45%);
-}
-
-.form-header-content {
-    max-width: 760px;
-    position: relative;
-    z-index: 1;
-}
+} */
 
 .form-header-label {
     display: inline-block;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: white;
-    margin-bottom: 15px;
+    color: #0056da;
+    /* margin-bottom: 15px; */
 }
 
 .form-header-content h1 {
     font-size: clamp(34px, 5vw, 56px);
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    color: #0056da;
 }
-
-.form-header-content p {
-    font-size: 17px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
-}
-
 
 /* =========================================
    FORM SECTION
 ========================================= */
 
 .membership-form-section {
-    padding: 70px 0 100px;
+    padding: 0 0 70px;
 }
 
 
@@ -184,7 +172,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: white;
+    background-color: #0056da;
     padding: 13px 24px;
 
     border-radius: 10px;
@@ -197,7 +185,8 @@
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    background-color: #f1f1f1;
+    color: white;
+    background-color: #0251c8;
 }
 
 
@@ -461,7 +450,7 @@
 .form-submit p {
     margin-top: 15px;
     color: #8a95a3;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .services-offered-other, .capabilities-offered-other {
@@ -621,7 +610,7 @@
 
 .membership-agreement-text {
     color: #64748b;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.7;
 }
 

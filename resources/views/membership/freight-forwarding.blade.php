@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('body-class', 'freight-forwarding-page')
+
 @section('content')
 
 <div class="membership-form-page">
@@ -9,7 +11,7 @@
         <div class="container">
             <div class="form-header-content">
                 <span class="form-header-label">Membership Application</span>
-                <h1>Freight-Forwarding Member Application</h1>
+                <h1>Freight Forwarder Registration</h1>
                 <!-- <p>
                     Apply to join FreightConnect as a verified freight-forwarding
                     and logistics member.
@@ -141,7 +143,7 @@
                                 id="business_email"
                                 name="business_email"
                                 class="form-control"
-                                placeholder="email@example.com"
+                                placeholder="Enter company email"
                                 required
                             >
                         </div>
@@ -174,7 +176,7 @@
                                 accept=".jpg,.jpeg,.png,.webp"
                                 required
                             >
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Optional. Accepted formats: JPG, PNG, and WebP.
                             </p>
                         </div>
@@ -340,7 +342,7 @@
                                 Strongest Trade Lanes Served <span>*</span>
                             </label>
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Please list the key countries or routes where you
                                 regularly handle shipments.
                             </p>
@@ -358,7 +360,7 @@
                             <label class="form-label">
                                 Which services does your company offer <span>*</span>
                             </label>
-                            <p class="form-helper">Please select the services you can provide either directly or through your established contracted partners.</p>
+                            <p class="text-muted small">Please select the services you can provide either directly or through your established contracted partners.</p>
                             <div class="option-grid">
 
                                 <label class="choice-option">
@@ -451,7 +453,7 @@
                                 Cargo & Special Handling Capabilities <span>*</span>
                             </label>
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Which types of cargo do you regularly handle?
                             </p>
 
@@ -607,7 +609,7 @@
                                 business in? <span>*</span>
                             </label>
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Please list your target countries, markets or trade lanes.
                             </p>
 
@@ -670,7 +672,7 @@
                                 </option>
                             </select>
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Upload at least one official document confirming
                                 your company's legal/business status.
                             </p>
@@ -684,22 +686,23 @@
                                 required
                             >
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 You may upload multiple documents. Accepted formats:
                                 PDF, JPG, JPEG and PNG.
                             </p>
 
-                            <div class="verification-note">
+                            <!-- <div class="verification-note">
                                 <i class="fa-solid fa-shield-halved"></i>
                                 <span>
                                     Where possible, you may provide a document relating to a company you have listed as your Business Reference below. 
                                     This can help us verify your business relationship.- mention this under business activity evidence and make it mandatory field
                                 </span>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-md-6">
                             <label for="business_activity_document" class="form-label">
                                 Business Activity Evidence
+                                <span>*</span>
                             </label>
 
                             <input
@@ -708,9 +711,10 @@
                                 name="business_activity_document"
                                 class="form-control"
                                 accept=".pdf,.jpg,.jpeg,.png"
+                                required
                             >
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Please provide a recent document demonstrating your freight/logistics activity, such as a shipping document, 
                                 transport document or other relevant business document. Sensitive information may be redacted.
                             </p>
@@ -834,7 +838,7 @@
                             </select>
                         </div>
 
-                        <div class="col">
+                        <!-- <div class="col">
                             <label for="reference_relationship_duration" class="form-label">
                                 How long have you worked together? <span>*</span>
                             </label>
@@ -859,7 +863,7 @@
                             </label>
                             <input type="date" id="reference_last_transaction_date"
                                 name="reference_last_transaction_date" class="form-control" placeholder="Last date of transaction">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -897,7 +901,7 @@
                                 style="display: none;"
                             >
                                 <label for="association_details" class="form-label">
-                                    Name of Associations / Networks
+                                    Name of Associations / Networks <span>*</span>
                                 </label>
 
                                 <input
@@ -906,6 +910,7 @@
                                     name="association_details"
                                     class="form-control"
                                     placeholder="Enter association or network names"
+                                    required
                                 >
                             </div>
                         </div>
@@ -981,7 +986,7 @@
                         <span>09</span>
                         <div>
                             <h2>Referral</h2>
-                            <p class="form-helper">Were you referred by an existing FreightConnect member?</p>
+                            <p class="text-muted small">Were you referred by an existing FreightConnect member?</p>
                         </div>
                     </div>
 
@@ -999,7 +1004,7 @@
                                 placeholder="Enter Referral ID / Member Code"
                             >
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Leave blank if you were not referred by an existing
                                 FreightConnect member.
                             </p>

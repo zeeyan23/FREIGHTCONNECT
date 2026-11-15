@@ -31,15 +31,19 @@
                 <div class="text-mask-container">
 
                     <p class="about-description mask-base">
-                        FreightConnect is a global B2B trade alliance bringing
-                        together freight forwarding professionals, trade partners, and
-                        businesses within one connected ecosystem.
+                        FreightConnect is a global B2B alliance that brings together verified trade partners and freight forwarders. 
+                        Buyers and sellers can find overseas trading partners, share buying and selling enquiries, and request freight quotes. 
+                        Freight forwarders can connect with overseas agents, receive shipment enquiries from trade partners, 
+                        and pursue business referred by other forwarders. Members can also access "Search for Supplier" & "Request Freight Quotes" 
+                        tools through the FreightConnect platform.
                     </p>
 
                     <p class="about-description mask-overlay">
-                        FreightConnect is a global B2B trade alliance bringing
-                        together freight forwarding professionals, trade partners, and
-                        businesses within one connected ecosystem.
+                        FreightConnect is a global B2B alliance that brings together verified trade partners and freight forwarders. 
+                        Buyers and sellers can find overseas trading partners, share buying and selling enquiries, and request freight quotes. 
+                        Freight forwarders can connect with overseas agents, receive shipment enquiries from trade partners, 
+                        and pursue business referred by other forwarders. Members can also access "Search for Supplier" & "Request Freight Quotes" 
+                        tools through the FreightConnect platform.
                     </p>
 
                 </div>
@@ -47,19 +51,19 @@
                 <div class="text-mask-container">
 
                     <p class="about-description about-description-muted mask-base">
-                        Through dedicated trader and freight-forwarder directories,
-                        trade enquiries, freight requirements, and direct business
-                        connections, members can identify suitable partners,
-                        access new markets, and develop long-term cross-border
-                        relationships.
+                        FreightConnect was established to give businesses a single place to find reliable overseas partners, 
+                        pursue opportunities that match their needs, and build lasting relationships that can lead to repeat business. 
+                        The platform’s tools are designed to support members’ day-to-day trade and shipping operations, 
+                        such as finding suppliers for specific products, posting enquiries about goods they want to buy or sell, 
+                        and requesting freight quotes based on their cargo details and shipping routes.
                     </p>
 
                     <p class="about-description about-description-muted mask-overlay">
-                        Through dedicated trader and freight-forwarder directories,
-                        trade enquiries, freight requirements, and direct business
-                        connections, members can identify suitable partners,
-                        access new markets, and develop long-term cross-border
-                        relationships.
+                        FreightConnect was established to give businesses a single place to find reliable overseas partners, 
+                        pursue opportunities that match their needs, and build lasting relationships that can lead to repeat business. 
+                        The platform’s tools are designed to support members’ day-to-day trade and shipping operations, 
+                        such as finding suppliers for specific products, posting enquiries about goods they want to buy or sell, 
+                        and requesting freight quotes based on their cargo details and shipping routes.
                     </p>
 
                 </div>
@@ -67,15 +71,17 @@
                 <div class="text-mask-container">
 
                     <p class="about-description about-description-muted mask-base">
-                        By linking commercial activity with trusted freight expertise,
-                        FreightConnect creates a practical platform for international
-                        business growth.
+                        Our vision is to build a leading global trade and freight alliance that brings a verified business network, 
+                        practical tools and industry resources together on one platform. 
+                        Feedback from trade partners and freight forwarders will guide how we improve the platform, 
+                        strengthen connections between members and develop the services & tools they need to do business together.
                     </p>
 
                     <p class="about-description about-description-muted mask-overlay">
-                        By linking commercial activity with trusted freight expertise,
-                        FreightConnect creates a practical platform for international
-                        business growth.
+                        Our vision is to build a leading global trade and freight alliance that brings a verified business network, 
+                        practical tools and industry resources together on one platform. 
+                        Feedback from trade partners and freight forwarders will guide how we improve the platform, 
+                        strengthen connections between members and develop the services & tools they need to do business together.
                     </p>
                 </div>
             </div>

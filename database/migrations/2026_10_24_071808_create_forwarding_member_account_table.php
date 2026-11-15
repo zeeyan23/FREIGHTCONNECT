@@ -58,8 +58,8 @@ return new class extends Migration
             $table->string('reference_phone_full')->nullable();
             $table->string('reference_phone_dial_code')->nullable();
             $table->string('reference_relationship');
-            $table->string('reference_relationship_duration');
-            $table->date('reference_last_transaction_date')->nullable();
+            // $table->string('reference_relationship_duration');
+            // $table->date('reference_last_transaction_date')->nullable();
 
             // Declarations
             $table->boolean('information_accuracy_confirmed')

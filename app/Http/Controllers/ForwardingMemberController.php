@@ -137,8 +137,8 @@ class ForwardingMemberController extends Controller
                 'Reference Business Email',
                 'Reference Phone',
                 'Reference Relationship',
-                'Reference Relationship Duration',
-                'Reference Last Transaction Date',
+                // 'Reference Relationship Duration',
+                // 'Reference Last Transaction Date',
                 'Application Status',
             ]];
 
@@ -190,10 +190,10 @@ class ForwardingMemberController extends Controller
                 $formatValue($application->reference_business_email),
                 $formatValue($application->reference_phone),
                 $formatValue($application->reference_relationship),
-                $formatValue($application->reference_relationship_duration),
-                $formatValue(
-                    $application->reference_last_transaction_date?->format('Y-m-d')
-                ),
+                // $formatValue($application->reference_relationship_duration),
+                // $formatValue(
+                //     $application->reference_last_transaction_date?->format('Y-m-d')
+                // ),
 
                 // Application Status.
                 'pending',

@@ -402,7 +402,7 @@
         </div>
     </section>
 
-    <section class="legal-section" id="privacy-confirmation">
+    <!-- <section class="legal-section" id="privacy-confirmation">
         <h2>Privacy Confirmation</h2>
         <div class="legal-agreement-wrapper">
             <form action="#" method="POST">
@@ -428,6 +428,6 @@
                 </button>
             </form>
         </div>
-    </section>
+    </section> -->
 
 @endsection

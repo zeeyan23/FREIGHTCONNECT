@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('body-class', 'trade-partner-form-page')
+
 @section('content')
 
 <div class="membership-form-page">
@@ -55,7 +57,7 @@
 
                         <div>
                             <h2>Company Information</h2>
-                            <p>Tell us about your business.</p>
+                            <!-- <p>Tell us about your business.</p> -->
                         </div>
                     </div>
 
@@ -141,7 +143,7 @@
                                 class="form-control"
                                 id="business_email"
                                 name="business_email"
-                                placeholder="name@company.com"
+                                placeholder="Enter email ID"
                                 required
                             >
 
@@ -160,9 +162,9 @@
                                 accept=".jpg,.jpeg,.png,.webp"
                             >
 
-                            <small class="text-muted">
+                            <p class="text-muted small">
                                 Upload JPG, PNG or WEBP. Maximum size: 2 MB.
-                            </small>
+                            </p>
                         </div>
                         <!-- Company Website -->
                         <div class="col-md-6">
@@ -189,7 +191,7 @@
 
                         <div>
                             <h2>Authorised contact person</h2>
-                            <p>Provide the person we should contact.</p>
+                            <p>Provide the details of the person authorised to represent your company and manage its FreightConnect membership.</p>
                         </div>
                     </div>
 
@@ -472,6 +474,7 @@
                         <div class="col-md-6">
                             <label for="current_trade_countries">
                                 Which countries do you currently trade with?
+                                <span>*</span>
                             </label>
 
                             <p class="text-muted small">
@@ -484,6 +487,7 @@
                                 name="current_trade_countries"
                                 rows="3"
                                 placeholder="e.g. UAE, India, Saudi Arabia, China"
+                                required
                             ></textarea>
                         </div>
 
@@ -491,6 +495,7 @@
                         <div class="col-md-6">
                             <label for="target_trade_markets">
                                 Which countries or markets are you interested in developing?
+                                <span>*</span>
                             </label>
 
                             <p class="text-muted small">
@@ -503,6 +508,7 @@
                                 name="target_trade_markets"
                                 rows="3"
                                 placeholder="e.g. Europe, North America, Southeast Asia"
+                                required
                             ></textarea>
                         </div>
                     </div>
@@ -755,7 +761,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label d-block">
-                                Do you have a specific requirement at present?
+                                Do you have a specific trade requirement at present?
                                 <span>*</span>
                             </label>
 
@@ -776,6 +782,7 @@
                             <div id="requirement_description_wrapper" class="mt-3" hidden>
                                 <label for="requirement_description" class="form-label">
                                     If yes, briefly describe the requirement.
+                                    <span>*</span>
                                 </label>
 
                                 <textarea class="form-control"
@@ -783,7 +790,9 @@
                                     id="requirement_description"
                                     rows="3"
                                     maxlength="5000"
-                                    placeholder="Describe your current requirement"></textarea>
+                                    placeholder="Describe your current requirement"
+                                    required
+                                    ></textarea>
                             </div>
                         </div>
 
@@ -1098,12 +1107,12 @@
                         <!-- Privacy Notice -->
                         <div class="col-md-6 ms-auto">
                             <div class="alert alert-light border mb-0">
-                                <small>
+                                <p class="text-muted small">
                                     <i class="bi bi-shield-lock me-1"></i>
                                     You may redact sensitive information before uploading.
                                     Documents are for internal verification only and
                                     will not be published.
-                                </small>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1143,14 +1152,24 @@
                             <label for="reference_country">
                                 Country <span>*</span>
                             </label>
-                            <input
-                                type="text"
+                            
+                            <select
                                 class="form-control"
-                                id="reference_country"
-                                name="reference_country"
                                 placeholder="Enter country"
+                                name="reference_country"
+                                id="reference_country"
                                 required
                             >
+                                <option value="" disabled selected>
+                                    Select Country
+                                </option>
+
+                                @foreach($countries as $code => $country)
+                                    <option value="{{ $code }}">
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Company Website -->
@@ -1193,7 +1212,7 @@
                                 class="form-control"
                                 id="reference_email"
                                 name="reference_email"
-                                placeholder="Enter business email address"
+                                placeholder="Enter email address"
                                 required
                             >
                         </div>
@@ -1284,7 +1303,7 @@
                                 placeholder="Enter Referral ID / Member Code"
                             >
 
-                            <p class="form-helper">
+                            <p class="text-muted small">
                                 Leave blank if you were not referred by an existing
                                 FreightConnect member.
                             </p>

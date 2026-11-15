@@ -151,19 +151,19 @@ class StoreForwardingMemberRequest extends FormRequest
                     'Trading Partner',
                     'Other',
                 ]),],
-            'reference_relationship_duration' => ['required', 'string',
-                Rule::in([
-                    'Less than 6 months',
-                    '6 months to 1 year',
-                    '1–3 years',
-                    '3–5 years',
-                    'More than 5 years',
-                ]),],
-            'reference_last_transaction_date' => [
-                'nullable',
-                'date',
-                'before_or_equal:today',
-            ],
+            // 'reference_relationship_duration' => ['required', 'string',
+            //     Rule::in([
+            //         'Less than 6 months',
+            //         '6 months to 1 year',
+            //         '1–3 years',
+            //         '3–5 years',
+            //         'More than 5 years',
+            //     ]),],
+            // 'reference_last_transaction_date' => [
+            //     'nullable',
+            //     'date',
+            //     'before_or_equal:today',
+            // ],
 
             // Declarations
             'information_accuracy_confirmed' => ['required', 'accepted'],

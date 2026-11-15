@@ -476,7 +476,7 @@
     </section>
 
 
-    <section class="legal-section" id="member-confirmation">
+    <!-- <section class="legal-section" id="member-confirmation">
 
         <h2>Member Confirmation</h2>
 
@@ -517,6 +517,6 @@
 
         </div>
 
-    </section>
+    </section> -->
 
 @endsection

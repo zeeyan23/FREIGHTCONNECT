@@ -45,8 +45,8 @@ class ForwardingMemberAccount extends Model
         'reference_phone_full',
         'reference_phone_dial_code',
         'reference_relationship',
-        'reference_relationship_duration',
-        'reference_last_transaction_date',
+        // 'reference_relationship_duration',
+        // 'reference_last_transaction_date',
         'information_accuracy_confirmed',
         'verification_authorization_confirmed',
         'membership_status',
@@ -63,6 +63,6 @@ class ForwardingMemberAccount extends Model
         'membership_terms_accepted' => 'boolean',
         'information_accuracy_confirmed' => 'boolean',
         'verification_authorization_confirmed' => 'boolean',
-        'reference_last_transaction_date' => 'date',
+        // 'reference_last_transaction_date' => 'date',
     ];
 }

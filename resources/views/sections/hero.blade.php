@@ -33,7 +33,7 @@
                             gap-2">
 
                     <a href="#"
-                       class="hero-btn primary-btn">
+                       class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#buyerSupplierModal">
                         Find a supplier
                         <!-- <span class="arrow">→</span> -->
                     </a>
