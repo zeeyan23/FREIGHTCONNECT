@@ -1,307 +1,379 @@
+
 # ============================================
-
 # FreightConnect - Laravel Deployment Script
-
 # ============================================
 
 $ErrorActionPreference = "Stop"
+
+# Prevent native stderr output from terminating PowerShell 7 commands.
+$PSNativeCommandUseErrorActionPreference = $false
 
 # ---------- LOCAL ----------
 
 $ProjectPath = "D:\globaltrading"
 $DeployTemp = "$ProjectPath\deploy_temp"
 $ZipFile = "$ProjectPath\freightconnect_deploy.zip"
+$RemoteScriptFile = "$ProjectPath\remote-deploy.sh"
+$LogFile = "$ProjectPath\remote-deploy.log"
 
 # ---------- SERVER ----------
 
 $ServerUser = "u948060652"
 $ServerHost = "82.112.229.222"
 $ServerPort = "65002"
-$KeyFile = "$ProjectPath\freightconnect.ppk"
 
 $ServerProject = "/home/u948060652/freightconnect"
 $ServerPublic = "/home/u948060652/domains/freightconnect.info/public_html"
-$ServerZip = "$ServerProject/freightconnect_deploy.zip"
 
-# ---------- PU TTY ----------
+$KeyFile = "$ProjectPath\freightconnect.ppk"
 
-$PSCP = "C:\Program Files\PuTTY\pscp.exe"
-$PLINK = "C:\Program Files\PuTTY\plink.exe"
+# ---------- PUTTY ----------
 
-Write-Host ""
-Write-Host "============================================" -ForegroundColor Cyan
-Write-Host "   FreightConnect Deployment Started" -ForegroundColor Cyan
-Write-Host "============================================" -ForegroundColor Cyan
-Write-Host ""
+$Pscp = "C:\Program Files\PuTTY\pscp.exe"
+$Plink = "C:\Program Files\PuTTY\plink.exe"
 
 # ============================================
-
-# Check required files
-
+# 1. VALIDATION
 # ============================================
 
-if (!(Test-Path $PSCP)) {
-throw "PSCP not found: $PSCP"
-}
+Write-Host "`n[1/7] Validating deployment files..." -ForegroundColor Cyan
 
-if (!(Test-Path $PLINK)) {
-throw "PLINK not found: $PLINK"
-}
-
-if (!(Test-Path $KeyFile)) {
-throw "Private key not found: $KeyFile"
-}
-
-# ============================================
-
-# 1. Clean deployment folder
-
-# ============================================
-
-Write-Host "[1/7] Preparing deployment package..." -ForegroundColor Yellow
-
-if (Test-Path $DeployTemp) {
-Remove-Item $DeployTemp -Recurse -Force
-}
-
-New-Item -ItemType Directory -Path $DeployTemp | Out-Null
-
-# ============================================
-
-# 2. Copy project files
-
-# ============================================
-
-Write-Host "[2/7] Copying project files..." -ForegroundColor Yellow
-
-robocopy $ProjectPath $DeployTemp /E /XD ".git" "node_modules" "vendor" "storage" "deploy_temp" /XF ".env" "freightconnect_deploy.zip" "deploy.ps1" "freightconnect.ppk" "New Text Document.txt" "bootstrap\cache\config.php" /NFL /NDL /NJH /NJS /NP
-Remove-Item "$DeployTemp\bootstrap\cache\config.php" -Force -ErrorAction SilentlyContinue
-
-if ($LASTEXITCODE -gt 7) {
-throw "Robocopy failed with exit code $LASTEXITCODE"
-}
-
-# ============================================
-
-# Verify migration files
-
-# ============================================
-$MigrationPath = "$DeployTemp\database\migrations"
-
-$CreateMigration = "$MigrationPath\2026_10_20_094416_create_trader_member_account_table.php"
-
-if (!(Test-Path $CreateMigration)) {
-    throw "Consolidated trader migration missing from deployment package."
-}
+$RequiredMigration = Join-Path $ProjectPath "database\migrations\2026_10_20_094416_create_trader_member_account_table.php"
 
 $ObsoleteMigrations = @(
     "2026_09_05_101439_add_trader_fields_to_trader_member_account_table.php",
     "2026_09_05_102713_update_phone_fields_in_trader_member_account_table.php"
 )
 
+if (!(Test-Path $RequiredMigration)) {
+    throw "Required consolidated trader migration is missing."
+}
+
 foreach ($Migration in $ObsoleteMigrations) {
-    if (Test-Path "$MigrationPath\$Migration") {
-        throw "Obsolete trader migration still exists: $Migration"
+    $MigrationPath = Join-Path $ProjectPath "database\migrations\$Migration"
+
+    if (Test-Path $MigrationPath) {
+        throw "Obsolete migration found: $Migration"
     }
 }
 
-Write-Host "Consolidated trader migration verified successfully." -ForegroundColor Green
+if (!(Test-Path $KeyFile)) {
+    throw "SSH private key not found: $KeyFile"
+}
+
+if (!(Test-Path $Pscp)) {
+    throw "PSCP not found: $Pscp"
+}
+
+if (!(Test-Path $Plink)) {
+    throw "PLINK not found: $Plink"
+}
 
 # ============================================
-# 3. Create ZIP
+# 2. PREPARE DEPLOYMENT PACKAGE
 # ============================================
 
-Write-Host "[3/7] Creating deployment ZIP..." -ForegroundColor Yellow
+Write-Host "`n[2/7] Preparing deployment package..." -ForegroundColor Cyan
+
+if (Test-Path $DeployTemp) {
+    Remove-Item $DeployTemp -Recurse -Force
+}
+
+New-Item -ItemType Directory -Path $DeployTemp | Out-Null
+
+# ============================================
+# 3. COPY AND ZIP PROJECT
+# ============================================
+
+Write-Host "`n[3/7] Copying project files..." -ForegroundColor Cyan
+
+$ExcludeDirectories = @(
+    "$ProjectPath\.git",
+    "$ProjectPath\node_modules",
+    "$ProjectPath\vendor",
+    "$ProjectPath\storage",
+    "$ProjectPath\deploy_temp"
+)
+
+$ExcludeFiles = @(
+    "$ProjectPath\.env",
+    "$ProjectPath\freightconnect_deploy.zip",
+    "$ProjectPath\deploy.ps1",
+    "$ProjectPath\freightconnect.ppk",
+    "$ProjectPath\remote-deploy.sh",
+    "$ProjectPath\remote-deploy.log",
+    "$ProjectPath\New Text Document.txt",
+    "$ProjectPath\bootstrap\cache\config.php"
+)
+
+robocopy $ProjectPath $DeployTemp /E /XD $ExcludeDirectories /XF $ExcludeFiles /R:2 /W:2
+
+$RoboCode = $LASTEXITCODE
+
+if ($RoboCode -ge 8) {
+    throw "Robocopy failed with exit code $RoboCode"
+}
+
+
+# ---------- CREATE ZIP WITH LINUX-COMPATIBLE PATHS ----------
+
+Write-Host "`nCreating Linux-compatible deployment ZIP..." -ForegroundColor Cyan
 
 if (Test-Path $ZipFile) {
     Remove-Item $ZipFile -Force
 }
 
-Push-Location $DeployTemp
+Add-Type -AssemblyName System.IO.Compression
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+$Archive = [System.IO.Compression.ZipFile]::Open(
+    $ZipFile,
+    [System.IO.Compression.ZipArchiveMode]::Create
+)
 
 try {
-    Compress-Archive -Path * -DestinationPath $ZipFile -CompressionLevel Optimal
+    $Files = Get-ChildItem -Path $DeployTemp -File -Recurse
+
+    foreach ($File in $Files) {
+
+        $RelativePath = $File.FullName.Substring(
+            $DeployTemp.TrimEnd('\').Length + 1
+        )
+
+        # Linux-compatible ZIP paths
+        $EntryName = $RelativePath.Replace('\', '/')
+
+        [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
+            $Archive,
+            $File.FullName,
+            $EntryName,
+            [System.IO.Compression.CompressionLevel]::Optimal
+        ) | Out-Null
+    }
+
+    Write-Host "Files added: $($Files.Count)" -ForegroundColor Green
 }
 finally {
-    Pop-Location
+    $Archive.Dispose()
 }
 
 if (!(Test-Path $ZipFile)) {
-    throw "Failed to create deployment ZIP."
+    throw "Deployment ZIP was not created."
 }
 
-# Verify ZIP contains artisan at root
-$ZipCheck = [System.IO.Compression.ZipFile]::OpenRead($ZipFile)
+# Validate ZIP root and path separators
+$Archive = [System.IO.Compression.ZipFile]::OpenRead($ZipFile)
 
 try {
-    $ArtisanEntry = $ZipCheck.Entries |
-        Where-Object { $_.FullName -eq "artisan" }
+    $HasArtisan = $Archive.Entries | Where-Object {
+        $_.FullName -eq "artisan"
+    }
+
+    if (!$HasArtisan) {
+        throw "Invalid ZIP structure: artisan file not found at ZIP root."
+    }
+
+    $InvalidEntries = $Archive.Entries | Where-Object {
+        $_.FullName.Contains('\')
+    }
+
+    if ($InvalidEntries) {
+        throw "ZIP contains Windows-style backslash paths."
+    }
 }
 finally {
-    $ZipCheck.Dispose()
+    $Archive.Dispose()
 }
 
-if (!$ArtisanEntry) {
-    throw "Invalid ZIP structure: artisan is not at ZIP root."
-}
+Write-Host "Linux-compatible deployment ZIP created successfully." -ForegroundColor Green
 
-Write-Host "ZIP structure verified successfully." -ForegroundColor Green
-
-Remove-Item $DeployTemp -Recurse -Force
-
-Write-Host "Deployment ZIP created at: $ZipFile" -ForegroundColor Green
 
 # ============================================
-
-# 4. Upload ZIP
-
+# 4. UPLOAD ZIP
 # ============================================
 
-Write-Host "[4/7] Uploading files to server..." -ForegroundColor Yellow
+Write-Host "`n[4/7] Uploading deployment ZIP..." -ForegroundColor Cyan
 
-& $PSCP -P $ServerPort -i $KeyFile $ZipFile "${ServerUser}@${ServerHost}:${ServerZip}"
+& $Pscp -batch -P $ServerPort -i $KeyFile $ZipFile "${ServerUser}@${ServerHost}:${ServerProject}/freightconnect_deploy.zip"
 
 if ($LASTEXITCODE -ne 0) {
-throw "File upload failed."
+    throw "ZIP upload failed."
 }
 
-Write-Host "Upload completed successfully." -ForegroundColor Green
-
 # ============================================
-# 5. Deploy on server
+# 5. CREATE REMOTE BASH SCRIPT
 # ============================================
 
-Write-Host "[5/7] Deploying files on server..." -ForegroundColor Yellow
+Write-Host "`n[5/7] Preparing remote deployment script..." -ForegroundColor Cyan
 
-$RemoteCommands = @"
-cd $ServerProject
+$RemoteScript = @"
+#!/bin/bash
+set -e
+
+cd "$ServerProject"
+
+echo "============================================"
+echo "FreightConnect deployment started"
+echo "============================================"
 
 echo "Extracting deployment package..."
 
-unzip -o freightconnect_deploy.zip
-echo "ZIP extraction finished."
+unzip -oq freightconnect_deploy.zip
 
-echo "Removing deployment ZIP..."
 rm -f freightconnect_deploy.zip
 
-echo "Clearing old Laravel configuration cache..."
+echo "Setting project permissions..."
+
+for dir in app bootstrap config database public resources routes tests
+do
+    if [ -d "`$dir" ]; then
+        find "`$dir" -type d -exec chmod 755 {} +
+        find "`$dir" -type f -exec chmod 644 {} +
+    fi
+done
+
+chmod 755 artisan
+
+echo "Preparing Laravel cache directory..."
+
+mkdir -p bootstrap/cache
+
+chmod 755 bootstrap/cache
+
 rm -f bootstrap/cache/config.php
+rm -f bootstrap/cache/packages.php
+rm -f bootstrap/cache/services.php
 
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to remove config cache."
-    exit 1
-fi
+echo "Installing production Composer dependencies..."
 
+composer install --no-dev --no-scripts --optimize-autoloader --no-interaction
 
-echo "Running migrations..."
-/usr/bin/php artisan migrate --force
+echo "Running Laravel package discovery..."
 
-if [ $? -ne 0 ]; then
-    echo "ERROR: Migration failed."
-    exit 1
-fi
+ /usr/bin/php artisan package:discover --ansi
 
+echo "Clearing Laravel caches..."
 
-echo "Clearing Laravel cache..."
-/usr/bin/php artisan optimize:clear
+ /usr/bin/php artisan optimize:clear
 
-if [ `$? -ne 0 ]; then
-    echo "ERROR: optimize:clear failed."
-    exit 1
-fi
+echo "Running database migrations..."
 
-echo "Caching Laravel configuration..."
-/usr/bin/php artisan config:cache
+ /usr/bin/php artisan migrate --force
 
-if [ `$? -ne 0 ]; then
-    echo "ERROR: config:cache failed."
-    exit 1
-fi
+echo "Creating production configuration cache..."
 
-echo "Syncing public files..."
+ /usr/bin/php artisan config:cache
 
-cp -a $ServerProject/public/build $ServerPublic/
+echo "Syncing public assets..."
 
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to sync build."
-    exit 1
-fi
+PUBLIC_PATH="$ServerPublic"
 
-cp -a $ServerProject/public/css $ServerPublic/
+mkdir -p "`$PUBLIC_PATH"
 
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to sync CSS."
-    exit 1
-fi
+for item in build css images videos
+do
+    if [ -d "public/`$item" ]; then
+        mkdir -p "`$PUBLIC_PATH/`$item"
+        cp -a "public/`$item/." "`$PUBLIC_PATH/`$item/"
+    fi
+done
 
-cp -a $ServerProject/public/images $ServerPublic/
+for item in .htaccess favicon.ico robots.txt
+do
+    if [ -f "public/`$item" ]; then
+        cp -f "public/`$item" "`$PUBLIC_PATH/`$item"
+    fi
+done
 
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to sync images."
-    exit 1
-fi
-
-cp -a $ServerProject/public/videos $ServerPublic/
-
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to sync videos."
-    exit 1
-fi
-
-cp $ServerProject/public/.htaccess $ServerPublic/.htaccess
-
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to copy .htaccess."
-    exit 1
-fi
-
-cp $ServerProject/public/favicon.ico $ServerPublic/favicon.ico
-
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to copy favicon."
-    exit 1
-fi
-
-cp $ServerProject/public/robots.txt $ServerPublic/robots.txt
-
-if [ `$? -ne 0 ]; then
-    echo "ERROR: Failed to copy robots.txt."
-    exit 1
-fi
-
-echo "Production index.php preserved."
-
+echo "============================================"
 echo "Deployment completed successfully."
+echo "============================================"
+
+echo "Database migrations were executed automatically."
 "@
 
-$RemoteCommands = $RemoteCommands -replace "`r`n", "`n"
+# IMPORTANT:
+# Convert Windows CRLF line endings to Unix LF.
+$RemoteScriptUnix = $RemoteScript -replace "`r`n", "`n"
 
-& $PLINK -P $ServerPort -i $KeyFile "${ServerUser}@${ServerHost}" $RemoteCommands
+[System.IO.File]::WriteAllText(
+    $RemoteScriptFile,
+    $RemoteScriptUnix,
+    [System.Text.Encoding]::ASCII
+)
+
+# ============================================
+# UPLOAD REMOTE BASH SCRIPT
+# ============================================
+
+Write-Host "`nUploading remote Bash script..." -ForegroundColor Cyan
+
+& $Pscp -batch -P $ServerPort -i $KeyFile $RemoteScriptFile "${ServerUser}@${ServerHost}:${ServerProject}/remote-deploy.sh"
 
 if ($LASTEXITCODE -ne 0) {
-    throw "Server deployment failed."
+    throw "Remote Bash script upload failed."
 }
 
 # ============================================
-
-# 6. Local cleanup
-
+# EXECUTE REMOTE DEPLOYMENT
 # ============================================
 
-Write-Host "[6/7] Cleaning local files..." -ForegroundColor Yellow
+Write-Host "`nExecuting remote deployment..." -ForegroundColor Cyan
 
-Write-Host "ZIP kept for inspection: $ZipFile" -ForegroundColor Yellow
+if (Test-Path $LogFile) {
+    Remove-Item $LogFile -Force
+}
+
+$PreviousErrorActionPreference = $ErrorActionPreference
+
+try {
+    # Allow Plink stderr messages to be captured without stopping PowerShell.
+    $ErrorActionPreference = "Continue"
+
+    $RemoteOutput = & $Plink -batch -P $ServerPort -i $KeyFile "${ServerUser}@${ServerHost}" "bash $ServerProject/remote-deploy.sh" 2>&1
+
+    $RemoteExitCode = $LASTEXITCODE
+}
+finally {
+    $ErrorActionPreference = $PreviousErrorActionPreference
+}
+
+$RemoteOutput | Tee-Object -FilePath $LogFile
+
+if ($RemoteExitCode -ne 0) {
+    Write-Host "`nRemote deployment failed. Exit code: $RemoteExitCode" -ForegroundColor Red
+    Write-Host "Check remote-deploy.log for the complete error." -ForegroundColor Yellow
+    throw "Remote deployment failed."
+}
+
+Write-Host "`nRemote deployment successful." -ForegroundColor Green
+
+& $Plink -batch -P $ServerPort -i $KeyFile "${ServerUser}@${ServerHost}" "rm -f $ServerProject/remote-deploy.sh"
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Deployment succeeded, but temporary remote script could not be removed."
+}
 
 # ============================================
-
-# 7. Finished
-
+# 6. LOCAL CLEANUP
 # ============================================
 
-Write-Host ""
-Write-Host "============================================" -ForegroundColor Green
-Write-Host "   DEPLOYMENT SUCCESSFUL" -ForegroundColor Green
-Write-Host "============================================" -ForegroundColor Green
-Write-Host ""
-Write-Host "Live site: https://freightconnect.info" -ForegroundColor Cyan
-Write-Host ""
+Write-Host "`n[6/7] Cleaning local temporary files..." -ForegroundColor Cyan
+
+if (Test-Path $DeployTemp) {
+    Remove-Item $DeployTemp -Recurse -Force
+}
+
+# Keep deployment ZIP for inspection.
+# Remove-Item $ZipFile -Force
+
+# ============================================
+# 7. COMPLETE
+# ============================================
+
+Write-Host "`n[7/7] Deployment completed successfully!" -ForegroundColor Green
+
+Write-Host "Website: https://freightconnect.info" -ForegroundColor Green
+Write-Host "Sitemap: https://freightconnect.info/sitemap.xml" -ForegroundColor Green
+
+Write-Host "`nDeployment log: $LogFile" -ForegroundColor Cyan
