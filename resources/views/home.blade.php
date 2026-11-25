@@ -44,20 +44,19 @@
         'description' => 'Choose an option to find the right trade connection.',
         'options' => [
             [
-                'title' => 'Commercial or logistics connections',
-                'description' => 'Looking to connect with businesses, buyers, sellers, suppliers, distributors or logistics partners',
+                'title' => 'I want to buy / source products',
+                'description' => 'Looking for products, suppliers or manufacturers to fulfil your business requirements',
+                'icon' => 'fa-solid fa-cart-shopping',
+                'url' => route('search.buyers'),
+            ],
+            [
+                'title' => 'I want to sell / supply products',
+                'description' => 'Looking to connect with potential buyers, importers, distributors and businesses interested in your products',
                 'icon' => 'fa-solid fa-boxes-stacked',
                 'url' => route('search.suppliers'),
             ],
-            [
-                'title' => 'Buy/source a specific product requirement',
-                'description' => 'Looking for a specific product or supplier for your business.',
-                'icon' => 'fa-solid fa-handshake',
-                'url' => route('search.buyers'),
-            ],
         ],
     ])
-
     
 @endsection
 

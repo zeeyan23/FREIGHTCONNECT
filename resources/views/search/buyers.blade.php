@@ -1,537 +1,667 @@
 @extends('layouts.app')
 
+@section('body-class', 'freight-forwarding-page')
+
 @section('content')
 
-<section class="buyer-search-page">
+<div class="membership-form-page">
 
-    <div class="container">
-
-        {{-- Page Header --}}
-        <div class="buyer-search-header">
-
-            <span class="search-label">
-                FIND A BUYER
-            </span>
-
-            <h1>
-                Find the right buyers
-            </h1>
-
-            <p>
-                Search for buyers interested in the products you offer.
-            </p>
-
+    <!-- Page Header -->
+    <section class="membership-form-header">
+        <div class="container">
+            <div class="form-header-content">
+                <span class="form-header-label">BUY / SOURCE</span>
+                <h1>Submit Your Purchase Requirement</h1>
+            </div>
         </div>
+    </section>
 
-        
 
-        {{-- Compact Search Filters --}}
-        <div class="buyer-filter-bar">
+    <!-- Application Form -->
+     @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Please fix these errors:</strong>
 
-            <form action="#" method="GET">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <section class="membership-form-section">
+        <div class="container">
 
-                <div class="buyer-filter-row">
+            <form action="{{ route('membership.freight-forwarding.store') }}"
+                method="POST"
+                enctype="multipart/form-data" id="buyerForm">
+            @csrf
 
-                    {{-- Products --}}
-                    <div class="filter-item filter-products">
+                <div class="form-card">
 
-                        <label class="search-form-label">
-                            Product(s)
-                        </label>
-
-                        <div id="buyer-product-fields">
-
-                            <div class="product-input-row">
-
-                                <input
-                                    type="text"
-                                    name="products[]"
-                                    class="form-control"
-                                    placeholder="Type product / keyword"
-                                    required
-                                >
-
-                            </div>
-
+                    <div class="form-card-header">
+                        <span>01</span>
+                        <div>
+                            <h2>Product & Purchase Requirements</h2>
+                            <p>Provide details about the product you are looking to source, including specifications, quantity, preferred trade partners, and destination.</p>
                         </div>
-
-                        <button
-                            type="button"
-                            id="add-buyer-product"
-                            class="add-product-btn"
-                        >
-                            <i class="fa-solid fa-plus"></i>
-                            Add product
-                        </button>
-
                     </div>
 
+                    <div class="row g-4">
 
-                    {{-- Buyer Country --}}
-                    <div class="filter-item">
+                        <!-- Product / Commodity -->
+                        <div class="col-md-6">
+                            <label for="product_name" class="form-label">
+                                Product / Commodity <span>*</span>
+                            </label>
 
-                        <label for="buyer_country" class="search-form-label">
-                            Buyer Country
-                        </label>
+                            <input
+                                type="text"
+                                id="product_name"
+                                name="product_name"
+                                class="form-control"
+                                placeholder="e.g. Rice, Steel, Cotton, Machinery"
+                                required
+                            >
+                        </div>
 
-                        <select
-                            name="country"
-                            id="buyer_country"
-                            class="form-select"
+                        <!-- Product Specifications -->
+                        <div class="col-md-6">
+                            <label for="product_description" class="form-label">
+                                Product Specifications / Description
+                            </label>
+
+                            <textarea
+                                id="product_description"
+                                name="product_description"
+                                class="form-control"
+                                rows="3"
+                                placeholder="Describe the product specifications, grade, quality, packaging, etc."
+                            ></textarea>
+                        </div>
+
+                        <!-- Looking For -->
+                        <div class="col-md-12">
+                            <label class="form-label">
+                                Looking For <span>*</span>
+                            </label>
+
+                            <p class="text-muted small">
+                                Select the type of seller or trade partner you are looking to connect with.
+                            </p>
+
+                            <div class="option-grid">
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="looking_for[]"
+                                        value="Seller"
+                                    >
+                                    <span>Seller</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="looking_for[]"
+                                        value="Exporter"
+                                    >
+                                    <span>Exporter</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="looking_for[]"
+                                        value="Manufacturer"
+                                    >
+                                    <span>Manufacturer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="looking_for[]"
+                                        value="Distributor"
+                                    >
+                                    <span>Distributor</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="looking_for[]"
+                                        value="Wholesaler"
+                                    >
+                                    <span>Wholesaler</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input
+                                        type="checkbox"
+                                        name="looking_for[]"
+                                        value="Other"
+                                    >
+                                    <span>Other</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <!-- Required Quantity -->
+                        <div class="col-md-6">
+                            <label for="required_quantity" class="form-label">
+                                Required Quantity <span>*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="required_quantity"
+                                name="required_quantity"
+                                class="form-control"
+                                placeholder="Enter required quantity"
+                                min="0.01"
+                                step="any"
+                                required
+                            >
+                        </div>
+
+                        <!-- Unit of Measurement -->
+                        <div class="col-md-6">
+                            <label for="unit_of_measurement" class="form-label">
+                                Unit of Measurement <span>*</span>
+                            </label>
+
+                            <select
+                                id="unit_of_measurement"
+                                name="unit_of_measurement"
+                                class="form-select"
+                                required
+                            >
+                                <option value="" selected disabled>Select unit</option>
+                                <option value="MT">Metric Ton (MT)</option>
+                                <option value="KG">Kilogram (KG)</option>
+                                <option value="Grams">Grams (G)</option>
+                                <option value="Pieces">Pieces</option>
+                                <option value="Litres">Litres (L)</option>
+                                <option value="Units">Units</option>
+                                <option value="Containers">Containers</option>
+                                <option value="Boxes">Boxes</option>
+                                <option value="Pallets">Pallets</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Origin Country -->
+                        <div class="col-md-6">
+                            <label for="from_country" class="form-label">
+                                Origin / From Country <span>*</span>
+                            </label>
+
+                            <select
+                                class="form-control"
+                                placeholder="Enter country"
+                                name="from_country"
+                                id="from_country"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Select Country
+                                </option>
+
+                                @foreach($countries as $code => $country)
+                                    <option value="{{ $code }}">
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Destination Country -->
+                        <div class="col-md-6">
+                            <label for="to_country" class="form-label">
+                                Destination / To Country <span>*</span>
+                            </label>
+
+                            <select
+                                class="form-control"
+                                placeholder="Enter country"
+                                name="to_country"
+                                id="to_country"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Select Country
+                                </option>
+
+                                @foreach($countries as $code => $country)
+                                    <option value="{{ $code }}">
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Additional Requirements -->
+                        <div class="col-md-12">
+                            <label for="additional_requirements" class="form-label">
+                                Additional Requirements / Message
+                                <small class="text-muted">(Optional)</small>
+                            </label>
+
+                            <textarea
+                                id="additional_requirements"
+                                name="additional_requirements"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Mention any additional requirements, delivery preferences, certifications, or other important details..."
+                            ></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-card">
+
+                    <div class="form-card-header">
+                        <span>02</span>
+                        <div>
+                            <h2>Company & Contact Information</h2>
+                            <!-- <p>Provide your company details and contact information so we can connect you with relevant trade partners.</p> -->
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+
+                        <!-- Company Name -->
+                        <div class="col-md-6">
+                            <label for="company_name" class="form-label">
+                                Company Name <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="company_name"
+                                name="company_name"
+                                class="form-control"
+                                placeholder="Enter your company name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Country -->
+                        <div class="col-md-6">
+                            <label for="company_country" class="form-label">
+                                Country <span>*</span>
+                            </label>
+
+                            <select
+                                class="form-control"
+                                placeholder="Enter country"
+                                name="company_country"
+                                id="company_country"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Select Country
+                                </option>
+
+                                @foreach($countries as $code => $country)
+                                    <option value="{{ $code }}">
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- City -->
+                        <div class="col-md-6">
+                            <label for="city" class="form-label">
+                                City <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                class="form-control"
+                                placeholder="Enter your city"
+                                required
+                            >
+                        </div>
+
+                        <!-- Trader Type -->
+                        <div class="col-md-12">
+                            <label class="form-label">
+                                Trader Type <span>*</span>
+                            </label>
+
+                            <p class="text-muted small">
+                                Select all roles that apply to your business.
+                            </p>
+
+                            <div class="option-grid">
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Buyer">
+                                    <span>Buyer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Seller">
+                                    <span>Seller</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Importer">
+                                    <span>Importer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Exporter">
+                                    <span>Exporter</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Manufacturer">
+                                    <span>Manufacturer</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Distributor">
+                                    <span>Distributor</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Wholesaler">
+                                    <span>Wholesaler</span>
+                                </label>
+
+                                <label class="choice-option">
+                                    <input type="checkbox" name="trader_type[]" value="Other">
+                                    <span>Other</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <!-- Contact Person -->
+                        <div class="col-md-6">
+                            <label for="contact_person" class="form-label">
+                                Contact Person Name <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contact_person"
+                                name="contact_person"
+                                class="form-control"
+                                placeholder="Enter contact person's full name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Business Email -->
+                        <div class="col-md-6">
+                            <label for="business_email" class="form-label">
+                                Business Email <span>*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                id="business_email"
+                                name="business_email"
+                                class="form-control"
+                                placeholder="name@company.com"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                A company email address is preferred. Email verification required.
+                            </small>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">
+                                Phone Number <span>*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-control"
+                                placeholder="Enter your phone number"
+                                required
+                            >
+                            <input type="hidden" name="phone_full" id="phone_full">
+                            <input type="hidden" name="phone_dial_code" id="phone_dial_code">
+
+                            <small class="text-muted">
+                                Phone number verification required.
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="membership-agreement">
+
+                    <label class="membership-agreement-label">
+
+                        <input
+                            type="checkbox"
+                            name="membership_terms_accepted"
+                            value="1"
                             required
                         >
 
-                            <option value="" selected disabled>
-                                Select Country
-                            </option>
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
 
-                            @foreach($countries as $code => $country)
+                        <span class="membership-agreement-text">
 
-                                <option value="{{ $code }}">
-                                    {{ $country }}
-                                </option>
+                            I have read, understood and agree to the
 
-                            @endforeach
+                            <a
+                                href="{{ route('legal.membership-terms') }}"
+                                target="_blank"
+                            >
+                                FreightConnect Membership Terms & Conditions
+                            </a>
 
-                        </select>
+                            and agree to comply with them throughout my membership.
 
-                    </div>
+                            <strong>*</strong>
 
+                        </span>
 
-                    {{-- Quantity --}}
-                    <div class="filter-item">
+                    </label>
 
-                        <label for="buyer_quantity" class="search-form-label">
-                            Quantity
-                            <span>(Optional)</span>
-                        </label>
-
+                                        
+                    <!-- Information Accuracy Declaration -->
+                    <label class="membership-agreement-label">
                         <input
-                            type="text"
-                            name="quantity"
-                            id="buyer_quantity"
-                            class="form-control"
-                            placeholder="e.g. 500 units"
+                            type="checkbox"
+                            id="information_accuracy_confirmed"
+                            name="information_accuracy_confirmed"
+                            value="1"
+                            required
                         >
 
-                    </div>
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="membership-agreement-text">
+                            I confirm that the information provided is accurate and that I am
+                            authorized to submit this application on behalf of my company.
+                            <strong>*</strong>
+                        </span>
+                    </label>
 
-
-                    {{-- Shipping --}}
-                    <div class="filter-item filter-shipping">
-
-                        <label class="search-form-label">
-                            Logistics / Shipping Required?
-                        </label>
-
-                        <div class="shipping-options">
-
-                            <label class="shipping-option">
-
-                                <input
-                                    type="radio"
-                                    name="shipping_required"
-                                    value="yes"
-                                >
-
-                                <span>Yes</span>
-
-                            </label>
-
-
-                            <label class="shipping-option">
-
-                                <input
-                                    type="radio"
-                                    name="shipping_required"
-                                    value="no"
-                                >
-
-                                <span>No</span>
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Search --}}
-                    <div class="filter-search">
-
-                        <button
-                            type="submit"
-                            class="buyer-search-btn"
+                    <!-- Verification Authorization -->
+                    <label class="membership-agreement-label">
+                        <input
+                            type="checkbox"
+                            id="verification_authorization_confirmed"
+                            name="verification_authorization_confirmed"
+                            value="1"
+                            required
                         >
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            Search Buyers
-                        </button>
+                        <span class="membership-custom-check">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="membership-agreement-text">
+                            I authorize FreightConnect to verify the information provided,
+                            contact the listed business reference, and conduct reasonable
+                            business verification checks.
+                            <strong>*</strong>
+                        </span>
+                    </label>
 
-                    </div>
 
                 </div>
 
+                <!-- Submit -->
+                <div class="form-submit d-flex flex-column align-items-center gap-2">
+
+                    <p class="text-center text-black fw-bold mb-0">
+                        By submitting the application you confirm that the information provided is accurate
+                    </p>
+
+                    <button type="submit" class="btn w-100 submit-btn">
+                        Submit Application
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
             </form>
-
         </div>
-
-
-        {{-- Results --}}
-        <div class="buyer-results-section">
-
-            <div class="buyer-results-header">
-
-                <div>
-
-                    <span class="results-label">
-                        SEARCH RESULTS
-                    </span>
-
-                    <h2>
-                        Buyers interested in your products
-                    </h2>
-
-                </div>
-
-                <span class="results-count">
-                    18 Buyers Found
-                </span>
-
-            </div>
-
-
-            {{-- Buyer Result --}}
-            <div class="buyer-result-card">
-
-                <div class="buyer-result-select">
-
-                    <input
-                        type="checkbox"
-                        class="buyer-checkbox"
-                        name="buyers[]"
-                        value="1"
-                    >
-
-                </div>
-
-
-                <div class="buyer-result-content">
-
-                    <div class="buyer-result-top">
-
-                        <div>
-
-                            <h3>
-                                ABC Trading LLC
-                            </h3>
-
-                            <p class="buyer-location">
-
-                                <i class="fa-solid fa-location-dot"></i>
-
-                                Dubai, UAE
-
-                            </p>
-
-                        </div>
-
-
-                        <span class="buyer-type">
-                            Trading Company
-                        </span>
-
-                    </div>
-
-
-                    {{-- Interested Products --}}
-                    <div class="interested-products">
-
-                        <span class="interested-label">
-                            Interested in
-                        </span>
-
-                        <div class="interested-product-list">
-
-                            <span class="interested-product">
-
-                                <i class="fa-solid fa-check"></i>
-
-                                Industrial Pumps
-
-                            </span>
-
-
-                            <span class="interested-product">
-
-                                <i class="fa-solid fa-check"></i>
-
-                                Compressors
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="buyer-result-bottom">
-
-                        <span class="buyer-match">
-
-                            <i class="fa-solid fa-circle-check"></i>
-
-                            Strong Match
-
-                        </span>
-
-
-                        <a
-                            href="#"
-                            class="view-company-btn"
-                        >
-                            View Company
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            {{-- Buyer Result --}}
-            <div class="buyer-result-card">
-
-                <div class="buyer-result-select">
-
-                    <input
-                        type="checkbox"
-                        class="buyer-checkbox"
-                        name="buyers[]"
-                        value="2"
-                    >
-
-                </div>
-
-
-                <div class="buyer-result-content">
-
-                    <div class="buyer-result-top">
-
-                        <div>
-
-                            <h3>
-                                Global Equipment Trading
-                            </h3>
-
-                            <p class="buyer-location">
-
-                                <i class="fa-solid fa-location-dot"></i>
-
-                                Abu Dhabi, UAE
-
-                            </p>
-
-                        </div>
-
-
-                        <span class="buyer-type">
-                            Importer
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="interested-products">
-
-                        <span class="interested-label">
-                            Interested in
-                        </span>
-
-                        <div class="interested-product-list">
-
-                            <span class="interested-product">
-
-                                <i class="fa-solid fa-check"></i>
-
-                                Industrial Pumps
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="buyer-result-bottom">
-
-                        <span class="buyer-match">
-
-                            <i class="fa-solid fa-circle-check"></i>
-
-                            Good Match
-
-                        </span>
-
-
-                        <a
-                            href="#"
-                            class="view-company-btn"
-                        >
-                            View Company
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            {{-- Send Inquiry --}}
-            <div class="send-inquiry-wrapper">
-
-                <div class="selected-buyer-info">
-
-                    <i class="fa-solid fa-circle-info"></i>
-
-                    <span>
-                        Select one or more buyers to send an enquiry.
-                    </span>
-
-                </div>
-
-
-                @if (auth('freightconnect')->check())
-
-                    <button
-                        type="button"
-                        class="send-inquiry-btn"
-                    >
-                        Send Inquiry
-
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-
-                @else
-
-                    <button
-                        type="button"
-                        class="send-inquiry-btn"
-                        data-bs-toggle="modal"
-                        data-bs-target="#inquiryAccountModal"
-                    >
-                        Send Inquiry
-
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-
-                @endif
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
+    </section>
+
+</div>
+
+@include('components.selection-modal', [
+        'id' => 'tradeMemberAccessModal',
+        'label' => 'TRADE MEMBER ACCESS',
+        'title' => 'Are you a FreightConnect Trade Member?',
+        'description' => 'If you are already a registered Trade Member, log in to access your saved company information. Otherwise, continue as a guest.',
+        'options' => [
+            [
+                'title' => 'Yes, I am a Trade Member',
+                'description' => 'Log in using your registered business email and password to continue.',
+                'icon' => 'fa-solid fa-user-check',
+                'url' => '#tradeMemberLogin',
+            ],
+            [
+                'title' => 'Continue as a Guest',
+                'description' => 'Proceed without logging in and provide your company and contact details.',
+                'icon' => 'fa-solid fa-user-plus',
+                'url' => '#guestUser',
+            ],
+        ],
+    ])
+    
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    const addProductButton =
-        document.getElementById('add-buyer-product');
+    setTimeout(function () {
 
-    const productFields =
-        document.getElementById('buyer-product-fields');
+        const modalTrigger = document.createElement('button');
 
+        modalTrigger.type = 'button';
+        modalTrigger.setAttribute('data-bs-toggle', 'modal');
+        modalTrigger.setAttribute(
+            'data-bs-target',
+            '#tradeMemberAccessModal'
+        );
 
-    // Add product
-    addProductButton.addEventListener('click', function () {
+        document.body.appendChild(modalTrigger);
 
-        const productRow =
-            document.createElement('div');
+        modalTrigger.click();
 
-        productRow.classList.add('product-input-row');
+        modalTrigger.remove();
 
-        productRow.innerHTML = `
-            <input
-                type="text"
-                name="products[]"
-                class="form-control"
-                placeholder="Type another product / keyword"
-                required
-            >
+    }, 2000);
 
-            <button
-                type="button"
-                class="remove-product"
-                aria-label="Remove product"
-            >
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        `;
+    const guestOption = document.querySelector(
+        '#tradeMemberAccessModal a[href="#guestUser"]'
+    );
 
-        productFields.appendChild(productRow);
+    if (guestOption) {
+        guestOption.addEventListener('click', function (event) {
+            event.preventDefault();
 
-    });
+            const modalElement = document.getElementById(
+                'tradeMemberAccessModal'
+            );
 
+            const closeButton = modalElement.querySelector(
+                '[data-bs-dismiss="modal"]'
+            );
 
-    // Remove product
-    productFields.addEventListener('click', function (event) {
+            if (closeButton) {
+                closeButton.click();
+            }
+        });
+    }
+    
+    const freightForm = document.getElementById("buyerForm");
+    const phoneInput = document.getElementById('phone');
+    const phoneFullInput = document.getElementById('phone_full');
+    const phoneDialCodeInput = document.getElementById('phone_dial_code');
 
-        const removeButton =
-            event.target.closest('.remove-product');
+    const itiOptions = {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+    };
 
-        if (!removeButton) {
-            return;
-        }
+    const iti = window.intlTelInput(phoneInput, itiOptions);
 
-        removeButton
-            .closest('.product-input-row')
-            .remove();
+    function updatePhoneFields(phoneIti, phoneInput, fullInput, dialCodeInput) {
+        const countryData = phoneIti.getSelectedCountryData();
+        const localNumber = phoneInput.value.replace(/\D/g, "");
 
-    });
+        dialCodeInput.value = countryData.dialCode
+            ? "+" + countryData.dialCode
+            : "";
+
+        fullInput.value = countryData.dialCode && localNumber
+            ? "+" + countryData.dialCode + localNumber
+            : "";
+    }
+
+    // Trader phone
+    function updateBuyerPhoneFields() {
+        updatePhoneFields(
+            iti,
+            phoneInput,
+            phoneFullInput,
+            phoneDialCodeInput
+        );
+    }
+
+    phoneInput.addEventListener('input', updateBuyerPhoneFields);
+    phoneInput.addEventListener('change', updateBuyerPhoneFields);
+    phoneInput.addEventListener('countrychange', updateBuyerPhoneFields);
+
+    // Update both phone fields before submitting the form
+    freightForm.addEventListener('submit', function () {
+        updateBuyerPhoneFields();
+    });       
 
 });
 </script>
 
-    @include('components.selection-modal', [
-        'id' => 'inquiryAccountModal',
-        'label' => 'INQUIRY',
-        'title' => 'Continue with Inquiry',
-        'description' => 'Create a free account or log in to continue with your enquiry.',
-        'options' => [
-            [
-                'title' => 'Create Free Account',
-                'description' => 'Save your business details and send enquiries faster.',
-                'icon' => 'fa-solid fa-user-plus',
-                'url' => route('freightconnect.register', [
-                    'redirect' => url()->current(),
-                    'group_type_id' => 3,
-                ]),
-            ],
-            [
-                'title' => 'Log In',
-                'description' => 'Already have a FreightConnect account?',
-                'icon' => 'fa-solid fa-right-to-bracket',
-                'url' => route('login', [
-                    'redirect' => url()->current(),
-                ]),
-            ],
-        ],
-        'info' => [
-            'title' => 'Why create an account?',
-            'description' => 'Your free account allows you to save your business details for future enquiries, submit enquiries to multiple companies without repeatedly entering your information, and receive relevant supplier/business opportunities from FreightConnect when available.',
-        ],
-    ])
 
+    
 @endsection

@@ -34,7 +34,7 @@
 
                     <a href="#"
                        class="hero-btn primary-btn" data-bs-toggle="modal" data-bs-target="#buyerSupplierModal">
-                        Find a supplier
+                        Submit trade enquiry
                         <!-- <span class="arrow">→</span> -->
                     </a>
 
