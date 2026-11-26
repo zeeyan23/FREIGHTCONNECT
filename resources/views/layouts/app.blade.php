@@ -43,6 +43,7 @@
 <link rel="stylesheet" href="{{ asset('css/membership/trade-partner.css') }}?v={{ filemtime(public_path('css/membership/trade-partner.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/membership/freight-forwarding.css') }}?v={{ filemtime(public_path('css/membership/freight-forwarding.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/components/selection-modal.css') }}?v={{ filemtime(public_path('css/components/selection-modal.css')) }}">
+<link rel="stylesheet" href="{{ asset('css/components/trade-member-login-form.css') }}?v={{ filemtime(public_path('css/components/trade-member-login-form.css')) }}">
 
 <link rel="stylesheet" href="{{ asset('css/search/suppliers.css') }}?v={{ filemtime(public_path('css/search/suppliers.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/search/buyers.css') }}?v={{ filemtime(public_path('css/search/buyers.css')) }}">

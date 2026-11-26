@@ -552,7 +552,7 @@
         'id' => 'tradeMemberAccessModal',
         'label' => 'TRADE MEMBER ACCESS',
         'title' => 'Are you a FreightConnect Trade Member?',
-        'description' => 'If you are already a registered Trade Member, log in to access your saved company information. Otherwise, continue as a guest.',
+        'description' => '',
         'options' => [
             [
                 'title' => 'Yes, I am a Trade Member',
@@ -567,6 +567,7 @@
                 'url' => '#guestUser',
             ],
         ],
+        'showTradeLogin' => true,
     ])
     
 <script>
@@ -596,6 +597,34 @@ document.addEventListener('DOMContentLoaded', function () {
         '#tradeMemberAccessModal a[href="#guestUser"]'
     );
 
+    const modalElement = document.getElementById(
+        'tradeMemberAccessModal'
+    );
+
+    const loginOption = modalElement.querySelector(
+        'a[href="#tradeMemberLogin"]'
+    );
+
+    const selectionOptions = modalElement.querySelector(
+        '.selection-options'
+    );
+
+    const loginPanel = modalElement.querySelector(
+        '#tradeMemberLoginPanel'
+    );
+
+    const backButton = modalElement.querySelector(
+        '#backToTradeMemberOptions'
+    );
+
+    const infoSection = modalElement.querySelector(
+        '.selection-modal-info'
+    );
+
+    const modalDescription = modalElement.querySelector(
+        '#tradeMemberAccessModalDescription'
+    );
+
     if (guestOption) {
         guestOption.addEventListener('click', function (event) {
             event.preventDefault();
@@ -612,6 +641,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 closeButton.click();
             }
         });
+    }
+
+    if (loginOption && loginPanel) {
+
+        loginOption.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+            selectionOptions.classList.add('d-none');
+            loginPanel.classList.remove('d-none');
+
+            if (infoSection) {
+                infoSection.classList.add('d-none');
+            }
+
+            if (modalDescription) {
+                modalDescription.classList.add('d-none');
+            }
+
+        });
+
+        
+    }
+
+    if (backButton) {
+
+        backButton.addEventListener('click', function () {
+
+            loginPanel.classList.add('d-none');
+            selectionOptions.classList.remove('d-none');
+
+            if (infoSection) {
+                infoSection.classList.remove('d-none');
+            }
+
+            if (modalDescription) {
+                modalDescription.classList.remove('d-none');
+            }
+
+        });
+
     }
     
     const freightForm = document.getElementById("buyerForm");

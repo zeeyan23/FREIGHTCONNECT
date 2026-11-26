@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string('company_website');
             $table->string('company_logo')->nullable();
 
-            // Business details
-            $table->string('business_type');
-            $table->text('products');
-
             // Contact information
             $table->string('contact_person');
             $table->string('designation');
@@ -34,6 +30,7 @@ return new class extends Migration
             $table->string('phone_dial_code', 10);
             $table->boolean('whatsapp_available')->default(false);
 
+            // Business details
             $table->longText('business_interests')->nullable();
             $table->string('business_interest_other')->nullable();
             $table->boolean('has_specific_requirement')->default(false);
@@ -43,17 +40,6 @@ return new class extends Migration
             $table->text('products_dealt');
             $table->text('current_trade_countries')->nullable();
             $table->text('target_trade_markets')->nullable();
-            $table->text('exporting_to');
-            $table->text('importing_from');
-            $table->text('buyers_in');
-            $table->text('suppliers_in');
-
-            // Logistics and requirements
-            $table->longText('logistics_services');
-            $table->string('shipment_frequency')->nullable();
-            $table->string('has_requirement');
-            $table->text('requirement_description')->nullable();
-            
 
             // Documents
             $table->string('company_registration_document')->nullable();
@@ -75,8 +61,11 @@ return new class extends Migration
             $table->boolean('membership_terms')->default(false);
             $table->boolean('information_accuracy')->default(false);
             $table->boolean('verification_authorization')->default(false);
+
+            // Application status and referral
             $table->string('application_status')->default('pending');
-            
+            $table->string('referral')->nullable();
+
             $table->timestamps();
         });
     }

@@ -63,6 +63,26 @@
                     @endforeach
 
                 </div>
+
+                @if(!empty($showTradeLogin) && $showTradeLogin)
+
+                    <div class="trade-member-login d-none" id="tradeMemberLoginPanel">
+
+                        <!-- <button type="button"
+                                class="btn btn-link p-0 mb-3"
+                                id="backToTradeMemberOptions">
+                            <i class="fa-solid fa-arrow-left me-2"></i>
+                            Back
+                        </button>
+
+                        <h5 class="mb-3">Trade Member Login</h5> -->
+
+                        @include('components.trade-member-login-form')
+
+                    </div>
+
+                @endif
+
                 @if(!empty($info))
 
                     <div class="selection-modal-info">

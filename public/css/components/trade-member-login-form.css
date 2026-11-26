@@ -1,0 +1,161 @@
+
+/* =========================================
+   TRADE MEMBER LOGIN FORM
+========================================= */
+
+.trade-member-login {
+    animation: tradeLoginFadeIn 0.3s ease;
+}
+
+.trade-member-login h5 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #172b4d;
+    margin-bottom: 22px !important;
+}
+
+.trade-member-login-form {
+    width: 100%;
+}
+
+/* Labels */
+
+.trade-member-login-form .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+}
+
+/* Input fields */
+
+.trade-member-login-form .form-control {
+    min-height: 49px;
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #172b4d;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: none;
+    transition: all 0.25s ease;
+}
+
+.trade-member-login-form .form-control::placeholder {
+    color: #a0aec0;
+    font-size: 13px;
+}
+
+.trade-member-login-form .form-control:focus {
+    background-color: #ffffff;
+    border-color: #2878c7;
+    box-shadow: 0 0 0 3px rgba(40, 120, 199, 0.10);
+    outline: none;
+}
+
+/* Password input group */
+
+.trade-member-login-form .input-group {
+    position: relative;
+}
+
+.trade-member-login-form .input-group .form-control {
+    border-radius: 8px !important;
+    padding-right: 50px;
+}
+
+.trade-member-login-form .input-group .btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #718096;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.trade-member-login-form .input-group .btn:hover {
+    color: #2878c7;
+}
+
+/* Login button */
+
+.trade-member-login-form button[type="submit"] {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #0056da;
+    padding: 13px 24px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.trade-member-login-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    color: white;
+    background-color: #0251c8;
+}
+
+/* Back button */
+
+#backToTradeMemberOptions {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#backToTradeMemberOptions:hover {
+    color: #1769aa;
+}
+
+/* Entrance animation */
+
+@keyframes tradeLoginFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+    .trade-member-login h5 {
+        font-size: 19px;
+    }
+
+    .trade-member-login-form .form-control {
+        min-height: 47px;
+    }
+
+    .trade-member-login-form button[type="submit"] {
+        min-height: 47px;
+    }
+
+}

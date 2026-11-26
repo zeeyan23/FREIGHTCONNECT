@@ -16,8 +16,6 @@ class TraderMemberAccount extends Model
         'business_email',
         'company_website',
         'company_logo',
-        // 'business_type',
-        // 'products',
         'contact_person',
         'designation',
         'contact_person_email',
@@ -34,14 +32,6 @@ class TraderMemberAccount extends Model
         'products_dealt',
         'current_trade_countries',
         'target_trade_markets',
-        // 'exporting_to',
-        // 'importing_from',
-        // 'buyers_in',
-        // 'suppliers_in',
-        // 'logistics_services',
-        // 'shipment_frequency',
-        // 'has_requirement',
-        // 'requirement_description',
         'company_registration_document',
         'business_activity_document',
         'reference_company_name',
@@ -62,7 +52,6 @@ class TraderMemberAccount extends Model
     ];
 
     protected $casts = [
-        // 'logistics_services' => 'array',
         'membership_terms' => 'boolean',
         'information_accuracy'  => 'boolean',
         'verification_authorization'  => 'boolean',
@@ -71,4 +60,14 @@ class TraderMemberAccount extends Model
         'has_specific_requirement' => 'boolean',
         'needs_logistics_support' => 'boolean',
     ];
+
+    public function credentials()
+    {
+        return $this->hasOne(TradeMemberCredential::class);
+    }
+
+    public function otps()
+    {
+        return $this->hasMany(TradeMemberOtp::class);
+    }
 }

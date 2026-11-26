@@ -550,9 +550,142 @@
 
 </div>
 
+@include('components.selection-modal', [
+        'id' => 'tradeMemberAccessModal',
+        'label' => 'TRADE MEMBER ACCESS',
+        'title' => 'Are you a FreightConnect Trade Member?',
+        'description' => '',
+        'options' => [
+            [
+                'title' => 'Yes, I am a Trade Member',
+                'description' => 'Log in using your registered business email and password to continue.',
+                'icon' => 'fa-solid fa-user-check',
+                'url' => '#tradeMemberLogin',
+            ],
+            [
+                'title' => 'Continue as a Guest',
+                'description' => 'Proceed without logging in and provide your company and contact details.',
+                'icon' => 'fa-solid fa-user-plus',
+                'url' => '#guestUser',
+            ],
+        ],
+        'showTradeLogin' => true,
+    ])
+
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    setTimeout(function () {
+
+        const modalTrigger = document.createElement('button');
+
+        modalTrigger.type = 'button';
+        modalTrigger.setAttribute('data-bs-toggle', 'modal');
+        modalTrigger.setAttribute(
+            'data-bs-target',
+            '#tradeMemberAccessModal'
+        );
+
+        document.body.appendChild(modalTrigger);
+
+        modalTrigger.click();
+
+        modalTrigger.remove();
+
+    }, 2000);
+
+    const guestOption = document.querySelector(
+        '#tradeMemberAccessModal a[href="#guestUser"]'
+    );
+
+    const modalElement = document.getElementById(
+        'tradeMemberAccessModal'
+    );
+
+    const loginOption = modalElement.querySelector(
+        'a[href="#tradeMemberLogin"]'
+    );
+
+    const selectionOptions = modalElement.querySelector(
+        '.selection-options'
+    );
+
+    const loginPanel = modalElement.querySelector(
+        '#tradeMemberLoginPanel'
+    );
+
+    const backButton = modalElement.querySelector(
+        '#backToTradeMemberOptions'
+    );
+
+    const infoSection = modalElement.querySelector(
+        '.selection-modal-info'
+    );
+
+    const modalDescription = modalElement.querySelector(
+        '#tradeMemberAccessModalDescription'
+    );
+    
+
+    if (guestOption) {
+        guestOption.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const modalElement = document.getElementById(
+                'tradeMemberAccessModal'
+            );
+
+            const closeButton = modalElement.querySelector(
+                '[data-bs-dismiss="modal"]'
+            );
+
+            if (closeButton) {
+                closeButton.click();
+            }
+        });
+    }
+
+    if (loginOption && loginPanel) {
+
+        loginOption.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+            selectionOptions.classList.add('d-none');
+            loginPanel.classList.remove('d-none');
+
+            if (infoSection) {
+                infoSection.classList.add('d-none');
+            }
+
+            if (modalDescription) {
+                modalDescription.classList.add('d-none');
+            }
+
+        });
+
+        
+    }
+
+    if (backButton) {
+
+        backButton.addEventListener('click', function () {
+
+            loginPanel.classList.add('d-none');
+            selectionOptions.classList.remove('d-none');
+
+            if (infoSection) {
+                infoSection.classList.remove('d-none');
+            }
+
+            if (modalDescription) {
+                modalDescription.classList.remove('d-none');
+            }
+
+        });
+
+    }
 
     const freightForm = document.getElementById("buyerForm");
     const phoneInput = document.getElementById('phone');
@@ -599,36 +732,10 @@ document.addEventListener('DOMContentLoaded', function () {
         updateBuyerPhoneFields();
     });      
     
-    setTimeout(function () {
-
-        const modalElement = document.getElementById('tradeMemberAccessModal');
-        if (!modalElement) return;
-        const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
-        modal.show();
-
-    }, 2000);
+    
 
 });
 </script>
 
-@include('components.selection-modal', [
-        'id' => 'tradeMemberAccessModal',
-        'label' => 'TRADE MEMBER ACCESS',
-        'title' => 'Are you a FreightConnect Trade Member?',
-        'description' => 'If you are already a registered Trade Member, log in to access your saved company information. Otherwise, continue as a guest.',
-        'options' => [
-            [
-                'title' => 'Yes, I am a Trade Member',
-                'description' => 'Log in using your registered business email and password to continue.',
-                'icon' => 'fa-solid fa-user-check',
-                'url' => '#tradeMemberLogin',
-            ],
-            [
-                'title' => 'Continue as a Guest',
-                'description' => 'Proceed without logging in and provide your company and contact details.',
-                'icon' => 'fa-solid fa-user-plus',
-                'url' => '#guestUser',
-            ],
-        ],
-    ])
+
 @endsection
