@@ -14,6 +14,7 @@ class TradeMemberLogin extends Model
         'logged_in_at',
         'last_activity_at',
         'remember_until',
+        'remember_token_hash',
         'expires_at',
         'revoked_at',
     ];

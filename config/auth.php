@@ -47,6 +47,10 @@ return [
             'driver' => 'session',
             'provider' => 'freight_connect_accounts',
         ],
+        'trade_member' => [
+            'driver' => 'session',
+            'provider' => 'trade_member_credentials',
+        ],
     ],
 
     /*
@@ -75,6 +79,10 @@ return [
         'freight_connect_accounts' => [
             'driver' => 'eloquent',
             'model' => App\Models\FreightConnectAccount::class,
+        ],
+        'trade_member_credentials' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\TradeMemberCredential::class,
         ],
     ],
 

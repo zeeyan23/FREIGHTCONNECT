@@ -37,6 +37,17 @@
     <section class="membership-form-section">
         <div class="container">
 
+            @auth('trade_member')
+                <div class="d-flex justify-content-end mb-3">
+                    <form action="{{ route('trade-member.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger">
+                            <i class="fa-solid fa-right-from-bracket me-2"></i>
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            @endauth
             <form action="{{ route('membership.freight-forwarding.store') }}"
                 method="POST"
                 enctype="multipart/form-data" id="buyerForm">
@@ -574,24 +585,26 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    setTimeout(function () {
+    @guest('trade_member')
+        setTimeout(function () {
 
-        const modalTrigger = document.createElement('button');
+            const modalTrigger = document.createElement('button');
 
-        modalTrigger.type = 'button';
-        modalTrigger.setAttribute('data-bs-toggle', 'modal');
-        modalTrigger.setAttribute(
-            'data-bs-target',
-            '#tradeMemberAccessModal'
-        );
+            modalTrigger.type = 'button';
+            modalTrigger.setAttribute('data-bs-toggle', 'modal');
+            modalTrigger.setAttribute(
+                'data-bs-target',
+                '#tradeMemberAccessModal'
+            );
 
-        document.body.appendChild(modalTrigger);
+            document.body.appendChild(modalTrigger);
 
-        modalTrigger.click();
+            modalTrigger.click();
 
-        modalTrigger.remove();
+            modalTrigger.remove();
 
-    }, 2000);
+        }, 2000);
+    @endguest
 
     const guestOption = document.querySelector(
         '#tradeMemberAccessModal a[href="#guestUser"]'

@@ -6,6 +6,7 @@ use App\Http\Controllers\FormController;
 use Umpirsky\Country\CountryRepository;
 use App\Http\Controllers\ForwardingMemberController;
 use App\Http\Controllers\TraderController;
+use App\Http\Controllers\TradeMemberAuthController;
 use App\Http\Controllers\FreightConnectAccountController;
 use App\Http\Controllers\FreightConnectAuthController;
 use App\Http\Controllers\NewsController;
@@ -129,6 +130,28 @@ Route::post('/create-account', [FreightConnectAccountController::class, 'registe
 Route::post('/login', [FreightConnectAuthController::class, 'login'])
     ->name('freightconnect.login.submit');
 
+// TRADE MEMBER AUTHENTICATION
+
+Route::post('/trade-member/request-otp', [
+    TradeMemberAuthController::class,
+    'requestOtp'
+])->name('trade-member.request-otp');
+
+Route::post('/trade-member/verify-otp', [
+    TradeMemberAuthController::class,
+    'verifyOtp'
+])->name('trade-member.verify-otp');
+
+Route::post('/trade-member/login', [
+    TradeMemberAuthController::class,
+    'login'
+])->name('trade-member.login');
+
+Route::post('/trade-member/logout', [
+    TradeMemberAuthController::class,
+    'logout'
+])->middleware('auth:trade_member')
+  ->name('trade-member.logout');
 
 Route::middleware('auth:freightconnect')->group(function () {
 
