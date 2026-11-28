@@ -48,6 +48,9 @@
                     </form>
                 </div>
             @endauth
+            @php
+                $tradeMember = auth('trade_member')->user()?->traderMemberAccount;
+            @endphp
             <form action="{{ route('membership.freight-forwarding.store') }}"
                 method="POST"
                 enctype="multipart/form-data" id="buyerForm">
@@ -288,222 +291,374 @@
                         </div>
                     </div>
 
-                    <div class="row g-4">
+                    @if($tradeMember)
+                        <div class="row g-4">
 
-                        <!-- Company Name -->
-                        <div class="col-md-6">
-                            <label for="company_name" class="form-label">
-                                Company Name <span>*</span>
-                            </label>
+                            <!-- Company Name -->
+                            <div class="col-md-6">
+                                <label for="company_name" class="form-label">
+                                    Company Name <span>*</span>
+                                </label>
 
-                            <input
-                                type="text"
-                                id="company_name"
-                                name="company_name"
-                                class="form-control"
-                                placeholder="Enter your company name"
-                                required
-                            >
-                        </div>
+                                <input
+                                    type="text"
+                                    id="company_name"
+                                    name="company_name"
+                                    class="form-control"
+                                    value="{{ $tradeMember?->company_name ?? '' }}"
+                                    
+                                    required
+                                >
+                            </div>
 
-                        <!-- Country -->
-                        <div class="col-md-6">
-                            <label for="company_country" class="form-label">
-                                Country <span>*</span>
-                            </label>
+                            <!-- Country -->
+                            <div class="col-md-6">
+                                <label for="company_country" class="form-label">
+                                    Country <span>*</span>
+                                </label>
 
-                            <select
-                                class="form-control"
-                                placeholder="Enter country"
-                                name="company_country"
-                                id="company_country"
-                                required
-                            >
-                                <option value="" disabled selected>
-                                    Select Country
-                                </option>
+                                <select
+                                    class="form-control"
+                                    placeholder="Enter country"
+                                    name="company_country"
+                                    id="company_country"
+                                    required
+                                >
+                                    <option value="" disabled {{ !$tradeMember?->country ? 'selected' : '' }}>
+                                        Select Country
+                                    </option>
 
-                                @foreach($countries as $code => $country)
-                                    <option value="{{ $code }}">
+                                    <option value="{{ $code }}"
+                                        {{ $tradeMember?->country === $code ? 'selected' : '' }}>
                                         {{ $country }}
                                     </option>
-                                @endforeach
-                            </select>
+                                </select>
+                            </div>
+
+                            <!-- City -->
+                            <div class="col-md-6">
+                                <label for="city" class="form-label">
+                                    City <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    class="form-control"
+                                    value="{{ $tradeMember?->city ?? '' }}"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Contact Person -->
+                            <div class="col-md-6">
+                                <label for="contact_person" class="form-label">
+                                    Contact Person Name <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contact_person"
+                                    name="contact_person"
+                                    class="form-control"
+                                    value="{{ old('contact_person', $tradeMember?->contact_person) }}"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Business Email -->
+                            <div class="col-md-6">
+                                <label for="business_email" class="form-label">
+                                    Business Email <span>*</span>
+                                    @if(auth('trade_member')->user()?->email_verified_at)
+                                        
+                                        <span class="badge text-bg-success">Verified</span>
+                                    @endif
+                                </label>
+                                
+
+                                <input
+                                    type="email"
+                                    id="business_email"
+                                    name="business_email"
+                                    class="form-control"
+                                    value="{{ $tradeMember?->business_email ?? '' }}"
+                                    required
+                                >
+
+                                <small class="text-muted">
+                                    A company email address is preferred. Email verification required.
+                                </small>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">
+                                    Phone Number <span>*</span>
+                                </label>
+
+                                <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        class="form-control"
+                                        placeholder="Enter your phone number"
+                                        value="{{ old('phone', $tradeMember?->phone) }}"
+                                        required
+                                    >
+
+                                <input
+                                    type="hidden"
+                                    name="phone_full"
+                                    id="phone_full"
+                                    value="{{ old('phone_full', $tradeMember?->phone_full) }}"
+                                >
+
+                                <input
+                                    type="hidden"
+                                    name="phone_dial_code"
+                                    id="phone_dial_code"
+                                    value="{{ old('phone_dial_code', $tradeMember?->phone_dial_code) }}"
+                                >
+
+                                <small class="text-muted">
+                                    Phone number verification required.
+                                </small>
+                            </div>
+
+                            @if(!empty($tradeMember?->business_types))
+
+                                <div class="col-md-12">
+                                    <label class="form-label">Trader Type</label>
+
+                                    <p class="text-muted small">
+                                        Select all roles that apply to your business.
+                                    </p>
+
+                                    <div class="option-grid">
+
+                                        @foreach($tradeMember->business_types as $type)
+
+                                            @if($type === 'Other')
+                                                <input type="text"
+                                                    class="form-control other-specify-input"
+                                                    name="business_type_other"
+                                                    value="{{ $tradeMember->business_type_other }}"
+                                                    placeholder="Please specify"
+                                                    maxlength="255">
+
+                                            @else
+
+                                                <label class="choice-option">
+                                                    <input type="checkbox"
+                                                        name="business_types[]"
+                                                        value="{{ $type }}"
+                                                        checked>
+                                                    <span>{{ $type }}</span>
+                                                </label>
+
+                                            @endif
+
+                                        @endforeach
+
+                                    </div>
+                                </div>
+
+                            @endif
+
+                    
+
                         </div>
-
-                        <!-- City -->
-                        <div class="col-md-6">
-                            <label for="city" class="form-label">
-                                City <span>*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="city"
-                                name="city"
-                                class="form-control"
-                                placeholder="Enter your city"
-                                required
-                            >
-                        </div>
-
-                        <!-- Trader Type -->
-                        <div class="col-md-12">
-                            <label class="form-label">
-                                Trader Type <span>*</span>
-                            </label>
-
-                            <p class="text-muted small">
-                                Select all roles that apply to your business.
-                            </p>
-
-                            <div class="option-grid">
-
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Buyer">
-                                    <span>Buyer</span>
+                    @else
+                        <div class="row g-4">
+                            <!-- Company Name -->
+                            <div class="col-md-6">
+                                <label for="company_name" class="form-label">
+                                    Company Name <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Seller">
-                                    <span>Seller</span>
+                                <input
+                                    type="text"
+                                    id="company_name"
+                                    name="company_name"
+                                    class="form-control"
+                                    placeholder="Enter your company name"
+                                    
+                                    required
+                                >
+                            </div>
+
+                            <!-- Country -->
+                            <div class="col-md-6">
+                                <label for="company_country" class="form-label">
+                                    Country <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Importer">
-                                    <span>Importer</span>
+                                <select
+                                    class="form-control"
+                                    placeholder="Enter country"
+                                    name="company_country"
+                                    id="company_country"
+                                    required
+                                >
+                                    <option value="" disabled selected>
+                                        Select Country
+                                    </option>
+
+                                    @foreach($countries as $code => $country)
+                                        <option value="{{ $code }}">
+                                            {{ $country }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- City -->
+                            <div class="col-md-6">
+                                <label for="city" class="form-label">
+                                    City <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Exporter">
-                                    <span>Exporter</span>
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    class="form-control"
+                                    placeholder="Enter your city"
+                                    required
+                                >
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="contact_person" class="form-label">
+                                    Contact Person Name <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Manufacturer">
-                                    <span>Manufacturer</span>
+                                <input
+                                    type="text"
+                                    id="contact_person"
+                                    name="contact_person"
+                                    class="form-control"
+                                    placeholder="Enter contact person's full name"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Business Email -->
+                            <div class="col-md-6">
+                                <label for="business_email" class="form-label">
+                                    Business Email <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Distributor">
-                                    <span>Distributor</span>
+                                <input
+                                    type="email"
+                                    id="business_email"
+                                    name="business_email"
+                                    class="form-control"
+                                    placeholder="name@company.com"
+                                    required
+                                >
+
+                                @if(!auth('trade_member')->user()?->email_verified_at)
+                                    <small class="text-muted membership-agreement-text">
+                                        Verify the
+                                        <a href="javascript:void(0);" class="verify-business-email">
+                                            email here.
+                                        </a>
+                                    </small>
+                                @endif
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">
+                                    Phone Number <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Wholesaler">
-                                    <span>Wholesaler</span>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    class="form-control"
+                                    placeholder="Enter your phone number"
+                                    required
+                                >
+                                <input type="hidden" name="phone_full" id="phone_full">
+                                <input type="hidden" name="phone_dial_code" id="phone_dial_code">
+
+                                <small class="text-muted">
+                                    Phone number verification required.
+                                </small>
+                            </div>
+
+                            <!-- Trader Type -->
+                            <div class="col-md-12">
+                                <label class="form-label">
+                                    Trader Type <span>*</span>
                                 </label>
 
-                                <label class="choice-option">
-                                    <input type="checkbox" name="trader_type[]" value="Other">
-                                    <span>Other</span>
-                                </label>
+                                <p class="text-muted small">
+                                    Select all roles that apply to your business.
+                                </p>
 
+                                <div class="row g-3">
+                                    @php
+                                        $businessOptions = [
+                                            'Supplier / Seller' => 'business_supplier',
+                                            'Buyer' => 'business_buyer',
+                                            'Manufacturer' => 'business_manufacturer',
+                                            'Trader' => 'business_trader',
+                                            'Distributor' => 'business_distributor',
+                                            'Wholesaler' => 'business_wholesaler',
+                                            'Importer' => 'business_importer',
+                                            'Exporter' => 'business_exporter',
+                                            'Sourcing Company' => 'business_sourcing',
+                                            'Other' => 'business_other',
+                                        ];
+                                    @endphp
+
+                                    @foreach($businessOptions as $value => $id)
+                                        <div class="col-md-6 {{ $value === 'Other' ? 'business-type-other' : '' }}">
+                                            <div class="form-check">
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    name="business_types[]"
+                                                    id="{{ $id }}"
+                                                    value="{{ $value }}"
+                                                    {{ in_array($value, $guestBusinessTypes ?? []) ? 'checked' : '' }}
+                                                >
+
+                                                <label class="form-check-label" for="{{ $id }}">
+                                                    {{ $value }}
+                                                </label>
+                                            </div>
+
+                                            @if($value === 'Other')
+                                                <input
+                                                    type="text"
+                                                    class="form-control mt-2 other-specify-input"
+                                                    name="business_type_other"
+                                                    placeholder="Please specify"
+                                                    maxlength="255"
+                                                >
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Contact Person -->
-                        <div class="col-md-6">
-                            <label for="contact_person" class="form-label">
-                                Contact Person Name <span>*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="contact_person"
-                                name="contact_person"
-                                class="form-control"
-                                placeholder="Enter contact person's full name"
-                                required
-                            >
-                        </div>
-
-                        <!-- Business Email -->
-                        <div class="col-md-6">
-                            <label for="business_email" class="form-label">
-                                Business Email <span>*</span>
-                            </label>
-
-                            <input
-                                type="email"
-                                id="business_email"
-                                name="business_email"
-                                class="form-control"
-                                placeholder="name@company.com"
-                                required
-                            >
-
-                            <small class="text-muted">
-                                A company email address is preferred. Email verification required.
-                            </small>
-                        </div>
-
-                        <!-- Phone Number -->
-                        <div class="col-md-6">
-                            <label for="phone" class="form-label">
-                                Phone Number <span>*</span>
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                class="form-control"
-                                placeholder="Enter your phone number"
-                                required
-                            >
-                            <input type="hidden" name="phone_full" id="phone_full">
-                            <input type="hidden" name="phone_dial_code" id="phone_dial_code">
-
-                            <small class="text-muted">
-                                Phone number verification required.
-                            </small>
-                        </div>
-
-                    </div>
+                    @endif
+                    
                 </div>
 
                 <div class="membership-agreement">
-
-                    <label class="membership-agreement-label">
-
-                        <input
-                            type="checkbox"
-                            name="membership_terms_accepted"
-                            value="1"
-                            required
-                        >
-
-                        <span class="membership-custom-check">
-                            <i class="fa-solid fa-check"></i>
-                        </span>
-
-                        <span class="membership-agreement-text">
-
-                            I have read, understood and agree to the
-
-                            <a
-                                href="{{ route('legal.membership-terms') }}"
-                                target="_blank"
-                            >
-                                FreightConnect Membership Terms & Conditions
-                            </a>
-
-                            and agree to comply with them throughout my membership.
-
-                            <strong>*</strong>
-
-                        </span>
-
-                    </label>
-
-                                        
-                    <!-- Information Accuracy Declaration -->
                     <label class="membership-agreement-label">
                         <input
                             type="checkbox"
-                            id="information_accuracy_confirmed"
-                            name="information_accuracy_confirmed"
+                            id="permission_to_share_data_confirmed"
+                            name="permission_to_share_data_confirmed"
                             value="1"
                             required
                         >
@@ -512,8 +667,7 @@
                             <i class="fa-solid fa-check"></i>
                         </span>
                         <span class="membership-agreement-text">
-                            I confirm that the information provided is accurate and that I am
-                            authorized to submit this application on behalf of my company.
+                            Permission to share the inquiry and relevant company details with selected or matched paid members
                             <strong>*</strong>
                         </span>
                     </label>
@@ -522,8 +676,8 @@
                     <label class="membership-agreement-label">
                         <input
                             type="checkbox"
-                            id="verification_authorization_confirmed"
-                            name="verification_authorization_confirmed"
+                            id="platform_disclaimer_accepted"
+                            name="platform_disclaimer_accepted"
                             value="1"
                             required
                         >
@@ -531,9 +685,7 @@
                             <i class="fa-solid fa-check"></i>
                         </span>
                         <span class="membership-agreement-text">
-                            I authorize FreightConnect to verify the information provided,
-                            contact the listed business reference, and conduct reasonable
-                            business verification checks.
+                            Agreement that the platform facilitates introductions and does not guarantee transactions
                             <strong>*</strong>
                         </span>
                     </label>
@@ -702,6 +854,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const phoneFullInput = document.getElementById('phone_full');
     const phoneDialCodeInput = document.getElementById('phone_dial_code');
 
+    const savedDialCode = phoneDialCodeInput.value;
+    
     const itiOptions = {
         initialCountry: "in",
         separateDialCode: true,
@@ -709,6 +863,19 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const iti = window.intlTelInput(phoneInput, itiOptions);
+
+    if (savedDialCode) {
+        const countries = window.intlTelInput.getCountryData();
+
+        const savedCountry = countries.find(country =>
+            "+" + country.dialCode === savedDialCode
+        );
+
+        if (savedCountry) {
+            iti.setCountry(savedCountry.iso2);
+        }
+    }
+
 
     function updatePhoneFields(phoneIti, phoneInput, fullInput, dialCodeInput) {
         const countryData = phoneIti.getSelectedCountryData();
@@ -740,7 +907,35 @@ document.addEventListener('DOMContentLoaded', function () {
     // Update both phone fields before submitting the form
     freightForm.addEventListener('submit', function () {
         updateBuyerPhoneFields();
-    });       
+    });      
+
+    updateBuyerPhoneFields(); 
+
+    const verifyEmailLink = document.getElementById('buyerVerifyEmailLink');
+
+    if (!verifyEmailLink) return;
+
+    verifyEmailLink.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const emailInput = document.getElementById('business_email');
+        const email = emailInput.value.trim();
+
+        if (!email) {
+            alert('Please enter your business email first.');
+            emailInput.focus();
+            return;
+        }
+
+        if (!emailInput.checkValidity()) {
+            emailInput.reportValidity();
+            return;
+        }
+
+        console.log('Email selected for verification:', email);
+
+        // OTP sending functionality will go here.
+    });
 
 });
 </script>
@@ -748,3 +943,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
 @endsection
+@include('components.non-trade-member-email-verification')

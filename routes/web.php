@@ -142,6 +142,17 @@ Route::post('/trade-member/verify-otp', [
     'verifyOtp'
 ])->name('trade-member.verify-otp');
 
+// Guest Email Verification
+Route::post(
+    '/guest/request-email-otp',
+    [TradeMemberAuthController::class, 'requestGuestOtp']
+)->name('guest.email.request-otp');
+
+Route::post(
+    '/guest/verify-email-otp',
+    [TradeMemberAuthController::class, 'verifyGuestOtp']
+)->name('guest.email.verify-otp');
+
 Route::post('/trade-member/login', [
     TradeMemberAuthController::class,
     'login'

@@ -50,6 +50,7 @@
 <link rel="stylesheet" href="{{ asset('css/auth/register.css') }}?v={{ filemtime(public_path('css/auth/register.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}?v={{ filemtime(public_path('css/auth/login.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/account/account.css') }}?v={{ filemtime(public_path('css/account/account.css')) }}">
+<link rel="stylesheet" href="{{ asset('css/components/non-trade-member-email-verification.css') }}?v={{ filemtime(public_path('css/components/non-trade-member-email-verification.css')) }}"">
 
 <link rel="stylesheet" href="{{ asset('css/legal/legal.css') }}?v={{ filemtime(public_path('css/legal/legal.css')) }}">
 
@@ -94,6 +95,7 @@
     </a>
 @endif
 
+<script src="{{ asset('js/non-trade-member-email-verification.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
 
 

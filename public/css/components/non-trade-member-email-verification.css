@@ -1,0 +1,169 @@
+
+.guest-email-verification-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 45, 0.65);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+}
+
+.guest-email-verification-overlay.active {
+    display: flex;
+}
+
+.guest-email-verification-card {
+    background: #fff;
+    width: 100%;
+    max-width: 440px;
+    padding: 38px 32px;
+    border-radius: 18px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    animation: guestModalIn .25s ease;
+}
+
+@keyframes guestModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.guest-email-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    border: 0;
+    background: none;
+    font-size: 28px;
+    color: #777;
+    cursor: pointer;
+}
+
+.guest-email-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf4ff;
+    color: #2463ad;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+.guest-email-verification-card h4 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #172b45;
+    margin-bottom: 10px;
+}
+
+.guest-email-description {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.guest-email-address {
+    color: #2463ad;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 25px;
+    overflow-wrap: anywhere;
+}
+
+.guest-otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.guest-otp-box {
+    width: 46px;
+    height: 52px;
+    border: 1px solid #d9e0e8;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 600;
+    color: #172b45;
+    outline: none;
+}
+
+.guest-otp-box:focus {
+    border-color: #2463ad;
+    box-shadow: 0 0 0 3px rgba(36,99,173,.1);
+}
+
+.guest-verify-button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: #2463ad;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.guest-verify-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.guest-otp-message {
+    font-size: 13px;
+    margin-bottom: 14px;
+    min-height: 18px;
+}
+
+.guest-otp-message.error {
+    color: #dc3545;
+}
+
+.guest-otp-message.success {
+    color: #198754;
+}
+
+.guest-resend-section {
+    margin-top: 20px;
+    color: #777;
+    font-size: 13px;
+}
+
+.guest-resend-section button {
+    border: none;
+    background: none;
+    color: #2463ad;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.guest-resend-section button:disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.guest-email-security {
+    border-top: 1px solid #eee;
+    margin-top: 25px;
+    padding-top: 17px;
+    color: #888;
+    font-size: 12px;
+}
+
+.guest-resend-section button {
+    font-size: 13px;
+}

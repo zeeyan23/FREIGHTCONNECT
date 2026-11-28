@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
-
+use App\Models\GuestEmailVerification;
 use App\Mail\TradeMemberPasswordMail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -77,6 +77,155 @@ class TradeMemberAuthController extends Controller
 
         return response()->json([
             'message' => 'A verification code has been sent to your registered email address.',
+        ]);
+    }
+
+
+    public function requestGuestOtp(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+        ]);
+
+        $email = strtolower(trim($request->email));
+
+        // Identify this browser session.
+        $sessionHash = hash('sha256', $request->session()->getId());
+
+        // Rate limit: 3 requests per 10 minutes.
+        $rateLimitKey = 'guest-email-otp:' .
+            hash('sha256', $email . '|' . $request->ip());
+
+        if (RateLimiter::tooManyAttempts($rateLimitKey, 3)) {
+            return response()->json([
+                'message' => 'Too many OTP requests. Please try again later.',
+            ], 429);
+        }
+
+        RateLimiter::hit($rateLimitKey, 600);
+
+        // Remove previous unverified OTPs for this session and email.
+        GuestEmailVerification::where('email', $email)
+            ->where('session_hash', $sessionHash)
+            ->whereNull('verified_at')
+            ->delete();
+
+        // Generate a six-digit OTP.
+        $otp = (string) random_int(100000, 999999);
+
+        // Store hashed OTP with five-minute expiry.
+        $otpRecord = GuestEmailVerification::create([
+            'email' => $email,
+            'session_hash' => $sessionHash,
+            'otp_hash' => Hash::make($otp),
+            'expires_at' => now()->addMinutes(5),
+        ]);
+
+        try {
+            Mail::to($email)->send(new \App\Mail\GuestEmailOtpMail($otp));
+
+        } catch (\Throwable $exception) {
+
+            $otpRecord->delete();
+
+            report($exception);
+
+            return response()->json([
+                'message' => 'Unable to send the verification email. Please try again later.',
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'A verification code has been sent to your email address.',
+        ]);
+    }
+
+
+
+    public function verifyGuestOtp(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'max:255'],
+            'otp' => ['required', 'digits:6'],
+        ]);
+
+        $email = strtolower(trim($request->email));
+
+        $sessionHash = hash('sha256', $request->session()->getId());
+
+        try {
+
+            $result = DB::transaction(function () use (
+                $email,
+                $sessionHash,
+                $request
+            ) {
+
+                $otpRecord = GuestEmailVerification::where('email', $email)
+                    ->where('session_hash', $sessionHash)
+                    ->whereNull('verified_at')
+                    ->latest()
+                    ->lockForUpdate()
+                    ->first();
+
+                if (!$otpRecord || $otpRecord->expires_at->isPast()) {
+                    return 'expired';
+                }
+
+                if ($otpRecord->attempts >= 5) {
+                    return 'attempts_exceeded';
+                }
+
+                if (!Hash::check($request->otp, $otpRecord->otp_hash)) {
+
+                    $otpRecord->increment('attempts');
+
+                    return 'invalid';
+                }
+
+                // Mark the email as verified.
+                $otpRecord->update([
+                    'verified_at' => now(),
+                ]);
+
+                // Store verified email in the current session.
+                $request->session()->put(
+                    'guest_verified_email',
+                    $email
+                );
+
+                return 'success';
+            });
+
+        } catch (\Throwable $exception) {
+
+            report($exception);
+
+            return response()->json([
+                'message' => 'Unable to verify your email. Please try again later.',
+            ], 500);
+        }
+
+        if ($result === 'expired') {
+            return response()->json([
+                'message' => 'Your verification code has expired. Please request a new one.',
+            ], 422);
+        }
+
+        if ($result === 'attempts_exceeded') {
+            return response()->json([
+                'message' => 'Too many incorrect attempts. Please request a new verification code.',
+            ], 429);
+        }
+
+        if ($result === 'invalid') {
+            return response()->json([
+                'message' => 'Incorrect verification code.',
+            ], 422);
+        }
+
+        return response()->json([
+            'message' => 'Email verified successfully.',
         ]);
     }
 
